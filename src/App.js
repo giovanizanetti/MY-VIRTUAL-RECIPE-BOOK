@@ -1,14 +1,22 @@
 import React, { Component } from 'react'
+import { BrowserRouter, Route, Switch } from 'react-router-dom'
 import './App.css'
 import Navigation from './components/navigation'
+import SignIn from './components/auth/SignIn'
+import SignUp from './components/auth/SignUp'
+
 
 class App extends Component {
   render() {
     return (
-      <div className="App">
+      <BrowserRouter>
         <Navigation />
-        My Virtual Recipe Book
-      </div>
+        <Switch>
+          <Route path='/signin/' component={SignIn} />
+          <Route path='/signup/' component={SignUp} />
+        </Switch>
+      </BrowserRouter>
+
     )
   }
 }
