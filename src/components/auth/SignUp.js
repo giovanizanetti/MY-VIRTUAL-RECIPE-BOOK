@@ -2,20 +2,19 @@ import React from 'react'
 import { Field, reduxForm } from 'redux-form'
 
 const SignUp = props => {
-  const { handleSubmit, pristine, submitting } = props
-  const mySubmit = (formValues) => mySubmit(formValues)
+  const { handleSubmit, pristine, submitting, onSubmit } = props
   
   return (
     <div className='container'>
-      <form className='white' onSubmit={handleSubmit(mySubmit)}>
+      <form className='white' onSubmit={handleSubmit(() => onSubmit)}>
       <h5 className='grey-text text-darken-3'>Sign Up</h5>
         <div className='input-field'>
           <Field 
-              name="email"
-              component="input"
-              type="email"
-              placeholder="enter your email address"
-            />
+            name="email"
+            component="input"
+            type="email"
+            placeholder="enter your email address"
+        />
         </div>
         <div className='input-field'>
           <Field 
@@ -43,9 +42,11 @@ const SignUp = props => {
         </div>
         <div className='input-field'>
           <button
-             className="btn pink lighten-1 z-depth-0"
-             disabled={pristine || submitting} 
-            >Login</button>
+            className="btn pink lighten-1 z-depth-0"
+            disabled={pristine || submitting} 
+          >
+            Login
+          </button>
         </div>
       </form>
     </div>
