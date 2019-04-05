@@ -3,8 +3,8 @@ import { Field, reduxForm } from 'redux-form'
 
 class SignIn extends Component {
 
-  onSubmit = formValues => {
-    this.props.onSubmit(formValues)
+  mySubmit = formValues => {
+    this.props.mySubmit(formValues)
   }
 
   render() { 
@@ -12,7 +12,7 @@ class SignIn extends Component {
 
     return (
       <div className='container'>
-        <form className='white' onSubmit={this.props.handleSubmit(this.onSubmit)}>
+        <form className='white' onSubmit={this.props.handleSubmit(this.mySubmit)}>
         <h5 className='grey-text text-darken-3'>Sign In</h5>
           <div className='input-field'>
             <Field 
@@ -20,7 +20,6 @@ class SignIn extends Component {
               component="input"
               type="email"
               placeholder="enter your email address"
-              
             />
           </div>
           <div className='input-field'>
@@ -47,7 +46,7 @@ const validate = formValues => {
     errors.title = 'please enter a valid e-mail address'
   }
 
-  if(!formValues.description) {
+  if(!formValues.password) {
     errors.password = 'Please enter the correct password'
   }
   
