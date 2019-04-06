@@ -10,7 +10,7 @@ class RecipeCreate extends Component {
 
   render() {
     return ( 
-      <div>
+      <div className='container center'>
         <h3>Create a Recipe</h3>
         <RecipeForm onSubmit={this.onSubmit} />
       </div>

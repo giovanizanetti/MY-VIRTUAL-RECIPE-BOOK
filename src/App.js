@@ -4,6 +4,7 @@ import './App.css'
 import Navigation from './components/navigation'
 import SignIn from './components/auth/SignIn'
 import SignUp from './components/auth/SignUp'
+import RecipeCreate from './components/recipe/RecipeCreate'
 
 
 class App extends Component {
@@ -12,8 +13,9 @@ class App extends Component {
       <BrowserRouter>
         <Navigation />
         <Switch>
-          <Route path='/signin/' component={SignIn} />
-          <Route path='/signup/' component={SignUp} />
+          <Route path='/signin/' exact component={SignIn} />
+          <Route path='/signup/' exact component={SignUp} />
+          <Route path='/recipe/new' exact component={RecipeCreate} />
         </Switch>
       </BrowserRouter>
 
