@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Field, reduxForm } from 'redux-form'
 
-
+//This is a template form that can be imported by CreateRecipe and EditeRecipe
 
 class StreamForm extends Component {
   renderError = ({ error, touched }) => {

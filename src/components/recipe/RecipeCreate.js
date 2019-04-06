@@ -3,6 +3,8 @@ import { connect } from 'react-redux'
 import { createRecipe } from '../../actions'
 import RecipeForm from './RecipeForm'
 
+//This component use a template form (RecipeForm component)
+
 class RecipeCreate extends Component {
   onSubmit = formValues => {
     this.props.createRecipe(formValues)
