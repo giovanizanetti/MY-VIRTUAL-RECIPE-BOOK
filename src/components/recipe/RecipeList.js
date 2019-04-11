@@ -24,6 +24,8 @@ class RecipeList extends Component {
     })
     .then(data => console.log(data, 'I am the being fetched from componentDidMount'))
     .then(error => console.log(error))
+
+    this.props.fetchRecipes()
   }
   
 }

@@ -21,7 +21,7 @@ export default (state=initialState, action) => {
     console.log('success', action.payload)
       return {
         ...state,
-        recipes: action.payload,
+        recipes: action.payload.data.recipes,
         isPending: false
       }
     case FETCH_RECIPES_FAILED:
