@@ -40,7 +40,7 @@ export const fetchRecipes = () => dispatch => {
     payload: data
   }))
   .then(data => console.log(data))
-  .then(error => dispatch({
+  .catch(error => dispatch({
     type: FETCH_RECIPES_FAILED,
     payload: error
   }))
