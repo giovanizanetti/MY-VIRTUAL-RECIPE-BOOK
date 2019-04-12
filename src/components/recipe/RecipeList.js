@@ -52,9 +52,11 @@ class RecipeList extends Component {
   render() {
     console.log(this.props.recipes)
     return (
+      <div class='container'>
         <div className="row">
-            {this.recipeCardsRender()}
-          </div>
+          {this.recipeCardsRender()}
+        </div>
+      </div>
     )
   }
 }
