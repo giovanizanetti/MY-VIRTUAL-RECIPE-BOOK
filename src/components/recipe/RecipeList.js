@@ -26,7 +26,7 @@ class RecipeList extends Component {
           </div>
         )
       : recipes.map(recipe => (
-        <div className="card col s12 m6 l3" style={{padding: 5}} key={recipe.id}>
+        <div className="card small col s12 m6 l3" style={{padding: 5}} key={recipe.id}>
           <div className="card-image waves-effect waves-block waves-light">
             <img className="activator" src={recipe.image} alt="recipe" />
           </div>
@@ -39,7 +39,7 @@ class RecipeList extends Component {
             <span>{`Ready in ${recipe.readyInMinutes} minutes`}</span>
             <p>{recipe.glutenFree ? 'Gluten Free' : ''}</p>
             <p>{recipe.lowFodMap ? 'Low Fod Map' : ''}</p>
-            <p>{recipe.vegetarian ? 'Vegetarin' : ''}</p>
+            <p>{recipe.vegetarian ? 'Vegetarian' : ''}</p>
             <p>{recipe.vegan ? 'Vegan' : ''}</p>
             <p>{recipe.dairyFree ? 'Dairy Free' : ''}</p>
 
@@ -52,8 +52,8 @@ class RecipeList extends Component {
   render() {
     console.log(this.props.recipes)
     return (
-      <div class='container'>
-        <div className="row">
+      <div className='container'>
+        <div className="row col">
           {this.recipeCardsRender()}
         </div>
       </div>

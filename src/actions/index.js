@@ -1,5 +1,6 @@
 import axios from 'axios'
 import {
+  SELECT_RECIPE,
   CREATE_RECIPE,
   EDIT_RECIPE,
   FETCH_RECIPES_FAILED,
@@ -8,6 +9,13 @@ import {
   SIGN_IN,
   SIGN_OUT
 } from './types'
+
+export const selectRecipe = recipe => {
+  return {
+    type: SELECT_RECIPE,
+    payload: recipe
+  }
+}
 
 export const createRecipe = () => {
   return {
