@@ -7,6 +7,7 @@ import SignUp from './components/auth/SignUp'
 import RecipeCreate from './components/recipe/RecipeCreate'
 import RecipeEdit from './components/recipe/RecipeEdit'
 import RecipeList from './components/recipe/RecipeList'
+import RecipeDetail from './components/recipe/RecipeDetail'
 
 
 class App extends Component {
@@ -20,6 +21,7 @@ class App extends Component {
           <Route path='/recipe/new' exact component={RecipeCreate} />
           <Route path='/recipe/edit/:id' exact component={RecipeEdit} />
           <Route path='/recipes' exact component={RecipeList} />
+          <Route path='/recipes/:id' exact component={RecipeDetail} />
         </Switch>
       </BrowserRouter>
 
