@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { fetchRecipe, editRecipe } from '../../actions'
+import { fetchRecipes, editRecipe } from '../../actions'
 import _ from 'lodash'
 import RecipeForm from './RecipeForm'
 
@@ -37,5 +37,5 @@ const mapStateToProps = (state, ownProps) => {
 
 export default connect(
   mapStateToProps, 
-  {fetchRecipe, editRecipe}
+  {fetchRecipes, editRecipe}
   )(RecipeEdit) 
