@@ -1,14 +1,16 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
-import { fetchRecipes } from '../../actions'
+import { fetchRecipes, selectRecipe } from '../../actions'
+import { Link } from 'react-router-dom'
 
 class RecipeList extends Component {
   componentDidMount = () => {
     this.props.fetchRecipes()
   }
 
+
   recipeCardsRender = () => {
-    const { recipes } = this.props.recipes.recipes
+    const { recipes } = this.props.recipes
     return this.props.recipes.isPending
       ? (
           <div className="preloader-wrapper big active">
@@ -26,25 +28,33 @@ class RecipeList extends Component {
           </div>
         )
       : recipes.map(recipe => (
-        <div className="card small col s12 m6 l3" style={{padding: 5}} key={recipe.id}>
-          <div className="card-image waves-effect waves-block waves-light">
-            <img className="activator" src={recipe.image} alt="recipe" />
+          <div 
+            className="card small col s12 m6 l3" 
+            style={{padding: 5}} 
+            key={recipe.id}
+            onClick={() => {
+              this.props.selectRecipe(recipe)
+              console.log(`I am the one, ${recipe.id}`)
+            }}
+            >
+            <div className="card-image waves-effect waves-block waves-light">
+              <img className="activator" src={recipe.image} alt="recipe" />
+            </div>
+            <div className="card-content">
+              <span className="card-title activator grey-text text-darken-4">{recipe.title}<i className="material-icons right">FLip the Card</i></span>
+              <Link to={`/recipes/${recipe.id}`}></Link>
+            </div>
+            <div className="card-reveal">
+              <span className="card-title grey-text text-darken-4">{recipe.title}<i className="material-icons right">close</i></span>
+              <span>{`Ready in ${recipe.readyInMinutes} minutes`}</span>
+              <p>{recipe.glutenFree ? 'Gluten Free' : ''}</p>
+              <p>{recipe.lowFodMap ? 'Low Fod Map' : ''}</p>
+              <p>{recipe.vegetarian ? 'Vegetarian' : ''}</p>
+              <p>{recipe.vegan ? 'Vegan' : ''}</p>
+              <p>{recipe.dairyFree ? 'Dairy Free' : ''}</p>
+              <Link to={`/recipes/${recipe.id}`}>See the full recipe</Link>
+            </div>
           </div>
-          <div className="card-content">
-            <span className="card-title activator grey-text text-darken-4">{recipe.title}<i className="material-icons right">FLip the Card</i></span>
-            <p><a href="#">See the full recipe</a></p>
-          </div>
-          <div className="card-reveal">
-            <span className="card-title grey-text text-darken-4">{recipe.title}<i className="material-icons right">close</i></span>
-            <span>{`Ready in ${recipe.readyInMinutes} minutes`}</span>
-            <p>{recipe.glutenFree ? 'Gluten Free' : ''}</p>
-            <p>{recipe.lowFodMap ? 'Low Fod Map' : ''}</p>
-            <p>{recipe.vegetarian ? 'Vegetarian' : ''}</p>
-            <p>{recipe.vegan ? 'Vegan' : ''}</p>
-            <p>{recipe.dairyFree ? 'Dairy Free' : ''}</p>
-
-          </div>
-        </div>
       ))
   }
   
@@ -67,8 +77,9 @@ class RecipeList extends Component {
 const mapStateToProps = state => {
   console.log(state, 'I am the state')
   return {
-    recipes: state
+    recipes: state.recipes,
+    selectedRecipe: state.selectedRecipe
   }
 }
 
-export default connect(mapStateToProps, { fetchRecipes })(RecipeList)
+export default connect(mapStateToProps, { fetchRecipes, selectRecipe })(RecipeList)
