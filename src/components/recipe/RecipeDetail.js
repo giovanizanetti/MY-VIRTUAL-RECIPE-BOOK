@@ -2,17 +2,6 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux'
 
 class Recipedetail extends Component {
-  
-  // renderInstructions = () => {
-  //   const extractSteps = this.props.recipe.analyzedInstructions.map(instruction => instruction.steps)
-  //   return this.props.recipe.analyzedInstructions.map(instruction => {
-  //     return (
-  //       <div>{`${instruction.name} ${extractSteps.map(step => <li>{step.step}</li>)}`}</div>
-  //       )
-  //   })
-    
-  // }
-
   renderOccasions = () => {
     return( 
       this.props.recipe.occasions.length > 0 &&
@@ -28,7 +17,7 @@ class Recipedetail extends Component {
       return (
         <div key={ingredient.id}>
           <span>{ingredient.name}</span>
-          {`: ${ingredient.measures.metric.amount} ${ingredient.measures.metric.unitLong}`}
+          {`: ${ingredient.measures.metric.amount} ${ingredient.measures.metric.unitShort}`}
         </div>
       )
     })
@@ -41,7 +30,7 @@ class Recipedetail extends Component {
         <div className='card'>
           <h2>{this.props.recipe.title}</h2>
           <img  src={this.props.recipe.image} alt='dish'/>
-          <p>{this.props.recipe.occasions.length > 0 ? `this a perfect combination for ${this.renderOccasions()}`: 'Sorry, no occasions sugestions fro this recipe!'}</p>
+          <p>{this.props.recipe.occasions.length > 0 ? `This a perfect combination for ${this.renderOccasions()}`: 'Sorry, no occasions sugestions fro this recipe!'}</p>
           <h3>Ingredients</h3>
           <div>{this.renderIngredients()}</div>
           <h3>Instructions</h3>
