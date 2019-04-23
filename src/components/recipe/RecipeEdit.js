@@ -4,7 +4,7 @@ import { fetchRecipes, editRecipe } from '../../actions'
 import _ from 'lodash'
 import RecipeForm from './RecipeForm'
 
-//This component make use a tempate (RecipeForm comonent)
+//This component make use of a tempate (RecipeForm component)
 
 class RecipeEdit extends Component {  
   componentDidMount(){

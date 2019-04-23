@@ -6,6 +6,7 @@ export const FETCH_RECIPES_PENDING = 'FETCH_RECIPES_PENDING'
 export const SIGN_IN = 'SIGN_IN'
 export const SIGN_OUT = 'SIGN_OUT'
 export const SELECT_RECIPE = 'SELECT_RECIPE'
+export const CREATE_RECIPE_ERROR = 'CREATE_RECIPE_ERROR'
 
 
 

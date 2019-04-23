@@ -24,7 +24,7 @@ class Recipedetail extends Component {
   }
 
   render() { 
-    console.log(this.props)
+    console.log(this.props, 'from render                                                                                                                                                                                                                                                                                                                                                                                                                                                  ')
     return (
       <div className='container'>
         <div className='card'>
@@ -34,11 +34,11 @@ class Recipedetail extends Component {
           <h3>Ingredients</h3>
           <div>{this.renderIngredients()}</div>
           <h3>Instructions</h3>
-          {this.props.recipe.instructions}
+          {this.props.recipe.instructions}                                                                                                    
           <h6>{this.props.recipe.cookingMinutes > 0 
             ? `This recipe takes ${this.props.recipe.cookingMinutes} minutes for cooking`
-            : ''}</h6> 
-          <div>
+            : ''}</h6>                                                                                                      
+          <div>                                                                                                                                                                                                                                                                                                     
             <span>{`Ready in ${this.props.recipe.readyInMinutes} minutes`}</span>
             <p>{`Servings: ${this.props.recipe.servings}`}</p>
             <p>{this.props.recipe.glutenFree ? 'Gluten Free' : 'Contains gluten'}</p>
@@ -54,12 +54,13 @@ class Recipedetail extends Component {
   }
 }
 
-const mapStateToProps = state => {
-  console.log(state, 'I am the state from DEtail')
+
+const mapStateToProps = (state, ownProps) => {                                                                                                              
+  console.log(state,ownProps, 'I am the state from DEtail')
 
   return {
-    recipe: state.selectedRecipe,
-    recipes: state.recipes
+    recipe: state.selectedRecipe,                                                                                                                                                                                                                           
+    recipes: state.recipes                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                
   }
 }
 
