@@ -29,8 +29,8 @@ class Recipedetail extends Component {
       <div className='container'>
         <div className='card'>
           <h2>{this.props.recipe.title}</h2>
-          <img  src={this.props.recipe.image} alt='dish'/>
-          <p>{this.props.recipe.occasions.length > 0 ? `This a perfect combination for ${this.renderOccasions()}`: 'Sorry, no occasions sugestions fro this recipe!'}</p>
+          <img  src={this.props.recipe.image} alt={this.props.recipe.title}/>
+          <p>{this.props.recipe.occasions.length > 0 ? `This recipe is a perfect combination for ${this.renderOccasions()}`: 'Sorry, no occasions sugestions for this recipe!'}</p>
           <h3>Ingredients</h3>
           <div>{this.renderIngredients()}</div>
           <h3>Instructions</h3>

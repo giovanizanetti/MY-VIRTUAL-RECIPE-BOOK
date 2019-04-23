@@ -8,11 +8,14 @@ import RecipeCreate from './components/recipe/RecipeCreate'
 import RecipeEdit from './components/recipe/RecipeEdit'
 import RecipeList from './components/recipe/RecipeList'
 import RecipeDetail from './components/recipe/RecipeDetail'
+import { connect } from 'react-redux'
 
 
 class App extends Component {
   render() {
+    console.log(this.props)
     return (
+
       <BrowserRouter>
         <Navigation />
         <Switch>
@@ -29,4 +32,9 @@ class App extends Component {
   }
 }
 
-export default App
+const mapStateToProps = (state) => {
+console.log(state,'FROM APP')
+return {state}
+}
+
+export default connect(mapStateToProps)(App)
