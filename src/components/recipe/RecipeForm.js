@@ -25,12 +25,12 @@ class StreamForm extends Component {
     )
   }
 
-  renderTextarea = ({ textarea, label, meta }) => {
-    const className = `input-field-field ${meta.error && meta.touched ? 'wrong' : ''}`
+  renderTextarea = ({ input, label, meta }) => {
+    const className = `input-field ${meta.error && meta.touched ? 'wrong' : ''}`
     return (
       <div className={className}>
         <label>{label}</label>
-        <textarea {...textarea} autoComplete='off'/>
+        <textarea {...input} autoComplete='off'/>
         {this.renderError(meta)}
       </div> 
     )
