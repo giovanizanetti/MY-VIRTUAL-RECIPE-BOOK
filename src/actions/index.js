@@ -32,9 +32,10 @@ export const createRecipe = recipe => {
   }
 }
 
-export const selectRecipe = () => {
+export const selectRecipe = recipe => {
   return {
     type: SELECT_RECIPE,
+    payload: recipe
   }
 }
 

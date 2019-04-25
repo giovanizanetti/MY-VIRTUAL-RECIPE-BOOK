@@ -9,6 +9,7 @@ import RecipeEdit from './components/recipe/RecipeEdit'
 import RecipeList from './components/recipe/RecipeList'
 import RecipeDetail from './components/recipe/RecipeDetail'
 import { connect } from 'react-redux'
+import MyRecipes from './components/recipe/MyRecipes'
 
 
 class App extends Component {
@@ -25,6 +26,7 @@ class App extends Component {
           <Route path='/recipe/edit/:id' exact component={RecipeEdit} />
           <Route path='/recipes' exact component={RecipeList} />
           <Route path='/recipes/:id' exact component={RecipeDetail} />
+          <Route path='/myRecipes/' exact component={MyRecipes} />
         </Switch>
       </BrowserRouter>
 

@@ -1,7 +1,9 @@
 import {
   FETCH_RECIPES_FAILED,
   FETCH_RECIPES_SUCCESS,
-  FETCH_RECIPES_PENDING
+  FETCH_RECIPES_PENDING,
+  CREATE_RECIPE,
+  CREATE_RECIPE_ERROR
 } from '../actions/types'
 
 const initialState = {
@@ -30,8 +32,13 @@ export default (state=initialState, action) => {
         ...state,
         error: action.payload,
         isPending: false
-      }      
-  
+      } 
+    case CREATE_RECIPE:
+      console.log('recipe created', action.payload)
+      return state
+    case CREATE_RECIPE_ERROR:
+      console.log('create project error', action.payload)
+      return state
     default:
       return state
   }
