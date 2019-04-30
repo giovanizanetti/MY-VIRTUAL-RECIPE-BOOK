@@ -6,20 +6,34 @@ import {
   FETCH_RECIPES_FAILED,
   FETCH_RECIPES_PENDING,
   FETCH_RECIPES_SUCCESS,
-  SIGN_IN,
-  SIGN_OUT
+  CREATE_RECIPE_ERROR
 } from './types'
+
+export const createRecipe = recipe => {
+  return (dispatch, getState, { getFirabase, getFirestore }) => {
+    // make async call to database
+    const firestore = getFirestore()
+    firestore.collection('recipes').add({
+      ...recipe
+    }).then(() => {
+      dispatch({
+        type: CREATE_RECIPE,
+        payload: recipe
+      })
+    }).catch(err => {
+      dispatch({
+        type: CREATE_RECIPE_ERROR, 
+        payload: err
+      })
+    })
+   
+  }
+}
 
 export const selectRecipe = recipe => {
   return {
     type: SELECT_RECIPE,
     payload: recipe
-  }
-}
-
-export const createRecipe = () => {
-  return {
-    type: CREATE_RECIPE
   }
 }
 
@@ -54,15 +68,3 @@ export const fetchRecipes = () => dispatch => {
   }))
 }
 
-export const signIn = credentials => {
-  return {
-    type: SIGN_IN,
-    payload: credentials
-  }
-}
-
-export const signOut = () => {
-  return {
-    type: SIGN_OUT
-  }
-}

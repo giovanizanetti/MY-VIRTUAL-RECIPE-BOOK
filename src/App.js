@@ -8,11 +8,15 @@ import RecipeCreate from './components/recipe/RecipeCreate'
 import RecipeEdit from './components/recipe/RecipeEdit'
 import RecipeList from './components/recipe/RecipeList'
 import RecipeDetail from './components/recipe/RecipeDetail'
+import { connect } from 'react-redux'
+import MyRecipes from './components/recipe/MyRecipes'
 
 
 class App extends Component {
   render() {
+    console.log(this.props)
     return (
+
       <BrowserRouter>
         <Navigation />
         <Switch>
@@ -22,6 +26,7 @@ class App extends Component {
           <Route path='/recipe/edit/:id' exact component={RecipeEdit} />
           <Route path='/recipes' exact component={RecipeList} />
           <Route path='/recipes/:id' exact component={RecipeDetail} />
+          <Route path='/myRecipes/' exact component={MyRecipes} />
         </Switch>
       </BrowserRouter>
 
@@ -29,4 +34,9 @@ class App extends Component {
   }
 }
 
-export default App
+const mapStateToProps = (state) => {
+console.log(state,'FROM APP')
+return {state}
+}
+
+export default connect(mapStateToProps)(App)

@@ -1,9 +1,12 @@
 import React from 'react'
 import { Field, reduxForm } from 'redux-form'
+import { connect } from 'react-redux'
+import { signIn } from '../../actions/authActions'
+import { compose } from 'redux'
 
 const SignIn = props => {
-  const { handleSubmit, pristine, submitting, onSubmit } = props
-  
+  const { handleSubmit, pristine, submitting, onSubmit, signIn } = props
+  console.log(props)
   return (
     <div className='container'>
       <form className='white' onSubmit={handleSubmit(() => onSubmit)}>
@@ -51,7 +54,16 @@ const validate = formValues => {
   return errors
 }
  
-export default reduxForm({
+const FORM =  reduxForm({
   form: 'signInForm',
   validate
-}) (SignIn)
+})
+
+const mapStateToProps = state => {
+  console.log(state,'pppppp')
+  return {
+    formValues: state.form
+  }
+}
+
+export default compose(connect(mapStateToProps, { signIn }), FORM)(SignIn)
