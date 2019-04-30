@@ -6,8 +6,6 @@ import {
   FETCH_RECIPES_FAILED,
   FETCH_RECIPES_PENDING,
   FETCH_RECIPES_SUCCESS,
-  SIGN_IN,
-  SIGN_OUT,
   CREATE_RECIPE_ERROR
 } from './types'
 
@@ -70,15 +68,3 @@ export const fetchRecipes = () => dispatch => {
   }))
 }
 
-export const signIn = credentials => {
-  return {
-    type: SIGN_IN,
-    payload: credentials
-  }
-}
-
-export const signOut = () => {
-  return {
-    type: SIGN_OUT
-  }
-}
