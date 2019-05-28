@@ -5,13 +5,12 @@ import { signIn } from '../../actions/authActions'
 import { compose } from 'redux'
 
 const SignIn = props => {
-  const { handleSubmit, pristine, submitting, onSubmit, signIn } = props
-  console.log(props.formValues);
+  const { handleSubmit, pristine, submitting, signIn, formValues} = props
 
+    //extract the values from ReduxForm reducer formValues and pass it to sigIn action creator.
   return (
     <div className='container'>
-    // extract the values from formValues and pass it to sigIn action creator.
-      <form className='white' onSubmit={handleSubmit(() => signIn(props.formValues.signInForm.values))}>
+      <form className='white' onSubmit={handleSubmit(() => signIn(formValues.signInForm.values))}>
       <h5 className='grey-text text-darken-3'>Sign In</h5>
         <div className='input-field'>
           <Field
