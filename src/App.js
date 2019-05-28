@@ -14,7 +14,6 @@ import MyRecipes from './components/recipe/MyRecipes'
 
 class App extends Component {
   render() {
-    console.log(this.props)
     return (
 
       <BrowserRouter>
@@ -35,7 +34,6 @@ class App extends Component {
 }
 
 const mapStateToProps = (state) => {
-console.log(state,'FROM APP')
 return {state}
 }
 

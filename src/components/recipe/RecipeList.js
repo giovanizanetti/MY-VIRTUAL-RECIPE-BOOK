@@ -28,9 +28,9 @@ class RecipeList extends Component {
           </div>
         )
       : recipes.map(recipe => (
-          <div 
-            className="card small col s12 m6 l3" 
-            style={{padding: 5}} 
+          <div
+            className="card small col s12 m6 l3"
+            style={{padding: 5}}
             key={recipe.id}
             onClick={() => {
               this.props.selectRecipe(recipe)
@@ -57,10 +57,9 @@ class RecipeList extends Component {
           </div>
       ))
   }
-  
+
 
   render() {
-    console.log(this.props.recipes)
     return (
       <div className='container'>
         <div className="row col">
@@ -75,7 +74,6 @@ class RecipeList extends Component {
 
 
 const mapStateToProps = state => {
-  console.log(state, 'I am the state')
   return {
     recipes: state.recipes,
     selectedRecipe: state.selectedRecipe

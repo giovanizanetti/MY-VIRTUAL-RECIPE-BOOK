@@ -9,16 +9,15 @@ const MyRecipes = props => {
   : props.myRecipes.map(recipe => {
     return <h2 key={recipe.id}>{recipe.title}</h2>
   })
-    
+
 }
 
 const mapStateToProps = state => {
-  console.log(state)
   return {
     myRecipes: state.firestore.ordered.recipes
   }
 }
- 
+
 export default compose(
   connect(mapStateToProps),
   firestoreConnect([{

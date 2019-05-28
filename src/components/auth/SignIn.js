@@ -6,13 +6,15 @@ import { compose } from 'redux'
 
 const SignIn = props => {
   const { handleSubmit, pristine, submitting, onSubmit, signIn } = props
-  console.log(props)
+  console.log(props.formValues);
+
   return (
     <div className='container'>
-      <form className='white' onSubmit={handleSubmit(() => onSubmit)}>
+    // extract the values from formValues and pass it to sigIn action creator.
+      <form className='white' onSubmit={handleSubmit(() => signIn(props.formValues.signInForm.values))}>
       <h5 className='grey-text text-darken-3'>Sign In</h5>
         <div className='input-field'>
-          <Field 
+          <Field
             name="email"
             component="input"
             type="email"
@@ -20,7 +22,7 @@ const SignIn = props => {
           />
         </div>
         <div className='input-field'>
-          <Field 
+          <Field
             name="password"
             component="input"
             type="password"
@@ -28,9 +30,9 @@ const SignIn = props => {
           />
         </div>
         <div className='input-field'>
-          <button 
+          <button
             className="btn pink lighten-1 z-depth-0"
-            disabled={pristine || submitting} 
+            disabled={pristine || submitting}
           >
             Login
           </button>
@@ -50,17 +52,16 @@ const validate = formValues => {
   if(!formValues.password) {
     errors.password = 'Please enter the correct password'
   }
-  
+
   return errors
 }
- 
+
 const FORM =  reduxForm({
   form: 'signInForm',
   validate
 })
 
 const mapStateToProps = state => {
-  console.log(state,'pppppp')
   return {
     formValues: state.form
   }
