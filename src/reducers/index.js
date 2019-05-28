@@ -12,6 +12,6 @@ export default combineReducers({
   recipes: recipesReducer,
   selectedRecipe: selectedRecipeReducer,
   firestore: firestoreReducer,
-  firabase: firebaseReducer,
+  firebase: firebaseReducer,
   auth: authReducer
 })
