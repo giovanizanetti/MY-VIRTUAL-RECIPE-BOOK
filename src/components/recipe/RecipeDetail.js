@@ -25,6 +25,8 @@ class Recipedetail extends Component {
   }
 
   render() {
+
+    //If user is loged out redirect to sign in page
     if(!this.props.auth.uid){
       return <Redirect to='/signin' />
     }
