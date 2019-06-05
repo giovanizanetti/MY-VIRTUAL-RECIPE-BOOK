@@ -3,10 +3,15 @@ import { Field, reduxForm } from 'redux-form'
 import { connect } from 'react-redux'
 import { signIn } from '../../actions/authActions'
 import { compose } from 'redux'
+import { Redirect } from 'react-router-dom'
+
 
 const SignIn = props => {
-  const { handleSubmit, pristine, submitting, signIn, formValues} = props
+  const { handleSubmit, pristine, submitting, signIn, formValues, authError, auth} = props
 
+  if(auth.uid){
+    return <Redirect to='/myRecipes' />
+  }
     //extract the values from ReduxForm reducer formValues and pass it to sigIn action creator.
   return (
     <div className='container'>
@@ -35,6 +40,9 @@ const SignIn = props => {
           >
             Login
           </button>
+          <div className="red-text center">
+            { authError ? <p>{authError}</p> : null }
+          </div>
         </div>
       </form>
     </div>
@@ -62,7 +70,9 @@ const FORM =  reduxForm({
 
 const mapStateToProps = state => {
   return {
-    formValues: state.form
+    formValues: state.form,
+    authError: state.auth.authError,
+    auth: state.firebase.auth
   }
 }
 

@@ -1,5 +1,6 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import { Redirect } from 'react-router-dom'
 
 class Recipedetail extends Component {
   renderOccasions = () => {
@@ -24,7 +25,12 @@ class Recipedetail extends Component {
   }
 
   render() {
-    console.log(this.props, 'from render                                                                                                                                                                                                                                                                                                                                                                                                                                                  ')
+
+    //If user is loged out redirect to sign in page
+    if(!this.props.auth.uid){
+      return <Redirect to='/signin' />
+    }
+
     return (
       <div className='container'>
         <div className='card'>
@@ -59,7 +65,8 @@ const mapStateToProps = (state, ownProps) => {
 
   return {
     recipe: state.selectedRecipe,
-    recipes: state.recipes
+    recipes: state.recipes,
+    auth: state.firebase.auth
   }
 }
 
