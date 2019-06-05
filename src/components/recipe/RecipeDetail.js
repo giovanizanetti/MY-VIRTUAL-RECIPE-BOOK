@@ -29,7 +29,7 @@ class Recipedetail extends Component {
     return this.props.recipe.analyzedInstructions.map(x => {
       return(x.steps.map(step => (
         <div>
-          <span>{`${step.number}: `}</span>
+          <span>{`- ${step.number}: `}</span>
           <p>{step.step}</p>
         </div>
       )))
