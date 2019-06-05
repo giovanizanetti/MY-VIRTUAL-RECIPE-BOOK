@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Redirect } from 'react-router-dom'
+import { setPriority } from 'os';
 
 class Recipedetail extends Component {
   renderOccasions = () => {
@@ -24,6 +25,17 @@ class Recipedetail extends Component {
     })
   }
 
+  renderInstructions = () => {
+    return this.props.recipe.analyzedInstructions.map(x => {
+      return(x.steps.map(step => (
+        <div>
+          <span>{`${step.number}: `}</span>
+          <p>{step.step}</p>
+        </div>
+      )))
+    })
+  }
+
   render() {
 
     //If user is loged out redirect to sign in page
@@ -40,7 +52,7 @@ class Recipedetail extends Component {
           <h3>Ingredients</h3>
           <div>{this.renderIngredients()}</div>
           <h3>Instructions</h3>
-          {this.props.recipe.instructions}
+          {this.renderInstructions()}
           <h6>{this.props.recipe.cookingMinutes > 0
             ? `This recipe takes ${this.props.recipe.cookingMinutes} minutes for cooking`
             : ''}</h6>
@@ -54,7 +66,6 @@ class Recipedetail extends Component {
             <p>{this.props.recipe.dairyFree ? 'Dairy Free' : 'Contains dairy'}</p>
           </div>
         </div>
-
       </div>
     )
   }

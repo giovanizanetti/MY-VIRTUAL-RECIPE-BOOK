@@ -34,7 +34,6 @@ class RecipeList extends Component {
             key={recipe.id}
             onClick={() => {
               this.props.selectRecipe(recipe)
-              console.log(`I am the one, ${recipe.id}`)
             }}
             >
             <div className="card-image waves-effect waves-block waves-light">
