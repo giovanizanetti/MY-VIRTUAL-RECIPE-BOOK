@@ -7,12 +7,18 @@ import { Redirect } from 'react-router-dom'
 
 
 const SignIn = props => {
-  const { handleSubmit, pristine, submitting, signIn, formValues, authError, auth} = props
+  const { handleSubmit, pristine, submitting, signIn, formValues, authError, auth, selectedRecipe} = props
 
-  if(auth.uid){
-    return <Redirect to='/myRecipes' />
+  //When the user attempted to see full recipe when the user is logged out he will be asked to sign in,
+  //after sign in, the user can can access the recipe previously selected, if that is not the case the user
+  //will be redirected to "myRecipes" page.
+  if(auth.uid && selectedRecipe !== null) {
+    return <Redirect to={`/recipes/${selectedRecipe.id}`} />
+  } else if(auth.uid) {
+    return <Redirect to={`/myRecipes/`} />
   }
-    //extract the values from ReduxForm reducer formValues and pass it to sigIn action creator.
+
+  //extract the values from ReduxForm reducer formValues and pass it to sigIn action creator.
   return (
     <div className='container'>
       <form className='white' onSubmit={handleSubmit(() => signIn(formValues.signInForm.values))}>
@@ -51,15 +57,12 @@ const SignIn = props => {
 
 const validate = formValues => {
   const errors = {}
-
   if(!formValues.email) {
     errors.title = 'please enter a valid e-mail address'
   }
-
   if(!formValues.password) {
     errors.password = 'Please enter the correct password'
   }
-
   return errors
 }
 
@@ -72,7 +75,8 @@ const mapStateToProps = state => {
   return {
     formValues: state.form,
     authError: state.auth.authError,
-    auth: state.firebase.auth
+    auth: state.firebase.auth,
+    selectedRecipe: state.selectedRecipe
   }
 }
 
