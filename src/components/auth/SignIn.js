@@ -9,7 +9,7 @@ import { Redirect } from 'react-router-dom'
 const SignIn = props => {
   const { handleSubmit, pristine, submitting, signIn, formValues, authError, auth, selectedRecipe} = props
 
-  //When the user attempted to see full recipe when the user is logged out he will be asked to sign in,
+  //When the user attempted to see full recipe when the user is logged out the user will be asked to sign in,
   //after sign in, the user can can access the recipe previously selected, if that is not the case the user
   //will be redirected to "myRecipes" page.
   if(auth.uid && selectedRecipe !== null) {

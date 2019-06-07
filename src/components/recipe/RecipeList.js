@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import { fetchRecipes, selectRecipe } from '../../actions'
 import { Link } from 'react-router-dom'
+import LoaderSpinner from '../LoderSpinner'
 
 class RecipeList extends Component {
   componentDidMount = () => {
@@ -12,21 +13,7 @@ class RecipeList extends Component {
   recipeCardsRender = () => {
     const { recipes } = this.props.recipes
     return this.props.recipes.isPending
-      ? (
-          <div className="preloader-wrapper big active">
-            <div className="spinner-layer spinner-blue-only">
-              <div className="circle-clipper left">
-                <div className="circle"></div>
-              </div>
-              <div className="gap-patch">
-                <div className="circle"></div>
-              </div>
-              <div className="circle-clipper right">
-                <div className="circle"></div>
-              </div>
-            </div>
-          </div>
-        )
+      ? <LoaderSpinner />
       : recipes.map(recipe => (
           <div
             className="card small col s12 m6 l3"

@@ -27,7 +27,7 @@ class Recipedetail extends Component {
   renderInstructions = () => {
     return this.props.recipe.analyzedInstructions.map(x => {
       return(x.steps.map(step => (
-        <div>
+        <div key={step.number}>
           <span>{`- ${step.number}: `}</span>
           <p>{step.step}</p>
         </div>
@@ -42,19 +42,24 @@ class Recipedetail extends Component {
       return <Redirect to='/signin' />
     }
 
+    console.log(this.props)
     return (
       <div className='container'>
         <div className='card'>
           <h2>{this.props.recipe.title}</h2>
-          <img  src={this.props.recipe.image} alt={this.props.recipe.title}/>
-          <p>{this.props.recipe.occasions.length > 0 ? `This recipe is a perfect combination for ${this.renderOccasions()}`: 'Sorry, no occasions sugestions for this recipe!'}</p>
+          <img src={this.props.recipe.image} alt={this.props.recipe.title}/>
+          <p>{ this.props.recipe.occasions.length > 0 ? `This recipe is a perfect combination for ${this.renderOccasions()}`: 'Sorry, no occasions sugestions for this recipe!'}</p>
           <h3>Ingredients</h3>
           <div>{this.renderIngredients()}</div>
-          <h3>Instructions</h3>
-          {this.renderInstructions()}
-          <h6>{this.props.recipe.cookingMinutes > 0
-            ? `This recipe takes ${this.props.recipe.cookingMinutes} minutes for cooking`
-            : ''}</h6>
+          <div>
+            <h3>Instructions</h3>
+            {this.renderInstructions()}
+          </div>
+          <h6>
+            {this.props.recipe.cookingMinutes > 0
+              ? `This recipe takes ${this.props.recipe.cookingMinutes} minutes for cooking`
+              : ''}
+          </h6>
           <div>
             <span>{`Ready in ${this.props.recipe.readyInMinutes} minutes`}</span>
             <p>{`Servings: ${this.props.recipe.servings}`}</p>
@@ -64,14 +69,17 @@ class Recipedetail extends Component {
             <p>{this.props.recipe.vegan ? 'Vegan' : ''}</p>
             <p>{this.props.recipe.dairyFree ? 'Dairy Free' : 'Contains dairy'}</p>
           </div>
+          <div>
+            <button>Save Recipe</button>
+          </div>
         </div>
       </div>
-    )
+      )
   }
 }
 
 
-const mapStateToProps = (state, ownProps) => {
+const mapStateToProps = (state) => {
 
   return {
     recipe: state.selectedRecipe,
