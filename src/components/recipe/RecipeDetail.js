@@ -42,7 +42,6 @@ class Recipedetail extends Component {
       return <Redirect to='/signin' />
     }
 
-    console.log(this.props)
     return (
       <div className='container'>
         <div className='card'>

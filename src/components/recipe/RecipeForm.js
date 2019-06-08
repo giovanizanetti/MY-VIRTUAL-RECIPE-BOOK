@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Field, reduxForm } from 'redux-form'
 
-//This is a template form that can be imported by CreateRecipe and EditeRecipe
+//This is a template form that can be imported by RecipeCreate and RecipeEdit
 
 class StreamForm extends Component {
   renderError = ({ error, touched }) => {
@@ -21,7 +21,7 @@ class StreamForm extends Component {
         <label>{label}</label>
         <input {...input} autoComplete='off'/>
         {this.renderError(meta)}
-      </div> 
+      </div>
     )
   }
 
@@ -32,7 +32,7 @@ class StreamForm extends Component {
         <label>{label}</label>
         <textarea {...input} autoComplete='off'/>
         {this.renderError(meta)}
-      </div> 
+      </div>
     )
   }
 
@@ -41,33 +41,33 @@ class StreamForm extends Component {
   }
 
   render() {
-    return ( 
+    return (
       <form onSubmit={this.props.handleSubmit(this.onSubmit)} className='container wrong'>
-        <Field 
-          name='title' 
+        <Field
+          name='title'
           component={this.renderInput}
-          type='text' 
+          type='text'
           label='Enter Title'
         />
-        <Field 
-          name='preparation time' 
+        <Field
+          name='preparation time'
           component={this.renderInput}
-          type='text' 
+          type='text'
           label='Enter the preparation time of your recipe'
         />
-        <Field 
-          name='ingredients' 
+        <Field
+          name='ingredients'
           component={this.renderTextarea}
-          type='text' 
-          label='Enter the ingredients items with the respective amount' 
+          type='text'
+          label='Enter the ingredients items with the respective amount'
         />
-        <Field 
-          name='instructions' 
+        <Field
+          name='instructions'
           component={this.renderTextarea}
-          type='text' 
+          type='text'
           label='Enter detailed instructions for preparation'
         />
-        <button 
+        <button
           className="btn pink lighten-1 z-depth-0"
           disabled={this.props.pristine || this.props.submitting}
         >
@@ -88,7 +88,7 @@ const validate = formValues => {
   if(!formValues.description) {
     errors.description = 'You must enter a description'
   }
-  
+
   return errors
 }
 

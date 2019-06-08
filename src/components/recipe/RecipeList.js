@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import { fetchRecipes, selectRecipe } from '../../actions'
 import { Link } from 'react-router-dom'
-import LoaderSpinner from '../LoderSpinner'
+import LoaderSpinner from '../LoaderSpinner'
 
 class RecipeList extends Component {
   componentDidMount = () => {

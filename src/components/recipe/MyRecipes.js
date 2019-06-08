@@ -3,7 +3,7 @@ import { compose } from 'redux'
 import { firestoreConnect } from 'react-redux-firebase'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
-import LoaderSpinner from '../LoderSpinner'
+import LoaderSpinner from '../LoaderSpinner'
 import { selectRecipe } from '../../actions'
 
 
