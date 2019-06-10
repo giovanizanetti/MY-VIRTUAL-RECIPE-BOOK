@@ -11,7 +11,7 @@ const Ingredients = ({ingredients}) => {
   })
 
   return (
-    <div>
+    <div className='container'>
       <h3>Ingredients</h3>
       { ingredientsList }
     </div>
