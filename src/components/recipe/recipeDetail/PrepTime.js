@@ -2,23 +2,27 @@ import React from 'react'
 
 const PrepTime = ({ cookingMinutes, readyInMinutes }) => {
 
-  const timeConvert = (minutes) => {
+//   The timeFormat function:
+//  - rounds numbers to the nearest integer
+//  - transforms minutes into hours,
+//  - check for the correct plural and singular
+  const timeFormat = (minutes) => {
     if(minutes > 59) {
-      const hours = Math.floor(minutes / 60)
-      const min = minutes % 60
-      const spellHour = hours > 1 ? 'hours' : 'hour'
-      return `${hours} ${spellHour} and ${min} minutes`
+      const roundedHours = Math.floor(minutes / 60)
+      const hours =  roundedHours >= 2 ? `${roundedHours} hours` : `${roundedHours} hour`
+      const min = minutes % 60 === 0 ? '' : ` and ${minutes % 60} minutes`
+      return hours + min
     }
-    return `${minutes} minutes`
+    return minutes + ' minutes'
   }
 
   const cookingtime =
     cookingMinutes
     && cookingMinutes > 0
-    && `This recipe takes ${timeConvert(cookingMinutes)} for cooking`
+    && `This recipe takes ${timeFormat(cookingMinutes)} for cooking`
 
   const totalPrepTime =
-    readyInMinutes && `Ready in ${timeConvert(readyInMinutes)}`
+    readyInMinutes && `Ready in ${timeFormat(readyInMinutes)}`
 
   return (
     <ul className='container'>
