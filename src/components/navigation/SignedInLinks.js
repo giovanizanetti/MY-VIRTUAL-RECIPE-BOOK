@@ -7,11 +7,20 @@ import { signOut } from '../../actions/authActions'
 
 const SignedInLinks = props => {
   return (
-    <ul className='right'>
-      <li><NavLink  to='/recipe/new'>Create Recipe</NavLink></li>
-      <li><NavLink onClick={props.signOut} to='/recipes'>Log Out</NavLink></li>
-      <li><NavLink to='/showAllRecipes' className='btn btn-floating pink lighten-1'>{ props.initials }</NavLink></li>
-    </ul>
+    <>
+      <ul className='right hide-on-med-and-down'>
+        <li><NavLink  to='/recipe/new'>Create Recipe</NavLink></li>
+        <li><NavLink  to='/myRecipes'>My Recipes</NavLink></li>
+        <li><NavLink onClick={props.signOut} to='/recipes'>Log Out</NavLink></li>
+        <li><NavLink to='/showAllRecipes' className='btn btn-floating pink lighten-1'>{ props.initials }</NavLink></li>
+      </ul>
+      <ul className="sidenav" id="mobile-demo">
+        <li><NavLink  to='/recipe/new'>Create Recipe</NavLink></li>
+        <li><NavLink  to='/myRecipes'>My Recipes</NavLink></li>
+        <li><NavLink onClick={props.signOut} to='/recipes'>Log Out</NavLink></li>
+        <li><NavLink to='/showAllRecipes' className='btn btn-floating pink lighten-1'>{ props.initials }</NavLink></li>
+      </ul>
+    </>
   )
 }
 

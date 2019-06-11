@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { fetchRecipes, editRecipe } from '../../actions'
+import { fetchRecipes, editRecipe } from '../../actions/recipeActions'
 import _ from 'lodash'
 import RecipeForm from './RecipeForm'
 import LoaderSpinner from '../LoaderSpinner'

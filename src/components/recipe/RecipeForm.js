@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { Field, reduxForm } from 'redux-form'
+import { Redirect } from 'react-router-dom'
 
 //This is a template form that can be imported by RecipeCreate and RecipeEdit
 
@@ -38,7 +39,11 @@ class StreamForm extends Component {
 
   onSubmit = formValues => {
     this.props.onSubmit(formValues)
+
+    //Atempet to redirect page is not working??
+    return <Redirect to={`/myRecipes/`} />
   }
+
 
   render() {
     return (
@@ -93,6 +98,6 @@ const validate = formValues => {
 }
 
 export default reduxForm({
-  form: 'streamForm',
+  form: 'recipe Form',
   validate
 })(StreamForm)

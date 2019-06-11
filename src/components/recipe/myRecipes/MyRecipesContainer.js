@@ -1,26 +1,20 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux'
-import { fetchRecipes, selectRecipe } from '../../actions/recipeActions'
-import { Link } from 'react-router-dom'
-import LoaderSpinner from '../LoaderSpinner'
+import React from 'react'
+import { Link } from './node_modules/react-router-dom'
+import LoaderSpinner from '../../LoaderSpinner'
 
-class RecipeList extends Component {
-  componentDidMount = () => {
-    this.props.fetchRecipes()
-  }
+// NOT WORKING
 
-  recipeCardsRender = () => {
-    const { recipes } = this.props.recipes
-    return this.props.recipes.isPending
+const MyRecipeContainer = ({ recipes, selectRecipe }) => {
+  console.log(recipes, selectRecipe, 'vaitomanocu')
+  return(
+    !recipes
       ? <LoaderSpinner />
       : recipes.map(recipe => (
           <div
             className="card small col s12 m6 l3"
             style={{padding: 5}}
             key={recipe.id}
-            onClick={() => {
-              this.props.selectRecipe(recipe)
-            }}
+            onClick={() => selectRecipe(recipe)}
             >
             <div className="card-image waves-effect waves-block waves-light">
               <img className="activator" src={recipe.image} alt="recipe" />
@@ -41,25 +35,7 @@ class RecipeList extends Component {
             </div>
           </div>
       ))
-  }
-
-
-  render() {
-    return (
-      <div className='container'>
-        <div className="row col">
-          {this.recipeCardsRender()}
-        </div>
-      </div>
-    )
-  }
+  )
 }
 
-const mapStateToProps = state => {
-  return {
-    recipes: state.recipes,
-    selectedRecipe: state.selectedRecipe
-  }
-}
-
-export default connect(mapStateToProps, { fetchRecipes, selectRecipe })(RecipeList)
+// export default MyRecipeContainer

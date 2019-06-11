@@ -1,7 +1,7 @@
 import React from 'react'
 import SignIn from './components/auth/SignIn'
 import SignUp from './components/auth/SignUp'
-import MyRecipes from './components/recipe/MyRecipes'
+import MyRecipes from './components/recipe/myRecipes/MyRecipes'
 import RecipeCreate from './components/recipe/RecipeCreate'
 import RecipeEdit from './components/recipe/RecipeEdit'
 import RecipeList from './components/recipe/RecipeList'
@@ -15,7 +15,7 @@ const Router = () => (
     <Route path='/signup/' exact component={SignUp} />
     <Route path='/recipe/new' exact component={RecipeCreate} />
     <Route path='/recipe/edit/:id' exact component={RecipeEdit} />
-    <Route path='/recipes' exact component={RecipeList} />
+    <Route path='/recipes/' exact component={RecipeList} />
     <Route path='/recipes/:id' exact component={RecipeDetail} />
     <Route path='/myRecipes/' exact component={MyRecipes} />
   </Switch>

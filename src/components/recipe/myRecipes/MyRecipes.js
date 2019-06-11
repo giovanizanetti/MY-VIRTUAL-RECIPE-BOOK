@@ -3,11 +3,12 @@ import { compose } from 'redux'
 import { firestoreConnect } from 'react-redux-firebase'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
-import LoaderSpinner from '../LoaderSpinner'
-import { selectRecipe } from '../../actions'
+import LoaderSpinner from '../../LoaderSpinner'
+import { selectRecipe } from '../../../actions/recipeActions'
 
 
 const MyRecipes = (props) => {
+  console.log(props)
   const RECIPES = !props.recipes
     ? <LoaderSpinner />
     : props.recipes.map(recipe => (
