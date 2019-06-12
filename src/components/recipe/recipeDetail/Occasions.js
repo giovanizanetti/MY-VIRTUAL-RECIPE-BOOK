@@ -25,13 +25,10 @@ const Occasions = ({occasions}) => {
     }
   }
 
-  console.log(typeof(arrToStringPunctuation(occasions)))
-
-
   const displayOcassion =
     arrToStringPunctuation(occasions) !== null
     ? `This recipe is a perfect combination for ${arrToStringPunctuation(occasions)}.`
-    : ''
+    : null
 
   return <div className='container'>{displayOcassion}</div>
 }
