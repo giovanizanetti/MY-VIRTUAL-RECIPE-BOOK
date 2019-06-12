@@ -59,7 +59,7 @@ export const fetchRecipes = () => dispatch => {
       "X-RAPIDAPI-KEY": "0f1f47b39bmsh0e4d2a04bd035cdp1121bejsnf58a226a5005",
     },
     params: {
-      number: 100
+      number: 25
     }
   })
   .then(data => dispatch({
