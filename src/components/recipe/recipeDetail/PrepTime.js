@@ -18,17 +18,23 @@ const PrepTime = ({ cookingMinutes, readyInMinutes }) => {
 
   const cookingtime =
     cookingMinutes
-    && cookingMinutes > 0
-    && `This recipe takes ${timeFormat(cookingMinutes)} for cooking`
+    && cookingMinutes === 0
+    ? null
+    : cookingMinutes > 0
+    && `This recipe takes ${timeFormat(cookingMinutes)} for cooking.`
 
   const totalPrepTime =
     readyInMinutes && `Ready in ${timeFormat(readyInMinutes)}`
 
   return (
-    <ul className='container'>
-      <li>{cookingtime}</li>
-      <li>{totalPrepTime}</li>
-    </ul>
+      <ul
+        className='container'
+        style={{paddingTop: 20 }}
+      >
+        <li>{cookingtime}</li>
+        <li>{totalPrepTime}</li>
+      </ul>
+
   )
 }
 
