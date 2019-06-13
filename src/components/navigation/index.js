@@ -4,6 +4,8 @@ import SignedInLinks from './SignedInLinks'
 import SignedOutLinks from './SignedOutLinks'
 import { connect } from "react-redux"
 
+// Nav Bar need to be fixed, side bar is not working on mobile size
+//Probably Java script from MaterializeCSS.`
 const NavBar = (props) => {
 
   return (

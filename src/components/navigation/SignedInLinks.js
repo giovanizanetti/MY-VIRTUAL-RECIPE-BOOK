@@ -25,7 +25,6 @@ const SignedInLinks = props => {
 }
 
 const mapStateToProps = state => {
-  console.log(state)
   return {
     initials: state.firebase.profile.initials
   }

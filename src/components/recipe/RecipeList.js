@@ -27,7 +27,7 @@ class RecipeList extends Component {
               <img className="activator" src={recipe.image} alt="recipe" />
             </div>
             <div className="card-content">
-              <span className="card-title activator grey-text text-darken-4">{recipe.title}<i className="material-icons right">FLip the Card</i></span>
+              <span className="card-title activator grey-text text-darken-4">{recipe.title}</span>
               <Link to={`/recipes/${recipe.id}`}></Link>
             </div>
             <div className="card-reveal">
