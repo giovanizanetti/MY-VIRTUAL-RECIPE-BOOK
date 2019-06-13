@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { fetchRecipeById } from '../../../actions/recipeActions'
+import { fetchRecipeById, selectRecipe } from '../../../actions/recipeActions'
 import { Redirect } from 'react-router-dom'
 import Occasions from './Occasions'
 import Ingredients from './Ingredients'
@@ -10,25 +10,19 @@ import Servings from './Servings'
 import Header from './header'
 import Instructions from './Instructions'
 
-
-
 class Recipedetail extends Component {
-
   componentDidMount(){
     if(this.props.recipe === null){
       // fetch this specific recipe based on the params of the url
       // http://localhost:3000/recipes/1
-      fetchRecipeById(this.props.match.params.id) // match.params.id should be 1 in this example
-    console.log(this.props.match.params.id)
-
+      fetchRecipeById(this.props.match.params.id)
+      this.props.selectRecipe(this.props.match.params.id)
+      console.log(this.props.match.params.id)
     }
   }
 
   render() {
-    //If user is loged out redirect to sign in page
-    if(!this.props.auth.uid){
-      return <Redirect to='/signin' />
-    }
+    if(!this.props.auth.uid) return <Redirect to='/signin' />
 
     const {
       title, image, occasions, extendedIngredients,
@@ -39,19 +33,13 @@ class Recipedetail extends Component {
     return (
       <div className='container'>
         <div className='card'>
-          <Header
-            title={title}
-            image={image}
-          />
+          <Header title={title} image={image} />
           <Occasions occasions={occasions} />
           <PrepTime
             cookingMinutes={cookingMinutes}
             readyInMinutes={readyInMinutes}
           />
           <Ingredients ingredients={extendedIngredients} />
-          <div className='container'>
-            {/* {this.renderInstructions()} */}
-          </div>
           <Instructions instructions={analyzedInstructions} />
           <NutricInfo
             isGlutenFree={glutenFree}
@@ -66,11 +54,11 @@ class Recipedetail extends Component {
           </div>
         </div>
       </div>
-      )
+    )
   }
 }
 
-const mapStateToProps = (state) => {
+const mapStateToProps = state => {
   return {
     recipe: state.selectedRecipe,
     recipes: state.recipes,
@@ -78,4 +66,4 @@ const mapStateToProps = (state) => {
   }
 }
 
-export default connect(mapStateToProps, { fetchRecipeById })(Recipedetail)
+export default connect(mapStateToProps, { fetchRecipeById, selectRecipe })(Recipedetail)

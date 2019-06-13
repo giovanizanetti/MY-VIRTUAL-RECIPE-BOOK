@@ -7,6 +7,7 @@ import LoaderSpinner from '../LoaderSpinner'
 class RecipeList extends Component {
   componentDidMount = () => {
     this.props.fetchRecipes()
+    console.log(this.props)
   }
 
   recipeCardsRender = () => {

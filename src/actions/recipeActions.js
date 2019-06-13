@@ -7,7 +7,9 @@ import {
   FETCH_RECIPES_PENDING,
   FETCH_RECIPES_SUCCESS,
   CREATE_RECIPE_ERROR,
-  FETCH_RECIPES_BY_ID_SUCCESS
+  FETCH_RECIPES_BY_ID_SUCCESS,
+  FETCH_RECIPES_BY_ID_PENDING,
+  FETCH_RECIPES_BY_ID_FAILED
 } from './types'
 
 export const createRecipe = recipe => {
@@ -38,14 +40,12 @@ export const selectRecipe = recipe => {
   }
 }
 
-export const editRecipe = id => {
+export const editRecipe = recipe => {
   return {
     type: EDIT_RECIPE,
-    payload: id
+    payload: recipe
   }
 }
-
-//NOT WORKING
 
 export const fetchRecipes = () => dispatch => {
   dispatch({
@@ -54,8 +54,6 @@ export const fetchRecipes = () => dispatch => {
   return axios.get('https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/random?', {
     headers: {
       "X-RapidAPI-Host": "spoonacular-recipe-food-nutrition-v1.p.rapidapi.com",
-      // "X-RAPIDAPI-KEY": "83996459c0msh61a8a094ff561dap1e0802jsne45570f4a44f",
-      // "X-RapidAPI-Key": "8e1196b484mshaee2f822d87a11dp10a1dejsn3533f0b051b3",
       "X-RAPIDAPI-KEY": "0f1f47b39bmsh0e4d2a04bd035cdp1121bejsnf58a226a5005",
     },
     params: {
@@ -72,18 +70,18 @@ export const fetchRecipes = () => dispatch => {
     payload: error
   }))
 }
+//NOT WORKING
 
 export const fetchRecipeById = id => dispatch => {
   dispatch({
-    type: FETCH_RECIPES_PENDING
+    type: FETCH_RECIPES_BY_ID_PENDING
   })
   return axios.get(`https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/${id}`, {
     headers: {
       "X-RapidAPI-Host": "spoonacular-recipe-food-nutrition-v1.p.rapidapi.com",
-      // "X-RAPIDAPI-KEY": "83996459c0msh61a8a094ff561dap1e0802jsne45570f4a44f",
-      // "X-RapidAPI-Key": "8e1196b484mshaee2f822d87a11dp10a1dejsn3533f0b051b3",
       "X-RAPIDAPI-KEY": "0f1f47b39bmsh0e4d2a04bd035cdp1121bejsnf58a226a5005",
     },
+    params: { id }
   })
   .then(data => dispatch({
     type: FETCH_RECIPES_BY_ID_SUCCESS,
@@ -91,7 +89,7 @@ export const fetchRecipeById = id => dispatch => {
   }))
   .then(data => console.log(data))
   .catch(error => dispatch({
-    type: FETCH_RECIPES_FAILED,
+    type: FETCH_RECIPES_BY_ID_FAILED,
     payload: error
   }))
 }

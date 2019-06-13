@@ -10,7 +10,6 @@ const Occasions = ({occasions}) => {
   // - check how many items'
   // - separete by commas/'and'
   const arrToStringPunctuation = (arr) => {
-    console.log(arr)
     if(arr && arr.length >= 0) {
       if(arr.length === 1) return upCaseArrStrings(arr)[0]
       if(arr.length === 2) return upCaseArrStrings(arr).join(' and ')
