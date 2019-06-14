@@ -6,18 +6,19 @@ import React from 'react'
 const Ingredients = ({ingredients}) => {
   const ingredientsList = ingredients && ingredients.map(ingredient => {
     const { amount, unitShort } = ingredient.measures.metric
+    const useOf = unitShort !== '' ? 'of' : ''
     return (
       <li key={ingredient.id} style={{margin: 20}}>
-        {`- ${Math.round(amount)} ${unitShort} of ${ingredient.name}`}
+        {`- ${Math.round(amount)} ${unitShort} ${useOf} ${ingredient.name}`}
       </li>
     )
   })
 
   return (
-    <li className='container' style={{listStyle: 'none'}}>
+    <div className='container' style={{listStyle: 'none'}}>
       <h3>Ingredients</h3>
       { ingredientsList }
-    </li>
+    </div>
   )
 }
 
