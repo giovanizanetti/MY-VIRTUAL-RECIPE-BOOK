@@ -1,19 +1,13 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux'
-import { fetchRecipes, selectRecipe } from '../../../actions/recipeActions'
+import React, { Component } from 'react'
 import LoaderSpinner from '../../LoaderSpinner'
 import CardsList from './CardsList.js'
 
-class RecipeList extends Component {
-  componentDidMount = () => {
-    this.props.fetchRecipes()
-  }
-  render() {
-    const { recipes, selectRecipe, selectedRecipe }  = this.props
+const RecipeList = (props) => {
+  console.log(props, 'recipeListttt')
+    const { recipes, selectRecipe, selectedRecipe, myRecipes }  = props
     return (
-      this.props.recipes.isPending
-      ? <LoaderSpinner />
-      : <div className='container'>
+
+       <div className='container'>
           <div className="row col">
           <CardsList
             recipes={recipes}
@@ -23,14 +17,14 @@ class RecipeList extends Component {
           </div>
         </div>
     )
-  }
 }
 
-const mapStateToProps = state => {
-  return {
-    recipes: state.recipes,
-    selectedRecipe: state.selectedRecipe
-  }
-}
+export default RecipeList
 
-export default connect(mapStateToProps, { fetchRecipes, selectRecipe })(RecipeList)
+
+
+
+
+
+
+

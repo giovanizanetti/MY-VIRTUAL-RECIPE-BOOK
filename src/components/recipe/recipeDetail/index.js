@@ -32,8 +32,8 @@ class Recipedetail extends Component {
       return <Redirect to='/signin' />
     }
 
-    //Seens like the data does not come from the same place from the API,
-    //Using || operator was a way that I could fix it.
+    // Seems like the data does not come from the same place from the API,
+    // Using || operator was a way that I could fix it.
     const {
       title, image, occasions, extendedIngredients,
       cookingMinutes, readyInMinutes, servings, glutenFree,

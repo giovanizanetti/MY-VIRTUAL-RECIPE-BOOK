@@ -29,7 +29,6 @@ export const createRecipe = recipe => {
         payload: err
       })
     })
-
   }
 }
 
@@ -70,7 +69,6 @@ export const fetchRecipes = () => dispatch => {
     payload: error
   }))
 }
-//NOT WORKING
 
 export const fetchRecipeById = id => dispatch => {
   dispatch({

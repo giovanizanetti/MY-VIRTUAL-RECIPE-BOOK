@@ -7,17 +7,18 @@ import RecipeEdit from './components/recipe/RecipeEdit'
 import RecipeList from './components/recipe/RecipeList/index'
 import RecipeDetail from './components/recipe/RecipeDetail'
 import { Switch, Route } from 'react-router-dom'
+import RenderAPIrecipes from './components/recipe/RenderAPIrecipes'
 
 const Router = () => (
   <Switch>
-    <Route path='/' exact component={RecipeList} />
+    <Route path='/' exact component={RenderAPIrecipes} />
     <Route path='/signin/' exact component={SignIn} />
     <Route path='/signup/' exact component={SignUp} />
     <Route path='/recipe/new' exact component={RecipeCreate} />
     <Route path='/recipe/edit/:id' exact component={RecipeEdit} />
-    <Route path='/recipes/' exact component={RecipeList} />
+    <Route path='/recipes/' exact component={RenderAPIrecipes} />
     <Route path='/recipes/:id' exact component={RecipeDetail} />
-    <Route path='/myRecipes/' exact component={MyRecipes} />
+    <Route path='/myRecipes/' exact component={RecipeList} />
   </Switch>
 )
 
