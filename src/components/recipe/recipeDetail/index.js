@@ -9,26 +9,33 @@ import NutricInfo from './nutricInfo'
 import Servings from './Servings'
 import Header from './header'
 import Instructions from './Instructions'
+import LoaderSpinner from '../../LoaderSpinner'
 
 class Recipedetail extends Component {
+//Later => Create a check to check wether the user fetch Recipe from the API
+//or from 'MyRecipes'?
+// Create fetchMYRecipeById action
+
   componentDidMount(){
     if(this.props.recipe === null){
       // fetch this specific recipe based on the params of the url
-      // http://localhost:3000/recipes/1
-      fetchRecipeById(this.props.match.params.id)
-      this.props.selectRecipe(this.props.match.params.id)
-      console.log(this.props.match.params.id)
+      this.props.fetchRecipeById(this.props.match.params.id)
+      // this.props.selectRecipe(this.props.match.params.id)
     }
   }
 
   render() {
-    if(!this.props.auth.uid) return <Redirect to='/signin' />
+    const { recipe, auth } = this.props
+    if(!recipe) return <LoaderSpinner />
+    if(!auth.uid) return <Redirect to='/signin' />
 
+    //Seens like the data does not come from the same place from the API,
+    //Using || operator was a way that I could fix it to work.
     const {
       title, image, occasions, extendedIngredients,
       cookingMinutes, readyInMinutes, servings, glutenFree,
       vegetarian, lowFodmap, vegan, dairyFree, analyzedInstructions
-    } = this.props.recipe
+    } = this.props.recipe.data || this.props.recipe
 
     return (
       <div className='container'>

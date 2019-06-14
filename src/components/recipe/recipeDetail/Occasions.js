@@ -25,7 +25,7 @@ const Occasions = ({occasions}) => {
   }
 
   const displayOcassion =
-    arrToStringPunctuation(occasions) !== null
+    arrToStringPunctuation(occasions) !== null && arrToStringPunctuation(occasions) !== undefined
     ? `This recipe is a perfect combination for ${arrToStringPunctuation(occasions)}.`
     : null
 
