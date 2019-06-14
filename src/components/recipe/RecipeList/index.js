@@ -8,7 +8,6 @@ class RecipeList extends Component {
   componentDidMount = () => {
     this.props.fetchRecipes()
   }
-
   render() {
     const { recipes, selectRecipe, selectedRecipe }  = this.props
     return (
