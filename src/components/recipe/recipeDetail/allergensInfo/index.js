@@ -5,7 +5,7 @@ import Vegan from './Vegan'
 import Vegetarian from './Vegetarian'
 import DairyFree from './DairyFree'
 
-const NutricInfo = props => {
+const AllergensInfo = props => {
   const {
     isGlutenFree, isVegetarian, isLowFodmap, isVegan, isDairyFree
   } = props
@@ -21,6 +21,6 @@ const NutricInfo = props => {
   )
 }
 
-export default NutricInfo
+export default AllergensInfo
 
 

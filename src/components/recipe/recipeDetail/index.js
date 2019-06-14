@@ -5,7 +5,7 @@ import { Redirect } from 'react-router-dom'
 import Occasions from './Occasions'
 import Ingredients from './Ingredients'
 import PrepTime from './PrepTime'
-import NutricInfo from './nutricInfo'
+import AllergensInfo from './allergensInfo'
 import Servings from './Servings'
 import Header from './header'
 import Instructions from './Instructions'
@@ -30,7 +30,7 @@ class Recipedetail extends Component {
     if(!auth.uid) return <Redirect to='/signin' />
 
     //Seens like the data does not come from the same place from the API,
-    //Using || operator was a way that I could fix it to work.
+    //Using || operator was a way that I could fix it.
     const {
       title, image, occasions, extendedIngredients,
       cookingMinutes, readyInMinutes, servings, glutenFree,
@@ -48,7 +48,7 @@ class Recipedetail extends Component {
           />
           <Ingredients ingredients={extendedIngredients} />
           <Instructions instructions={analyzedInstructions} />
-          <NutricInfo
+          <AllergensInfo
             isGlutenFree={glutenFree}
             isLowFodmap={lowFodmap}
             isVegetarian={vegetarian}

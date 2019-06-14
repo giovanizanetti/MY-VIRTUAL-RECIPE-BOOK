@@ -2,27 +2,27 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import { fetchRecipes, selectRecipe } from '../../../actions/recipeActions'
 import LoaderSpinner from '../../LoaderSpinner'
-import ListCards from './ListCards.js'
+import CardsList from './CardsList.js'
 
 class RecipeList extends Component {
   componentDidMount = () => {
     this.props.fetchRecipes()
   }
 
-  recipeCardsRender = () => {
-    const { recipes, selectRecipe} = this.props
-    return this.props.recipes.isPending
-      ? <LoaderSpinner />
-      : <ListCards recipes={recipes} selectRecipe={selectRecipe} />
-  }
-
   render() {
+    const { recipes, selectRecipe, selectedRecipe }  = this.props
     return (
-      <div className='container'>
-        <div className="row col">
-          {this.recipeCardsRender()}
+      this.props.recipes.isPending
+      ? <LoaderSpinner />
+      : <div className='container'>
+          <div className="row col">
+          <CardsList
+            recipes={recipes}
+            selectRecipe={selectRecipe}
+            selectedRecipe={selectedRecipe}
+          />
+          </div>
         </div>
-      </div>
     )
   }
 }
@@ -30,6 +30,7 @@ class RecipeList extends Component {
 const mapStateToProps = state => {
   return {
     recipes: state.recipes,
+    selectedRecipe: state.selectedRecipe
   }
 }
 

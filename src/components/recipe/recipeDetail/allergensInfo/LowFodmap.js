@@ -1,8 +1,9 @@
 import React from 'react'
 
-const LowFodmap = ({isLowFodmap}) => {
+const LowFodmap = ({ isLowFodmap }) => {
   const lowFodmap =
-    isLowFodmap && isLowFodmap === true
+    isLowFodmap
+    && isLowFodmap === true
     ? 'This recipe is low fodmap'
     : 'This recipe is not low fodmap'
 
