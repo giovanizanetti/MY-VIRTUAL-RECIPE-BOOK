@@ -4,7 +4,7 @@ import SignUp from './components/auth/SignUp'
 import MyRecipes from './components/recipe/myRecipes/MyRecipes'
 import RecipeCreate from './components/recipe/RecipeCreate'
 import RecipeEdit from './components/recipe/RecipeEdit'
-import RecipeList from './components/recipe/RecipeList'
+import RecipeList from './components/recipe/RecipeList/index'
 import RecipeDetail from './components/recipe/RecipeDetail'
 import { Switch, Route } from 'react-router-dom'
 
