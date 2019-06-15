@@ -7,7 +7,7 @@ const RecipeCard = (props) => {
   const {
     id, image, title, glutenFree, lowFodmap,
     vegetarian, vegan, dairyFree, readyInMinutes,
-    selectRecipe, selectedRecipe
+    selectRecipe, selectedRecipe, recipes
   } = props
 
   return (
@@ -15,7 +15,7 @@ const RecipeCard = (props) => {
       className="card small col s12 m6 l3"
       style={{ padding: 5 }}
       key={id}
-      onClick={() => { selectRecipe(selectedRecipe) }}
+      onClick={() => { selectRecipe(recipes.find(rec => rec.id === id)) }}
       >
       <div className="card-image waves-effect waves-block waves-light">
         <img className="activator" src={image} alt="recipe" />
