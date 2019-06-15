@@ -9,6 +9,7 @@ const CardsList = ({ recipes, selectRecipe, selectedRecipe }) => {
     } = recipe
     return(
       <RecipeCard
+        recipes={recipes}
         id={id}
         image={image}
         title={title}
