@@ -1,6 +1,7 @@
 import axios from 'axios'
 import {
   SELECT_RECIPE,
+  SET_RECIPE,
   CREATE_RECIPE,
   EDIT_RECIPE,
   FETCH_RECIPES_FAILED,
@@ -73,10 +74,11 @@ export const fetchRecipes = () => dispatch => {
   }))
 }
 
-export const fetchRecipeById = id => dispatch => {
+export const fetchRecipeById = (id) => (dispatch) => {
   dispatch({
     type: FETCH_RECIPES_BY_ID_PENDING
   })
+
   return axios.get(`https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/${id}/information`, {
     headers: {
       "X-RapidAPI-Host": "spoonacular-recipe-food-nutrition-v1.p.rapidapi.com",
@@ -94,5 +96,12 @@ export const fetchRecipeById = id => dispatch => {
     payload: error
   }))
 }
+
+export const setRecipe = (id) => ({
+  type: SET_RECIPE,
+  payload: {
+    id
+  }
+})
 
 
