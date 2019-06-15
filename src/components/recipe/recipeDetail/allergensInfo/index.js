@@ -11,7 +11,7 @@ const AllergensInfo = props => {
   } = props
 
   return (
-    <ul className='container'>
+    <ul className='container allergens'>
       <GlutenFree isGlutenFree={isGlutenFree}/>
       <LowFodMap isLowFodmap={isLowFodmap}/>
       <Vegan isVegan={isVegan} />

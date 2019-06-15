@@ -1,13 +1,17 @@
 import React from 'react'
+import Icon from './images/lowFodmap.jpg'
+import './index.css'
 
 const LowFodmap = ({ isLowFodmap }) => {
   const lowFodmap =
     isLowFodmap
     && isLowFodmap === true
-    ? 'This recipe is low fodmap'
-    : 'This recipe is not low fodmap'
-
-  return <li>{lowFodmap}</li>
+    ? <div className='icon'>
+        <img className='responsive-img icons_img' src={Icon} alt='vegetarian'/>
+        <p>Low Fodmap recipe.</p>
+      </div>
+    : ''
+  return <li className='allegen_item'>{lowFodmap}</li>
 }
 
 export default LowFodmap

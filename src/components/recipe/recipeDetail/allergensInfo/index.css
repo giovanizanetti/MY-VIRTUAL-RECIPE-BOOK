@@ -1,0 +1,28 @@
+.icon .icons_img {
+  max-width: 20%!important
+}
+.icon {
+  position: relative
+}
+.icon p {
+  visibility: hidden;
+  width: 120px;
+  background-color: #000;
+  color: #f2f2f2;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 2px;
+  position: absolute;
+  z-index: 1;
+  top: 0.1%;
+  left: 6%;
+  font-size: 0.9rem
+}
+.icon:hover p {
+  visibility: visible;
+}
+.allergens {
+  text-align: center;
+}
+.allergen_item {
+}

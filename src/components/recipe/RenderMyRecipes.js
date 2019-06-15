@@ -12,15 +12,12 @@ const MyRecipes = (props) => {
   return (
     !recipes
     ? <LoaderSpinner />
-    : <div className='container'>
-        <div className="row col">
-        <RecipeList
-          recipes={recipes}
-          selectRecipe={selectRecipe}
-          selectedRecipe={selectedRecipe}
-        />
-        </div>
-      </div>
+    :
+      <RecipeList
+        recipes={recipes}
+        selectRecipe={selectRecipe}
+        selectedRecipe={selectedRecipe}
+      />
   )
 }
 

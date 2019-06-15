@@ -17,8 +17,13 @@ class Recipedetail extends Component {
 // Create fetchMYRecipeById action
 
   componentDidMount(){
+    const ID = this.props.match.params.id
       this.props.recipe === null
-      && this.props.fetchRecipeById(this.props.match.params.id)
+      && this.props.fetchRecipeById(ID)
+      || this.props.recipe === null
+      && this.props.recipes
+      && console.log(this.props)
+      // && this.props.selectRecipe(this.props.recipes.id === ID)
   }
 
   render() {
@@ -70,6 +75,7 @@ const mapStateToProps = state => {
   return {
     recipe: state.selectedRecipe,
     recipes: state.recipes,
+    firestoreRecipes: state.firestore ,
     auth: state.firebase.auth
   }
 }
