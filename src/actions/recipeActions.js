@@ -46,6 +46,9 @@ export const editRecipe = recipe => {
   }
 }
 
+//Later: Create babse URL to make the code cleaner
+
+
 export const fetchRecipes = () => dispatch => {
   dispatch({
     type: FETCH_RECIPES_PENDING
