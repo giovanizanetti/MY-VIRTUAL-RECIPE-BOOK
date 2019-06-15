@@ -1,11 +1,11 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { fetchRecipeById, selectRecipe } from '../../../actions/recipeActions'
+import { setRecipe, selectRecipe } from '../../../actions/recipeActions'
 import { Redirect } from 'react-router-dom'
 import Occasions from './Occasions'
 import Ingredients from './Ingredients'
 import PrepTime from './PrepTime'
-import AllergensInfo from './allergensInfo'
+import AllergensInfo from './AllergensInfo'
 import Servings from './Servings'
 import Header from './header'
 import Instructions from './Instructions'
@@ -17,8 +17,36 @@ class Recipedetail extends Component {
 // Create fetchMYRecipeById action
 
   componentDidMount(){
-      this.props.recipe === null
-      && this.props.fetchRecipeById(this.props.match.params.id)
+      const id = this.props.match.params.id
+
+      const ONLY_NUMBERS_REGEX = /^[0-9]*$/
+      const isSpoonacularRecipeId = ONLY_NUMBERS_REGEX.test(id)
+
+      if(isSpoonacularRecipeId){
+        this.props.recipes.recipes
+
+        && this.props.selectRecipe(this.props.recipes.recipes.find(recipe => recipe.id === parseInt(id)))
+        // check if we have fetched all recipes already from api
+        // (to prevent it from crashing on refresh)
+        // Then select the recipe
+        // fetchFromApiThenSelect
+
+        // if have all recipes, just select
+        // selectRecipe(recipe)
+      }
+
+      if(!isSpoonacularRecipeId){
+        this.props.firesRecipes
+        && this.props.firesRecipes !== undefined
+        && this.props.setRecipe(this.props.params.id)
+        // check if we have fetched all recipes already from firebase
+        // (to prevent it from crashing on refresh)
+        // Then select the recipe
+        // fetchFromFireStoreThenSelect
+
+        // if have all recipes, just select
+        // selectRecipe
+      }
   }
 
   render() {
@@ -67,11 +95,43 @@ class Recipedetail extends Component {
 }
 
 const mapStateToProps = state => {
+
+  console.log(state)
   return {
     recipe: state.selectedRecipe,
+    auth: state.firebase.auth,
     recipes: state.recipes,
-    auth: state.firebase.auth
+    auth: state.firebase.auth,
+    firesRecipes: state.firestore.ordered.recipes,
   }
+  // const id = state.selectedRecipeId
+
+  // if(id === null){
+  //   return {
+  //     recipe: state.selectedRecipe,
+  //     recipes: state.recipes,
+  //     auth: state.firebase.auth
+  //   }
+  // }
+
+  // const ONLY_NUMBERS_REGEX = /^[0-9]*$/
+  // const isSpoonacularRecipeId = ONLY_NUMBERS_REGEX.test(id)
+
+  // if(isSpoonacularRecipeId){
+  //   return {
+  //     recipe: state.recipes.recipes.find(recipe => recipe.id === parseInt(id)),
+  //     recipes: state.recipes,
+  //     auth: state.firebase.auth
+  //   }
+  // }
+
+  // if(!isSpoonacularRecipeId){
+  //   return {
+  //     recipe: state.firestore.data.recipes[id],
+  //     recipes: state.recipes,
+  //     auth: state.firebase.auth
+  //   }
+  // }
 }
 
-export default connect(mapStateToProps, { fetchRecipeById, selectRecipe })(Recipedetail)
+export default connect(mapStateToProps, { setRecipe, selectRecipe })(Recipedetail)
