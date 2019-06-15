@@ -1,10 +1,9 @@
 import React, { Component } from 'react'
-import LoaderSpinner from '../../LoaderSpinner'
 import CardsList from './CardsList.js'
 
 const RecipeList = (props) => {
   console.log(props, 'recipeListttt')
-    const { recipes, selectRecipe, selectedRecipe, myRecipes }  = props
+    const { recipes, selectRecipe, selectedRecipe }  = props
     return (
 
        <div className='container'>

@@ -14,7 +14,7 @@ class RenderAPIrecipes extends Component {
       recipes.isPending
       ? <LoaderSpinner />
       : <RecipeList
-          recipes={recipes}
+          recipes={recipes.recipes}
           selectRecipe={selectRecipe}
           selectedRecipe={selectedRecipe}
         />

@@ -1,13 +1,12 @@
 import React from 'react'
 import SignIn from './components/auth/SignIn'
 import SignUp from './components/auth/SignUp'
-import MyRecipes from './components/recipe/myRecipes/MyRecipes'
 import RecipeCreate from './components/recipe/RecipeCreate'
 import RecipeEdit from './components/recipe/RecipeEdit'
-import RecipeList from './components/recipe/RecipeList/index'
 import RecipeDetail from './components/recipe/RecipeDetail'
 import { Switch, Route } from 'react-router-dom'
 import RenderAPIrecipes from './components/recipe/RenderAPIrecipes'
+import RenderMyRecipes from './components/recipe/RenderMyRecipes'
 
 const Router = () => (
   <Switch>
@@ -18,7 +17,7 @@ const Router = () => (
     <Route path='/recipe/edit/:id' exact component={RecipeEdit} />
     <Route path='/recipes/' exact component={RenderAPIrecipes} />
     <Route path='/recipes/:id' exact component={RecipeDetail} />
-    <Route path='/myRecipes/' exact component={RecipeList} />
+    <Route path='/myRecipes/' exact component={RenderMyRecipes} />
   </Switch>
 )
 

@@ -17,14 +17,12 @@ class Recipedetail extends Component {
 // Create fetchMYRecipeById action
 
   componentDidMount(){
-    if(this.props.recipe === null){
-      // fetch this specific recipe based on the params of the url
-      this.props.fetchRecipeById(this.props.match.params.id)
-      // this.props.selectRecipe(this.props.match.params.id)
-    }
+      this.props.recipe === null
+      && this.props.fetchRecipeById(this.props.match.params.id)
   }
 
   render() {
+    console.log(this.props)
     const { recipe, auth } = this.props
     if(!recipe) return <LoaderSpinner />
     if(!auth.uid) {
