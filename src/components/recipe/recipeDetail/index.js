@@ -12,18 +12,27 @@ import Instructions from './Instructions'
 import LoaderSpinner from '../../LoaderSpinner'
 
 class Recipedetail extends Component {
-//Later => Create a check to check wether the user fetch Recipe from the API
-//or from 'MyRecipes'?
-// Create fetchMYRecipeById action
 
+// Attempt to create a check to verify whether the recipe/recipes
+// comes from the API or from the Firestore
   componentDidMount(){
     const ID = this.props.match.params.id
-      this.props.recipe === null
-      && this.props.fetchRecipeById(ID)
-      || this.props.recipe === null
-      && this.props.recipes
-      && console.log(this.props)
-      // && this.props.selectRecipe(this.props.recipes.id === ID)
+    const FIRESTORE = this.props.firestoreRecipes.data.recipes
+    const ONLY_NUMBERS_REGEX = /^[0-9]*$/
+    const SPOONACULAR_ID = ONLY_NUMBERS_REGEX.test(ID)
+
+    // It works for the API, however, I am making another call to the API,
+    // I believe there is a better way to do that, just need to figure out how!!
+    // When I refresh the page the recipes from the state go disappear!!
+    // So that is why I am making another call to the API "fetchRecipeById(ID)"
+    // instead of grabbing the recipe from the recipes reducer
+    if(this.props.recipe === null && SPOONACULAR_ID && this.props.fetchRecipeById(ID))
+      return this.props.selectRecipe(ID)
+
+    //  When I try to get Firestore Recipes, it gives me an error!! That is sucks!!
+    //  I will check Firestore docs to verify if
+    //  I'll need an action creator to fetch those recipes
+    if (this.props.recipe === null) return this.props.selectRecipe(FIRESTORE[ID])
   }
 
   render() {
