@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { setRecipe, selectRecipe } from '../../../actions/recipeActions'
+import { fetchRecipeById, selectRecipe } from '../../../actions/recipeActions'
 import { Redirect } from 'react-router-dom'
 import Occasions from './Occasions'
 import Ingredients from './Ingredients'
@@ -81,15 +81,12 @@ class Recipedetail extends Component {
 }
 
 const mapStateToProps = state => {
-
-  console.log(state)
   return {
     recipe: state.selectedRecipe,
-    auth: state.firebase.auth,
     recipes: state.recipes,
     firestoreRecipes: state.firestore ,
     auth: state.firebase.auth
   }
 }
 
-export default connect(mapStateToProps, { setRecipe, selectRecipe })(Recipedetail)
+export default connect(mapStateToProps, { fetchRecipeById, selectRecipe })(Recipedetail)
