@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { fetchRecipeById, selectRecipe } from '../../../actions/recipeActions'
+import { compose } from 'redux'
+import { firestoreConnect } from 'react-redux-firebase'
+import { fetchRecipeById, selectRecipe, getMyRecipes } from '../../../actions/recipeActions'
 import { Redirect } from 'react-router-dom'
 import Occasions from './Occasions'
 import Ingredients from './Ingredients'
@@ -13,45 +15,31 @@ import LoaderSpinner from '../../LoaderSpinner'
 
 class Recipedetail extends Component {
 
-// Attempt to create a check to verify whether the recipe/recipes
-// comes from the API or from the Firestore
+    // Fetching Recipe by ID from the API
+  //   // It works for the, however, I am making another call to the API,
+  //   // I believe there is a better way to do that, just need to figure out how!!
+  //   // When I refresh the page the recipes from the state go disappear!!
+  //   // So that is why I am making another call to the API "fetchRecipeById(ID)"
+  //   // instead of grabbing the recipe from the recipes reducer
   componentDidMount(){
     const ID = this.props.match.params.id
-    const FIRESTORE = this.props.firestoreRecipes.data.recipes
-    const ONLY_NUMBERS_REGEX = /^[0-9]*$/
-    const SPOONACULAR_ID = ONLY_NUMBERS_REGEX.test(ID)
-
-    // It works for the API, however, I am making another call to the API,
-    // I believe there is a better way to do that, just need to figure out how!!
-    // When I refresh the page the recipes from the state go disappear!!
-    // So that is why I am making another call to the API "fetchRecipeById(ID)"
-    // instead of grabbing the recipe from the recipes reducer
-    if(this.props.recipe === null && SPOONACULAR_ID && this.props.fetchRecipeById(ID))
-      return this.props.selectRecipe(ID)
-
-    //  When I try to get Firestore Recipes, it gives me an error!! That is sucks!!
-    //  I will check Firestore docs to verify if
-    //  I'll need an action creator to fetch those recipes
-    if (this.props.recipe === null) return this.props.selectRecipe(FIRESTORE[ID])
+    !this.props.selectedRecipe && this.props.fetchRecipeById(ID)
   }
 
   render() {
-    console.log(this.props)
-    const { recipe, auth } = this.props
+    const { auth, recipe } = this.props
+    if(!auth.uid) return <Redirect to='/signin' />
     if(!recipe) return <LoaderSpinner />
-    if(!auth.uid) {
-      console.log(this.props)
-      return <Redirect to='/signin' />
-    }
 
-    // Seems like the data does not come from the same place from the API,
-    // Using || operator was a way that I could fix it.
+    // Destructuring and use either properties from the recipes that are caming
+    // from firestore 'recipe' or from SpoonacularApi 'recipe.data'.
+    // As I am making another call for a single recipe, this
+    // recipe is inside of data property
     const {
       title, image, occasions, extendedIngredients,
       cookingMinutes, readyInMinutes, servings, glutenFree,
       vegetarian, lowFodmap, vegan, dairyFree, analyzedInstructions
-    } = this.props.recipe.data || this.props.recipe
-
+    } = recipe.data || recipe
     return (
       <div className='container'>
         <div className='card'>
@@ -80,13 +68,33 @@ class Recipedetail extends Component {
   }
 }
 
-const mapStateToProps = state => {
+const mapStateToProps = (state, ownProps) => {
+  const { firestore, selectedRecipe, firebase} = state
+  const { recipes } = firestore.ordered
+  const ID = ownProps.match.params.id
+  const ONLY_NUMBERS_REGEX = /^[0-9]*$/
+  const isSPOONACULAR_ID = ONLY_NUMBERS_REGEX.test(ID)
+
+  /*
+    For some reason that I did not understand,
+    when I refresh the page recipes/ (from the Api) I have the selected recipe in the reducer,
+    however, when I refresh from /myRecipes (from FIrestore) I don't have it.
+    So I am checking if there is selected recipe to check if the recipe is
+    from API or Firestore
+   */
   return {
-    recipe: state.selectedRecipe,
-    recipes: state.recipes,
-    firestoreRecipes: state.firestore ,
-    auth: state.firebase.auth
+    auth: firebase.auth,
+    selectedRecipe,
+    recipe: isSPOONACULAR_ID === true
+      ? selectedRecipe
+      : recipes && recipes.find(rec => rec.id === ID),
   }
 }
+ // To have access to the firestore I must use firestore connect.
+export default compose(
+  connect(mapStateToProps, { selectRecipe, fetchRecipeById }),
+  firestoreConnect([{
+    collection: 'recipes'
+  }])
+)(Recipedetail)
 
-export default connect(mapStateToProps, { fetchRecipeById, selectRecipe })(Recipedetail)

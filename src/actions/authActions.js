@@ -5,7 +5,7 @@ import {
   SIGNUP_SUCCESS,
   SIGNUP_ERROR
 } from './types'
-import { getFirestore } from 'redux-firestore';
+import { getFirestore } from 'redux-firestore'
 
 export const signIn = credentials => {
   return (dispatch, getState, { getFirebase }) => {

@@ -13,8 +13,10 @@ import {
   FETCH_RECIPES_BY_ID_FAILED
 } from './types'
 
+
+
 export const createRecipe = recipe => {
-  return (dispatch, getState, { getFirabase, getFirestore }) => {
+  return (dispatch, getState, { getFirebase, getFirestore }) => {
     // make async call to database
     const firestore = getFirestore()
     firestore.collection('recipes').add({
@@ -96,12 +98,5 @@ export const fetchRecipeById = (id) => (dispatch) => {
     payload: error
   }))
 }
-
-export const setRecipe = (id) => ({
-  type: SET_RECIPE,
-  payload: {
-    id
-  }
-})
 
 
