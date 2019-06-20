@@ -73,19 +73,19 @@ const mapStateToProps = (state, ownProps) => {
   const { recipes } = firestore.ordered
   const ID = ownProps.match.params.id
   const ONLY_NUMBERS_REGEX = /^[0-9]*$/
-  const isSPOONACULAR_ID = ONLY_NUMBERS_REGEX.test(ID)
+  const IS_SPOONACULAR_ID = ONLY_NUMBERS_REGEX.test(ID)
 
   /*
-    For some reason that I did not understand,
+    For some reason that I do not understand,
     when I refresh the page recipes/ (from the Api) I have the selected recipe in the reducer,
-    however, when I refresh from /myRecipes (from FIrestore) I don't have it.
-    So I am checking if there is selected recipe to check if the recipe is
-    from API or Firestore
+    however, when I refresh from /myRecipes (from Firestore) I don't have it.
+    API ids are numbers only, so I check if the id is from API, if yes I return selected recipe,
+    otherwise I get from firestore and assign the recipe property.
    */
   return {
     auth: firebase.auth,
     selectedRecipe,
-    recipe: isSPOONACULAR_ID === true
+    recipe: IS_SPOONACULAR_ID === true
       ? selectedRecipe
       : recipes && recipes.find(rec => rec.id === ID),
   }
