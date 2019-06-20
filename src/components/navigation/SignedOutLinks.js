@@ -9,10 +9,8 @@ class SignedOutLinks extends Component {
   render() {
     return (
       <>
-      <ul className='right hide-on-med-and-down'>
-        <li><NavLink to='/signin'>Log in</NavLink></li>
-        <li><NavLink to='/signup'>Sign Up</NavLink></li>
-      </ul>
+      <li><NavLink to='/signin'>Log in</NavLink></li>
+      <li><NavLink to='/signup'>Sign Up</NavLink></li>
     </>
     )
   }
