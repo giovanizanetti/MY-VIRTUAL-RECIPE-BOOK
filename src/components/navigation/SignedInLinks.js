@@ -33,7 +33,6 @@ class SignedInLinks extends Component{
   render() {
     const { signOut } = this.props
     const isDesktop = this.state.isDesktop
-    console.log(this.state.isDesktop)
     return (
       <>
         <li><NavLink to='/recipe/new'>Create Recipe</NavLink></li>
