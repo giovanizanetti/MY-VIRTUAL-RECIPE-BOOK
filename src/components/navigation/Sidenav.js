@@ -4,7 +4,6 @@ import { NavLink } from "react-router-dom"
 import SignedInLinks from "./SignedInLinks"
 import SignedOutLinks from './SignedOutLinks'
 import Avatar from './Avatar'
-import './index.css'
 
 class Sidebar extends Component {
     componentDidMount() {
