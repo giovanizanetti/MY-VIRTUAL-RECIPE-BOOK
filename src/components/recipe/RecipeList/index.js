@@ -1,9 +1,8 @@
-import React, { Component } from 'react'
+import React from 'react'
 import CardsList from './CardsList.js'
 
 const RecipeList = (props) => {
-  console.log(props, 'recipeListttt')
-    const { recipes, selectRecipe, selectedRecipe }  = props
+    const { recipes, selectRecipe }  = props
     return (
 
        <div className='container'>
@@ -11,7 +10,6 @@ const RecipeList = (props) => {
           <CardsList
             recipes={recipes}
             selectRecipe={selectRecipe}
-            selectedRecipe={selectedRecipe}
           />
           </div>
         </div>

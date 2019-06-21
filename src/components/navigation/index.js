@@ -8,14 +8,18 @@ import Sidenav from './Sidenav'
 // Nav Bar need to be fixed, side bar is not working on mobile size
 //Probably Java script from MaterializeCSS.`
 const NavBar = (props) => {
-  const uid = props.auth.uid
+  const { uid } = props.auth
   return (
     <nav className='nav-wrapper grey darken-3'>
-      <Sidenav uid={uid}/>
+      <Sidenav
+        uid={uid}
+      />
       <div className='container'>
         <Link to='/' className='brand-logo'>Recipe Book App</Link>
         <ul className='right hide-on-med-and-down'>
-          {!uid ?  <SignedOutLinks /> : <SignedInLinks />}
+          { !uid
+            ? <SignedOutLinks />
+            : <SignedInLinks /> }
         </ul>
       </div>
     </nav>
@@ -24,7 +28,7 @@ const NavBar = (props) => {
 
 const mapStateToProps = state => {
   return {
-    auth: state.firebase.auth
+    auth: state.firebase.auth,
   }
 }
 

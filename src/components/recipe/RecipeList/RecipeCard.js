@@ -2,11 +2,11 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 
 
-const RecipeCard = (props) => {
+const RecipeCard = props => {
   const {
     id, image, title, glutenFree, lowFodmap,
     vegetarian, vegan, dairyFree, readyInMinutes,
-    selectRecipe, selectedRecipe, recipes
+    selectRecipe, recipes
   } = props
 
   return (
@@ -16,6 +16,7 @@ const RecipeCard = (props) => {
       key={id}
       onClick={() => { selectRecipe(recipes.find(rec => rec.id === id)) }}
       >
+      {/*Later => Use Header component and pass style as prop */}
       <div className="card-image waves-effect waves-block waves-light">
         <img className="activator" src={image} alt="recipe" />
       </div>
@@ -23,6 +24,8 @@ const RecipeCard = (props) => {
         <span className="card-title activator grey-text text-darken-4">{title}</span>
         <Link to={`/recipes/${id}`}></Link>
       </div>
+
+      {/* Later => Create a CardReveal component, maybe this component rener a overview component */}
       <div className="card-reveal">
         <span className="card-title grey-text text-darken-4">{title}<i className="material-icons right">close</i></span>
         <span>{`Ready in ${readyInMinutes} minutes`}</span>

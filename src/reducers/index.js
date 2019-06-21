@@ -4,7 +4,6 @@ import { firestoreReducer } from 'redux-firestore'
 import { firebaseReducer } from 'react-redux-firebase'
 import recipes from './recipes'
 import selectedRecipe from './selectedRecipe'
-import selectedRecipeId from './selectedRecipeId'
 import auth from './auth'
 
 
@@ -15,5 +14,4 @@ export default combineReducers({
   firestore: firestoreReducer,
   firebase: firebaseReducer,
   auth,
-  selectedRecipeId,
 })

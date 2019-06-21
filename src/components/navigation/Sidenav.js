@@ -1,49 +1,32 @@
 import React, { Component } from "react";
-import M from "materialize-css/dist/js/materialize.min.js";
-import { BrowserRouter, Route } from "react-router-dom";
-import "materialize-css/dist/css/materialize.min.css";
-import SignedInLinks from "./SignedInLinks";
+import M from "materialize-css/dist/js/materialize.min.js"
+import { NavLink } from "react-router-dom"
+import SignedInLinks from "./SignedInLinks"
+import SignedOutLinks from './SignedOutLinks'
+import Avatar from './Avatar'
 
 class Sidebar extends Component {
     componentDidMount() {
-      var elem = document.querySelector(".sidenav");
-      var instance = M.Sidenav.init(elem, {
+      const elem = document.querySelector(".sidenav");
+      M.Sidenav.init(elem, {
           edge: "left",
           inDuration: 250
       });
     }
 
   render() {
-    console.log(this.props && this.props)
+    const { uid, isDesktop } = this.props
+    console.log(this.props )
     return (
       <div>
         <ul id="slide-out" className="sidenav">
-          <SignedInLinks />
-          {/* <li />
-          <li>
-            <a href="#!">
-                <i className="material-icons">cloud</i>First Link
-                With Icon
-            </a>
-          </li>
-          <li>
-            <a href="#!">Second Link</a>
-          </li>
-          <li>
-            <div className="divider" />
-          </li>
-          <li>
-            <a className="subheader">Subheader</a>
-          </li>
-          <li>
-            <a className="waves-effect" href="#!">
-              Third Link With Waves
-            </a>
-          </li> */}
+          <Avatar />
+          {!uid ?  <SignedOutLinks /> : <SignedInLinks isDesktop={isDesktop} />}
+
         </ul>
-        <a href="#" data-target="slide-out" className="sidenav-trigger">
+        <NavLink to='#' data-target="slide-out" className="sidenav-trigger">
           <i className="material-icons">menu</i>
-        </a>
+        </NavLink>
       </div>
     );
   }

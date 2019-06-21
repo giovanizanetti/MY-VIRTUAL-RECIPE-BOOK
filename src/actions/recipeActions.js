@@ -1,7 +1,6 @@
 import axios from 'axios'
 import {
   SELECT_RECIPE,
-  SET_RECIPE,
   CREATE_RECIPE,
   EDIT_RECIPE,
   FETCH_RECIPES_FAILED,

@@ -1,10 +1,7 @@
 import React, { Component } from 'react'
 import { NavLink } from 'react-router-dom'
 
-
-// This component must be shown on the home page when the user is not logged in.
-
-
+// This component must be shown on the navigation bar when the user is not logged in.
 class SignedOutLinks extends Component {
   render() {
     return (
