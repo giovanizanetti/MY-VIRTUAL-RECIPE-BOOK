@@ -4,13 +4,14 @@ import SignedInLinks from './SignedInLinks'
 import SignedOutLinks from './SignedOutLinks'
 import { connect } from "react-redux"
 import Sidenav from './Sidenav'
+import './index.css'
 
 // Nav Bar need to be fixed, side bar is not working on mobile size
 //Probably Java script from MaterializeCSS.`
 const NavBar = (props) => {
   const { uid } = props.auth
   return (
-    <nav className='nav-wrapper grey darken-3'>
+    <nav className='nav-wrapper grey darken-3' id='nav'>
       <Sidenav
         uid={uid}
       />

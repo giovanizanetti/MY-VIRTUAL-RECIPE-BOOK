@@ -16,7 +16,6 @@ class Sidebar extends Component {
 
   render() {
     const { uid, isDesktop } = this.props
-    console.log(this.props )
     return (
       <div>
         <ul id="slide-out" className="sidenav invisible__963">
