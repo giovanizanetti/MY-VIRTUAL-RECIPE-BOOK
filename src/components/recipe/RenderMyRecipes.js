@@ -7,8 +7,7 @@ import RecipeList from './RecipeList'
 import LoaderSpinner from '../LoaderSpinner'
 
 const MyRecipes = (props) => {
-  console.log(props)
-  const { recipes, selectRecipe, selectedRecipe } = props
+  const { recipes, selectRecipe } = props
   return (
     !recipes
     ? <LoaderSpinner />
@@ -16,7 +15,6 @@ const MyRecipes = (props) => {
       <RecipeList
         recipes={recipes}
         selectRecipe={selectRecipe}
-        selectedRecipe={selectedRecipe}
       />
   )
 }

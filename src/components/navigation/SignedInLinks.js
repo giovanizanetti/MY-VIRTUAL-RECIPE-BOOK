@@ -1,27 +1,47 @@
-import React from 'react'
+import React, { Component } from 'react'
 import { NavLink } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { signOut } from '../../actions/authActions'
+import Avatar from './Avatar'
 
 // This component must be shown on the home page when the user logged in.
+class SignedInLinks extends Component{
+  state = {
+    isDesktop: false
+  }
+  /*
+    I had to check for the window size otherwise
+    the Avatar component would be shown twice on the sidebar.
+    The other possibility would be to have it as a last icon on
+    the Sidebar component, and that is not what I want.
+    I want Avatar to be shown as the very top of the sidebar
+    or on very right on the navbar on Large screens.
+  */
+  componentDidMount() {
+    this.updateScreenSize();
+    window.addEventListener("resize", this.updateScreenSize);
+  }
 
-const SignedInLinks = props => {
-  return (
-    <>
-      <ul className='right hide-on-med-and-down'>
-        <li><NavLink  to='/recipe/new'>Create Recipe</NavLink></li>
-        <li><NavLink  to='/myRecipes'>My Recipes</NavLink></li>
-        <li><NavLink onClick={props.signOut} to='/recipes'>Log Out</NavLink></li>
-        <li><NavLink to='/showAllRecipes' className='btn btn-floating pink lighten-1'>{ props.initials }</NavLink></li>
-      </ul>
-      <ul className="sidenav" id="mobile-demo">
-        <li><NavLink  to='/recipe/new'>Create Recipe</NavLink></li>
-        <li><NavLink  to='/myRecipes'>My Recipes</NavLink></li>
-        <li><NavLink onClick={props.signOut} to='/recipes'>Log Out</NavLink></li>
-        <li><NavLink to='/showAllRecipes' className='btn btn-floating pink lighten-1'>{ props.initials }</NavLink></li>
-      </ul>
-    </>
-  )
+  componentWillUnmount() {
+    window.removeEventListener("resize", this.updateScreenSize);
+  }
+
+  updateScreenSize = () => {
+    this.setState({ isDesktop: window.innerWidth > 992 });
+  }
+
+  render() {
+    const { signOut } = this.props
+    const isDesktop = this.state.isDesktop
+    return (
+      <>
+        <li><NavLink to='/recipe/new'>Create Recipe</NavLink></li>
+        <li><NavLink to='/myRecipes'>My Recipes</NavLink></li>
+        <li><NavLink onClick={ signOut } to='/recipes'>Log Out</NavLink></li>
+        { isDesktop? <Avatar isDesktop={ isDesktop } /> : null }
+      </>
+    )
+  }
 }
 
 const mapStateToProps = state => {

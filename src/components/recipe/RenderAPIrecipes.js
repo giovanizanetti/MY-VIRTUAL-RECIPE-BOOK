@@ -9,14 +9,13 @@ class RenderAPIrecipes extends Component {
     this.props.fetchRecipes()
   }
   render() {
-    const { recipes, selectRecipe, selectedRecipe }  = this.props
+    const { recipes, selectRecipe }  = this.props
     return (
       recipes.isPending
       ? <LoaderSpinner />
       : <RecipeList
           recipes={recipes.recipes}
           selectRecipe={selectRecipe}
-          selectedRecipe={selectedRecipe}
         />
     )
   }

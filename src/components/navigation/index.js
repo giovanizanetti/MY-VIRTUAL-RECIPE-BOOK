@@ -3,17 +3,25 @@ import { Link } from 'react-router-dom'
 import SignedInLinks from './SignedInLinks'
 import SignedOutLinks from './SignedOutLinks'
 import { connect } from "react-redux"
+import Sidenav from './Sidenav'
+import './index.css'
 
 // Nav Bar need to be fixed, side bar is not working on mobile size
 //Probably Java script from MaterializeCSS.`
 const NavBar = (props) => {
-
+  const { uid } = props.auth
   return (
-    <nav className='nav-wrapper grey darken-3'>
+    <nav className='nav-wrapper grey darken-3' id='nav'>
+      <Sidenav
+        uid={uid}
+      />
       <div className='container'>
-        <a href="#" data-target="mobile-demo" className="sidenav-trigger"><i className="material-icons">menu</i></a>
         <Link to='/' className='brand-logo'>Recipe Book App</Link>
-        {!props.auth.uid ?  <SignedOutLinks /> : <SignedInLinks />}
+        <ul className='right hide-on-med-and-down'>
+          { !uid
+            ? <SignedOutLinks />
+            : <SignedInLinks /> }
+        </ul>
       </div>
     </nav>
   )
@@ -21,7 +29,7 @@ const NavBar = (props) => {
 
 const mapStateToProps = state => {
   return {
-    auth: state.firebase.auth
+    auth: state.firebase.auth,
   }
 }
 
