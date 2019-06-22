@@ -9,20 +9,30 @@ const RecipeCard = props => {
     selectRecipe, recipes, cookingMinutes
   } = props
 
+  const trimString = (string, length) => {
+    return string.length > length
+      ? string.substring(0, length -3) + "..."
+      : string
+  }
+
   return (
     <div
-      className="card small col s12 m6 l3"
-      style={{ padding: 5 }}
+      className="card small col s12 m6 l4"
+      style={{ padding: 15 }}
       key={id}
       onClick={() => { selectRecipe(recipes.find(rec => rec.id === id)) }}
       >
-      {/*Later => Use Header component and pass style as prop */}
+      {/*Later => Use Header component and pass style as prop.
+      Make use of default props in Header component */}
       <div className="card-image waves-effect waves-block waves-light">
-        <img className="activator" src={image} alt="recipe" />
+        <img className="activator" src={image} alt={title} />
       </div>
       <div className="card-content">
-        <span className="card-title activator grey-text text-darken-4">{title}</span>
-        <Link to={`/recipes/${id}`}></Link>
+      <span class="card-title activator grey-text text-darken-4">
+        { trimString(title, 40) }
+      </span>
+        {/* <span className="card-title activator grey-text text-darken-4">Flip</span>
+        <Link to={`/recipes/${id}`}></Link> */}
       </div>
       <CardReveal
         title={title}
@@ -35,8 +45,6 @@ const RecipeCard = props => {
         readyInMinutes={readyInMinutes}
         cookingMinutes={cookingMinutes}
       />
-      {/* Later => Create a CardReveal component, maybe this component render a overview component */}
-
     </div>
   )
 }

@@ -33,35 +33,33 @@ class Recipedetail extends Component {
 
     // Destructuring and use either properties from the recipes that are caming
     // from firestore 'recipe' or from SpoonacularApi 'recipe.data'.
-    // As I am making another call for a single recipe, this
-    // recipe is inside of data property
+    // I am making another call for a single recipe, and the
+    // api provides single recipe inside data property.
     const {
       title, image, occasions, extendedIngredients,
       cookingMinutes, readyInMinutes, servings, glutenFree,
       vegetarian, lowFodmap, vegan, dairyFree, analyzedInstructions
     } = recipe.data || recipe
     return (
-      <div className='container'>
-        <div className='card'>
-          <Header title={title} image={image} />
-          <Occasions occasions={occasions} />
-          <PrepTime
-            cookingMinutes={cookingMinutes}
-            readyInMinutes={readyInMinutes}
-          />
-          <Ingredients ingredients={extendedIngredients} />
-          <Instructions instructions={analyzedInstructions} />
-          <AllergensInfo
-            isGlutenFree={glutenFree}
-            isLowFodmap={lowFodmap}
-            isVegetarian={vegetarian}
-            isVegan={vegan}
-            isDairyFree={dairyFree}
-          />
-          <Servings servings={servings}/>
-          <div>
-            <button>Save Recipe</button>
-          </div>
+      <div className='card'>
+        <Header title={title} image={image} />
+        <Occasions occasions={occasions} />
+        <PrepTime
+          cookingMinutes={cookingMinutes}
+          readyInMinutes={readyInMinutes}
+        />
+        <Ingredients ingredients={extendedIngredients} />
+        <Instructions instructions={analyzedInstructions} />
+        <AllergensInfo
+          isGlutenFree={glutenFree}
+          isLowFodmap={lowFodmap}
+          isVegetarian={vegetarian}
+          isVegan={vegan}
+          isDairyFree={dairyFree}
+        />
+        <Servings servings={servings}/>
+        <div>
+          <button>Save Recipe</button>
         </div>
       </div>
     )
