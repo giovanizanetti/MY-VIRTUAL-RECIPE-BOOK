@@ -21,11 +21,9 @@ const RecipeCard = props => {
       <div className="card-image waves-effect waves-block waves-light">
         <img className="activator" src={image} alt={title} />
       </div>
-      <div className="card-content">
       <span class="card-title activator grey-text text-darken-4">
         { trimString(title, 40) }
       </span>
-      </div>
       <CardReveal
         title={title}
         id={id}

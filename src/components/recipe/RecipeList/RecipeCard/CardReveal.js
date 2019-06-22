@@ -11,8 +11,10 @@ const CardReveal = props => {
   } = props
   return (
     <div className="card-reveal">
-      <span className="card-title grey-text text-darken-4">{title}<i className="material-icons right">close</i></span>
-      {/* <span>{`Ready in ${readyInMinutes} minutes`}</span> */}
+      <i className="card-title grey-text text-darken-4 material-icons right">close</i>
+      <span className="card-title grey-text text-darken-4">
+        {title}
+      </span>
       <PrepTime
         cookingMinutes={cookingMinutes}
         readyInMinutes={readyInMinutes}

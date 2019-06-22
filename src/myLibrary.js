@@ -1,3 +1,4 @@
+// Pure function
 export const trimString = (string, length) => {
   return string.length > length
     ? string.substring(0, length -3) + "..."
@@ -5,9 +6,10 @@ export const trimString = (string, length) => {
 }
 
 // This function capitalize all letters from all strings from the array
+// Pure function
 export const upCaseArrStrings = (arr) => arr.map(word => word.toUpperCase())
 
-//This function:
+// This function:
   // - extract all strings from the array,
   // - check how many items'
   // - separete by commas/'and'
