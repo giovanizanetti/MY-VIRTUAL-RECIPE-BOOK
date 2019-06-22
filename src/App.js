@@ -10,7 +10,9 @@ class App extends Component {
     return (
       <BrowserRouter>
         <Navigation />
-        <Router />
+        <div class="container" style={{ paddingTop: "5em"}}>
+          <Router />
+        </div>
       </BrowserRouter>
     )
   }
