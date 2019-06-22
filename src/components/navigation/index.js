@@ -6,8 +6,6 @@ import { connect } from "react-redux"
 import Sidenav from './Sidenav'
 import './index.css'
 
-// Nav Bar need to be fixed, side bar is not working on mobile size
-//Probably Java script from MaterializeCSS.`
 const NavBar = (props) => {
   const { uid } = props.auth
   return (

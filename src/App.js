@@ -5,7 +5,6 @@ import Navigation from './components/navigation'
 import { connect } from 'react-redux'
 import Router from './Router'
 
-
 class App extends Component {
   render() {
     return (

@@ -1,12 +1,12 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-
+import CardReveal from './CardReveal'
 
 const RecipeCard = props => {
   const {
     id, image, title, glutenFree, lowFodmap,
     vegetarian, vegan, dairyFree, readyInMinutes,
-    selectRecipe, recipes
+    selectRecipe, recipes, cookingMinutes
   } = props
 
   return (
@@ -24,18 +24,19 @@ const RecipeCard = props => {
         <span className="card-title activator grey-text text-darken-4">{title}</span>
         <Link to={`/recipes/${id}`}></Link>
       </div>
+      <CardReveal
+        title={title}
+        id={id}
+        isGlutenFree={glutenFree}
+        isLowFOdmap={lowFodmap}
+        isVegetarian={vegetarian}
+        isVegan={vegan}
+        isDairyFree={dairyFree}
+        readyInMinutes={readyInMinutes}
+        cookingMinutes={cookingMinutes}
+      />
+      {/* Later => Create a CardReveal component, maybe this component render a overview component */}
 
-      {/* Later => Create a CardReveal component, maybe this component rener a overview component */}
-      <div className="card-reveal">
-        <span className="card-title grey-text text-darken-4">{title}<i className="material-icons right">close</i></span>
-        <span>{`Ready in ${readyInMinutes} minutes`}</span>
-        <p>{glutenFree ? 'Gluten Free' : ''}</p>
-        <p>{lowFodmap ? 'Low Fod Map' : ''}</p>
-        <p>{vegetarian ? 'Vegetarian' : ''}</p>
-        <p>{vegan ? 'Vegan' : ''}</p>
-        <p>{dairyFree ? 'Dairy Free' : ''}</p>
-        <Link to={`/recipes/${id}`}>See the full recipe</Link>
-      </div>
     </div>
   )
 }

@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component } from "react"
 import M from "materialize-css/dist/js/materialize.min.js"
 import { NavLink } from "react-router-dom"
 import SignedInLinks from "./SignedInLinks"
@@ -7,7 +7,7 @@ import Avatar from './Avatar'
 
 class Sidebar extends Component {
     componentDidMount() {
-      const elem = document.querySelector(".sidenav");
+      const elem = document.querySelector(".sidenav")
       M.Sidenav.init(elem, {
           edge: "left",
           inDuration: 250
@@ -27,7 +27,7 @@ class Sidebar extends Component {
           <i className="material-icons">menu</i>
         </NavLink>
       </div>
-    );
+    )
   }
 }
 
