@@ -5,7 +5,7 @@ export const trimString = (string, length) => {
     : string
 }
 
-// This function capitalize all letters from all strings from the array
+// This function capitalize all letters from all strings from an array
 // Pure function
 export const upCaseArrStrings = (arr) => arr.map(word => word.toUpperCase())
 

@@ -21,14 +21,14 @@ const RecipeCard = props => {
       <div className="card-image waves-effect waves-block waves-light">
         <img className="activator" src={image} alt={title} />
       </div>
-      <span class="card-title activator grey-text text-darken-4">
+      <span className="card-title activator grey-text text-darken-4">
         { trimString(title, 40) }
       </span>
       <CardReveal
         title={title}
         id={id}
         isGlutenFree={glutenFree}
-        isLowFOdmap={lowFodmap}
+        isLowFodmap={lowFodmap}
         isVegetarian={vegetarian}
         isVegan={vegan}
         isDairyFree={dairyFree}

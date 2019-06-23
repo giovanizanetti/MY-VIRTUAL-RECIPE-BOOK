@@ -1,12 +1,14 @@
 import React from 'react'
+import CheckBox from '../../ChechBox'
 
 const Instructions = ({instructions}) => {
   const renderInstructions =
-    instructions && instructions.map(object => {
+    instructions && instructions.map((object, i) => {
       return (object.steps.map(step => (
         <div key={step.number}>
           <li style={{margin: 20}}>
-            {`${step.number} - ${step.step}`}
+            <CheckBox />
+            {` - ${step.step}`}
           </li>
         </div>
       )))
