@@ -1,5 +1,6 @@
 .icon .icons_img {
-  max-width: 20%!important
+  max-width: 10%;
+  margin: 3px
 }
 .icon {
   position: relative
