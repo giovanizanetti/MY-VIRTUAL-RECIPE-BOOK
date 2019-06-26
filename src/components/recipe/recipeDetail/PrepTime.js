@@ -37,7 +37,7 @@ const PrepTime = ({ cookingMinutes, readyInMinutes }) => {
       <ul
         className='container'
         id='icons-container'
-        style={{paddingTop: 20, paddingLeft: 20, display: 'flex' }}
+        style={{paddingTop: 20, paddingLeft: 20, display: 'flex', margin: 'auto' }}
       >
         { cookingTime }
         { totalPrepTime }

@@ -12,6 +12,7 @@ import Servings from './Servings'
 import Header from './header'
 import Instructions from './Instructions'
 import LoaderSpinner from '../../LoaderSpinner'
+import RecipeFooter from './RecipeFooter'
 
 class Recipedetail extends Component {
 
@@ -43,6 +44,7 @@ class Recipedetail extends Component {
     return (
       <div className='card'>
         <Header title={title} image={image} />
+        <Servings servings={servings}/>
         <Occasions occasions={occasions} />
         <PrepTime
           cookingMinutes={cookingMinutes}
@@ -57,10 +59,7 @@ class Recipedetail extends Component {
           isVegan={vegan}
           isDairyFree={dairyFree}
         />
-        <Servings servings={servings}/>
-        <div>
-          <button>Save Recipe</button>
-        </div>
+        <RecipeFooter />
       </div>
     )
   }
