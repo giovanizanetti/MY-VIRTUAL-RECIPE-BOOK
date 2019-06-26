@@ -1,38 +1,46 @@
 import React from 'react'
+import CookingImg from './images/cooking.png'
+import ClockImg from './images/clock.png'
+import { timeFormat } from '../../../myLibrary'
 
 const PrepTime = ({ cookingMinutes, readyInMinutes }) => {
-
-//   The timeFormat function:
-//  - rounds numbers to the nearest integer
-//  - transforms minutes into hours,
-//  - check for the correct plural and singular
-  const timeFormat = (minutes) => {
-    if(minutes > 59) {
-      const roundedHours = Math.floor(minutes / 60)
-      const hours =  roundedHours >= 2 ? `${roundedHours} hours` : `${roundedHours} hour`
-      const min = minutes % 60 === 0 ? '' : ` and ${minutes % 60} minutes`
-      return hours + min
-    }
-    return minutes + ' minutes'
-  }
-
-  const cookingtime =
+  const cookingTime =
     cookingMinutes
-    && cookingMinutes === 0
-    ? null
-    : cookingMinutes > 0
-    && `This recipe takes ${timeFormat(cookingMinutes)} for cooking.`
+    && cookingMinutes > 0
+    ? (
+      <li className='icon'>
+        <img
+          className='responsive-img icons_img'
+          src={CookingImg}
+          alt={`cooking time is ${timeFormat(cookingMinutes)}`} />
+          <span>{ timeFormat(cookingMinutes) }</span>
+          <p>{ timeFormat(cookingMinutes) } cooking.</p>
+      </li>
+    )
+    : ''
 
   const totalPrepTime =
-    readyInMinutes && `Ready in ${timeFormat(readyInMinutes)}`
+    readyInMinutes
+    && readyInMinutes > 0
+    ? (
+      <li className='icon'>
+        <img
+          className='responsive-img icons_img'
+          src={ClockImg} alt={`ready in ${totalPrepTime}`} />
+        <span>{ timeFormat(readyInMinutes) }</span>
+        <p>Ready in { timeFormat(readyInMinutes) }.</p>
+      </li>
+    )
+    : ''
 
   return (
       <ul
         className='container'
-        style={{paddingTop: 20 }}
+        id='icons-container'
+        style={{paddingTop: 20, paddingLeft: 20, display: 'flex' }}
       >
-        <li>{cookingtime}</li>
-        <li>{totalPrepTime}</li>
+        { cookingTime }
+        { totalPrepTime }
       </ul>
 
   )

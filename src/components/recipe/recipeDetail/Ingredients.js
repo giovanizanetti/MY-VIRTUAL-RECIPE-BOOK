@@ -1,6 +1,5 @@
 import React from 'react'
-
-
+import CheckBox from '../../ChechBox'
 
 // Later I will add some mesures by 'cup' instead of 'grams'
 const Ingredients = ({ingredients}) => {
@@ -9,7 +8,8 @@ const Ingredients = ({ingredients}) => {
     const useOf = unitShort !== '' ? 'of' : ''
     return (
       <li key={ingredient.id} style={{margin: 20}}>
-        {`- ${Math.round(amount)} ${unitShort} ${useOf} ${ingredient.name}`}
+        <CheckBox />
+        {` - ${Math.round(amount)} ${unitShort} ${useOf} ${ingredient.name}`}
       </li>
     )
   })

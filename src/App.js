@@ -5,13 +5,14 @@ import Navigation from './components/navigation'
 import { connect } from 'react-redux'
 import Router from './Router'
 
-
 class App extends Component {
   render() {
     return (
       <BrowserRouter>
         <Navigation />
-        <Router />
+        <div className="container" style={{ paddingTop: "5em"}}>
+          <Router />
+        </div>
       </BrowserRouter>
     )
   }

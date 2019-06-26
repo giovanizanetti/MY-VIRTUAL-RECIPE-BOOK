@@ -1,5 +1,6 @@
 .icon .icons_img {
-  max-width: 20%!important
+  max-width: 3rem;
+  margin: 3px
 }
 .icon {
   position: relative
@@ -25,4 +26,16 @@
   text-align: center;
 }
 .allergen_item {
+}
+#icons-container {
+  display: flex;
+  margin: 0;
+  justify-content: center;
+}
+.link-fullrecipe {
+  position: absolute;
+  bottom: 3%;
+  text-align: center;
+  float: none;
+  margin-left: 22%;
 }

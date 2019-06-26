@@ -6,8 +6,6 @@ import { connect } from "react-redux"
 import Sidenav from './Sidenav'
 import './index.css'
 
-// Nav Bar need to be fixed, side bar is not working on mobile size
-//Probably Java script from MaterializeCSS.`
 const NavBar = (props) => {
   const { uid } = props.auth
   return (
@@ -16,7 +14,7 @@ const NavBar = (props) => {
         uid={uid}
       />
       <div className='container'>
-        <Link to='/' className='brand-logo'>Recipe Book App</Link>
+        <Link to='/' className='flow-text'>Recipe Book App</Link>
         <ul className='right hide-on-med-and-down'>
           { !uid
             ? <SignedOutLinks />
