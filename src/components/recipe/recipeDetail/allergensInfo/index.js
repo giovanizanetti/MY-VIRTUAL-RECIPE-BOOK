@@ -13,7 +13,7 @@ const AllergensInfo = props => {
   // Later => Create a single container component to be shared among the allergens
 
   return (
-    <ul className='container allergens'>
+    <ul className='container' id='icons-container'>
       <GlutenFree isGlutenFree={isGlutenFree}/>
       <LowFodMap isLowFodmap={isLowFodmap}/>
       <Vegan isVegan={isVegan} />

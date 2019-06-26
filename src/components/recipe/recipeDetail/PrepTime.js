@@ -10,7 +10,6 @@ const PrepTime = ({ cookingMinutes, readyInMinutes }) => {
     ? (
       <li className='icon'>
         <img
-          // style={{width: '5rem'}}
           className='responsive-img icons_img'
           src={CookingImg}
           alt={`cooking time is ${timeFormat(cookingMinutes)}`} />
@@ -26,7 +25,6 @@ const PrepTime = ({ cookingMinutes, readyInMinutes }) => {
     ? (
       <li className='icon'>
         <img
-          // style={{width: '3rem'}}
           className='responsive-img icons_img'
           src={ClockImg} alt={`ready in ${totalPrepTime}`} />
         <span>{ timeFormat(readyInMinutes) }</span>
@@ -36,7 +34,11 @@ const PrepTime = ({ cookingMinutes, readyInMinutes }) => {
     : ''
 
   return (
-      <ul className='container' style={{paddingTop: 20, paddingLeft: 20, display: 'flex' }}>
+      <ul
+        className='container'
+        id='icons-container'
+        style={{paddingTop: 20, paddingLeft: 20, display: 'flex' }}
+      >
         { cookingTime }
         { totalPrepTime }
       </ul>

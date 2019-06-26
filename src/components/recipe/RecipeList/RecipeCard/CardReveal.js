@@ -15,18 +15,21 @@ const CardReveal = props => {
       <span className="card-title grey-text text-darken-4">
         {title}
       </span>
-      <PrepTime
-        cookingMinutes={cookingMinutes}
-        readyInMinutes={readyInMinutes}
-      />
-      <AllergensInfo
-        isGlutenFree={isGlutenFree}
-        isDairyFree={isDairyFree}
-        isVegetarian={isVegetarian}
-        isLowFodmap={isLowFodmap}
-        isVegan={isVegan}
-      />
-      <Link to={`/recipes/${id}`}>See the full recipe</Link>
+      <div>
+        <PrepTime
+          cookingMinutes={cookingMinutes}
+          readyInMinutes={readyInMinutes}
+        />
+        <AllergensInfo
+          isGlutenFree={isGlutenFree}
+          isDairyFree={isDairyFree}
+          isVegetarian={isVegetarian}
+          isLowFodmap={isLowFodmap}
+          isVegan={isVegan}
+        />
+      </div>
+
+      <Link className='link-fullrecipe' to={`/recipes/${id}`}>See the full recipe</Link>
     </div>
   )
 }
