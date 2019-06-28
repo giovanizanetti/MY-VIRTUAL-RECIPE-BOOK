@@ -14,7 +14,7 @@ const PrepTime = ({ cookingMinutes, readyInMinutes }) => {
           src={CookingImg}
           alt={`cooking time is ${timeFormat(cookingMinutes)}`} />
           <span>{ timeFormat(cookingMinutes) }</span>
-          <p>{ timeFormat(cookingMinutes) } cooking.</p>
+          <p>{ timeFormat(cookingMinutes) } for cooking.</p>
       </li>
     )
     : ''

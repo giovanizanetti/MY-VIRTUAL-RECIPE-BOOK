@@ -59,7 +59,7 @@ class Recipedetail extends Component {
           isVegan={vegan}
           isDairyFree={dairyFree}
         />
-        <RecipeFooter />
+        <RecipeFooter recipeId={this.props.match.params.id}/>
       </div>
     )
   }

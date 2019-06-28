@@ -6,13 +6,13 @@ const PrintPreferences = () => {
       <h6>Select your preference</h6>
       <p>
         <label>
-          <input name="group1" type="radio" checked className="with-gap"/>
+          <input name="group1" type="radio" defaultChecked className="with-gap"/>
           <span>Full Recipe</span>
         </label>
       </p>
       <p>
         <label>
-          <input name="group1" type="radio" class="with-gap" />
+          <input name="group1" type="radio" className="with-gap" />
           <span>Ingredient List</span>
         </label>
       </p>
