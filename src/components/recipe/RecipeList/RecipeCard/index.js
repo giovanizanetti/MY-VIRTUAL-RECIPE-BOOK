@@ -1,6 +1,8 @@
 import React from 'react'
 import CardReveal from './CardReveal'
 import { trimString } from '../../../../myLibrary'
+import { selectRecipe } from '../../../../actions/recipeActions'
+import { connect }from 'react-redux'
 
 const RecipeCard = props => {
   const {
@@ -39,4 +41,4 @@ const RecipeCard = props => {
   )
 }
 
-export default RecipeCard
+export default connect(null, { selectRecipe })(RecipeCard)

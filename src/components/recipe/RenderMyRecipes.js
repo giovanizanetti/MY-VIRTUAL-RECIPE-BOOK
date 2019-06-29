@@ -7,14 +7,14 @@ import RecipeList from './RecipeList'
 import LoaderSpinner from '../LoaderSpinner'
 
 const MyRecipes = (props) => {
-  const { recipes, selectRecipe } = props
+  const { recipes } = props
+  console.log(props)
   return (
     !recipes
     ? <LoaderSpinner />
     :
       <RecipeList
         recipes={recipes}
-        selectRecipe={selectRecipe}
       />
   )
 }
@@ -27,7 +27,7 @@ const mapStateToProps = state => {
 }
 
 export default compose(
-  connect(mapStateToProps, { selectRecipe }),
+  connect(mapStateToProps),
   firestoreConnect([{
     collection: 'recipes'
   }])

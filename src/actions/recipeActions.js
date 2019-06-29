@@ -87,9 +87,9 @@ export const fetchRecipeById = (id) => (dispatch) => {
     },
     params: { id }
   })
-  .then(data => dispatch({
+  .then(res => dispatch({
     type: FETCH_RECIPES_BY_ID_SUCCESS,
-    payload: data
+    payload: res.data
   }))
   .then(data => console.log(data))
   .catch(error => dispatch({

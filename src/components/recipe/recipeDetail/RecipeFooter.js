@@ -5,9 +5,15 @@ const RecipeFooter = props => {
   const style = { margin: '1rem' }
   const buttonClasses ='waves-effect waves-light btn center-align modal-trigger'
   const deleteMessage = 'Are you sure you want to delete this recipe?'
-  const editMessage = 'You can not delete this message directly. Do you want to make a copy of it?'
+  const editMessage =
+    'This recipe is not in your recipes. Do you want to edit it and save the modified version to your recipes?'
   const ONLY_NUMBERS_REGEX = /^[0-9]*$/
   const IS_SPOONACULAR_ID = ONLY_NUMBERS_REGEX.test(props.recipeId)
+
+  const handleClick = () => {
+    props.history.push(`/recipes/edit/${props.recipeId}`)
+  }
+
   return (
     <>
       <hr />
@@ -24,11 +30,12 @@ const RecipeFooter = props => {
           Delete
         </button>
 
-        { IS_SPOONACULAR_ID && <Modal popUp={editMessage} id={ 'modal2' } /> }
+        { IS_SPOONACULAR_ID && <Modal history={props.history} recipeId={props.recipeId} popUp={editMessage} id={ 'modal2' } /> }
         <button
           data-target={"modal2"}
           style={style}
           className={`${buttonClasses} grey`}
+          onClick={ IS_SPOONACULAR_ID ? () => {} : handleClick }
         >Edit
         </button>
 
@@ -53,5 +60,7 @@ const RecipeFooter = props => {
     </>
   )
 }
+
+
 
 export default (RecipeFooter)
