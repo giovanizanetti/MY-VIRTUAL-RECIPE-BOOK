@@ -9,13 +9,12 @@ class RenderAPIrecipes extends Component {
     this.props.fetchRecipes()
   }
   render() {
-    const { recipes, selectRecipe }  = this.props
+    const { recipes }  = this.props
     return (
       recipes.isPending
       ? <LoaderSpinner />
       : <RecipeList
           recipes={recipes.recipes}
-          selectRecipe={selectRecipe}
         />
     )
   }
@@ -29,7 +28,7 @@ const mapStateToProps = state => {
 }
 
 export default connect(
-  mapStateToProps, { fetchRecipes, selectRecipe }
+  mapStateToProps, { fetchRecipes }
   )(RenderAPIrecipes)
 
 

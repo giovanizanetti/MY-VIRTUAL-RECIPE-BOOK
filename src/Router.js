@@ -14,7 +14,7 @@ const Router = () => (
     <Route path='/signin/' exact component={SignIn} />
     <Route path='/signup/' exact component={SignUp} />
     <Route path='/recipe/new' exact component={RecipeCreate} />
-    <Route path='/recipe/edit/:id' exact component={RecipeEdit} />
+    <Route path='/recipes/edit/:id' exact component={RecipeEdit} />
     <Route path='/recipes/' exact component={RenderAPIrecipes} />
     <Route path='/recipes/:id' exact component={RecipeDetail} />
     <Route path='/myRecipes/' exact component={RenderMyRecipes} />

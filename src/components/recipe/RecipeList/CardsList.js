@@ -1,7 +1,7 @@
 import React from 'react'
 import RecipeCard from './RecipeCard/'
 
-const CardsList = ({ recipes, selectRecipe }) => {
+const CardsList = ({ recipes }) => {
   return recipes.map(recipe => {
     const {
       id, image, title, glutenFree, lowFodmap,
@@ -22,7 +22,6 @@ const CardsList = ({ recipes, selectRecipe }) => {
         dairyFree={dairyFree}
         readyInMinutes={readyInMinutes}
         cookingMinutes={cookingMinutes}
-        selectRecipe={selectRecipe}
       />
     )
   })
