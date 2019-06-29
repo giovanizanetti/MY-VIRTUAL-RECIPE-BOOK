@@ -14,7 +14,7 @@ const PrepTime = ({ cookingMinutes, readyInMinutes }) => {
           src={CookingImg}
           alt={`cooking time is ${timeFormat(cookingMinutes)}`} />
           <span>{ timeFormat(cookingMinutes) }</span>
-          <p>{ timeFormat(cookingMinutes) } cooking.</p>
+          <p>{ timeFormat(cookingMinutes) } for cooking.</p>
       </li>
     )
     : ''
@@ -37,7 +37,7 @@ const PrepTime = ({ cookingMinutes, readyInMinutes }) => {
       <ul
         className='container'
         id='icons-container'
-        style={{paddingTop: 20, paddingLeft: 20, display: 'flex' }}
+        style={{paddingTop: 20, paddingLeft: 20, display: 'flex', margin: 'auto' }}
       >
         { cookingTime }
         { totalPrepTime }

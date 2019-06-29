@@ -36,9 +36,9 @@ export const arrToStringPunctuation = (arr) => {
 export const timeFormat = (minutes) => {
   if(minutes > 59) {
     const roundedHours = Math.floor(minutes / 60)
-    const hours =  roundedHours >= 2 ? `${roundedHours} hours` : `${roundedHours} hour`
-    const min = minutes % 60 === 0 ? '' : ` and ${minutes % 60} minutes`
+    const hours =  roundedHours >= 2 ? `${roundedHours}h` : `${roundedHours}h`
+    const min = minutes % 60 === 0 ? '' : ` and ${minutes % 60}min`
     return hours + min
   }
-  return minutes + ' minutes'
+  return minutes + 'min'
 }
