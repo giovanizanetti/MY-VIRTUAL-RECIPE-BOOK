@@ -2,7 +2,7 @@ import React from 'react'
 import { Field } from 'redux-form'
 import { renderField } from './renderField'
 
-export const renderOccasions = ({ fields, meta: { error } }) => (
+export const renderCuisines = ({ fields, meta: { error } }) => (
   <ul>
     <li>
     <button
@@ -11,10 +11,10 @@ export const renderOccasions = ({ fields, meta: { error } }) => (
       onClick={ () => fields.push() }
       className="btn"
     >
-      Add Occasion
+      Add Cuisine
     </button>
     </li>
-    {fields.map((occassion, index) =>
+    {fields.map((cuisine, index) =>
       <li
         key={index}
         style={{
@@ -28,10 +28,10 @@ export const renderOccasions = ({ fields, meta: { error } }) => (
       >
       <div class="container">
         <Field
-          name={occassion}
+          name={cuisine}
           type="text"
           component={renderField}
-          label={'occasion'}
+          label='cuisine'
         />
       </div>
       <div
@@ -48,11 +48,11 @@ export const renderOccasions = ({ fields, meta: { error } }) => (
             }}
             className='btn red right'
             type="button"
-            title="Remove Occasion"
+            title="Remove Cuisine"
             onClick={() => fields.remove(index)}
           >X</button>
           <button
-            title="Add Occasion"
+            title="Add Cuisine"
             style={{margin: '10%'}}
             type="button"
             onClick={ () => fields.push({}) }
