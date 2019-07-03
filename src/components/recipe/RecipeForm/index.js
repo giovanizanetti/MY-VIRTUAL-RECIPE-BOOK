@@ -1,11 +1,12 @@
 import React, { Component } from 'react'
 import { Field, reduxForm, FieldArray } from 'redux-form'
 import { Redirect } from 'react-router-dom'
-import  { renderIngredients } from '../RecipeCreate/containers/renderIngredients'
-import { validate, renderErrors } from './containers/formErrors'
+import { validate } from './containers/formErrors'
 import { renderInput } from './containers/renderInput'
 import AllergensFields from './AllergensFields'
 import PrepTimeInputs from './PrepTimeInputs'
+import IngredientsInputs from './IngredientsInputs'
+import OccasionsInputs from './OccasionsInputs.js'
 
 //This is a template form that can be imported by RecipeCreate and RecipeEdit
 class RecipeForm extends Component {
@@ -27,17 +28,8 @@ class RecipeForm extends Component {
           label='Enter Title'
         />
         <PrepTimeInputs />
-        <FieldArray
-          name="ingredients"
-          type='text'
-          component={renderIngredients}
-        />
-        <Field
-          name='occasions'
-          component={renderInput}
-          type='text'
-          label='Occasions'
-        />
+        <IngredientsInputs />
+        <OccasionsInputs />
         <Field
           name='cuisines'
           component={renderInput}

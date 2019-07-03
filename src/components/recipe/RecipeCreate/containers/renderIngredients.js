@@ -1,14 +1,6 @@
 import React from 'react'
 import { Field } from 'redux-form'
-
-const renderField = ({ input, label, type, meta: { touched, error, } }) => (
-  <div>
-    <div>
-      <input {...input} type={type} placeholder={label}/>
-      {touched && error && <span>{error}</span>}
-    </div>
-  </div>
-)
+import { renderField } from './renderField'
 
 export const renderIngredients = ({ fields, meta: { touched, error, submitFailed } }) => (
   <ul>
@@ -19,7 +11,7 @@ export const renderIngredients = ({ fields, meta: { touched, error, submitFailed
         onClick={() => fields.push({})}
         className="btn"
       >
-        Add Ingredients
+        Add Ingredient
       </button>
       {(touched || submitFailed) && error && <span>{error}</span>}
     </li>
@@ -31,35 +23,58 @@ export const renderIngredients = ({ fields, meta: { touched, error, submitFailed
           border: 'solid 5px #020202',
           borderRadius: '5%',
           margin: '3%',
+          display: 'flex',
+          padding: '2%'
         }}
         >
-        <button
-          style={{ margin: '3%'}}
-          className='btn red right'
-          type="button"
-          title="Remove Ingredient"
-          onClick={() => fields.remove(index)}
-        >X</button>
-      <div className='container'>
-        <Field
-          name={`${ingredient}.name`}
-          type="number"
-          component={renderField}
-          label="name"
-        />
-        <Field
-          name={`${ingredient}.measures.metric.amount`}
-          type="number"
-          component={renderField}
-          label="Amount"
-        />
-        <Field
-          name={`${ingredient}.measures.metric.unitShort`}
-          type="text"
-          component={renderField}
-          label="Unit"
-        />
-      </div>
+        <div className='container'>
+          <Field
+            name={`${ingredient}.name`}
+            type="text"
+            component={renderField}
+            label="name"
+          />
+          <div style={{ display: 'flex' }}>
+            <Field
+              name={`${ingredient}.measures.metric.amount`}
+              type="number"
+              component={renderField}
+              label="Amount"
+            />
+            <Field
+              name={`${ingredient}.measures.metric.unitShort`}
+              type="text"
+              component={renderField}
+              label="Unit"
+            />
+          </div>
+        </div>
+        <div
+            style={{
+              display: 'flex',
+              flexDirection: 'column',
+              paddingLeft: '4%',
+              justifyContent: 'space-evenly'
+            }} >
+            <button
+              style={{
+                margin: '10%',
+                padding: "0 6px"
+              }}
+              className='btn red right'
+              type="button"
+              title="Remove Ingredient"
+              onClick={() => fields.remove(index)}
+            >X</button>
+            <button
+              style={{margin: '10%'}}
+              type="button"
+              onClick={ () => fields.push({}) }
+              className="btn"
+            >
+              +
+            </button>
+          </div>
       </li>
     )}
   </ul>

@@ -2,7 +2,7 @@ import React from 'react'
 import { renderCheckBoxItem } from './containers/renderCheckBoxItem'
 import { Field } from 'redux-form'
 
-const AllergensFiels = () => (
+export default () => (
   <div
     style={{
       display: 'flex',
@@ -56,4 +56,3 @@ const AllergensFiels = () => (
   </div>
 )
 
-export default AllergensFiels
