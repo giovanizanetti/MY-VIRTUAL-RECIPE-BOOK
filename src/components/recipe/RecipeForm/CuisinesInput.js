@@ -4,7 +4,7 @@ import  { renderCuisines } from '../RecipeCreate/containers/renderCuisines'
 
 export default () => (
  <FieldArray
-    name="cuisine"
+    name="cuisines"
     type='text'
     component={renderCuisines}
  />

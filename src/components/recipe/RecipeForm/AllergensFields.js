@@ -15,7 +15,7 @@ export default () => (
   >
     <div>
       <Field
-        name="isGlutenFree"
+        name="glutenFree"
         component={ renderCheckBoxItem }
         type="checkbox"
         label="is gluten free?"
@@ -23,7 +23,7 @@ export default () => (
     </div>
     <div>
       <Field
-        name="isDairyFree"
+        name="dairyFree"
         component={ renderCheckBoxItem }
         type="checkbox"
         label="is Dairy free?"
@@ -31,7 +31,7 @@ export default () => (
     </div>
     <div>
       <Field
-        name="isVegan"
+        name="vegan"
         component={ renderCheckBoxItem }
         type="checkbox"
         label="is Vegan?"
@@ -39,7 +39,7 @@ export default () => (
     </div>
     <div>
       <Field
-        name="isVegetarian"
+        name="vegetarian"
         component={ renderCheckBoxItem }
         type="checkbox"
         label="is Vegetarian?"
@@ -47,7 +47,7 @@ export default () => (
     </div>
     <div>
       <Field
-        name="isLowFodmap"
+        name="lowFodmap"
         component={ renderCheckBoxItem }
         type="checkbox"
         label="is Low Fodmap?"

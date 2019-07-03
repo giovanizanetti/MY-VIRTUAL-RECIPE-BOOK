@@ -7,7 +7,6 @@ import AllergensFields from './AllergensFields'
 import PrepTimeInputs from './PrepTimeInputs'
 import IngredientsInputs from './IngredientsInputs'
 import OccasionsInputs from './OccasionsInputs.js'
-import { renderCuisines } from '../RecipeCreate/containers/renderCuisines'
 import CuisinesInput from './CuisinesInput'
 
 //This is a template form that can be imported by RecipeCreate and RecipeEdit
@@ -33,12 +32,6 @@ class RecipeForm extends Component {
         <IngredientsInputs />
         <OccasionsInputs />
         <CuisinesInput />
-        {/* <Field
-          name={cuisines.push()}
-          component={renderInput}
-          type='text'
-          label='Enter cuisines'
-        /> */}
         <AllergensFields />
         <button
           className="btn pink lighten-1 z-depth-0"

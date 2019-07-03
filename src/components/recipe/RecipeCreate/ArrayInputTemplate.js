@@ -1,21 +1,10 @@
 import React from 'react'
 import { Field } from 'redux-form'
-import { renderField } from './renderField'
+import { renderField } from './containers/renderField'
 
-export const renderOccasions = ({ fields, meta: { error } }) => (
-  <ul>
-    <li>
-    <button
-      style={{margin: '3%'}}
-      type="button"
-      onClick={ () => fields.push() }
-      className="btn"
-    >
-      Add Occasion
-    </button>
-    </li>
-    {fields.map((occassion, index) =>
-      <li
+export default ({index, field, fields}) => {
+  return (
+    <li
         key={index}
         style={{
           background: 'lightgoldenrodyellow',
@@ -28,10 +17,10 @@ export const renderOccasions = ({ fields, meta: { error } }) => (
       >
       <div className="container">
         <Field
-          name={occassion}
+          name={field}
           type="text"
           component={renderField}
-          label={'occasion'}
+          label={`Add ${field}`}
         />
       </div>
       <div
@@ -48,11 +37,11 @@ export const renderOccasions = ({ fields, meta: { error } }) => (
             }}
             className='btn red right'
             type="button"
-            title="Remove Occasion"
+            title={`Remove ${field}`}
             onClick={() => fields.remove(index)}
           >X</button>
           <button
-            title="Add Occasion"
+            title={`Add ${field}`}
             style={{margin: '10%'}}
             type="button"
             onClick={ () => fields.push() }
@@ -62,9 +51,5 @@ export const renderOccasions = ({ fields, meta: { error } }) => (
           </button>
         </div>
       </li>
-    )}
-    {error && <li className="error">{error}</li>}
-  </ul>
-)
-
-
+  )
+}

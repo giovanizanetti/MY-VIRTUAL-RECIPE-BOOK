@@ -4,7 +4,7 @@
 
  export default () => (
   <FieldArray
-    name="ingredients"
+    name="extendedIngredients"
     type='text'
     component={renderIngredients}
   />

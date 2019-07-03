@@ -12,7 +12,7 @@ export default () => (
       id='cookingMin'
     />
     <Field
-      name='preparationTime'
+      name='readyInMinutes'
       component={renderInput}
       type='number'
       label='Preparation Time'
