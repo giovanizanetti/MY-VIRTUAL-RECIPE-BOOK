@@ -1,7 +1,7 @@
 import React from 'react'
 import SignIn from './components/auth/SignIn'
 import SignUp from './components/auth/SignUp'
-import RecipeCreate from './components/recipe/RecipeCreate'
+import RecipeCreate from './components/recipe/RecipeCreate/'
 import RecipeEdit from './components/recipe/RecipeEdit'
 import RecipeDetail from './components/recipe/RecipeDetail'
 import { Switch, Route } from 'react-router-dom'

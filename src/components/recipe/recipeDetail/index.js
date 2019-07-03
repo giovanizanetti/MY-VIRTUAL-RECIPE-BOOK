@@ -32,15 +32,11 @@ class Recipedetail extends Component {
     if(!auth.uid) return <Redirect to='/signin' />
     if(!recipe) return <LoaderSpinner />
 
-    // Destructuring and use either properties from the recipes that are caming
-    // from firestore 'recipe' or from SpoonacularApi 'recipe.data'.
-    // I am making another call for a single recipe, and the
-    // api provides single recipe inside data property.
     const {
       title, image, occasions, extendedIngredients,
       cookingMinutes, readyInMinutes, servings, glutenFree,
       vegetarian, lowFodmap, vegan, dairyFree, analyzedInstructions
-    } = recipe.data || recipe
+    } = recipe
     return (
       <div className='card'>
         <Header title={title} image={image} />

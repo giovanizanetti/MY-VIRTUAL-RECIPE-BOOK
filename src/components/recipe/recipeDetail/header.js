@@ -3,12 +3,12 @@ import React from 'react'
 const Header = ({title, image}) => {
   const recipeTitle = title
   return (
-    <div style={{paddingTop: 1}}>
-      <h4 style={{
+    <div className='container' style={{paddingTop: 1}}>
+      <h5 style={{
         textAlign: 'center',
          }} >
         {recipeTitle}
-      </h4>
+      </h5>
       <div className="card-image">
         <img src={image} alt={title}/>
       </div>

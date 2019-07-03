@@ -19,7 +19,7 @@ class Sidebar extends Component {
     return (
       <div>
         <ul id="slide-out" className="sidenav invisible__963">
-          <Avatar />
+          { uid && <Avatar /> }
           {!uid ?  <SignedOutLinks /> : <SignedInLinks isDesktop={isDesktop} />}
 
         </ul>
