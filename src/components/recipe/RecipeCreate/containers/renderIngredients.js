@@ -1,6 +1,7 @@
 import React from 'react'
 import { Field } from 'redux-form'
 import { renderField } from './renderField'
+import AddRemoveButton from '../AddRemoveButton'
 
 export const renderIngredients = ({ fields, meta: { touched, error, submitFailed } }) => (
   <ul>
@@ -15,7 +16,7 @@ export const renderIngredients = ({ fields, meta: { touched, error, submitFailed
       </button>
       {(touched || submitFailed) && error && <span>{error}</span>}
     </li>
-    {fields.map((ingredient, index) =>
+    {fields.map((field, index) =>
       <li
         key={index}
         style={{
@@ -29,27 +30,32 @@ export const renderIngredients = ({ fields, meta: { touched, error, submitFailed
         >
         <div className='container'>
           <Field
-            name={`${ingredient}.name`}
+            name={`${field}.name`}
             type="text"
             component={renderField}
             label="name"
           />
           <div style={{ display: 'flex' }}>
             <Field
-              name={`${ingredient}.measures.metric.amount`}
+              name={`${field}.measures.metric.amount`}
               type="number"
               component={renderField}
               label="Amount"
             />
             <Field
-              name={`${ingredient}.measures.metric.unitShort`}
+              name={`${field}.measures.metric.unitShort`}
               type="text"
               component={renderField}
               label="Unit"
             />
           </div>
         </div>
-        <div
+        <AddRemoveButton
+          field={field}
+          index={index}
+          fields={fields}
+        />
+        {/* <div
             style={{
               display: 'flex',
               flexDirection: 'column',
@@ -65,16 +71,18 @@ export const renderIngredients = ({ fields, meta: { touched, error, submitFailed
               type="button"
               title="Remove Ingredient"
               onClick={() => fields.remove(index)}
-            >X</button>
+            >
+            X
+            </button>
             <button
               style={{margin: '10%'}}
               type="button"
               onClick={ () => fields.push({}) }
               className="btn"
             >
-              +
+            +
             </button>
-          </div>
+          </div> */}
       </li>
     )}
   </ul>

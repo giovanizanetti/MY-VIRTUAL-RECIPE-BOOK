@@ -1,5 +1,4 @@
 import React from 'react'
-
 import ArrayInputTemplate from '../ArrayInputTemplate.js'
 
 export const renderCuisines = ({ fields, meta: { error } }) => (
@@ -14,8 +13,18 @@ export const renderCuisines = ({ fields, meta: { error } }) => (
       Add Cuisine
     </button>
     </li>
-    {fields.map((field, index) => <ArrayInputTemplate fields={fields} field={field} index={index} />)}
-
+    {
+      fields.map((field, index) => (
+        <div key={index}>
+          <ArrayInputTemplate
+            fields={fields}
+            field={field}
+            index={index}
+          />
+        </div>
+        )
+      )
+    }
     {error && <li className="error">{error}</li>}
   </ul>
 )
