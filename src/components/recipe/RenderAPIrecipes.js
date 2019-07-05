@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { fetchRecipes, selectRecipe } from '../../actions/recipeActions'
+import { fetchRecipes } from '../../actions/recipeActions'
 import RecipeList from './RecipeList'
 import LoaderSpinner from '../LoaderSpinner'
 

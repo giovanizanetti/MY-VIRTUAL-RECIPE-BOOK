@@ -61,6 +61,4 @@ const RecipeFooter = props => {
   )
 }
 
-
-
 export default (RecipeFooter)

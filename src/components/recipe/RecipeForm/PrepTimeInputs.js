@@ -7,14 +7,12 @@ export default () => (
     <Field
       name='cookingMinutes'
       component={renderInput}
-      type='number'
       label='Cooking Time'
       id='cookingMin'
     />
     <Field
       name='readyInMinutes'
       component={renderInput}
-      type='number'
       label='Preparation Time'
       id='prepTime'
     />
