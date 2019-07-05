@@ -1,17 +1,15 @@
 import React from 'react'
 import ArrayInputTemplate from '../ArrayInputTemplate.js'
+import AddButton from '../AddButton'
 
 export const renderCuisines = ({ fields, meta: { error } }) => (
   <ul>
     <li>
-    <button
-      style={{margin: '3%'}}
-      type="button"
-      onClick={ () => fields.push() }
-      className="btn"
-    >
-      Add Cuisine
-    </button>
+      <AddButton
+            item='cuisine'
+            fields={fields}
+            onClick={ () => fields.push() }
+          />
     </li>
     {
       fields.map((field, index) => (
@@ -20,6 +18,7 @@ export const renderCuisines = ({ fields, meta: { error } }) => (
             fields={fields}
             field={field}
             index={index}
+            label='cuisine'
           />
         </div>
         )

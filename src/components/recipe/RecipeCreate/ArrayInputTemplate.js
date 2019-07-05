@@ -3,7 +3,8 @@ import { Field } from 'redux-form'
 import { renderField } from './containers/renderField'
 import AddRemoveButton from './AddRemoveButton'
 
-export default ({index, field, fields}) => {
+export default ({index, field, fields, label, textarea}) => {
+  console.log(field, fields, label)
   return (
     <li
         key={index}
@@ -21,7 +22,8 @@ export default ({index, field, fields}) => {
           name={field}
           type="text"
           component={renderField}
-          label={`Add ${field}`}
+          label={label}
+          textarea={textarea}
         />
       </div>
       <AddRemoveButton

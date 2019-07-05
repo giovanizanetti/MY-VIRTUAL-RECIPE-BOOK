@@ -2,18 +2,16 @@ import React from 'react'
 import { Field } from 'redux-form'
 import { renderField } from './renderField'
 import AddRemoveButton from '../AddRemoveButton'
+import AddButton from '../AddButton'
 
 export const renderIngredients = ({ fields, meta: { touched, error, submitFailed } }) => (
   <ul>
     <li>
-      <button
-        style={{margin: '3%'}}
-        type="button"
-        onClick={() => fields.push({})}
-        className="btn"
-      >
-        Add Ingredient
-      </button>
+      <AddButton
+        item='ingredients'
+        fields={fields}
+        onClick={ () => fields.push({})}
+      />
       {(touched || submitFailed) && error && <span>{error}</span>}
     </li>
     {fields.map((field, index) =>

@@ -2,14 +2,15 @@ import React from 'react'
 import ArrayInputTemplate from '../ArrayInputTemplate'
 import AddButton from '../AddButton'
 
-export const renderOccasions = ({ fields, meta: { error } }) => (
+export const renderInstructions = ({ fields, meta: { touched, error, submitFailed } }) => (
   <ul>
     <li>
       <AddButton
-          item='occasions'
-          fields={fields}
-          onClick={ () => fields.push() }
-        />
+        item='instructions'
+        fields={fields}
+        onClick={ () => fields.push() }
+      />
+      {(touched || submitFailed) && error && <span>{error}</span>}
     </li>
     {
       fields.map((field, index) => (
@@ -18,13 +19,12 @@ export const renderOccasions = ({ fields, meta: { error } }) => (
             fields={fields}
             field={field}
             index={index}
-            label='occasion'
+            label='instruction'
+            textarea={true}
           />
         </ div>
       )
     )}
-    {error && <li className="error">{error}</li>}
-  </ul>
+
+          </ul>
 )
-
-
