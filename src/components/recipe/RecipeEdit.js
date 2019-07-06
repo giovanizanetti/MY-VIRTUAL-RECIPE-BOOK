@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import { fetchRecipes, editRecipe, fetchRecipeById } from '../../actions/recipeActions'
 import _ from 'lodash'
 import RecipeForm from './RecipeForm/'
-import LoaderSpinner from '../LoaderSpinner'
+import LoaderProgressBar from '../LoaderProgressBar'
 import { compose } from 'redux'
 import { firestoreConnect } from 'react-redux-firebase'
 
@@ -21,7 +21,7 @@ class RecipeEdit extends Component {
     console.log(this.props, 'hiiii')
     return (
       !this.props.recipe
-      ? <LoaderSpinner />
+      ? <LoaderProgressBar />
       : <div>
           <h3>Edit a Recipe</h3>
           <RecipeForm

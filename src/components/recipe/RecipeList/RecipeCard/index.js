@@ -2,9 +2,11 @@ import React from 'react'
 import CardReveal from './CardReveal'
 import { trimString } from '../../../../myLibrary'
 import { selectRecipe } from '../../../../actions/recipeActions'
-import { connect }from 'react-redux'
+import { connect } from 'react-redux'
+import style from '../style'
 
 const RecipeCard = props => {
+  const { card } = style.recipeCard
   const {
     id, image, title, glutenFree, lowFodmap,
     vegetarian, vegan, dairyFree, readyInMinutes,
@@ -14,7 +16,7 @@ const RecipeCard = props => {
   return (
     <div
       className="card small col s12 m6 l4"
-      style={{ padding: 15 }}
+      style={ card }
       key={id}
       onClick={() => { selectRecipe(recipes.find(rec => rec.id === id)) }}
       >

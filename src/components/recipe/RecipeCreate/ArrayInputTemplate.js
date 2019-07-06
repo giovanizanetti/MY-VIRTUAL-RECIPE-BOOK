@@ -2,21 +2,15 @@ import React from 'react'
 import { Field } from 'redux-form'
 import { renderField } from './containers/renderField'
 import AddRemoveButton from './AddRemoveButton'
+import style from './style'
 
 export default ({index, field, fields, label, textarea}) => {
   console.log(field, fields, label)
   return (
     <li
-        key={index}
-        style={{
-          background: 'lightgoldenrodyellow',
-          border: 'solid 5px #020202',
-          borderRadius: '5%',
-          margin: '3%',
-          display: 'flex',
-          padding: '2%'
-        }}
-      >
+      key={index}
+      style={style.arrayInputs}
+    >
       <div className="container">
         <Field
           name={field}

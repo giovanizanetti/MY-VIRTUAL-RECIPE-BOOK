@@ -28,7 +28,8 @@ class RecipeForm extends Component {
           name='title'
           component={renderInput}
           type='text'
-          label='Enter Title'
+          label='Title'
+          placeholder='My recipe name'
         />
         <PrepTimeInputs />
         <IngredientsInputs />

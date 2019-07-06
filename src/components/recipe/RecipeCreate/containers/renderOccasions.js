@@ -6,10 +6,10 @@ export const renderOccasions = ({ fields, meta: { error } }) => (
   <ul>
     <li>
       <AddButton
-          item='occasions'
-          fields={fields}
-          onClick={ () => fields.push() }
-        />
+        item='occasions'
+        fields={fields}
+        onClick={ () => fields.push() }
+      />
     </li>
     {
       fields.map((field, index) => (

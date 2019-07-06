@@ -11,7 +11,7 @@ import AllergensInfo from './AllergensInfo'
 import Servings from './Servings'
 import Header from './header'
 import Instructions from './Instructions'
-import LoaderSpinner from '../../LoaderSpinner'
+import LoaderProgressBar from '../../LoaderProgressBar'
 import RecipeFooter from './RecipeFooter'
 
 class Recipedetail extends Component {
@@ -30,7 +30,7 @@ class Recipedetail extends Component {
   render() {
     const { auth, recipe } = this.props
     if(!auth.uid) return <Redirect to='/signin' />
-    if(!recipe) return <LoaderSpinner />
+    if(!recipe) return <LoaderProgressBar />
 
     const {
       title, image, occasions, extendedIngredients,

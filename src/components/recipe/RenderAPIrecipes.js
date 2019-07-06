@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { fetchRecipes } from '../../actions/recipeActions'
 import RecipeList from './RecipeList'
-import LoaderSpinner from '../LoaderSpinner'
+import LoaderProgressBar from '../LoaderProgressBar'
 
 class RenderAPIrecipes extends Component {
   componentDidMount = () => {
@@ -12,7 +12,7 @@ class RenderAPIrecipes extends Component {
     const { recipes }  = this.props
     return (
       recipes.isPending
-      ? <LoaderSpinner />
+      ? <LoaderProgressBar />
       : <RecipeList
           recipes={recipes.recipes}
         />

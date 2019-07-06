@@ -1,8 +1,9 @@
 import React from 'react'
 import Modal from '../../Modal'
+import style from './style'
 
 const RecipeFooter = props => {
-  const style = { margin: '1rem' }
+  const { container, button } = style.recipeFooter
   const buttonClasses ='waves-effect waves-light btn center-align modal-trigger'
   const deleteMessage = 'Are you sure you want to delete this recipe?'
   const editMessage =
@@ -19,12 +20,12 @@ const RecipeFooter = props => {
       <hr />
       <div
         className='container'
-        style={{display: 'flex', justifyContent: 'center'}}
+        style={ container }
       >
         <Modal popUp={deleteMessage} id={ 'modal1' } />
         <button
           data-target="modal1"
-          style={style}
+          style={ button }
           className={`${buttonClasses} red`}
         >
           Delete
@@ -33,7 +34,7 @@ const RecipeFooter = props => {
         { IS_SPOONACULAR_ID && <Modal history={props.history} recipeId={props.recipeId} popUp={editMessage} id={ 'modal2' } /> }
         <button
           data-target={"modal2"}
-          style={style}
+          style={ button }
           className={`${buttonClasses} grey`}
           onClick={ IS_SPOONACULAR_ID ? () => {} : handleClick }
         >Edit
@@ -42,7 +43,7 @@ const RecipeFooter = props => {
        <Modal id={ 'modal3' } />
         <button
           data-target="modal3"
-          style={style}
+          style={ button }
           className={`${buttonClasses} green`}
         >
           Print
@@ -51,7 +52,7 @@ const RecipeFooter = props => {
         <Modal id={ 'modal4' } />
         <button
           data-target="modal4"
-          style={style}
+          style={ button }
           className={`${buttonClasses} black`}
         >
           <i className="material-icons">share</i>

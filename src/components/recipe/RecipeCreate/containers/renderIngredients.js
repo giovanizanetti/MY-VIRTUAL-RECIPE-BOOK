@@ -3,6 +3,7 @@ import { Field } from 'redux-form'
 import { renderField } from './renderField'
 import AddRemoveButton from '../AddRemoveButton'
 import AddButton from '../AddButton'
+import style from '../style'
 
 export const renderIngredients = ({ fields, meta: { touched, error, submitFailed } }) => (
   <ul>
@@ -17,14 +18,7 @@ export const renderIngredients = ({ fields, meta: { touched, error, submitFailed
     {fields.map((field, index) =>
       <li
         key={index}
-        style={{
-          background: 'lightgoldenrodyellow',
-          border: 'solid 5px #020202',
-          borderRadius: '5%',
-          margin: '3%',
-          display: 'flex',
-          padding: '2%'
-        }}
+        style={style.arrayInputs}
         >
         <div className='container'>
           <Field
@@ -53,34 +47,6 @@ export const renderIngredients = ({ fields, meta: { touched, error, submitFailed
           index={index}
           fields={fields}
         />
-        {/* <div
-            style={{
-              display: 'flex',
-              flexDirection: 'column',
-              paddingLeft: '4%',
-              justifyContent: 'space-evenly'
-            }} >
-            <button
-              style={{
-                margin: '10%',
-                padding: "0 6px"
-              }}
-              className='btn red right'
-              type="button"
-              title="Remove Ingredient"
-              onClick={() => fields.remove(index)}
-            >
-            X
-            </button>
-            <button
-              style={{margin: '10%'}}
-              type="button"
-              onClick={ () => fields.push({}) }
-              className="btn"
-            >
-            +
-            </button>
-          </div> */}
       </li>
     )}
   </ul>

@@ -2,16 +2,14 @@ import React from 'react'
 import { compose } from 'redux'
 import { firestoreConnect } from 'react-redux-firebase'
 import { connect } from 'react-redux'
-import { selectRecipe } from '../../actions/recipeActions'
 import RecipeList from './RecipeList'
-import LoaderSpinner from '../LoaderSpinner'
+import LoaderProgressBar from '../LoaderProgressBar'
 
 const MyRecipes = (props) => {
   const { recipes } = props
-  console.log(props)
   return (
     !recipes
-    ? <LoaderSpinner />
+    ? <LoaderProgressBar />
     :
       <RecipeList
         recipes={recipes}

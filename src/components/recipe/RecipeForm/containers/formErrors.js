@@ -10,11 +10,15 @@ export const renderErrors = ({ error, touched }) => {
   }
 }
 
-
 export const validate = formValues => {
   const errors = {}
   if(!formValues.title) {
     errors.title = 'You must enter a title'
+  }
+  if (!formValues.readyInMinutes) {
+    errors.age = 'Please an etimation of preparation time is required'
+  } else if (isNaN(Number(formValues.readyInMinutes)) || isNaN(Number(formValues.cookingMinutes))) {
+    errors.age = 'time formate must be numbers'
   }
   return errors
 }
