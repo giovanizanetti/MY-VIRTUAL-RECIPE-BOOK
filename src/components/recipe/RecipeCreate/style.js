@@ -18,6 +18,7 @@ export default {
       margin: '10%',
       padding: "0 6px"
     },
+    addBtn: { margin: '10%' },
     addIcon: {
       display: 'flex',
       justifyContent: 'center'

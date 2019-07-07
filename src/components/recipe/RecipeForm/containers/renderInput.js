@@ -5,22 +5,23 @@ import style from '../style'
 
 
 export const renderInput = ({ input, label, meta, id , type, placeholder }) => {
+  const { touched, error, active, dirty, initial } = meta
   const className =
     `input-field col
     ${id === 'prepTime' || id === 'cookingMin' ? 's6': 's12'}
-    ${meta.error && meta.touched
+    ${error && touched
       ? 'wrong' : ''}`
     const { spanError } = style
   return (
     <div className={className}>
       <label
-        className={ meta.active || meta.dirty? "active" : undefined }>
+        className={ active || dirty || initial? "active" : undefined }>
         {label}
       </label>
       { id === 'prepTime' || id === 'cookingMin'
         ? <>
             <Cleave
-              placeholder={ meta.active ? 'hh:mm': null }
+              placeholder={ active ? 'hh:mm': null }
               {...input}
               options={{
                 time: true,
@@ -32,7 +33,7 @@ export const renderInput = ({ input, label, meta, id , type, placeholder }) => {
           </>
           :
             <input
-              placeholder={ meta.active ?placeholder: null }
+              placeholder={ active ? placeholder: null }
               type={type}
               {...input}
               autoComplete='off'

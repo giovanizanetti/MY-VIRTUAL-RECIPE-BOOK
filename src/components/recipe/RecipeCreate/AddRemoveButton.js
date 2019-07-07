@@ -2,7 +2,7 @@ import React from 'react'
 import style from './style'
 
 export default({index, fields, field}) => {
-  const { container, removeButton, addIcon } = style.addRemoveButton
+  const { container, removeButton, addIcon, addBtn } = style.addRemoveButton
   return (
     <div
       style={ container } >
@@ -15,7 +15,7 @@ export default({index, fields, field}) => {
         >X</button>
         <button
           title={`Add ${field}`}
-          style={{margin: '10%'}}
+          style={ addBtn }
           type="button"
           onClick={ () => fields.push() }
           className="btn"

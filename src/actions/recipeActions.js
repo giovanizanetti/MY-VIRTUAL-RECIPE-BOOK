@@ -12,8 +12,6 @@ import {
   FETCH_RECIPES_BY_ID_FAILED
 } from './types'
 
-
-
 export const createRecipe = recipe => {
   return (dispatch, getState, { getFirebase, getFirestore }) => {
     // make async call to database
@@ -41,16 +39,14 @@ export const selectRecipe = recipe => {
   }
 }
 
-export const editRecipe = recipe => {
+export const editRecipe = (id, recipe) => {
   return {
     type: EDIT_RECIPE,
-    payload: recipe
+    payload: id
   }
 }
 
 //Later: Create babse URL to make the code cleaner
-
-
 export const fetchRecipes = () => dispatch => {
   dispatch({
     type: FETCH_RECIPES_PENDING

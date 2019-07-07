@@ -16,8 +16,9 @@ export const validate = formValues => {
     errors.title = 'You must enter a title'
   }
   if (!formValues.readyInMinutes) {
-    errors.age = 'Please an etimation of preparation time is required'
-  } else if (isNaN(Number(formValues.readyInMinutes)) || isNaN(Number(formValues.cookingMinutes))) {
+    errors.age = 'Please an estimation of preparation time is required'
+  } else if (isNaN(Number(formValues.readyInMinutes))
+    || isNaN(Number(formValues.cookingMinutes))) {
     errors.age = 'time formate must be numbers'
   }
   return errors
