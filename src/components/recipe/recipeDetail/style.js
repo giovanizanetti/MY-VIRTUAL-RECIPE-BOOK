@@ -6,6 +6,7 @@ export default {
     container: { paddingTop: 1 },
     hederTitle: { textAlign: 'center'}
   },
+  card_inner_container: { paddingTop: '1rem'},
   ingredients: {
     ingredient_li: { margin: 20 },
     container: { listStyle: 'none' }
@@ -16,7 +17,6 @@ export default {
   prepTime: {
     container_ul: {
       paddingTop: 20,
-      paddingLeft: 20,
       display: 'flex',
       margin: 'auto'
     }

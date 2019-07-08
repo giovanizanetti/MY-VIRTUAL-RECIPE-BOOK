@@ -3,6 +3,7 @@ import {
   SELECT_RECIPE,
   CREATE_RECIPE,
   EDIT_RECIPE,
+  EDIT_RECIPE_ERROR,
   FETCH_RECIPES_FAILED,
   FETCH_RECIPES_PENDING,
   FETCH_RECIPES_SUCCESS,
@@ -32,17 +33,30 @@ export const createRecipe = recipe => {
   }
 }
 
+export const editRecipe = (id, recipe) => {
+  return (dispatch, getState, { getFirebase, getFirestore }) => {
+    // make async call to database
+    const firestore = getFirestore()
+    firestore.collection('recipes').doc(id).update({
+      ...recipe
+    }).then(() => {
+      dispatch({
+        type: EDIT_RECIPE,
+        payload: recipe
+      })
+    }).catch(err => {
+      dispatch({
+        type: EDIT_RECIPE_ERROR,
+        payload: err
+      })
+    })
+  }
+}
+
 export const selectRecipe = recipe => {
   return {
     type: SELECT_RECIPE,
     payload: recipe
-  }
-}
-
-export const editRecipe = (id, recipe) => {
-  return {
-    type: EDIT_RECIPE,
-    payload: id
   }
 }
 

@@ -3,6 +3,8 @@ import CheckBox from '../../ChechBox'
 import style from './style'
 
 // Later I will add some mesures by 'cup' instead of 'grams'
+//when user check the item of during the preparation pass a line through
+
 const Ingredients = ({ingredients}) => {
   const { container, ingredient_li } = style.ingredients
   const ingredientsList = ingredients && ingredients.map(ingredient => {

@@ -4,6 +4,8 @@ import { createRecipe } from '../../../actions/recipeActions'
 import RecipeForm from '../RecipeForm/'
 
 //This component use a template form (RecipeForm component)
+//Later => Check if the title matches any of the recipes from the database,
+//Ask if the user wants to replace it or create a new recipe e.g. recipe title(2)
 
 class RecipeCreate extends Component {
   onSubmit = formValues => {

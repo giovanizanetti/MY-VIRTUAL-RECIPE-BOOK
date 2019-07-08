@@ -31,7 +31,15 @@ const RecipeFooter = props => {
           Delete
         </button>
 
-        { IS_SPOONACULAR_ID && <Modal history={props.history} recipeId={props.recipeId} popUp={editMessage} id={ 'modal2' } /> }
+        {
+          IS_SPOONACULAR_ID &&
+          <Modal
+            history={props.history}
+            recipeId={props.recipeId}
+            popUp={editMessage}
+            id={ 'modal2' }
+          />
+        }
         <button
           data-target={"modal2"}
           style={ button }

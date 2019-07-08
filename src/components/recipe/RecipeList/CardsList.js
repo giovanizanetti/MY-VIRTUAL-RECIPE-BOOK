@@ -2,7 +2,7 @@ import React from 'react'
 import RecipeCard from './RecipeCard/'
 
 const CardsList = ({ recipes }) => {
-  return recipes.map(recipe => {
+  return recipes && recipes.map(recipe => {
     const {
       id, image, title, glutenFree, lowFodmap,
       vegetarian, vegan, dairyFree, readyInMinutes,
