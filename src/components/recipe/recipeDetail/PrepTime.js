@@ -2,8 +2,10 @@ import React from 'react'
 import CookingImg from './images/cooking.png'
 import ClockImg from './images/clock.png'
 import { timeFormat } from '../../../myLibrary'
+import style from './style'
 
 const PrepTime = ({ cookingMinutes, readyInMinutes }) => {
+  const { container_ul } = style.prepTime
   const cookingTime =
     cookingMinutes
     && cookingMinutes > 0
@@ -37,7 +39,7 @@ const PrepTime = ({ cookingMinutes, readyInMinutes }) => {
       <ul
         className='container'
         id='icons-container'
-        style={{paddingTop: 20, paddingLeft: 20, display: 'flex', margin: 'auto' }}
+        style={ container_ul }
       >
         { cookingTime }
         { totalPrepTime }

@@ -11,8 +11,10 @@ import AllergensInfo from './AllergensInfo'
 import Servings from './Servings'
 import Header from './header'
 import Instructions from './Instructions'
-import LoaderSpinner from '../../LoaderSpinner'
+import LoaderProgressBar from '../../LoaderProgressBar'
 import RecipeFooter from './RecipeFooter'
+import Cuisines from './Cuisines'
+import style from './style.js'
 
 class Recipedetail extends Component {
 
@@ -30,22 +32,29 @@ class Recipedetail extends Component {
   render() {
     const { auth, recipe } = this.props
     if(!auth.uid) return <Redirect to='/signin' />
-    if(!recipe) return <LoaderSpinner />
-
-    // Destructuring and use either properties from the recipes that are caming
-    // from firestore 'recipe' or from SpoonacularApi 'recipe.data'.
-    // I am making another call for a single recipe, and the
-    // api provides single recipe inside data property.
+    if(!recipe) return <LoaderProgressBar />
+ console.log(this.props)
     const {
-      title, image, occasions, extendedIngredients,
+      title, image, occasions, extendedIngredients, cuisines,
       cookingMinutes, readyInMinutes, servings, glutenFree,
-      vegetarian, lowFodmap, vegan, dairyFree, analyzedInstructions
-    } = recipe.data || recipe
+      vegetarian, lowFodmap, vegan, dairyFree, analyzedInstructions,
+    } = recipe
+
+    // Later => Add a button to prepare this recipe
+    // when the user push the button an alarm will pop up
+    // and the checkboxes will be available so the user can checkout
+    // each itengredient/instruction as it go.
     return (
       <div className='card'>
         <Header title={title} image={image} />
-        <Servings servings={servings}/>
-        <Occasions occasions={occasions} />
+        <div
+          class="container center"
+          style={style.card_inner_container}
+        >
+          <Cuisines cuisines={cuisines}/>
+          <Occasions occasions={occasions} />
+          <Servings servings={servings}/>
+        </div>
         <PrepTime
           cookingMinutes={cookingMinutes}
           readyInMinutes={readyInMinutes}
@@ -59,7 +68,10 @@ class Recipedetail extends Component {
           isVegan={vegan}
           isDairyFree={dairyFree}
         />
-        <RecipeFooter recipeId={this.props.match.params.id}/>
+        <RecipeFooter
+          recipeId={this.props.match.params.id}
+          history={this.props.history}
+        />
       </div>
     )
   }

@@ -2,19 +2,17 @@ import React from 'react'
 import { compose } from 'redux'
 import { firestoreConnect } from 'react-redux-firebase'
 import { connect } from 'react-redux'
-import { selectRecipe } from '../../actions/recipeActions'
 import RecipeList from './RecipeList'
-import LoaderSpinner from '../LoaderSpinner'
+import LoaderProgressBar from '../LoaderProgressBar'
 
 const MyRecipes = (props) => {
-  const { recipes, selectRecipe } = props
+  const { recipes } = props
   return (
     !recipes
-    ? <LoaderSpinner />
+    ? <LoaderProgressBar />
     :
       <RecipeList
         recipes={recipes}
-        selectRecipe={selectRecipe}
       />
   )
 }
@@ -27,7 +25,7 @@ const mapStateToProps = state => {
 }
 
 export default compose(
-  connect(mapStateToProps, { selectRecipe }),
+  connect(mapStateToProps),
   firestoreConnect([{
     collection: 'recipes'
   }])

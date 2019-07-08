@@ -3,6 +3,7 @@ import {
   SELECT_RECIPE,
   CREATE_RECIPE,
   EDIT_RECIPE,
+  EDIT_RECIPE_ERROR,
   FETCH_RECIPES_FAILED,
   FETCH_RECIPES_PENDING,
   FETCH_RECIPES_SUCCESS,
@@ -11,8 +12,6 @@ import {
   FETCH_RECIPES_BY_ID_PENDING,
   FETCH_RECIPES_BY_ID_FAILED
 } from './types'
-
-
 
 export const createRecipe = recipe => {
   return (dispatch, getState, { getFirebase, getFirestore }) => {
@@ -34,6 +33,26 @@ export const createRecipe = recipe => {
   }
 }
 
+export const editRecipe = (id, recipe) => {
+  return (dispatch, getState, { getFirebase, getFirestore }) => {
+    // make async call to database
+    const firestore = getFirestore()
+    firestore.collection('recipes').doc(id).update({
+      ...recipe
+    }).then(() => {
+      dispatch({
+        type: EDIT_RECIPE,
+        payload: recipe
+      })
+    }).catch(err => {
+      dispatch({
+        type: EDIT_RECIPE_ERROR,
+        payload: err
+      })
+    })
+  }
+}
+
 export const selectRecipe = recipe => {
   return {
     type: SELECT_RECIPE,
@@ -41,16 +60,7 @@ export const selectRecipe = recipe => {
   }
 }
 
-export const editRecipe = recipe => {
-  return {
-    type: EDIT_RECIPE,
-    payload: recipe
-  }
-}
-
 //Later: Create babse URL to make the code cleaner
-
-
 export const fetchRecipes = () => dispatch => {
   dispatch({
     type: FETCH_RECIPES_PENDING
@@ -87,9 +97,9 @@ export const fetchRecipeById = (id) => (dispatch) => {
     },
     params: { id }
   })
-  .then(data => dispatch({
+  .then(res => dispatch({
     type: FETCH_RECIPES_BY_ID_SUCCESS,
-    payload: data
+    payload: res.data
   }))
   .then(data => console.log(data))
   .catch(error => dispatch({

@@ -4,8 +4,8 @@ const Servings = ({servings}) => {
   const servPeople = () => {
     if (servings &&  servings !== 0) {
       return servings > 1
-      ? `This recipe serves ${servings} people`
-      : `This recipe serves ${servings} person`
+      ? `It is ideal for ${servings} people.`
+      : `It is ideal for ${servings} person.`
      }
      return null
   }

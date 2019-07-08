@@ -6,13 +6,15 @@ import {
   CREATE_RECIPE_ERROR,
   FETCH_RECIPES_BY_ID_PENDING,
   FETCH_RECIPES_BY_ID_SUCCESS,
-  FETCH_RECIPES_BY_ID_FAILED
+  FETCH_RECIPES_BY_ID_FAILED,
+  EDIT_RECIPE,
+  EDIT_RECIPE_ERROR
 } from '../actions/types'
 
 const initialState = {
   isPending : false,
   recipes: [],
-  error: ''
+  error: '',
 }
 
 export default (state=initialState, action) => {
@@ -44,7 +46,7 @@ export default (state=initialState, action) => {
       console.log('success')
       return {
         ...state,
-        recipe: action.payload.id,
+        recipes: action.payload.id,
         isPending: false
       }
     case FETCH_RECIPES_BY_ID_FAILED:
@@ -58,6 +60,17 @@ export default (state=initialState, action) => {
       return state
     case CREATE_RECIPE_ERROR:
       return state
+    case EDIT_RECIPE:
+      console.log('cool', action.payload)
+      return {
+        ...state,
+        [action.payload.id]: action.payload
+      }
+    case EDIT_RECIPE_ERROR:
+      console.log('failed edit')
+      return {
+        ...state,
+      }
     default:
       return state
   }

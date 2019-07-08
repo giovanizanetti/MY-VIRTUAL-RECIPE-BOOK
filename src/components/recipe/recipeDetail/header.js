@@ -1,16 +1,16 @@
 import React from 'react'
+import style from './style'
 
 const Header = ({title, image}) => {
   const recipeTitle = title
+  const { headerTitle, container } = style.header
   return (
-    <div style={{paddingTop: 1}}>
-      <h4 style={{
-        textAlign: 'center',
-         }} >
-        {recipeTitle}
-      </h4>
+    <div className='container' style={ container }>
+      <h5 style={ headerTitle } >
+        { recipeTitle }
+      </h5>
       <div className="card-image">
-        <img src={image} alt={title}/>
+        <img src={ image } alt={ title }/>
       </div>
     </div>
 

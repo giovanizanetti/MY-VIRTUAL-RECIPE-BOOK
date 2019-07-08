@@ -1,14 +1,14 @@
 import React from 'react'
-
+import style from './style'
 const AddToFavorite = ({ createCategory, addToFavorites, id }) => {
-  console.log(id)
+  const { link } = style.addTofavorite
   return (
     <div
       onSubmit={() => addToFavorites(id)}
       className="favorite">
       <a
         className="btn-floating btn-large waves-effect waves-light pink right"
-        style={{margin: '1rem'}}
+        style={ link }
       >
         <i className="material-icons">add</i>
       </a>

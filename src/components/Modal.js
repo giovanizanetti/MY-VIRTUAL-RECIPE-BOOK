@@ -15,6 +15,10 @@ class Modal extends Component {
       };
     M.Modal.init(this.Modal, options)
   }
+  handleClick = () => {
+    this.props.history.push(`/recipes/edit/${this.props.recipeId}`)
+  }
+
   render() {
    const renderContent = () => {
       switch (this.props.id) {
@@ -43,7 +47,7 @@ class Modal extends Component {
             Cancel
           </a>
           { this.props.id !== 'modal4'
-            ? <a href="#" className="modal-close waves-effect waves-green btn-flat">Yes</a>
+            ? <a onClick={this.handleClick} className="modal-close waves-effect waves-green btn-flat">Yes</a>
               : null
           }
         </div>
