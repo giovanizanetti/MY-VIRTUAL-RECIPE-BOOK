@@ -2,6 +2,12 @@ import React, { Component } from 'react'
 import M from "materialize-css/dist/js/materialize.min.js"
 import SharePlatforms from '../components/recipe/RecipeDetail/SharePlatforms'
 import PrintPreferences from '../components/recipe/RecipeDetail/PrintPreferences'
+import { deleteRecipe, fetchRecipeById } from '../actions/recipeActions'
+import { connect } from 'react-redux'
+import { firestoreConnect } from 'react-redux-firebase'
+import { compose } from 'redux'
+import { getFirestore } from 'redux-firestore'
+import { Redirect } from 'react-router-dom'
 
 class Modal extends Component {
   componentDidMount() {
@@ -15,16 +21,26 @@ class Modal extends Component {
       };
     M.Modal.init(this.Modal, options)
   }
+
+  handleDelete = () => {
+    getFirestore().collection('recipes')
+    .doc(this.props.recipeId).delete()
+    .then(this.props.history.replace('/myRecipes'))
+    .then(console.log('Your recipe was succefully deleted'))
+  }
+
   handleClick = () => {
-    this.props.history.push(`/recipes/edit/${this.props.recipeId}`)
+    this.props.id === 'delete'
+    ? this.handleDelete()
+    : this.props.history.push(`/recipes/edit/${this.props.recipeId}`)
   }
 
   render() {
    const renderContent = () => {
       switch (this.props.id) {
-        case 'modal1':
+        case 'delete':
           return <span>{ this.props.popUp }</span>
-        case 'modal2':
+        case 'edit':
           return <span>{ this.props.popUp }</span>
         case 'modal3':
           return <PrintPreferences />
@@ -56,5 +72,36 @@ class Modal extends Component {
   }
 }
 
+const mapStateToProps = (state, ownProps) => {
+  const { firestore, selectedRecipe, firebase} = state
+  const { recipes } = firestore.ordered
+  const ID = ownProps.recipeId
+  const ONLY_NUMBERS_REGEX = /^[0-9]*$/
+  const IS_SPOONACULAR_ID = ONLY_NUMBERS_REGEX.test(ID)
 
-export default Modal
+  /*
+    For some reason that I do not understand,
+    when I refresh the page recipes/ (from the Api) I have the selected recipe in the reducer,
+    however, when I refresh from /myRecipes (from Firestore) I don't have it.
+    API ids are numbers only, so I check if the id is from API, if yes I return selected recipe,
+    otherwise I get from firestore and assign the recipe property.
+   */
+  return {
+    auth: firebase.auth,
+    selectedRecipe,
+    recipe: IS_SPOONACULAR_ID === true
+      ? selectedRecipe
+      : recipes && recipes.find(rec => rec.id === ID),
+  }
+}
+
+export default compose(
+  connect(
+    mapStateToProps,
+    { fetchRecipeById }
+  ),
+  firestoreConnect([{
+    collection: 'recipes'
+  }])
+)(Modal)
+

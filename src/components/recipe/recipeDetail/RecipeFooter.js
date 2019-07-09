@@ -11,10 +11,9 @@ const RecipeFooter = props => {
   const ONLY_NUMBERS_REGEX = /^[0-9]*$/
   const IS_SPOONACULAR_ID = ONLY_NUMBERS_REGEX.test(props.recipeId)
 
-  const handleClick = () => {
+  const handleEdit = () => {
     props.history.push(`/recipes/edit/${props.recipeId}`)
   }
-
   return (
     <>
       <hr />
@@ -22,29 +21,35 @@ const RecipeFooter = props => {
         className='container'
         style={ container }
       >
-        <Modal popUp={deleteMessage} id={ 'modal1' } />
+        <Modal
+          popUp={ deleteMessage }
+          id={ 'delete' }
+          deleteRecipe={ props.deleteRecipe }
+          recipeId={props.recipeId}
+          history={props.history}
+        />
         <button
-          data-target="modal1"
+          data-target="delete"
           style={ button }
           className={`${buttonClasses} red`}
+          recipe={props.recipe}
         >
           Delete
         </button>
-
         {
           IS_SPOONACULAR_ID &&
           <Modal
             history={props.history}
             recipeId={props.recipeId}
             popUp={editMessage}
-            id={ 'modal2' }
+            id={ 'edit' }
           />
         }
         <button
-          data-target={"modal2"}
+          data-target={"edit"}
           style={ button }
           className={`${buttonClasses} grey`}
-          onClick={ IS_SPOONACULAR_ID ? () => {} : handleClick }
+          onClick={ IS_SPOONACULAR_ID ? () => {} : handleEdit }
         >Edit
         </button>
 

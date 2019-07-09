@@ -12,6 +12,7 @@ const MyRecipes = (props) => {
       className='container'
         style={{ display: 'flex',
                 flexDirection: 'column',
+                alignItems: 'center',
               }}
       >
         <span>You have no recipes!</span>

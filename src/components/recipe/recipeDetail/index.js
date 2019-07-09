@@ -71,6 +71,7 @@ class Recipedetail extends Component {
         <RecipeFooter
           recipeId={this.props.match.params.id}
           history={this.props.history}
+          recipe={this.props.recipe}
         />
       </div>
     )
@@ -101,7 +102,10 @@ const mapStateToProps = (state, ownProps) => {
 }
  // To have access to the firestore I must use firestore connect.
 export default compose(
-  connect(mapStateToProps, { selectRecipe, fetchRecipeById }),
+  connect(
+    mapStateToProps,
+    { selectRecipe, fetchRecipeById }
+  ),
   firestoreConnect([{
     collection: 'recipes'
   }])
