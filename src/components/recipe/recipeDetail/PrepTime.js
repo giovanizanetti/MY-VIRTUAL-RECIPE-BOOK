@@ -28,7 +28,7 @@ const PrepTime = ({ cookingMinutes, readyInMinutes }) => {
       <li className='icon'>
         <img
           className='responsive-img icons_img'
-          src={ClockImg} alt={`ready in ${totalPrepTime}`} />
+          src={ClockImg} alt={`ready in ${ timeFormat(readyInMinutes) }`} />
         <span>{ timeFormat(readyInMinutes) }</span>
         <p>Ready in { timeFormat(readyInMinutes) }.</p>
       </li>

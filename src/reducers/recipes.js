@@ -8,7 +8,9 @@ import {
   FETCH_RECIPES_BY_ID_SUCCESS,
   FETCH_RECIPES_BY_ID_FAILED,
   EDIT_RECIPE,
-  EDIT_RECIPE_ERROR
+  EDIT_RECIPE_ERROR,
+  DELETE_RECIPE,
+  DELETE_RECIPE_ERROR
 } from '../actions/types'
 
 const initialState = {
@@ -61,16 +63,17 @@ export default (state=initialState, action) => {
     case CREATE_RECIPE_ERROR:
       return state
     case EDIT_RECIPE:
-      console.log('cool', action.payload)
       return {
         ...state,
         [action.payload.id]: action.payload
       }
     case EDIT_RECIPE_ERROR:
-      console.log('failed edit')
-      return {
-        ...state,
-      }
+      return state
+    case DELETE_RECIPE:
+      console.log(action.payload, 'aaaaaffff')
+      return state
+    case DELETE_RECIPE_ERROR:
+      return state
     default:
       return state
   }

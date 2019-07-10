@@ -10,7 +10,9 @@ import {
   CREATE_RECIPE_ERROR,
   FETCH_RECIPES_BY_ID_SUCCESS,
   FETCH_RECIPES_BY_ID_PENDING,
-  FETCH_RECIPES_BY_ID_FAILED
+  FETCH_RECIPES_BY_ID_FAILED,
+  DELETE_RECIPE,
+  DELETE_RECIPE_ERROR
 } from './types'
 
 export const createRecipe = recipe => {
@@ -47,6 +49,23 @@ export const editRecipe = (id, recipe) => {
     }).catch(err => {
       dispatch({
         type: EDIT_RECIPE_ERROR,
+        payload: err
+      })
+    })
+  }
+}
+
+export const deleteRecipe = (id) => {
+  return (dispatch, getState, { getFirebase, getFirestore }) => {
+    // make async call to database
+    const firestore = getFirestore()
+    firestore.collection('recipes').doc(id).delete().then(() => {
+      dispatch({
+        type: DELETE_RECIPE,
+      })
+    }).catch(err => {
+      dispatch({
+        type: DELETE_RECIPE_ERROR,
         payload: err
       })
     })
@@ -107,5 +126,6 @@ export const fetchRecipeById = (id) => (dispatch) => {
     payload: error
   }))
 }
+
 
 

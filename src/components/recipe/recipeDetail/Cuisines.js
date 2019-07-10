@@ -2,7 +2,7 @@ import React from 'react'
 import { arrToStringPunctuation } from '../../../myLibrary'
 
 const Cuisines = ({cuisines}) => {
-  const isPlural = cuisines.length > 1 ? 'cuisines' : 'cuisine'
+  const isPlural = cuisines && cuisines.length > 1 ? 'cuisines' : 'cuisine'
   const displayCuisines =
     cuisines
     && arrToStringPunctuation(cuisines) !== null

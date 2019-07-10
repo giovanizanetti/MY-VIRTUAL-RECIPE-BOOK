@@ -6,4 +6,5 @@ const style = {
   opacity: 'unset'
 }
 
-export default() => <input style={style}type="checkbox" />
+const Checkbox = props => <input className={props.className} style={style} type="checkbox" />
+export default Checkbox

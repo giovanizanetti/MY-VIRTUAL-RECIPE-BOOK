@@ -5,6 +5,7 @@ import { firebaseReducer } from 'react-redux-firebase'
 import recipes from './recipes'
 import selectedRecipe from './selectedRecipe'
 import auth from './auth'
+import checkBoxes from './checkBoxes'
 
 
 export default combineReducers({
@@ -14,4 +15,5 @@ export default combineReducers({
   firestore: firestoreReducer,
   firebase: firebaseReducer,
   auth,
+  checkBoxes
 })
