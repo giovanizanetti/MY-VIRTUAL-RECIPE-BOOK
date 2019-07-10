@@ -1,5 +1,4 @@
 import React from 'react'
-import ArrayInputTemplate from '../ArrayInputTemplate'
 import AddButton from '../AddButton'
 import { Field } from 'redux-form'
 import { renderField } from './renderField'

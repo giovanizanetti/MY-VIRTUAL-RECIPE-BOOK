@@ -11,16 +11,16 @@ const SharePlatforms = () => {
   return (
     <>
       <h6>Choose de Platform</h6>
-      <Link>
+      <Link to=''>
         <img className='responsive-img' style={ imgLink } src={ Whatsapp } alt="whatsapp" />
       </Link>
-      <Link>
+      <Link to=''>
         <img className='responsive-img' style={ imgLink } src={ Facebook } alt="facebook" />
       </Link>
-      <Link>
+      <Link to=''>
         <img className='responsive-img' style={ imgLink } src={ Email } alt="email" />
       </Link>
-      <Link>
+      <Link to=''>
         <img className='responsive-img' style={ imgLink } src={ Instagram } alt="instagram" />
       </Link>
     </>

@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import { compose } from 'redux'
 import { firestoreConnect } from 'react-redux-firebase'
 import { fetchRecipeById, selectRecipe } from '../../../actions/recipeActions'
+import { isNumber } from '../../../myLibrary'
 import { Redirect } from 'react-router-dom'
 import Occasions from './Occasions'
 import Ingredients from './Ingredients'
@@ -18,15 +19,15 @@ import style from './style.js'
 
 class Recipedetail extends Component {
 
-    // Fetching Recipe by ID from the API
-  //   // It works for the, however, I am making another call to the API,
-  //   // I believe there is a better way to do that, just need to figure out how!!
-  //   // When I refresh the page the recipes from the state go disappear!!
-  //   // So that is why I am making another call to the API "fetchRecipeById(ID)"
-  //   // instead of grabbing the recipe from the recipes reducer
+  // Fetching Recipe by ID from the API
   componentDidMount(){
     const ID = this.props.match.params.id
-    !this.props.selectedRecipe && this.props.fetchRecipeById(ID)
+    const IS_SPOONACULAR_ID = isNumber(ID)
+    const { fetchRecipeById, selectedRecipe } = this.props
+
+    !selectedRecipe
+    && IS_SPOONACULAR_ID
+    && fetchRecipeById(ID)
   }
 
   render() {
@@ -48,7 +49,7 @@ class Recipedetail extends Component {
       <div className='card'>
         <Header title={title} image={image} />
         <div
-          class="container center"
+          className="container center"
           style={style.card_inner_container}
         >
           <Cuisines cuisines={cuisines}/>
@@ -82,8 +83,7 @@ const mapStateToProps = (state, ownProps) => {
   const { firestore, selectedRecipe, firebase} = state
   const { recipes } = firestore.ordered
   const ID = ownProps.match.params.id
-  const ONLY_NUMBERS_REGEX = /^[0-9]*$/
-  const IS_SPOONACULAR_ID = ONLY_NUMBERS_REGEX.test(ID)
+  const IS_SPOONACULAR_ID = isNumber(ID)
 
   /*
     For some reason that I do not understand,

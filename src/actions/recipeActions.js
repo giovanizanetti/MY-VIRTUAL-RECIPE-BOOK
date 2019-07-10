@@ -55,23 +55,22 @@ export const editRecipe = (id, recipe) => {
   }
 }
 
-// export const deleteRecipe = (id) => {
-//   console.log('vai toma')
-//   return (dispatch, getState, { getFirebase, getFirestore }) => {
-//     // make async call to database
-//     const firestore = getFirestore()
-//     firestore.collection('recipes').doc(id).delete().then(() => {
-//       dispatch({
-//         type: DELETE_RECIPE,
-//       })
-//     }).catch(err => {
-//       dispatch({
-//         type: DELETE_RECIPE_ERROR,
-//         payload: err
-//       })
-//     })
-//   }
-// }
+export const deleteRecipe = (id) => {
+  return (dispatch, getState, { getFirebase, getFirestore }) => {
+    // make async call to database
+    const firestore = getFirestore()
+    firestore.collection('recipes').doc(id).delete().then(() => {
+      dispatch({
+        type: DELETE_RECIPE,
+      })
+    }).catch(err => {
+      dispatch({
+        type: DELETE_RECIPE_ERROR,
+        payload: err
+      })
+    })
+  }
+}
 
 export const selectRecipe = recipe => {
   return {

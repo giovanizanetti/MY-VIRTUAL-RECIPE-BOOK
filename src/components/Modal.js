@@ -2,12 +2,10 @@ import React, { Component } from 'react'
 import M from "materialize-css/dist/js/materialize.min.js"
 import SharePlatforms from '../components/recipe/RecipeDetail/SharePlatforms'
 import PrintPreferences from '../components/recipe/RecipeDetail/PrintPreferences'
-import { deleteRecipe, fetchRecipeById } from '../actions/recipeActions'
+import { fetchRecipeById, deleteRecipe } from '../actions/recipeActions'
 import { connect } from 'react-redux'
 import { firestoreConnect } from 'react-redux-firebase'
 import { compose } from 'redux'
-import { getFirestore } from 'redux-firestore'
-import { Redirect } from 'react-router-dom'
 
 class Modal extends Component {
   componentDidMount() {
@@ -23,25 +21,31 @@ class Modal extends Component {
   }
 
   handleDelete = () => {
-    getFirestore().collection('recipes')
-    .doc(this.props.recipeId).delete()
-    .then(this.props.history.replace('/myRecipes'))
-    .then(console.log('Your recipe was succefully deleted'))
+    const { recipeId, history, deleteRecipe } = this.props
+    const REDIRECT = history.replace('/myRecipes')
+    /*
+      Even though deleteRecipe action creator accepts only one argument,
+      seems like javaScript understands when I pass REDIRECT as a
+      second argument.
+    */
+    deleteRecipe(recipeId, REDIRECT)
   }
 
   handleClick = () => {
-    this.props.id === 'delete'
+    const { history, recipeId, id } = this.props
+    id === 'delete'
     ? this.handleDelete()
-    : this.props.history.push(`/recipes/edit/${this.props.recipeId}`)
+    : history.push(`/recipes/edit/${ recipeId }`)
   }
 
   render() {
-   const renderContent = () => {
-      switch (this.props.id) {
+    const { id, popUp } = this.props
+    const renderContent = () => {
+      switch (id) {
         case 'delete':
-          return <span>{ this.props.popUp }</span>
+          return <span>{ popUp }</span>
         case 'edit':
-          return <span>{ this.props.popUp }</span>
+          return <span>{ popUp }</span>
         case 'modal3':
           return <PrintPreferences />
         default:
@@ -59,11 +63,15 @@ class Modal extends Component {
           { renderContent() }
         </div>
         <div className="modal-footer">
-          <a href="#" className="modal-close waves-effect waves-red btn-flat">
+          <button href="#" className="modal-close waves-effect waves-red btn-flat">
             Cancel
-          </a>
+          </button>
           { this.props.id !== 'modal4'
-            ? <a onClick={this.handleClick} className="modal-close waves-effect waves-green btn-flat">Yes</a>
+            ? <button
+                onClick={ this.handleClick }
+                className="modal-close waves-effect waves-green btn-flat"
+                >Yes
+              </button>
               : null
           }
         </div>
@@ -98,7 +106,7 @@ const mapStateToProps = (state, ownProps) => {
 export default compose(
   connect(
     mapStateToProps,
-    { fetchRecipeById }
+    { fetchRecipeById, deleteRecipe  }
   ),
   firestoreConnect([{
     collection: 'recipes'
