@@ -5,7 +5,6 @@ import { signIn } from '../../actions/authActions'
 import { compose } from 'redux'
 import { Redirect } from 'react-router-dom'
 
-
 const SignIn = props => {
   console.log(props)
   const { handleSubmit, pristine, submitting, signIn, formValues, authError, auth, selectedRecipe} = props

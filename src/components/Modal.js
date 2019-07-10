@@ -46,7 +46,7 @@ class Modal extends Component {
           return <span>{ popUp }</span>
         case 'edit':
           return <span>{ popUp }</span>
-        case 'modal3':
+        case 'print':
           return <PrintPreferences />
         default:
           return <SharePlatforms />
@@ -66,7 +66,7 @@ class Modal extends Component {
           <button href="#" className="modal-close waves-effect waves-red btn-flat">
             Cancel
           </button>
-          { this.props.id !== 'modal4'
+          { this.props.id !== 'share'
             ? <button
                 onClick={ this.handleClick }
                 className="modal-close waves-effect waves-green btn-flat"

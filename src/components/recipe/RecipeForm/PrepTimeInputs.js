@@ -8,13 +8,15 @@ export default () => (
       name='cookingMinutes'
       component={renderInput}
       label='Cooking Time'
-      id='cookingMin'
+      type='number'
+      placeholder='minutes'
     />
     <Field
       name='readyInMinutes'
       component={renderInput}
       label='Preparation Time'
-      id='prepTime'
+      type='number'
+      placeholder='minutes'
     />
   </div>
 )

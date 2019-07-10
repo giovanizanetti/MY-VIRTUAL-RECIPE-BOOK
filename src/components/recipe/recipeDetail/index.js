@@ -18,7 +18,6 @@ import Cuisines from './Cuisines'
 import style from './style.js'
 
 class Recipedetail extends Component {
-
   // Fetching Recipe by ID from the API
   componentDidMount(){
     const ID = this.props.match.params.id
@@ -31,10 +30,10 @@ class Recipedetail extends Component {
   }
 
   render() {
-    const { auth, recipe } = this.props
+    const { auth, recipe, match, history } = this.props
     if(!auth.uid) return <Redirect to='/signin' />
     if(!recipe) return <LoaderProgressBar />
- console.log(this.props)
+
     const {
       title, image, occasions, extendedIngredients, cuisines,
       cookingMinutes, readyInMinutes, servings, glutenFree,
@@ -70,9 +69,9 @@ class Recipedetail extends Component {
           isDairyFree={dairyFree}
         />
         <RecipeFooter
-          recipeId={this.props.match.params.id}
-          history={this.props.history}
-          recipe={this.props.recipe}
+          recipeId={ match.params.id }
+          history={ history }
+          recipe={ recipe }
         />
       </div>
     )
@@ -95,7 +94,7 @@ const mapStateToProps = (state, ownProps) => {
   return {
     auth: firebase.auth,
     selectedRecipe,
-    recipe: IS_SPOONACULAR_ID === true
+    recipe: IS_SPOONACULAR_ID
       ? selectedRecipe
       : recipes && recipes.find(rec => rec.id === ID),
   }
