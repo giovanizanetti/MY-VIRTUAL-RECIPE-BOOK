@@ -6,11 +6,11 @@ const RecipeList = (props) => {
 
   return (
     <div className="row col">
-      <button
-        class="btn blue"
+      {/* <button
+        className="btn blue"
       >
         Select
-      </button>
+      </button> */}
       <CardsList
         recipes={recipes}
       />

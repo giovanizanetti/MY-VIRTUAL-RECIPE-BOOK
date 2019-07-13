@@ -108,7 +108,7 @@ class ImgInput extends React.Component {
     return (
       <div
         style={{display: 'flex', alignItems: 'center', flexDirection: 'column'}}
-        Name="card small"
+        className="card small"
       >
         <div className="card-image">
           <img
@@ -118,13 +118,13 @@ class ImgInput extends React.Component {
             style={{ height: "30vw", objectFit: "cover" }}
           />
         </div>
-        <div Name="card-content">
+        <div className="card-content">
           <span>
             {`Image has to be JPEG or PNG, with max of ${ maxWidth } px width,
             ${ maxHeight } px height and ${ maxWeight } kb size`}
           </span>
         </div>
-        <div Name="card-action">
+        <div className="card-action">
           <Field
             name="image"
             type="file"

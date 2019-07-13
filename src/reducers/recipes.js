@@ -70,7 +70,6 @@ export default (state=initialState, action) => {
     case EDIT_RECIPE_ERROR:
       return state
     case DELETE_RECIPE:
-      console.log(action.payload, 'aaaaaffff')
       return state
     case DELETE_RECIPE_ERROR:
       return state

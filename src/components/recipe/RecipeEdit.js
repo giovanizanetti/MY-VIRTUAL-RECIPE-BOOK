@@ -6,6 +6,7 @@ import RecipeForm from './RecipeForm/'
 import LoaderProgressBar from '../LoaderProgressBar'
 import { compose } from 'redux'
 import { firestoreConnect } from 'react-redux-firebase'
+import { isNumber } from '../../myLibrary'
 
 //This component make use of a tempate (RecipeForm component)
 class RecipeEdit extends Component {
@@ -21,12 +22,12 @@ class RecipeEdit extends Component {
       */
   onSubmit = (formValues) => {
     const ID = this.props.match.params.id
-    const ONLY_NUMBERS_REGEX = /^[0-9]*$/
-    const IS_SPOONACULAR_ID = ONLY_NUMBERS_REGEX.test(ID)
+    const IS_SPOONACULAR_ID = isNumber(ID)
     // this.props.editRecipe(ID, formValues)
     IS_SPOONACULAR_ID
     ? this.props.createRecipe(formValues)
     : this.props.editRecipe(ID, formValues)
+    return this.props.history.replace(`/recipes/${ID}`)
   }
 
   render() {
@@ -63,8 +64,7 @@ const mapStateToProps = (state, ownProps) => {
   const { firestore, selectedRecipe, firebase} = state
   const { recipes } = firestore.ordered
   const ID = ownProps.match.params.id
-  const ONLY_NUMBERS_REGEX = /^[0-9]*$/
-  const IS_SPOONACULAR_ID = ONLY_NUMBERS_REGEX.test(ID)
+  const IS_SPOONACULAR_ID = isNumber(ID)
   return {
     auth: firebase.auth,
     selectedRecipe,
