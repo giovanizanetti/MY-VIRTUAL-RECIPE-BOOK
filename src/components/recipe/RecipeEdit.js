@@ -16,14 +16,14 @@ class RecipeEdit extends Component {
   }
 
   /* Later => - when submit check whether the recipe already exist in Firestore,
-    in case the recipe is coming from the Spoonacular and i not saved in firestore
-    a new recipe will be created. So i will have we to call the action creator for
+    in case the recipe is coming from the Spoonacular and is not saved in firestore
+    a new recipe will be created. So I will have to call the action creator for
     creating a recipe.
-      */
+  */
   onSubmit = (formValues) => {
     const ID = this.props.match.params.id
     const IS_SPOONACULAR_ID = isNumber(ID)
-    // this.props.editRecipe(ID, formValues)
+
     IS_SPOONACULAR_ID
     ? this.props.createRecipe(formValues)
     : this.props.editRecipe(ID, formValues)
@@ -31,8 +31,9 @@ class RecipeEdit extends Component {
   }
 
   render() {
+    const { recipe } = this.props
     return (
-      !this.props.recipe
+      !recipe
       ? <LoaderProgressBar />
       : <div>
           <h3>Edit Recipe</h3>
@@ -40,7 +41,7 @@ class RecipeEdit extends Component {
             onSubmit={this.onSubmit}
             //pick only the the values that I actually change inside the form using pick func from Lodash library.
             initialValues={_.pick(
-              this.props.recipe,
+              recipe,
               'title',
               'cookingMinutes',
               'cuisines',

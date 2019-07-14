@@ -6,6 +6,7 @@ import { fetchRecipeById, deleteRecipe } from '../actions/recipeActions'
 import { connect } from 'react-redux'
 import { firestoreConnect } from 'react-redux-firebase'
 import { compose } from 'redux'
+import { isNumber } from '../myLibrary'
 
 class Modal extends Component {
   componentDidMount() {
@@ -84,8 +85,7 @@ const mapStateToProps = (state, ownProps) => {
   const { firestore, selectedRecipe, firebase} = state
   const { recipes } = firestore.ordered
   const ID = ownProps.recipeId
-  const ONLY_NUMBERS_REGEX = /^[0-9]*$/
-  const IS_SPOONACULAR_ID = ONLY_NUMBERS_REGEX.test(ID)
+  const IS_SPOONACULAR_ID = isNumber(ID)
 
   /*
     For some reason that I do not understand,
