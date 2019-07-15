@@ -2,17 +2,21 @@ import React from 'react'
 import Modal from '../../Modal'
 import style from './style'
 import { isNumber } from '../../../myLibrary'
+import { createRecipe } from '../../../actions/recipeActions'
+import { connect } from 'react-redux'
 
 const RecipeFooter = props => {
   const { recipeId, history, recipe } = props
   const { container, button } = style.recipeFooter
   const buttonClasses ='waves-effect waves-light btn center-align modal-trigger'
   const deleteMessage = 'Are you sure you want to delete this recipe?'
-  const editMessage =
-    'This recipe is not in your recipes. Do you want to edit it and save the modified version to your recipes?'
+  const saveMessage= `The recipe ${recipe.title.toUpperCase()} was just saved in 'My Recipes' `
+  const editMessage = 'This recipe is not in your recipes. Do you want to edit it and save the modified version to your recipes?'
   const IS_SPOONACULAR_ID = isNumber(recipeId)
   const handleEdit = () => history.push(`/recipes/edit/${ recipeId }`)
+  const recipeToSave = (recipe) => {
 
+  }
   return (
     <>
       <hr />
@@ -20,20 +24,42 @@ const RecipeFooter = props => {
         className='container'
         style={ container }
       >
-        <Modal
-          popUp={ deleteMessage }
-          id={ 'delete' }
-          recipeId={ recipeId }
-          history={ history }
-        />
-        <button
-          data-target="delete"
-          style={ button }
-          className={`${ buttonClasses } red`}
-          recipe={ recipe }
-        >
-          Delete
-        </button>
+        { !IS_SPOONACULAR_ID
+        ?
+          <>
+            <Modal
+                popUp={ deleteMessage }
+                id={ 'delete' }
+                recipeId={ recipeId }
+                history={ history }
+              />
+              <button
+                data-target="delete"
+                style={ button }
+                className={`${ buttonClasses } red`}
+                recipe={ recipe }
+              >
+                Delete
+              </button>
+            </>
+        : <>
+            <Modal
+              popUp={ saveMessage }
+              id={'save' }
+              recipeId={ recipeId }
+              history={ history }
+            />
+            <button
+              data-target="save"
+              style={ button }
+              className={`${ buttonClasses } blue`}
+              recipe={ recipe }
+              onClick={() => props.createRecipe(recipe)}
+            >
+              Save
+            </button>
+          </>
+        }
         {
           IS_SPOONACULAR_ID &&
           <Modal
@@ -56,6 +82,8 @@ const RecipeFooter = props => {
           data-target="print"
           style={ button }
           className={`${ buttonClasses } green`}
+          history={ history }
+          onClick={() => console.log(history)}
         >
           Print
         </button>
@@ -73,4 +101,7 @@ const RecipeFooter = props => {
   )
 }
 
-export default (RecipeFooter)
+
+
+
+export default connect(null, { createRecipe }) (RecipeFooter)

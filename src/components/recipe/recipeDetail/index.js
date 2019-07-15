@@ -43,7 +43,7 @@ class Recipedetail extends Component {
     // Later => Add a button to prepare this recipe
     // when the user push the button an alarm will pop up
     // and the checkboxes will be available so the user can checkout
-    // each itengredient/instruction as it go.
+    // each engredient/instruction as it go.
     return (
       <div className='card'>
         <Header title={title} image={image} />

@@ -7,6 +7,8 @@ import { connect } from 'react-redux'
 import { firestoreConnect } from 'react-redux-firebase'
 import { compose } from 'redux'
 import { isNumber } from '../myLibrary'
+import { Link } from 'react-router-dom'
+import PrintRecipe from './recipe/RecipeDetail/PrintRecipe'
 
 class Modal extends Component {
   componentDidMount() {
@@ -33,30 +35,37 @@ class Modal extends Component {
   }
 
   handleClick = () => {
+    console.log(this.props)
     const { history, recipeId, id } = this.props
-    id === 'delete'
-    ? this.handleDelete()
-    : history.push(`/recipes/edit/${ recipeId }`)
+    // id === 'delete'
+    // ? this.handleDelete()
+    // : history.push(`/recipes/edit/${ recipeId }`)
+    switch (id) {
+      case 'delete':
+        return this.handleDelete()
+      case 'edit':
+        return history.push(`/recipes/edit/${ recipeId }`)
+      default:
+        return console.log(history)
+    }
   }
 
   render() {
     const { id, popUp } = this.props
     const renderContent = () => {
       switch (id) {
-        case 'delete':
-          return <span>{ popUp }</span>
-        case 'edit':
-          return <span>{ popUp }</span>
+        case 'share':
+          return <SharePlatforms />
         case 'print':
           return <PrintPreferences />
         default:
-          return <SharePlatforms />
+          return <span>{ popUp }</span>
     }
    }
     return (
       <div
         ref={ Modal => { this.Modal = Modal }}
-        id={ this.props.id }
+        id={ id }
         className="modal"
       >
         {/* If I want Bottom Sheet Modal then addbottom-sheet class */}
@@ -64,16 +73,26 @@ class Modal extends Component {
           { renderContent() }
         </div>
         <div className="modal-footer">
-          <button href="#" className="modal-close waves-effect waves-red btn-flat">
-            Cancel
+          <button
+            href="#"
+            className="modal-close waves-effect waves-red btn-flat"
+          >
+            { id !== 'save' ? 'cancel' : 'sair'}
           </button>
-          { this.props.id !== 'share'
+          { id !== 'share' && id !== 'save'
             ? <button
                 onClick={ this.handleClick }
                 className="modal-close waves-effect waves-green btn-flat"
                 >Yes
               </button>
               : null
+          }
+          { id === 'save' &&
+            <Link
+              to='/myRecipes/'
+              className="modal-close waves-effect waves-green btn-flat"
+              >Go to My Recipes
+            </Link>
           }
         </div>
       </div>

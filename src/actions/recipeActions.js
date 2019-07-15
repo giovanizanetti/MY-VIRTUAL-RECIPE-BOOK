@@ -16,6 +16,8 @@ import {
 } from './types'
 
 export const createRecipe = recipe => {
+  //delete id from recipes copie from Api becaue Firebase criate a new id for the recipe
+  delete recipe.id
   return (dispatch, getState, { getFirebase, getFirestore }) => {
     // make async call to database
     const firestore = getFirestore()
