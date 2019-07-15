@@ -2,11 +2,11 @@ import React from 'react'
 import Modal from '../../Modal'
 import style from './style'
 import { isNumber } from '../../../myLibrary'
-import { createRecipe } from '../../../actions/recipeActions'
+import { createRecipe, selectRecipe } from '../../../actions/recipeActions'
 import { connect } from 'react-redux'
 
 const RecipeFooter = props => {
-  const { recipeId, history, recipe } = props
+  const { recipeId, history, recipe, selectRecipe, createRecipe } = props
   const { container, button } = style.recipeFooter
   const buttonClasses ='waves-effect waves-light btn center-align modal-trigger'
   const deleteMessage = 'Are you sure you want to delete this recipe?'
@@ -14,9 +14,11 @@ const RecipeFooter = props => {
   const editMessage = 'This recipe is not in your recipes. Do you want to edit it and save the modified version to your recipes?'
   const IS_SPOONACULAR_ID = isNumber(recipeId)
   const handleEdit = () => history.push(`/recipes/edit/${ recipeId }`)
-  const recipeToSave = (recipe) => {
-
+  const handleCLick = () => {
+    selectRecipe(recipe)
+    createRecipe(recipe)
   }
+
   return (
     <>
       <hr />
@@ -54,7 +56,7 @@ const RecipeFooter = props => {
               style={ button }
               className={`${ buttonClasses } blue`}
               recipe={ recipe }
-              onClick={() => props.createRecipe(recipe)}
+              onClick={ handleCLick }
             >
               Save
             </button>
@@ -101,7 +103,4 @@ const RecipeFooter = props => {
   )
 }
 
-
-
-
-export default connect(null, { createRecipe }) (RecipeFooter)
+export default connect(null, { createRecipe, selectRecipe }) (RecipeFooter)

@@ -8,7 +8,8 @@ import { Switch, Route } from 'react-router-dom'
 import RenderAPIrecipes from './components/recipe/RenderAPIrecipes'
 import RenderMyRecipes from './components/recipe/RenderMyRecipes'
 
-const Router = () => (
+const Router = () => {
+  return (
   <Switch>
     <Route path='/' exact component={RenderAPIrecipes} />
     <Route path='/signin/' exact component={SignIn} />
@@ -19,6 +20,7 @@ const Router = () => (
     <Route path='/recipes/:id' exact component={RecipeDetail} />
     <Route path='/myRecipes/' exact component={RenderMyRecipes} />
   </Switch>
-)
+  )
+}
 
 export default Router

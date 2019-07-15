@@ -14,7 +14,7 @@ export const renderInstrFields = (props) => {
         onClick={ () => props.fields.push({}) }/>
       { props.fields.map((field, index) => {
         return (
-          <li
+          <div
             key={ index }
             style={ style.arrayInputs }
           >
@@ -31,7 +31,7 @@ export const renderInstrFields = (props) => {
               index={index}
               fields={props.fields}
             />
-          </li>
+          </div>
         )
       })}
     </div>

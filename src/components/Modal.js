@@ -77,7 +77,7 @@ class Modal extends Component {
             href="#"
             className="modal-close waves-effect waves-red btn-flat"
           >
-            { id !== 'save' ? 'cancel' : 'sair'}
+            { id !== 'save' ? 'cancel' : 'sair' }
           </button>
           { id !== 'share' && id !== 'save'
             ? <button
