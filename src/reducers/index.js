@@ -6,6 +6,7 @@ import recipes from './recipes'
 import selectedRecipe from './selectedRecipe'
 import auth from './auth'
 import checkBoxes from './checkBoxes'
+import search from './search'
 
 
 export default combineReducers({
@@ -15,5 +16,6 @@ export default combineReducers({
   firestore: firestoreReducer,
   firebase: firebaseReducer,
   auth,
-  checkBoxes
+  checkBoxes,
+  search
 })

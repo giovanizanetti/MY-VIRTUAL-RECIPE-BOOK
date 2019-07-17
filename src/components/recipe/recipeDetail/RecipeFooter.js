@@ -31,15 +31,6 @@ const RecipeFooter = props => {
     ? alert(existMessage)
     : selectRecipe(recipe)
     && createRecipe(recipe)
-
-    // !isMyRecipeExists &&
-
-    //later -> check if recipe.title matchs any firabase recipe.title
-    //If yes, ask for the user if she wants to save as 'recipe title(2)'?
-    //give to the user the option to cancel
-    // then ...
-    // selectRecipe(recipe) &&
-    // createRecipe(recipe)
   }
 
   return (

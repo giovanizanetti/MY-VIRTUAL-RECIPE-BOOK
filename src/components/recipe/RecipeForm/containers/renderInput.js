@@ -16,6 +16,7 @@ export const renderInput = ({ input, label, meta, type, placeholder }) => {
       <label
         className={ active || dirty || initial? "active" : undefined }>
         {label}
+        { type === 'search' && <i className="material-icons">search</i>}
       </label>
         <input
           placeholder={ active ? placeholder: null }
@@ -23,6 +24,9 @@ export const renderInput = ({ input, label, meta, type, placeholder }) => {
           {...input}
           autoComplete='off'
           className={className}
+          style={ type === 'search' && {
+            width: '68vw'
+          }}
         />
       <span style={ spanError }>
         {renderErrors(meta)}

@@ -82,7 +82,7 @@ export const selectRecipe = recipe => {
 }
 
 //Later: Create babse URL to make the code cleaner
-export const fetchRecipes = () => dispatch => {
+export const fetchRecipes = (searchValues) => dispatch => {
   dispatch({
     type: FETCH_RECIPES_PENDING
   })
@@ -92,7 +92,8 @@ export const fetchRecipes = () => dispatch => {
       "X-RAPIDAPI-KEY": "0f1f47b39bmsh0e4d2a04bd035cdp1121bejsnf58a226a5005",
     },
     params: {
-      number: 25
+      number: 25,
+      tags: searchValues ? searchValues : 'main course'
     }
   })
   .then(data => dispatch({
