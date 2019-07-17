@@ -37,9 +37,6 @@ class Modal extends Component {
   handleClick = () => {
     console.log(this.props)
     const { history, recipeId, id } = this.props
-    // id === 'delete'
-    // ? this.handleDelete()
-    // : history.push(`/recipes/edit/${ recipeId }`)
     switch (id) {
       case 'delete':
         return this.handleDelete()
@@ -77,7 +74,7 @@ class Modal extends Component {
             href="#"
             className="modal-close waves-effect waves-red btn-flat"
           >
-            { id !== 'save' ? 'cancel' : 'sair' }
+            { id !== 'save' ? 'cancel' : null }
           </button>
           { id !== 'share' && id !== 'save'
             ? <button

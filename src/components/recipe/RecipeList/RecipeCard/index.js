@@ -26,7 +26,6 @@ class RecipeCard extends Component {
         {/*Later => Use Header component and pass style as prop.
         Make use of default props in Header component if necessary */}
         <div className="card-image waves-effect waves-block waves-light">
-          {/* <ChechBox className={ this.state.active === false ? 'hide' : null }/> */}
           <img className="activator" src={image} alt={title} />
         </div>
         <span className="card-title activator grey-text text-darken-4">

@@ -4,12 +4,14 @@ import { firestoreConnect } from 'react-redux-firebase'
 import { connect } from 'react-redux'
 import RecipeList from './RecipeList'
 import LoaderProgressBar from '../LoaderProgressBar'
+import { Link } from 'react-router-dom'
+import SearchBar from '../SearchBar'
 
 const MyRecipes = (props) => {
   const { recipes } = props
-  const renderRecipeList = recipes < 1
+  const renderRecipeList =
+    recipes < 1
     ? <div
-      className='container'
         style={{ display: 'flex',
                 flexDirection: 'column',
                 alignItems: 'center',
@@ -19,12 +21,16 @@ const MyRecipes = (props) => {
         <div
           className='container center'
           style={{display: 'flex', justifyContent: 'space-around'}}>
-          <button className='btn'>Create a recipe</button>
-          <button className='btn'>Search for recipes</button>
+          <Link className='btn' to='/recipe/new'>Create a recipe</Link>
+          <Link className='btn' to='/'>Search for recipes</Link>
         </div>
 
       </div>
-    : <RecipeList recipes={recipes} />
+    : <>
+        <SearchBar />
+        <RecipeList recipes={recipes} />
+      </>
+
   return (
     !recipes
     ? <LoaderProgressBar />
