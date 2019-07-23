@@ -10,11 +10,10 @@ const Checkbox = props => {
   console.log(props)
   return (
     <input
-      className={props.className}
       style={style}
       type="checkbox"
       onChange={props.onChange}
-      value={props.value}
+      id={props.id}
     />
   )
 }

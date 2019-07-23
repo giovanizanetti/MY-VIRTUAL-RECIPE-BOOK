@@ -37,3 +37,7 @@
   float: none;
   margin-left: 22%;
 }
+
+.line-through {
+  text-decoration: line-through
+}

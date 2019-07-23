@@ -9,7 +9,7 @@ const PrepareRecipe = ({ prepareRecipe, cookingMinutes, prepare }) => {
 
       <div style={{
         display: 'flex',
-        flexDirection: 'column'
+        flexDirection: 'column',
       }}>
          <button
             className={ `btn-small ${!prepare ? 'yellow black-text' : 'red'}`}

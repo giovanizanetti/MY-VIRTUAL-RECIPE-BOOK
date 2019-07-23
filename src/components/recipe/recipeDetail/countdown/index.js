@@ -209,7 +209,7 @@ export default class Countdown extends Component {
 
     render() {
         const { count } = this.state;
-        const { className } = this.props;
+        const { className } = this.props
         return (
             <div >
                 <div
@@ -219,7 +219,12 @@ export default class Countdown extends Component {
                         flexWrap: 'wrap',
                         alignItems: 'center',
                         border: '3px gray solid',
-                        borderRadius: '10px'
+                        borderRadius: '10px',
+                        position: 'fixed',
+                        top: '75%',
+                        right: '10%',
+                        background: 'white',
+                        zIndex: '10'
                     }}
                 className={`root-react-component-countdown-timer ${className}`}>
                 <div>{this.format(count)}</div>
