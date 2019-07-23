@@ -12,8 +12,10 @@ import {
   FETCH_RECIPES_BY_ID_PENDING,
   FETCH_RECIPES_BY_ID_FAILED,
   DELETE_RECIPE,
-  DELETE_RECIPE_ERROR
+  DELETE_RECIPE_ERROR,
+  PREPARE_RECIPE
 } from './types'
+import { prepare } from 'fast-glob/out/managers/options';
 
 export const createRecipe = recipe => {
   //delete id from recipes copied from API because Firebase creates a new id for the recipe
@@ -89,10 +91,10 @@ export const fetchRecipes = (searchValues) => dispatch => {
   return axios.get('https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/random?', {
     headers: {
       "X-RapidAPI-Host": "spoonacular-recipe-food-nutrition-v1.p.rapidapi.com",
-      "X-RAPIDAPI-KEY": "0f1f47b39bmsh0e4d2a04bd035cdp1121bejsnf58a226a5005",
+      "X-RAPIDAPI-KEY": "83996459c0msh61a8a094ff561dap1e0802jsne45570f4a44f",
     },
     params: {
-      number: 25,
+      number: 15,
       tags: searchValues ? searchValues : 'main course'
     }
   })
@@ -117,7 +119,7 @@ export const fetchRecipeById = (id) => (dispatch) => {
       "X-RapidAPI-Host": "spoonacular-recipe-food-nutrition-v1.p.rapidapi.com",
       "X-RAPIDAPI-KEY": "0f1f47b39bmsh0e4d2a04bd035cdp1121bejsnf58a226a5005",
     },
-    params: { id }
+    params: id
   })
   .then(res => dispatch({
     type: FETCH_RECIPES_BY_ID_SUCCESS,
@@ -128,6 +130,12 @@ export const fetchRecipeById = (id) => (dispatch) => {
     type: FETCH_RECIPES_BY_ID_FAILED,
     payload: error
   }))
+}
+
+export const prepareRecipe = () => {
+  return {
+    type: PREPARE_RECIPE,
+  }
 }
 
 

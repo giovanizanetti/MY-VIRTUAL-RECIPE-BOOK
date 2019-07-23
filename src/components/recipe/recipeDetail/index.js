@@ -16,6 +16,7 @@ import LoaderProgressBar from '../../LoaderProgressBar'
 import RecipeFooter from './RecipeFooter'
 import Cuisines from './Cuisines'
 import style from './style.js'
+import PrepareRecipe from './PrepareRecipe'
 
 class Recipedetail extends Component {
   // Fetching Recipe by ID from the API
@@ -55,10 +56,20 @@ class Recipedetail extends Component {
           <Occasions occasions={occasions} />
           <Servings servings={servings}/>
         </div>
-        <PrepTime
-          cookingMinutes={cookingMinutes}
-          readyInMinutes={readyInMinutes}
-        />
+        <div
+          className='container'
+          style={{
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'space-between',
+            flexWrap: 'wrap',
+            marginTop: '1rem'}}>
+          <PrepTime
+            cookingMinutes={cookingMinutes}
+            readyInMinutes={readyInMinutes}
+          />
+          <PrepareRecipe cookingMinutes={cookingMinutes}/>
+        </div>
         <Ingredients ingredients={extendedIngredients} />
         <Instructions instructions={analyzedInstructions} />
         <AllergensInfo
@@ -79,7 +90,7 @@ class Recipedetail extends Component {
 }
 
 const mapStateToProps = (state, ownProps) => {
-  const { firestore, selectedRecipe, firebase} = state
+  const { firestore, selectedRecipe, firebase } = state
   const { recipes } = firestore.ordered
   const ID = ownProps.match.params.id
   const IS_SPOONACULAR_ID = isNumber(ID)

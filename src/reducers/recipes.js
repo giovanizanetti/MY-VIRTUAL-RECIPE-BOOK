@@ -10,7 +10,7 @@ import {
   EDIT_RECIPE,
   EDIT_RECIPE_ERROR,
   DELETE_RECIPE,
-  DELETE_RECIPE_ERROR
+  DELETE_RECIPE_ERROR,
 } from '../actions/types'
 
 const initialState = {

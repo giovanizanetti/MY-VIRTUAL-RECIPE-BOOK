@@ -1,4 +1,4 @@
-import { SHOW_CHECKBOXES } from '../actions/types'
+import { PREPARE_RECIPE } from '../actions/types'
 
 const initialState = {
   active: false
@@ -6,11 +6,11 @@ const initialState = {
 
 export default (state=initialState, action) => {
   switch (action.type) {
-    case SHOW_CHECKBOXES:
-      const isActive = state.active
+    case PREPARE_RECIPE:
+    const isActive = state.active
       return {
         ...state,
-        active: isActive === true ? false : true
+        active: !isActive
       }
     default:
       return state

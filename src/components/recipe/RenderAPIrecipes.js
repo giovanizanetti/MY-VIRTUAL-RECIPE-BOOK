@@ -21,7 +21,7 @@ class RenderAPIrecipes extends Component {
       recipes && recipes.isPending
       ? <LoaderProgressBar />
       : <>
-          <SearchBar onSubmit={ this.onSubmit } />
+          <SearchBar id='API' onSubmit={ this.onSubmit } />
           <RecipeList
             recipes={ recipes.recipes  }
           />

@@ -2,7 +2,7 @@ import React from 'react'
 import RecipeCard from './RecipeCard/'
 
 const CardsList = ({ recipes }) => {
-  return recipes && recipes.map(recipe => {
+  return recipes && recipes.map((recipe, i) => {
     const {
       id, image, title, glutenFree, lowFodmap,
       vegetarian, vegan, dairyFree, readyInMinutes,
@@ -10,7 +10,7 @@ const CardsList = ({ recipes }) => {
     } = recipe
     return(
       <RecipeCard
-        key={id}
+        key={i}
         recipes={recipes}
         id={id}
         image={image}

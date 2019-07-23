@@ -4,21 +4,28 @@ export default {
   },
   header: {
     container: { paddingTop: 1 },
-    hederTitle: { textAlign: 'center'}
+    headerTitle: {
+      textAlign: 'center',
+      position: 'absolute',
+      zIndex: '100',
+      width: '100%',
+      background: 'white',
+      top: '5%',
+      padding: '.5rem'
+    }
   },
   card_inner_container: { paddingTop: '1rem'},
   ingredients: {
     ingredient_li: { margin: 20 },
-    container: { listStyle: 'none' }
+    container: { listStyle: 'none' },
   },
   instructions: {
     instruction_li: { margin: 20 }
   },
   prepTime: {
     container_ul: {
-      paddingTop: 20,
       display: 'flex',
-      margin: 'auto'
+      margin: 'auto 0'
     }
   },
   recipeFooter: {

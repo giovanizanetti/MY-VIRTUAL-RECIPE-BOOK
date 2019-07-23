@@ -1,15 +1,17 @@
 import React from 'react'
 import CheckBox from '../../ChechBox'
 import style from './style'
+import { connect } from 'react-redux'
 
-const Instructions = ({instructions}) => {
+
+const Instructions = ({ instructions, prepare }) => {
   const { instruction_li} = style.instructions
   const renderInstructions =
     instructions && instructions.map((object, i) => {
       return (object.steps.map(step => (
         <div key={step.number}>
           <li style={ instruction_li }>
-            <CheckBox />
+            { prepare && <CheckBox /> }
             {` - ${step.step}`}
           </li>
         </div>
@@ -25,7 +27,13 @@ const Instructions = ({instructions}) => {
   )
 }
 
-export default Instructions
+const mapStateToProps = state => {
+  return {
+    prepare: state.checkBoxes.active
+  }
+}
+
+export default connect(mapStateToProps)(Instructions)
 
 
 
