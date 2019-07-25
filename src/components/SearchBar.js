@@ -10,7 +10,7 @@ const SearchBar = (props) => {
   return (
     <>
       <form onSubmit={ props.handleSubmit(onSubmit) }>
-        <div className="input-field col" style={{display: 'flex', justifyContent: 'space-between'}}>
+        <div className="input-field col">
           <Field
               name='searchField'
               component={renderInput}
@@ -20,13 +20,6 @@ const SearchBar = (props) => {
           <button className='waves-effect waves-light btn blue'>search</button>
         </div>
     </form>
-  {/* { props.id === 'firestore' &&
-    <div className="input-field">
-      <input onChange={props.hanfleSearch} id="search" type="search" required />
-      <label className="label-icon" htmlFor="search"><i className="material-icons">search</i></label>
-    </div>
-
-  } */}
     </>
   )
 }

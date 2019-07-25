@@ -1,8 +1,13 @@
 import React, { Component } from "react"
 import PropTypes from 'prop-types'
-import Alarm from '../../../../sounds/Wecker-sound.zip'
-
+import Alarm from '../../../../sounds/Wecker-sound.mp3'
+import Sound from 'react-sound'
 export default class Countdown extends Component {
+    constructor(props) {
+        super(props);
+        this.url = Alarm
+        this.audio = new Audio(this.url)
+      }
     static propTypes = {
         color: PropTypes.string,
         backgroundColor: PropTypes.string,
@@ -10,29 +15,28 @@ export default class Countdown extends Component {
         hideDay: PropTypes.bool,
         hideHours: PropTypes.bool,
         onEnd: PropTypes.func,
-    };
+    }
 
     static defaultProps = {
         color: '#000',
         backgroundColor: '#fff',
-        size: 52,
+        size: 30,
         hideDay: true,
         hideHours: true, //will be reassigne to show hours
-    };
-        state = {
-            count: this.props.cookingMinutes ?this.props.cookingMinutes * 60 : 0 ,
-            isStarted: false,
-            isPaused: false,
-            setTimerButton: true,
-            isVisible: true,
-            visible: 'block',
-            invisible: 'none',
-            newTime: 0
-        }
+    }
+    state = {
+        count: this.props.cookingMinutes ? this.props.cookingMinutes * 60 : 0 ,
+        isStarted: false,
+        isPaused: false,
+        setTimerButton: true,
+        isVisible: true,
+        invisible: 'none',
+        play: false
+    }
+
 
     componentWillUnmount() {
         clearInterval(this.intervalReference)
-        // clearInterval(this.blinkInterval)
     }
 
     myTimer = () => {
@@ -43,15 +47,6 @@ export default class Countdown extends Component {
             })
         }, 1000)
     }
-    blinkTimer = () => {
-        this.blinkInterval = setInterval(() => {
-            console.log(this.state.isVisible)
-            this.setState({
-                isVisible: !this.state.isVisible
-            })
-            clearInterval(this.blinkInterval)
-        }, 300)
-    }
 
     handleStart = () => {
         this.setState({
@@ -61,6 +56,7 @@ export default class Countdown extends Component {
         })
         this.myTimer()
     }
+
     handleReset = () => {
         this.setState({
             isStarted: false,
@@ -93,6 +89,7 @@ export default class Countdown extends Component {
             count: seconds,
         });
     }
+
     handleSetTimer = () => {
         this.handleReset()
         this.setState({
@@ -101,6 +98,12 @@ export default class Countdown extends Component {
 
         })
     }
+
+    handleProcrastinateAlarm = (e) => {
+        this.audio.pause()
+        this.setState({count: e.target.value * 60})
+    }
+
     handleNewTimer = (e) => {
         this.setState({
             setTimerButton: false
@@ -129,20 +132,6 @@ export default class Countdown extends Component {
         }
 
     }
-    handleCounterMinuntesPlus= (e) => {
-        console.log(e.target.value)
-        this.setState({
-            setMinutes: this.state.setMinutes + 60
-        })
-    }
-
-    handleCounterMinuntesMinus= () => {
-        this.state.setMinutes > 0 &&
-        this.setState({
-            setMinutes: this.state.setMinutes - 60
-        })
-    }
-
 
     format = time => {
         const {
@@ -163,6 +152,9 @@ export default class Countdown extends Component {
         minutes = minutes.toString().length === 1   ? `0${minutes}` : minutes
         seconds = seconds.toString().length === 1 ? `0${seconds}` : seconds
         hours = hours.toString().length === 1 ? `0${hours}` : hours;
+        this.state.isStarted
+        && !this.state.count
+        && this.audio.play()
 
         return (
             <div style={{fontSize: `${size}px`}}>
@@ -211,7 +203,7 @@ export default class Countdown extends Component {
         const { count } = this.state;
         const { className } = this.props
         return (
-            <div >
+            <div style={{position: 'relative'}} >
                 <div
                     style={{
                         display: 'flex',
@@ -220,37 +212,43 @@ export default class Countdown extends Component {
                         alignItems: 'center',
                         border: '3px gray solid',
                         borderRadius: '10px',
-                        position: 'fixed',
-                        top: '75%',
-                        right: '10%',
+                        position: 'absolute',
+                        top: '0',
+                        right: '30%',
                         background: 'white',
                         zIndex: '10'
                     }}
                 className={`root-react-component-countdown-timer ${className}`}>
                 <div>{this.format(count)}</div>
-                <div>
-                    { this.state.count > 0 &&
-                        <button onClick={this.handleReset} className='btn-small grey sm'>Reset</button>
-                    }
-                    {
-                        !this.state.isStarted && this.state.count > 0
-                        && <button onClick={this.handleStart} className='btn-small grey'>Start</button>
-                    }
+                <div className='center'>
                     {
                         this.state.isStarted
-                        && <button onClick={this.handlePause} className='btn-small grey'>Pause</button>
+                        && this.state !== 0
+                        && !this.state.isPaused
+                        && <button
+                                style={{ width: '100%'}}
+                                onClick={this.handlePause}
+                                className='btn-small grey'
+                            >Pause
+                            </button>
                     }
 
                     { this.state.setTimerButton &&
-                        <button onClick={ this.handleSetTimer } className='btn-small grey'>Set Timer</button>
+                        <button
+                            style={{width: '100%', minWidth: '100%'}}
+                            onClick={ this.handleSetTimer }
+                            className='btn-small grey'
+                        >Set Timer
+                        </button>
                     }
+
                     {
                         !this.state.setTimerButton &&
                         <>
                            <div style={{display: 'flex', flexDirection: 'column'}}>
                                <div style={{display:" flex"}}>
                                     <label className='center'>Hour
-                                        <div>
+                                        <div style={{display: 'flex'}}>
                                             <input
                                                 onClick={ this.handleNewTimer }
                                                 className='btn-small grey'
@@ -268,7 +266,7 @@ export default class Countdown extends Component {
                                         </div>
                                     </label>
                                     <label className='center'>Minutes
-                                        <div>
+                                        <div style={{display: 'flex'}}>
                                             <input
                                                 onClick={ this.handleNewTimer }
                                                 className='btn-small grey'
@@ -286,15 +284,40 @@ export default class Countdown extends Component {
                                         </div>
                                     </label>
                                 </div>
-
-                               <button onClick={this.handleSetCookingTime} className='btn-small grey'>Cooking time</button>
+                                {
+                                    this.props.cookingMinutes &&
+                                    <button onClick={this.handleSetCookingTime} className='btn-small grey'>Cooking time</button>
+                                }
+                                { this.state.count > 0 &&
+                                    <button onClick={this.handleReset} className='btn-small grey sm'>Reset</button>
+                                }
 
                            </div>
-
-
                         </>
                     }
+                       {
+                        !this.state.isStarted && this.state.count > 0
+                        && <button style={{ width: '100%'}} onClick={this.handleStart} className='btn-small grey'>Start</button>
+                    }
                 </div>
+                {
+                    this.state.isStarted
+                    && !this.state.count
+                    && <div>The time is over!!!</div>
+                    && <>
+                            <button
+                                style={{width: '100%'}}
+                                onClick={() => {
+                                this.setState({isStarted: !this.state.isStarted})
+                                this.audio.pause()}} class="btn red">stop</button>
+                            <div style={{display: 'flex', flexWrap: 'wrap'}}>
+                                <button value='5' onClick={ this.handleProcrastinateAlarm } className="btn-small grey">+ 5 min</button>
+                                <button value='10' onClick={ this.handleProcrastinateAlarm } className="btn-small grey">+ 10 min</button>
+                                <button value='15' onClick={ this.handleProcrastinateAlarm } className="btn-small grey">+ 15 min</button>
+                                <button value='30' onClick={ this.handleProcrastinateAlarm } className="btn-small grey">+ 30 min</button>
+                            </div>
+                        </>
+                }
             </div>
             </div>
         );
