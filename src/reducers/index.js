@@ -7,6 +7,8 @@ import selectedRecipe from './selectedRecipe'
 import auth from './auth'
 import checkBoxes from './checkBoxes'
 import search from './search'
+import selectedRecipes from './selectedRecipes'
+import selectedAll from './selectAll'
 
 
 export default combineReducers({
@@ -17,5 +19,7 @@ export default combineReducers({
   firebase: firebaseReducer,
   auth,
   checkBoxes,
-  search
+  search,
+  selectedRecipes,
+  selectedAll
 })

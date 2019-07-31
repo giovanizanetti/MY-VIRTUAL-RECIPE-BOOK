@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import CheckBox from '../../ChechBox'
+import CheckBox from '../../CheckBox'
 import style from './style'
 import { connect } from 'react-redux'
 
@@ -8,7 +8,6 @@ class Instructions extends Component {
   state={}
 
   handleChange = e => {
-    console.log(e.target.id)
       this.setState({
         [e.target.id]: e.target.checked
       })
@@ -28,7 +27,7 @@ class Instructions extends Component {
                 prepare &&
                 <CheckBox
                   id={i}
-                  onChange={ this.handleChange}/>
+                  onChange={ this.handleChange }/>
                 }
               {` - ${step.step}`}
             </li>

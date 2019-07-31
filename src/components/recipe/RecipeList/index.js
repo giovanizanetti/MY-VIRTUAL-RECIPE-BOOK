@@ -1,27 +1,23 @@
-import React from 'react'
+import React, { Component } from 'react'
 import CardsList from './CardsList.js'
+import Select from './Select'
 
-const RecipeList = (props) => {
-  const { recipes }  = props
+class RecipeList extends Component {
 
-  return (
-    <div className="row col">
-      {/* <button
-        className="btn blue"
-      >
-        Select
-      </button> */}
-      <CardsList
-        recipes={recipes}
-      />
-    </div>
-  )
-}
 
-const mapStateToProps = state => {
-  console.log(state)
-  return {
+  render() {
 
+    // const { recipes }  = props
+    const { recipes } = this.props
+    return (
+      <div className="row col">
+        <Select recipesIds={recipes.map(recipe => recipe.id)}
+          />
+        <CardsList
+          recipes={recipes}
+        />
+      </div>
+    )
   }
 }
 

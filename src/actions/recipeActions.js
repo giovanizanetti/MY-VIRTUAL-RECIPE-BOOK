@@ -13,9 +13,10 @@ import {
   FETCH_RECIPES_BY_ID_FAILED,
   DELETE_RECIPE,
   DELETE_RECIPE_ERROR,
-  PREPARE_RECIPE
+  PREPARE_RECIPE,
+  SELECT_MULTIPLE_RECIPES,
+  SELECT_ALL
 } from './types'
-import { prepare } from 'fast-glob/out/managers/options';
 
 export const createRecipe = recipe => {
   //delete id from recipes copied from API because Firebase creates a new id for the recipe
@@ -60,6 +61,7 @@ export const editRecipe = (id, recipe) => {
 }
 
 export const deleteRecipe = (id) => {
+  console.log(typeof(id))
   return (dispatch, getState, { getFirebase, getFirestore }) => {
     // make async call to database
     const firestore = getFirestore()
@@ -82,6 +84,22 @@ export const selectRecipe = recipe => {
     payload: recipe
   }
 }
+
+export const selectMultipleRecipes = recipesIds => {
+  console.log(recipesIds)
+  return {
+    type: SELECT_MULTIPLE_RECIPES,
+    payload: recipesIds
+  }
+}
+
+export const selectAll = () => {
+  console.log('called')
+  return {
+    type: SELECT_ALL
+  }
+}
+
 
 //Later: Create babse URL to make the code cleaner
 export const fetchRecipes = (searchValues) => dispatch => {
@@ -137,6 +155,7 @@ export const prepareRecipe = () => {
     type: PREPARE_RECIPE,
   }
 }
+
 
 
 

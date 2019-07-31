@@ -1,6 +1,6 @@
 import {
   SELECT_RECIPE,
-  FETCH_RECIPES_BY_ID_SUCCESS, 
+  FETCH_RECIPES_BY_ID_SUCCESS,
 } from '../actions/types'
 
 export default (state=null, action) => {
@@ -13,3 +13,4 @@ export default (state=null, action) => {
       return state
   }
 }
+

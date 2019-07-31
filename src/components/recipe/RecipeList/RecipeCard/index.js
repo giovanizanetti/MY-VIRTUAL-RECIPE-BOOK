@@ -4,18 +4,24 @@ import { trimString } from '../../../../myLibrary'
 import { selectRecipe } from '../../../../actions/recipeActions'
 import { connect } from 'react-redux'
 import style from '../style'
-import ChechBox from '../../../ChechBox.js'
+import CheckBox from '../../../CheckBox'
+import { selectMultipleRecipes } from '../../../../actions/recipeActions'
+
 
 class RecipeCard extends Component {
+
+handleCheckBox = e => {
+  this.props.selectMultipleRecipes(e.target.value)
+}
+
   render() {
     const { card } = style.recipeCard
     const {
       id, image, title, glutenFree, lowFodmap,
       vegetarian, vegan, dairyFree, readyInMinutes,
-      selectRecipe, recipes, cookingMinutes,
+      selectRecipe, recipes, cookingMinutes, isActive, checkAll
     } = this.props
-
-
+    console.log(recipes)
     return (
       <div
         className="card small col s12 m6 l4"
@@ -23,6 +29,21 @@ class RecipeCard extends Component {
         key={id}
         onClick={() => { selectRecipe(recipes.find(rec => rec.id === id)) }}
         >
+          { isActive &&
+          <CheckBox
+            onChange={this.handleCheckBox}
+            value={id}
+
+            checked={ checkAll }
+            // isAllChecked={ checkAll }
+            style={{
+              position: 'absolute',
+              zIndex: '12',
+              pointerEvents: 'inherit',
+              opacity: 'unset'}}
+          />
+        }
+        {/*  */}
         {/*Later => Use Header component and pass style as prop.
         Make use of default props in Header component if necessary */}
         <div className="card-image waves-effect waves-block waves-light">
@@ -48,4 +69,14 @@ class RecipeCard extends Component {
 
 }
 
-export default connect(null, { selectRecipe })(RecipeCard)
+const mapStateToProps = state => {
+  return {
+    selectedRecipe: state.selectedRecipe,
+    // selectedRecipes: state.selectMultipleRecipes,
+    isActive: state.checkBoxes.active,
+    // recipes: state.firestore.ordered.recipes
+    checkAll: state.checkBoxes.isAllChecked
+  }
+}
+
+export default connect(mapStateToProps, { selectRecipe, selectMultipleRecipes })(RecipeCard)

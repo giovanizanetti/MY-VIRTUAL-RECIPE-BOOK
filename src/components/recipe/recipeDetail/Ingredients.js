@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import CheckBox from '../../ChechBox'
+import CheckBox from '../../CheckBox'
 import style from './style'
 import { connect } from 'react-redux'
 
