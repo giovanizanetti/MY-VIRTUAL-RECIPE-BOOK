@@ -11,7 +11,7 @@ class RecipeList extends Component {
     const { recipes } = this.props
     return (
       <div className="row col">
-        <Select recipesIds={recipes.map(recipe => recipe.id)}
+        <Select recipes={recipes}
           />
         <CardsList
           recipes={recipes}

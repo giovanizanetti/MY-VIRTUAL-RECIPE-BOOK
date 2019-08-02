@@ -10,8 +10,13 @@ import { selectMultipleRecipes } from '../../../../actions/recipeActions'
 
 class RecipeCard extends Component {
 
+  getKeyByKey = (object, value) => {
+    return Object.keys(object).find(key => key === value);
+  }
+
 handleCheckBox = e => {
-  this.props.selectMultipleRecipes(e.target.value)
+  console.log(this.props.selectedRecipes.map(recipe => this.getKeyByKey(recipe, e.target.value)))
+  this.props.selectMultipleRecipes({[e.target.value]: e.target.checked})
 }
 
   render() {
@@ -72,7 +77,7 @@ handleCheckBox = e => {
 const mapStateToProps = state => {
   return {
     selectedRecipe: state.selectedRecipe,
-    // selectedRecipes: state.selectMultipleRecipes,
+    selectedRecipes: state.selectedRecipes,
     isActive: state.checkBoxes.active,
     // recipes: state.firestore.ordered.recipes
     checkAll: state.checkBoxes.isAllChecked
