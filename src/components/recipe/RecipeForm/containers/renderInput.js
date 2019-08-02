@@ -10,6 +10,7 @@ export const renderInput = ({ input, label, meta, type, placeholder }) => {
     ${ type === 'number'  ? 's6': 's12' }
     ${ error && touched ? 'wrong' : ''}`
     const { spanError } = style
+    const inputStyle = type === 'search' ? { width: '68vw'}: null
 
   return (
     <div className={className}>
@@ -24,9 +25,7 @@ export const renderInput = ({ input, label, meta, type, placeholder }) => {
           {...input}
           autoComplete='off'
           className={className}
-          style={ type === 'search' && {
-            width: '68vw'
-          }}
+          style={ inputStyle }
         />
       <span style={ spanError }>
         {renderErrors(meta)}
