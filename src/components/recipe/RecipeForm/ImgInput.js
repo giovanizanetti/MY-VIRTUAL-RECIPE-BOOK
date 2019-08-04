@@ -65,6 +65,7 @@ class ImgUpLoad extends Component {
           <span style={{margin: '.2rem'}}> { this.state.showPercentage && this.state.progress + '%' }</span>
 
         </div>
+        {/*Later add paste url*/}
         <img
           className='responsive-img'
           src={ this.state.url || selectedRecipe || Placeholder }
