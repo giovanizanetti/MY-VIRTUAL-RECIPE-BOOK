@@ -19,7 +19,7 @@ class ImgUpLoad extends Component {
     })
   }
 
-  handleUpload = e => {
+  handleUpload = () => {
     const { image } = this.state
     const uploadTask = storage.ref(`recipeImgs/${ image.name }`).put(image)
     uploadTask.on('state_changed',
@@ -34,15 +34,14 @@ class ImgUpLoad extends Component {
     () => {
       storage.ref('recipeImgs').child(image.name).getDownloadURL()
       .then(url => {
-        console.log(url)
         this.setState({ url })
         this.props.setImgUrl(this.state.url)
       })
     })
   }
 
-
   render() {
+    const selectedRecipe = this.props.selectedRecipe && this.props.selectedRecipe.image
     return (
       <div className='container'>
         <div className='container' style={{display:'flex', justifyContent: 'center'}}>
@@ -64,10 +63,11 @@ class ImgUpLoad extends Component {
               ></div>
           </div>
           <span style={{margin: '.2rem'}}> { this.state.showPercentage && this.state.progress + '%' }</span>
+
         </div>
         <img
           className='responsive-img'
-          src={this.state.url || Placeholder}
+          src={ this.state.url || selectedRecipe || Placeholder }
           alt='recipe image'
           height='300'
           width='400'
@@ -77,4 +77,10 @@ class ImgUpLoad extends Component {
   }
 }
 
-export default connect(null, { setImgUrl })(ImgUpLoad)
+const mapStateToProps = state => {
+  return {
+    selectedRecipe: state.selectedRecipe
+  }
+}
+
+export default connect(mapStateToProps, { setImgUrl })(ImgUpLoad)

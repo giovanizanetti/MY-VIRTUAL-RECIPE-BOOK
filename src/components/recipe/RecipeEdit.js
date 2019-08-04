@@ -21,6 +21,13 @@ class RecipeEdit extends Component {
     creating a recipe.
   */
   onSubmit = (formValues) => {
+    console.log(formValues)
+    const checkImg = this.props.image
+    formValues.image = checkImg && this.props.image
+
+    const isNewImg = this.props.imageInput
+    && this.props.imageInput !== '/static/media/placeholder.7eade072.jpg'
+    formValues.image = isNewImg && this.props.imageInput
     const ID = this.props.match.params.id
     const IS_SPOONACULAR_ID = isNumber(ID)
 
@@ -73,6 +80,8 @@ const mapStateToProps = (state, ownProps) => {
     recipe: IS_SPOONACULAR_ID === true
       ? selectedRecipe
       : recipes && recipes.find(rec => rec.id === ID),
+    image: state.selectedRecipe && state.selectedRecipe.image,
+    imageInput: state.image.url
   }
 }
 

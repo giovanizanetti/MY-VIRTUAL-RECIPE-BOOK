@@ -1,6 +1,7 @@
 import {
   SET_IMG_URL,
-  CREATE_RECIPE
+  CREATE_RECIPE,
+  EDIT_RECIPE
 } from '../actions/types'
 import Placeholder from '../images/placeholder.jpg'
 
@@ -15,6 +16,8 @@ export default (state=initialState, action) => {
         url: action.payload
       }
     case CREATE_RECIPE:
+      return state
+    case EDIT_RECIPE:
       return state
     default:
       return state
