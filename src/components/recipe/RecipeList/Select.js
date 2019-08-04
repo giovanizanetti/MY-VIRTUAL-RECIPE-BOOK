@@ -10,7 +10,6 @@ import { compose } from 'redux'
 import { isNumber } from '../../../myLibrary'
 const Select = ({ showCheckBoxes, isActive,
    selectedAll, selectedRecipes, deleteRecipe }) => {
-    console.log(selectedRecipes)
 
     const isSpoonacular = isNumber(selectedRecipes[0])
 

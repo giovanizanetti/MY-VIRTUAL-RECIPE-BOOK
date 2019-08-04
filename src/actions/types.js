@@ -22,6 +22,7 @@ export const SELECT_MULTIPLE_RECIPES = 'SELECT_MULTIPLE_RECIPES'
 export const SHOW_CHECKBOXES = 'SHOW_CHECKBOXES'
 export const CHECK_ALL = 'CHECK_ALL'
 export const SELECT_ALL = 'SELECT_ALL'
+export const SET_IMG_URL = 'SET_IMG_URL'
 
 
 

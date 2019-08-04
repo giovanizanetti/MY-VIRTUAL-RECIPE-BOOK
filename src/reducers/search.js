@@ -1,4 +1,7 @@
-import { CHANGE_SEARCH_FIELD } from '../actions/types'
+import {
+  CHANGE_SEARCH_FIELD,
+  CREATE_RECIPE
+} from '../actions/types'
 
 const initialState = {
   searchField: ''
@@ -10,6 +13,11 @@ export default (state=initialState, action) => {
       return {
         ...state,
         searchField: action.payload
+      }
+    case CREATE_RECIPE:
+      return {
+        ...state,
+        searchField: ''
       }
     default:
       return state

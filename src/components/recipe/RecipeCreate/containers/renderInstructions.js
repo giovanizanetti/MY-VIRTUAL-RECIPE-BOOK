@@ -4,7 +4,6 @@ import { FieldArray } from 'redux-form'
 import { renderInstrFields } from './renderInstrFields';
 
 export const renderInstructions = ({ fields, meta: { touched, error, submitFailed } }) => {
-  console.log(fields, 'something')
   return (
     <ul>
       <li>

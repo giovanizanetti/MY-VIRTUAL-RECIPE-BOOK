@@ -26,7 +26,6 @@ handleCheckBox = e => {
       vegetarian, vegan, dairyFree, readyInMinutes,
       selectRecipe, recipes, cookingMinutes, isActive, checkAll
     } = this.props
-    console.log(recipes)
     return (
       <div
         className="card small col s12 m6 l4"

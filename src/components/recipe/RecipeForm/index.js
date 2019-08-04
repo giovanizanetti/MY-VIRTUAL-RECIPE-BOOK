@@ -64,7 +64,12 @@ class RecipeForm extends Component {
 
         <AllergensFields />
 
-        <ImgInput />
+        <div>
+          <h5>Image</h5>
+          <hr/>
+          <br />
+          <ImgInput />
+        </div>
         <button
           type='submit'
           className="btn pink waves-effect waves-light"

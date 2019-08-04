@@ -9,6 +9,7 @@ import checkBoxes from './checkBoxes'
 import search from './search'
 import selectedRecipes from './selectedRecipes'
 import selectedAll from './selectAll'
+import image from './image'
 
 
 export default combineReducers({
@@ -21,5 +22,6 @@ export default combineReducers({
   checkBoxes,
   search,
   selectedRecipes,
-  selectedAll
+  selectedAll,
+  image
 })
