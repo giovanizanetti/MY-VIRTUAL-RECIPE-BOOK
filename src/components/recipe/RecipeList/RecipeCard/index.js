@@ -9,14 +9,15 @@ import { selectMultipleRecipes } from '../../../../actions/recipeActions'
 
 
 class RecipeCard extends Component {
-
   getKeyByKey = (object, value) => {
     return Object.keys(object).find(key => key === value);
   }
 
 handleCheckBox = e => {
-  console.log(this.props.selectedRecipes.map(recipe => this.getKeyByKey(recipe, e.target.value)))
+  // console.log(this.props.selectedRecipes.map(recipe => this.getKeyByKey(recipe, e.target.value)))
   this.props.selectMultipleRecipes({[e.target.value]: e.target.checked})
+  // this.props.selectMultipleRecipes(e.target.value)
+
 }
 
   render() {
@@ -26,6 +27,7 @@ handleCheckBox = e => {
       vegetarian, vegan, dairyFree, readyInMinutes,
       selectRecipe, recipes, cookingMinutes, isActive, checkAll
     } = this.props
+    console.log(image)
     return (
       <div
         className="card small col s12 m6 l4"
@@ -35,8 +37,8 @@ handleCheckBox = e => {
         >
           { isActive &&
           <CheckBox
-            onChange={this.handleCheckBox}
-            value={id}
+            onChange={ this.handleCheckBox }
+            value={ id }
 
             checked={ checkAll }
             // isAllChecked={ checkAll }

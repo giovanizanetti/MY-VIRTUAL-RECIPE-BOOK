@@ -44,6 +44,8 @@ class ImgUpLoad extends Component {
     const selectedRecipe = this.props.selectedRecipe && this.props.selectedRecipe.image
     return (
       <div className='container'>
+        <br />
+        <br />
         <div className='container' style={{display:'flex', justifyContent: 'center'}}>
           <input
             type="file"
@@ -66,6 +68,7 @@ class ImgUpLoad extends Component {
 
         </div>
         {/*Later add paste url*/}
+
         <img
           className='responsive-img'
           src={ this.state.url || selectedRecipe || Placeholder }

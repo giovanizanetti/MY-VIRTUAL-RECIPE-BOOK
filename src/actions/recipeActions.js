@@ -61,8 +61,8 @@ export const editRecipe = (id, recipe) => {
 }
 
 export const deleteRecipe = (id) => {
-  console.log(typeof(id))
-  return (dispatch, getState, { getFirebase, getFirestore }) => {
+   if(id !== '')
+   return (dispatch, getState, { getFirebase, getFirestore }) => {
     // make async call to database
     const firestore = getFirestore()
     firestore.collection('recipes').doc(id).delete().then(() => {
@@ -93,10 +93,10 @@ export const selectMultipleRecipes = recipesIds => {
   }
 }
 
-export const selectAll = () => {
-  console.log('called')
+export const selectAll = (isSelected) => {
   return {
-    type: SELECT_ALL
+    type: SELECT_ALL,
+    payload: isSelected
   }
 }
 

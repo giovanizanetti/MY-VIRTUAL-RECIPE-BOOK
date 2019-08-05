@@ -25,8 +25,9 @@ const Select = ({ showCheckBoxes, isActive,
     }
 
     const handleDelete = () => {
-      const filteredRecipes = selectedRecipes.map(recipe => getKeyByValue(recipe, true))
-      filteredRecipes.map(recipe => deleteRecipe(recipe.toString()))
+      // change this function to delelete only recipes === true
+      return selectedRecipes.map(recipe => getKeyByValue(recipe, true))
+      .map(recipe => deleteRecipe(recipe))
     }
 
   return (
@@ -39,13 +40,21 @@ const Select = ({ showCheckBoxes, isActive,
               >Select
             </button>
       }
+      {
+        isActive
+        && <button
+              className="btn-small blue"
+              onClick={() => selectAll(true) }
+              >Select All
+            </button>
+      }
       { selectedRecipes.length > 0
         && !isSpoonacular
         && <button
-            className="btn-small red"
-            onClick={handleDelete}
-            >Delete
-          </button>
+              className="btn-small red"
+              onClick={handleDelete}
+              >Delete
+            </button>
       }
       { selectedRecipes.length > 0
         && isSpoonacular
@@ -74,7 +83,7 @@ const mapStateToProps = state => {
 export default compose(
   connect(
     mapStateToProps,
-    { showCheckBoxes, checkAll, deleteRecipe }
+    { showCheckBoxes, checkAll, deleteRecipe, selectAll }
   ),
   firestoreConnect([{
     collection: 'recipes'

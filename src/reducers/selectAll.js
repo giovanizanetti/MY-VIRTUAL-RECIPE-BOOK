@@ -1,10 +1,11 @@
-import { SELECT_ALL } from '../actions/types'
+import { SELECT_ALL, } from '../actions/types'
 
 export default (state=false, action) => {
-  // console.log(action.type)
   switch(action.type) {
     case SELECT_ALL:
-      return state ===true
+      //Not workking ???
+    console.log(action.payload)
+      return action.payload
     default:
       return state
   }
