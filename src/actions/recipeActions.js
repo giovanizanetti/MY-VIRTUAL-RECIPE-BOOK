@@ -15,7 +15,8 @@ import {
   DELETE_RECIPE_ERROR,
   PREPARE_RECIPE,
   SELECT_MULTIPLE_RECIPES,
-  SELECT_ALL
+  SELECT_ALL,
+  UNSELECT
 } from './types'
 
 export const createRecipe = recipe => {
@@ -57,6 +58,13 @@ export const editRecipe = (id, recipe) => {
         payload: err
       })
     })
+  }
+}
+
+export const unselect = (id) => {
+  return {
+    type: UNSELECT,
+    payload: id
   }
 }
 

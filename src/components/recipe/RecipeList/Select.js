@@ -20,14 +20,15 @@ const Select = ({ showCheckBoxes, isActive,
       // &&
       // createRecipe(recipe)
     }
-    const getKeyByValue = (object, value) => {
-      return Object.keys(object).find(key => object[key] === value);
-    }
+    // const getKeyByValue = (object, value) => {
+    //   return Object.keys(object).find(key => object[key] === value);
+    // }
 
     const handleDelete = () => {
       // change this function to delelete only recipes === true
-      return selectedRecipes.map(recipe => getKeyByValue(recipe, true))
-      .map(recipe => deleteRecipe(recipe))
+      // const filteredRecipes = selectedRecipes.filter(recipe => getKeyByValue(recipe, true))
+      // console.log(filteredRecipes)
+      selectedRecipes.map(recipe => deleteRecipe(recipe.toString()))
     }
 
   return (

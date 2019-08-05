@@ -5,7 +5,7 @@ import { selectRecipe } from '../../../../actions/recipeActions'
 import { connect } from 'react-redux'
 import style from '../style'
 import CheckBox from '../../../CheckBox'
-import { selectMultipleRecipes } from '../../../../actions/recipeActions'
+import { selectMultipleRecipes, unselect } from '../../../../actions/recipeActions'
 
 
 class RecipeCard extends Component {
@@ -14,10 +14,8 @@ class RecipeCard extends Component {
   }
 
 handleCheckBox = e => {
-  // console.log(this.props.selectedRecipes.map(recipe => this.getKeyByKey(recipe, e.target.value)))
-  this.props.selectMultipleRecipes({[e.target.value]: e.target.checked})
-  // this.props.selectMultipleRecipes(e.target.value)
-
+  e.target.checked && this.props.selectMultipleRecipes(e.target.value)
+  !e.target.checked && this.props.unselect(e.target.value)
 }
 
   render() {
@@ -85,4 +83,7 @@ const mapStateToProps = state => {
   }
 }
 
-export default connect(mapStateToProps, { selectRecipe, selectMultipleRecipes })(RecipeCard)
+export default connect(
+  mapStateToProps,
+  { selectRecipe, selectMultipleRecipes, unselect })
+  (RecipeCard)
