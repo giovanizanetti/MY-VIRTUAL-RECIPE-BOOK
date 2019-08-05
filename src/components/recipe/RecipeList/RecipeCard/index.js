@@ -9,14 +9,15 @@ import { selectMultipleRecipes, unselect } from '../../../../actions/recipeActio
 
 
 class RecipeCard extends Component {
-  getKeyByKey = (object, value) => {
-    return Object.keys(object).find(key => key === value);
+  componentDidMount() {
+    this.props.selectedRecipes.length > 0
+    && this.props.selectedRecipes.map( rec => this.props.unselect(rec))
   }
 
-handleCheckBox = e => {
-  e.target.checked && this.props.selectMultipleRecipes(e.target.value)
-  !e.target.checked && this.props.unselect(e.target.value)
-}
+  handleCheckBox = e => {
+    e.target.checked && this.props.selectMultipleRecipes(e.target.value)
+    !e.target.checked && this.props.unselect(e.target.value)
+  }
 
   render() {
     const { card } = style.recipeCard

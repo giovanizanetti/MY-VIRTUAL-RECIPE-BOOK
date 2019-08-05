@@ -1,6 +1,6 @@
 import React from 'react'
 import { showCheckBoxes } from '../../../actions/checkBox'
-import { selectAll, selectMultipleRecipes } from '../../../actions/recipeActions'
+import { selectAll, selectMultipleRecipes, createRecipe } from '../../../actions/recipeActions'
 import { checkAll } from '../../../actions/checkBox'
 import { connect } from 'react-redux'
 import selectedRecipes from '../../../reducers/selectedRecipes';
@@ -8,21 +8,23 @@ import { deleteRecipe } from '../../../actions/recipeActions'
 import { firestoreConnect } from 'react-redux-firebase'
 import { compose } from 'redux'
 import { isNumber } from '../../../myLibrary'
+import { Redirect } from 'react-router-dom'
+
 const Select = ({ showCheckBoxes, isActive,
-   selectedAll, selectedRecipes, deleteRecipe }) => {
+   selectedAll, selectedRecipes, deleteRecipe, apiRecipes, createRecipe }) => {
 
     const isSpoonacular = isNumber(selectedRecipes[0])
 
     const handleSave = () => {
-      // return isMyRecipeExists > 0
-      // ? alert(existMessage)
-      // : selectRecipe(recipe)
-      // &&
-      // createRecipe(recipe)
+      alert(`${selectedRecipes.length} ${selectedRecipes.length === 1 ? 'recipe': 'recipes'} was added to your recipes`)
+      return selectedRecipes.map(recipeId => {
+        const fullRecipe = apiRecipes.find(r => r.id == recipeId)
+        return createRecipe(fullRecipe)
+      })
     }
 
     const handleDelete = () => {
-      alert(`You sure do you want to delete ${selectedRecipes.length} ${selectMultipleRecipes.length === 1 ? 'recipe': 'recipes'} from your recipes:`)
+      alert(`You sure do you want to delete ${selectedRecipes.length} ${selectedRecipes.length === 1 ? 'recipe': 'recipes'} from your recipes:`)
       return selectedRecipes.map(recipe => deleteRecipe(recipe.toString()))
     }
 
@@ -56,7 +58,7 @@ const Select = ({ showCheckBoxes, isActive,
         && isSpoonacular
         && <button
               className="btn-small blue"
-              onClick={handleSave}
+              onClick={ handleSave }
             >Save
           </button>
       }
@@ -64,13 +66,14 @@ const Select = ({ showCheckBoxes, isActive,
   )
 }
 
-const mapStateToProps = state => {
+const mapStateToProps = (state, ownProps )=> {
   const { active } = state.checkBoxes
   return {
     isActive: active,
     selectedAll: state.selectedAll,
     checkAll: state.checkBoxes.isAllChecked,
     selectedRecipes: state.selectedRecipes,
+    apiRecipes: state.recipes.recipes
   }
 }
 
@@ -79,7 +82,7 @@ const mapStateToProps = state => {
 export default compose(
   connect(
     mapStateToProps,
-    { showCheckBoxes, checkAll, deleteRecipe, selectAll }
+    { showCheckBoxes, checkAll, deleteRecipe, selectAll, createRecipe }
   ),
   firestoreConnect([{
     collection: 'recipes'

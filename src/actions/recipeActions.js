@@ -20,8 +20,9 @@ import {
 } from './types'
 
 export const createRecipe = recipe => {
+  console.log(recipe.id)
   //delete id from recipes copied from API because Firebase creates a new id for the recipe
-  delete recipe.id
+  recipe.id && delete recipe.id
   return (dispatch, getState, { getFirebase, getFirestore }) => {
     // make async call to database
     const firestore = getFirestore()

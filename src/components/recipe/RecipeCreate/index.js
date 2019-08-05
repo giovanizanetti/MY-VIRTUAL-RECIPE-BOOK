@@ -11,7 +11,7 @@ import { firestoreConnect } from 'react-redux-firebase'
 
 class RecipeCreate extends Component {
 
-  //Check for duplicated recipe title before ubmiting
+  //Check for duplicated recipe title before submiting
   onSubmit = formValues => {
     const checkImg = formValues.image === undefined
     && this.props.image !== null

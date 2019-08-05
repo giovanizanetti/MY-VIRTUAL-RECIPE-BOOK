@@ -11,7 +11,7 @@ import MyRecipesSearchBar from '../MyRecipesSearchBar'
 const MyRecipes = (props) => {
   const { recipes, searchField, setSearchField } = props
   const filteredRecipes = recipes && recipes.filter(recipe => {
-    return recipe.title.toLowerCase().includes(searchField.toLowerCase())
+    return recipe.title && recipe.title.toLowerCase().includes(searchField.toLowerCase())
   })
 
   const handleSearch = (e) => setSearchField(e.target.value)

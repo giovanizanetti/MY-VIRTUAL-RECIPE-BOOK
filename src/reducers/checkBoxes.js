@@ -2,7 +2,8 @@ import {
   PREPARE_RECIPE,
   SHOW_CHECKBOXES,
   CHECK_ALL,
-  DELETE_RECIPE
+  DELETE_RECIPE,
+  CREATE_RECIPE
 } from '../actions/types'
 
 const initialState = {
@@ -33,6 +34,11 @@ export default (state=initialState, action) => {
           ...state,
           active: false
         }
+    case CREATE_RECIPE:
+      return {
+        ...state,
+        active: false
+      }
     default:
       return state
   }
