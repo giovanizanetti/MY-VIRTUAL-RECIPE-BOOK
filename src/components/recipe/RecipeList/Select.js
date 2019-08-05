@@ -1,6 +1,6 @@
 import React from 'react'
 import { showCheckBoxes } from '../../../actions/checkBox'
-import { selectAll } from '../../../actions/recipeActions'
+import { selectAll, selectMultipleRecipes } from '../../../actions/recipeActions'
 import { checkAll } from '../../../actions/checkBox'
 import { connect } from 'react-redux'
 import selectedRecipes from '../../../reducers/selectedRecipes';
@@ -20,15 +20,10 @@ const Select = ({ showCheckBoxes, isActive,
       // &&
       // createRecipe(recipe)
     }
-    // const getKeyByValue = (object, value) => {
-    //   return Object.keys(object).find(key => object[key] === value);
-    // }
 
     const handleDelete = () => {
-      // change this function to delelete only recipes === true
-      // const filteredRecipes = selectedRecipes.filter(recipe => getKeyByValue(recipe, true))
-      // console.log(filteredRecipes)
-      selectedRecipes.map(recipe => deleteRecipe(recipe.toString()))
+      alert(`You sure do you want to delete ${selectedRecipes.length} ${selectMultipleRecipes.length === 1 ? 'recipe': 'recipes'} from your recipes:`)
+      return selectedRecipes.map(recipe => deleteRecipe(recipe.toString()))
     }
 
   return (
