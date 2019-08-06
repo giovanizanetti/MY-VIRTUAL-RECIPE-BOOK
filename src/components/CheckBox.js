@@ -6,11 +6,11 @@ const Checkbox = props => {
     pointerEvents: 'inherit',
     opacity: 'unset'
   }
-  console.log(props.checked)
   return (
     <input
       // checked={props.checked}
       style={ props.style || style }
+      // checked={props.isAllChecked}
       type="checkbox"
       onChange={props.onChange}
       id={props.id}

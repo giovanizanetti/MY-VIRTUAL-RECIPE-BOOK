@@ -1,17 +1,14 @@
 import React from 'react'
 import { showCheckBoxes } from '../../../actions/checkBox'
-import { selectAll, selectMultipleRecipes, createRecipe } from '../../../actions/recipeActions'
-import { checkAll } from '../../../actions/checkBox'
+import { selectAll, createRecipe } from '../../../actions/recipeActions'
 import { connect } from 'react-redux'
-import selectedRecipes from '../../../reducers/selectedRecipes';
 import { deleteRecipe } from '../../../actions/recipeActions'
 import { firestoreConnect } from 'react-redux-firebase'
 import { compose } from 'redux'
 import { isNumber } from '../../../myLibrary'
-import { Redirect } from 'react-router-dom'
 
 const Select = ({ showCheckBoxes, isActive,
-   selectedAll, selectedRecipes, deleteRecipe, apiRecipes, createRecipe }) => {
+   selectAll, selectedRecipes, deleteRecipe, apiRecipes, createRecipe }) => {
 
     const isSpoonacular = isNumber(selectedRecipes[0])
 
@@ -30,22 +27,24 @@ const Select = ({ showCheckBoxes, isActive,
 
   return (
     <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
+      {/*Later: Create Uselect button*/}
       {
-        !isActive
+        selectedRecipes.length == 0
         && <button
               className="btn-small blue"
               onClick={() => showCheckBoxes() }
               >Select
             </button>
       }
+      {/* Later: trye to implemet select all button
       {
         isActive
         && <button
               className="btn-small blue"
-              onClick={() => selectAll(true) }
+              onClick={() => selectAll() }
               >Select All
             </button>
-      }
+      } */}
       { selectedRecipes.length > 0
         && !isSpoonacular
         && <button
@@ -70,8 +69,8 @@ const mapStateToProps = (state, ownProps )=> {
   const { active } = state.checkBoxes
   return {
     isActive: active,
-    selectedAll: state.selectedAll,
-    checkAll: state.checkBoxes.isAllChecked,
+    // selectedAll: state.selectedAll,
+    // checkAll: state.checkBoxes.isAllChecked,
     selectedRecipes: state.selectedRecipes,
     apiRecipes: state.recipes.recipes
   }
@@ -82,7 +81,7 @@ const mapStateToProps = (state, ownProps )=> {
 export default compose(
   connect(
     mapStateToProps,
-    { showCheckBoxes, checkAll, deleteRecipe, selectAll, createRecipe }
+    { showCheckBoxes, deleteRecipe, selectAll, createRecipe }
   ),
   firestoreConnect([{
     collection: 'recipes'

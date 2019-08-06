@@ -95,17 +95,16 @@ export const selectRecipe = recipe => {
 }
 
 export const selectMultipleRecipes = recipesIds => {
-  console.log(recipesIds)
   return {
     type: SELECT_MULTIPLE_RECIPES,
     payload: recipesIds
   }
 }
 
-export const selectAll = (isSelected) => {
+export const selectAll = () => {
+  console.log('clicked')
   return {
-    type: SELECT_ALL,
-    payload: isSelected
+    type: SELECT_ALL
   }
 }
 

@@ -1,9 +1,9 @@
 import {
   PREPARE_RECIPE,
   SHOW_CHECKBOXES,
-  CHECK_ALL,
   DELETE_RECIPE,
-  CREATE_RECIPE
+  CREATE_RECIPE,
+  SELECT_ALL
 } from '../actions/types'
 
 const initialState = {
@@ -24,11 +24,11 @@ export default (state=initialState, action) => {
         ...state,
         active: !isActive
       }
-    case CHECK_ALL:
-        return {
-          ...state,
-          isAllChecked: !state.isAllChecked
-        }
+    case SELECT_ALL:
+      return {
+        ...state,
+        isAllChecked: false
+      }
     case DELETE_RECIPE:
         return {
           ...state,

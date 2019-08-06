@@ -39,20 +39,17 @@ export default (state=initialState, action) => {
         isPending: false
       }
     case FETCH_RECIPES_BY_ID_PENDING:
-      console.log('Is pending your single recipe')
       return {
         ...state,
         isPending: true
       }
     case FETCH_RECIPES_BY_ID_SUCCESS:
-      console.log('success')
       return {
         ...state,
         recipes: action.payload.id,
         isPending: false
       }
     case FETCH_RECIPES_BY_ID_FAILED:
-      console.log('Failed')
       return {
         ...state,
         error: action.payload,

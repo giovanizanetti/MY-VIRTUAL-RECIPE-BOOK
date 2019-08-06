@@ -24,7 +24,7 @@ class RecipeCard extends Component {
     const {
       id, image, title, glutenFree, lowFodmap,
       vegetarian, vegan, dairyFree, readyInMinutes,
-      selectRecipe, recipes, cookingMinutes, isActive, checkAll
+      selectRecipe, recipes, cookingMinutes, isActive, isAllChecked
     } = this.props
     console.log(image)
     return (
@@ -38,9 +38,7 @@ class RecipeCard extends Component {
           <CheckBox
             onChange={ this.handleCheckBox }
             value={ id }
-
-            checked={ checkAll }
-            // isAllChecked={ checkAll }
+            isAllChecked={ isAllChecked }
             style={{
               position: 'absolute',
               zIndex: '12',
@@ -80,7 +78,7 @@ const mapStateToProps = state => {
     selectedRecipes: state.selectedRecipes,
     isActive: state.checkBoxes.active,
     // recipes: state.firestore.ordered.recipes
-    checkAll: state.checkBoxes.isAllChecked
+    isAllChecked: state.checkBoxes.isAllChecked
   }
 }
 
