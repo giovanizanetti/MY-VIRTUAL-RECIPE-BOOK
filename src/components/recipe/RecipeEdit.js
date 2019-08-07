@@ -11,19 +11,15 @@ import { isNumber } from '../../myLibrary'
 //This component make use of a tempate (RecipeForm component)
 class RecipeEdit extends Component {
   componentDidMount(){
-    const ID = this.props.match.params.id
-    !this.props.selectedRecipe && this.props.fetchRecipeById(ID)
+    const { selectedRecipe, match, fetchRecipeById } = this.props
+    const ID = match.params.id
+    !selectedRecipe && fetchRecipeById(ID)
   }
 
-  /* Later => - when submit check whether the recipe already exist in Firestore,
-    in case the recipe is coming from the Spoonacular and is not saved in firestore
-    a new recipe will be created. So I will have to call the action creator for
-    creating a recipe.
-  */
   onSubmit = (formValues) => {
-    console.log(formValues)
     const checkImg = this.props.image
-    formValues.image = checkImg && this.props.image
+    formValues.image = checkImg
+    && this.props.image
 
     const isNewImg = this.props.imageInput
     && this.props.imageInput !== '/static/media/placeholder.7eade072.jpg'

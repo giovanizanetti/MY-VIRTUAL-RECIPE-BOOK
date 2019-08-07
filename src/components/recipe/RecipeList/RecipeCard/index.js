@@ -7,16 +7,18 @@ import style from '../style'
 import CheckBox from '../../../CheckBox'
 import { selectMultipleRecipes, unselect } from '../../../../actions/recipeActions'
 
-
 class RecipeCard extends Component {
   componentDidMount() {
-    this.props.selectedRecipes.length > 0
-    && this.props.selectedRecipes.map( rec => this.props.unselect(rec))
+    const { selectedRecipes, unselect } = this.props
+    selectedRecipes.length > 0
+    && selectedRecipes.map(rec => unselect(rec))
   }
 
   handleCheckBox = e => {
-    e.target.checked && this.props.selectMultipleRecipes(e.target.value)
-    !e.target.checked && this.props.unselect(e.target.value)
+    const { checked, value } = e.target
+    const { selectMultipleRecipes, unselect } = this.props
+    checked && selectMultipleRecipes(value)
+    !checked && unselect(e.target.value)
   }
 
   render() {
@@ -24,14 +26,14 @@ class RecipeCard extends Component {
     const {
       id, image, title, glutenFree, lowFodmap,
       vegetarian, vegan, dairyFree, readyInMinutes,
-      selectRecipe, recipes, cookingMinutes, isActive, isAllChecked
+      selectRecipe, recipes, cookingMinutes, isActive,
+      isAllChecked, key
     } = this.props
-    console.log(image)
     return (
       <div
         className="card small col s12 m6 l4"
         style={ card }
-        key={id}
+        key={ key}
         onClick={() => { selectRecipe(recipes.find(rec => rec.id === id)) }}
         >
           { isActive &&
@@ -46,25 +48,22 @@ class RecipeCard extends Component {
               opacity: 'unset'}}
           />
         }
-        {/*  */}
-        {/*Later => Use Header component and pass style as prop.
-        Make use of default props in Header component if necessary */}
         <div className="card-image waves-effect waves-block waves-light">
-          <img className="activator" src={image} alt={title} />
+          <img className="activator" src={ image } alt={ title } />
         </div>
         <span className="card-title activator grey-text text-darken-4">
           { trimString(title, 40) }
         </span>
         <CardReveal
-          title={title}
-          id={id}
-          isGlutenFree={glutenFree}
-          isLowFodmap={lowFodmap}
-          isVegetarian={vegetarian}
-          isVegan={vegan}
-          isDairyFree={dairyFree}
-          readyInMinutes={readyInMinutes}
-          cookingMinutes={cookingMinutes}
+          title={ title }
+          id={ id }
+          isGlutenFree={ glutenFree }
+          isLowFodmap={ lowFodmap }
+          isVegetarian={ vegetarian }
+          isVegan={ vegan }
+          isDairyFree={ dairyFree }
+          readyInMinutes={ readyInMinutes }
+          cookingMinutes={ cookingMinutes }
         />
       </div>
     )
@@ -77,7 +76,6 @@ const mapStateToProps = state => {
     selectedRecipe: state.selectedRecipe,
     selectedRecipes: state.selectedRecipes,
     isActive: state.checkBoxes.active,
-    // recipes: state.firestore.ordered.recipes
     isAllChecked: state.checkBoxes.isAllChecked
   }
 }

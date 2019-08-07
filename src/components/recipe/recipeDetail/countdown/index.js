@@ -1,7 +1,6 @@
 import React, { Component } from "react"
 import PropTypes from 'prop-types'
 import Alarm from '../../../../sounds/Wecker-sound.mp3'
-import Sound from 'react-sound'
 export default class Countdown extends Component {
     constructor(props) {
         super(props);
@@ -33,7 +32,6 @@ export default class Countdown extends Component {
         invisible: 'none',
         play: false
     }
-
 
     componentWillUnmount() {
         clearInterval(this.intervalReference)
@@ -130,7 +128,6 @@ export default class Countdown extends Component {
             default:
                 return
         }
-
     }
 
     format = time => {
@@ -140,9 +137,9 @@ export default class Countdown extends Component {
             size,
             hideDay,
         } = this.props
-
+        const { count, setTimerButton, isStarted, isVisible } = this.state
         let showHours  = this.props.hideHours
-        showHours = this.state.count < 3600 && this.state.setTimerButton ? false : true
+        showHours = count < 3600 && setTimerButton ? false : true
 
         let seconds = time % 60;
         let minutes = Math.floor(time / 60) % 60;
@@ -152,45 +149,46 @@ export default class Countdown extends Component {
         minutes = minutes.toString().length === 1   ? `0${minutes}` : minutes
         seconds = seconds.toString().length === 1 ? `0${seconds}` : seconds
         hours = hours.toString().length === 1 ? `0${hours}` : hours;
-        this.state.isStarted
-        && !this.state.count
+        isStarted
+        && !count
         && this.audio.play()
 
         return (
-            <div style={{fontSize: `${size}px`}}>
+            <div style={ {fontSize: `${size}px`} }>
                 {!hideDay && (
                     <span style={{
                         color,
                         backgroundColor,
-                        display: !this.state.isVisible && 'none'
+                        display: !isVisible && 'none'
                         }}>
                     {day}
                   </span>
                         )}
-                        {!hideDay  && <span>:</span>}
+                        { !hideDay  && <span>:</span> }
                         { showHours && (
                             <span
                                 style={{
                                     color,
                                     backgroundColor,
-                                    display: !this.state.isVisible && 'none'
-                                }}>
-                    {hours}
+                                    display: !isVisible && 'none'
+                                }}
+                            >
+                    { hours }
                   </span>
                         )}
                         { showHours && <span>:</span>}
                         <span style={{
                             color,
                             backgroundColor,
-                            display: !this.state.isVisible && 'none'
+                            display: !isVisible && 'none'
                             }}>
                   {minutes}
                 </span>
-                        {this.state.setTimerButton && <span>:</span>}
+                        {setTimerButton && <span>:</span>}
                         <span style={{
                             color,
                             backgroundColor,
-                            display: !this.state.isVisible  || !this.state.setTimerButton && 'none'
+                            display: !isVisible  || !setTimerButton && 'none'
 
                         }}>
                   {seconds}
@@ -200,7 +198,7 @@ export default class Countdown extends Component {
     };
 
     render() {
-        const { count } = this.state;
+        const { count, isPaused, isStarted } = this.state;
         const { className } = this.props
         return (
             <div style={{position: 'relative'}} >
@@ -223,8 +221,8 @@ export default class Countdown extends Component {
                 <div className='center'>
                     {
                         this.state.isStarted
-                        && this.state !== 0
-                        && !this.state.isPaused
+                        && count !== 0
+                        && !isPaused
                         && <button
                                 style={{ width: '100%'}}
                                 onClick={this.handlePause}
@@ -296,19 +294,19 @@ export default class Countdown extends Component {
                         </>
                     }
                        {
-                        !this.state.isStarted && this.state.count > 0
+                        !isStarted && count > 0
                         && <button style={{ width: '100%'}} onClick={this.handleStart} className='btn-small grey'>Start</button>
                     }
                 </div>
                 {
                     this.state.isStarted
-                    && !this.state.count
+                    && !count
                     && <div>The time is over!!!</div>
                     && <>
                             <button
                                 style={{width: '100%'}}
                                 onClick={() => {
-                                this.setState({isStarted: !this.state.isStarted})
+                                this.setState({isStarted: !isStarted})
                                 this.audio.pause()}} class="btn red">stop</button>
                             <div style={{display: 'flex', flexWrap: 'wrap'}}>
                                 <button value='5' onClick={ this.handleProcrastinateAlarm } className="btn-small grey">+ 5 min</button>

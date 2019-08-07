@@ -19,7 +19,6 @@ export const renderInstructions = ({ fields, meta: { touched, error, submitFaile
               return (
               <li
                 key={ index }
-                // style={ style.arrayInputs }
               >
                 <FieldArray
                   name={`${field}.steps`}

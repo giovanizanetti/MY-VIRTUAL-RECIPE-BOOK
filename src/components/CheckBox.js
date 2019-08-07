@@ -8,9 +8,7 @@ const Checkbox = props => {
   }
   return (
     <input
-      // checked={props.checked}
       style={ props.style || style }
-      // checked={props.isAllChecked}
       type="checkbox"
       onChange={props.onChange}
       id={props.id}

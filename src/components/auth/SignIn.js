@@ -6,7 +6,6 @@ import { compose } from 'redux'
 import { Redirect } from 'react-router-dom'
 
 const SignIn = props => {
-  console.log(props)
   const { handleSubmit, pristine, submitting, signIn, formValues, authError, auth, selectedRecipe} = props
 
   //When the user attempted to see full recipe when the user is logged out the user will be asked to sign in,

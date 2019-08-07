@@ -8,26 +8,29 @@ import { compose } from 'redux'
 import { isNumber } from '../../../myLibrary'
 
 const Select = ({ showCheckBoxes, isActive,
-   selectAll, selectedRecipes, deleteRecipe, apiRecipes, createRecipe }) => {
+   selectedRecipes, deleteRecipe,
+   apiRecipes, createRecipe, history }) => {
 
     const isSpoonacular = isNumber(selectedRecipes[0])
 
     const handleSave = () => {
-      alert(`${selectedRecipes.length} ${selectedRecipes.length === 1 ? 'recipe': 'recipes'} was added to your recipes`)
+      alert(`${selectedRecipes.length} ${selectedRecipes.length === 1
+        ? 'recipe': 'recipes'} was added to your recipes. Click Ok to go to 'My Recipes'`)
       return selectedRecipes.map(recipeId => {
         const fullRecipe = apiRecipes.find(r => r.id == recipeId)
-        return createRecipe(fullRecipe)
+        return showCheckBoxes()
+        && createRecipe(fullRecipe, history.replace('/myRecipes/'))
       })
     }
 
     const handleDelete = () => {
       alert(`You sure do you want to delete ${selectedRecipes.length} ${selectedRecipes.length === 1 ? 'recipe': 'recipes'} from your recipes:`)
-      return selectedRecipes.map(recipe => deleteRecipe(recipe.toString()))
+      return showCheckBoxes()
+      && selectedRecipes.map(recipe => deleteRecipe(recipe.toString()))
     }
 
   return (
     <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
-      {/*Later: Create Uselect button*/}
       {
         selectedRecipes.length == 0
         && <button
@@ -36,16 +39,8 @@ const Select = ({ showCheckBoxes, isActive,
               >Select
             </button>
       }
-      {/* Later: trye to implemet select all button
-      {
-        isActive
-        && <button
-              className="btn-small blue"
-              onClick={() => selectAll() }
-              >Select All
-            </button>
-      } */}
-      { selectedRecipes.length > 0
+      { isActive
+        && selectedRecipes.length > 0
         && !isSpoonacular
         && <button
               className="btn-small red"
@@ -53,7 +48,8 @@ const Select = ({ showCheckBoxes, isActive,
               >Delete
             </button>
       }
-      { selectedRecipes.length > 0
+      { isActive
+        && selectedRecipes.length > 0
         && isSpoonacular
         && <button
               className="btn-small blue"
@@ -69,14 +65,10 @@ const mapStateToProps = (state, ownProps )=> {
   const { active } = state.checkBoxes
   return {
     isActive: active,
-    // selectedAll: state.selectedAll,
-    // checkAll: state.checkBoxes.isAllChecked,
     selectedRecipes: state.selectedRecipes,
     apiRecipes: state.recipes.recipes
   }
 }
-
-// export default connect( mapStateToProps , { showCheckBoxes, checkAll, deleteRecipe })(Select)
 
 export default compose(
   connect(

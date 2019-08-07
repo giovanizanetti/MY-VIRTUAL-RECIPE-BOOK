@@ -41,10 +41,6 @@ class Recipedetail extends Component {
       vegetarian, lowFodmap, vegan, dairyFree, analyzedInstructions,
     } = recipe
 
-    // Later => Add a button to prepare this recipe
-    // when the user push the button an alarm will pop up
-    // and the checkboxes will be available so the user can checkout
-    // each engredient/instruction as it go.
     return (
       <div className='card'>
         <Header title={title} image={image} />
@@ -95,13 +91,6 @@ const mapStateToProps = (state, ownProps) => {
   const ID = ownProps.match.params.id
   const IS_SPOONACULAR_ID = isNumber(ID)
 
-  /*
-    For some reason that I do not understand,
-    when I refresh the page recipes/ (from the Api) I have the selected recipe in the reducer,
-    however, when I refresh from /myRecipes (from Firestore) I don't have it.
-    API ids are numbers only, so I check if the id is from API, if yes I return selected recipe,
-    otherwise I get from firestore and assign the recipe property.
-   */
   return {
     auth: firebase.auth,
     selectedRecipe,

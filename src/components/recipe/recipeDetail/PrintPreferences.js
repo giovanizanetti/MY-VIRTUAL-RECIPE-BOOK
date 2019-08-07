@@ -29,7 +29,6 @@ class PrintPreferences extends Component {
         <p>
           <label>
             <input
-              // name="group1"
               value='IngredientList'
               checked={ this.state.selectedOption === 'IngredientList' }
               type="radio"

@@ -8,7 +8,6 @@ import { firestoreConnect } from 'react-redux-firebase'
 import { compose } from 'redux'
 import { isNumber } from '../myLibrary'
 import { Link } from 'react-router-dom'
-import PrintRecipe from './recipe/RecipeDetail/PrintRecipe'
 
 class Modal extends Component {
   componentDidMount() {

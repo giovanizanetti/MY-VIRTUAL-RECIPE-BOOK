@@ -24,8 +24,8 @@ const RecipeFooter = props => {
     : `${ buttonClasses } blue`
   const saveMessage = `The recipe ${recipe.title.toUpperCase()} was just saved in 'My Recipes'`
 
-
   const handleEdit = () => history.push(`/recipes/edit/${ recipeId }`)
+
   const handleSave = () => {
     return isMyRecipeExists > 0
     ? alert(existMessage)

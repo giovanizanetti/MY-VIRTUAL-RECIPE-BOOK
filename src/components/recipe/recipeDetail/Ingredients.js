@@ -3,14 +3,10 @@ import CheckBox from '../../CheckBox'
 import style from './style'
 import { connect } from 'react-redux'
 
-// Later I will add some mesures by 'cup' instead of 'grams'
-//when user check the item of during the preparation pass a line through
-
 class Ingredients extends Component {
   state = {}
 
   handleChange = e => {
-    console.log(e.target.id)
       this.setState({
         [e.target.id]: e.target.checked
       })
@@ -31,7 +27,7 @@ class Ingredients extends Component {
           prepare &&
           <CheckBox
             id={i}
-            onChange={ this.handleChange}/>
+            onChange={ this.handleChange }/>
         }
         {` - ${Math.round(amount)} ${unitShort} ${useOf} ${ingredient.name}`}
       </li>

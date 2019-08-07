@@ -10,10 +10,10 @@ export const renderIngredients = ({ fields, meta: { touched, error, submitFailed
     <li>
       <AddButton
         item='ingredients'
-        fields={fields}
+        fields={ fields }
         onClick={ () => fields.push({})}
       />
-      {(touched || submitFailed) && error && <span>{error}</span>}
+      {(touched || submitFailed) && error && <span>{ error }</span>}
     </li>
     {fields.map((field, index) =>
       <li
@@ -43,9 +43,9 @@ export const renderIngredients = ({ fields, meta: { touched, error, submitFailed
           </div>
         </div>
         <AddRemoveButton
-          field={field}
-          index={index}
-          fields={fields}
+          field={ field }
+          index={ index }
+          fields={ fields }
         />
       </li>
     )}

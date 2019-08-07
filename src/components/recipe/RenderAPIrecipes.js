@@ -8,22 +8,25 @@ import SearchBar from '../SearchBar'
 
 class RenderAPIrecipes extends Component {
   componentDidMount = () => {
-    this.props.fetchRecipes()
+    const { fetchRecipes } =this.props
+    fetchRecipes()
   }
 
   onSubmit = formValues => {
-    this.props.fetchRecipes(formValues)
+    const { fetchRecipes } =this.props
+    fetchRecipes(formValues)
   }
 
   render() {
-    const { recipes }  = this.props
+    const { recipes, history }  = this.props
     return (
       recipes && recipes.isPending
       ? <LoaderProgressBar />
       : <>
           <SearchBar id='API' onSubmit={ this.onSubmit } />
           <RecipeList
-            recipes={ recipes.recipes  }
+            recipes={ recipes.recipes }
+            history={ history }
           />
         </>
     )

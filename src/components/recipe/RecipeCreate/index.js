@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { createRecipe } from '../../../actions/recipeActions'
+import { createRecipe, selectRecipe } from '../../../actions/recipeActions'
 import RecipeForm from '../RecipeForm/'
 import { compose } from 'redux'
 import { firestoreConnect } from 'react-redux-firebase'
@@ -10,18 +10,22 @@ import { firestoreConnect } from 'react-redux-firebase'
 //Ask if the user wants to replace it or create a new recipe e.g. recipe title(2)
 
 class RecipeCreate extends Component {
-
+  componentDidMount() {
+    const { selectRecipe } = this.props
+    selectRecipe(null)
+  }
   //Check for duplicated recipe title before submiting
   onSubmit = formValues => {
+    const { image , myRecipes, history, createRecipe } = this.props
     const checkImg = formValues.image === undefined
-    && this.props.image !== null
+    && image !== null
 
-    formValues.image = checkImg && this.props.image
-    if(this.props.myRecipes.find(recipe => recipe.title.toLowerCase() === formValues.title.toLowerCase()))
+    formValues.image = checkImg && image
+    if(myRecipes.find(recipe => recipe.title.toLowerCase() === formValues.title.toLowerCase()))
       return alert(`The recipe ${formValues.title} already exists, please choose a different name`)
      else {
-       this.props.createRecipe(formValues)
-      return this.props.history.replace(`/myRecipes`)
+      createRecipe(formValues)
+      return history.replace(`/myRecipes`)
     }
   }
 
@@ -45,7 +49,7 @@ const mapStateToProps = state => {
 export default compose(
   connect(
     mapStateToProps,
-    { createRecipe }
+    { createRecipe, selectRecipe }
   ),
   firestoreConnect([{
     collection: 'recipes'

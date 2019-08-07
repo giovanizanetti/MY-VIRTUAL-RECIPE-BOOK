@@ -11,14 +11,16 @@ class RecipeList extends Component {
   }
 
   render() {
-    console.log(this.props, 'hhhhhhhhhhh')
-    const { recipes } = this.props
+    const { recipes, history } = this.props
     return (
       <div className="row col">
-        <Select recipes={recipes}
-          />
-        <CardsList
+        <Select
           recipes={recipes}
+          history={ history }
+        />
+        <CardsList
+          recipes={ recipes }
+          history={ history }
         />
       </div>
     )

@@ -29,7 +29,6 @@ const LoaderSpinner = () => {
     <div className='container' style={ container }>
       <div style={ innerContainer }>
         <i><img style={ imgIcons } className='responsive-img' src={ recipe } alt="recipe icon"/></i>
-        {/* Later check if you fetching a single or multiple recipes a change plural/singular of recipe word*/}
         <span style={ span }>Your recipes are on the way...</span>
         <i><img style={ imgIcons } className='responsive-img' src={ chefs_hat }alt="chef's hat icon" /></i>
       </div>

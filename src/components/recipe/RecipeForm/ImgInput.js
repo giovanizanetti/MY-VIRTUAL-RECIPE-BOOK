@@ -41,7 +41,9 @@ class ImgUpLoad extends Component {
   }
 
   render() {
-    const selectedRecipe = this.props.selectedRecipe && this.props.selectedRecipe.image
+    let { selectedRecipe } = this.props
+    const { progress, showPercentage, image, url } = this.state
+    const selectedRecipeImage = selectedRecipe && selectedRecipe.image
     return (
       <div className='container'>
         <br />
@@ -51,7 +53,7 @@ class ImgUpLoad extends Component {
             type="file"
             onChange={ this.handleChange }
           />
-          { this.state.image &&
+          { image &&
             <button type='button' onClick={ this.handleUpload } className='btn-small blue'>Upload</button>
           }
         </div>
@@ -60,18 +62,16 @@ class ImgUpLoad extends Component {
             <div
               className="determinate blue"
               style={{
-                width: `${this.state.progress}%`,
+                width: `${progress}%`,
               }}
               ></div>
           </div>
-          <span style={{margin: '.2rem'}}> { this.state.showPercentage && this.state.progress + '%' }</span>
+          <span style={{margin: '.2rem'}}> { showPercentage && progress + '%' }</span>
 
         </div>
-        {/*Later add paste url*/}
-
         <img
           className='responsive-img'
-          src={ this.state.url || selectedRecipe || Placeholder }
+          src={ url || selectedRecipeImage || Placeholder }
           alt='recipe image'
           height='300'
           width='400'

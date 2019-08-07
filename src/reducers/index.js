@@ -10,7 +10,6 @@ import search from './search'
 import selectedRecipes from './selectedRecipes'
 import image from './image'
 
-
 export default combineReducers({
   form: formReducer,
   recipes,
@@ -21,5 +20,5 @@ export default combineReducers({
   checkBoxes,
   search,
   selectedRecipes,
-  image
+  image,
 })

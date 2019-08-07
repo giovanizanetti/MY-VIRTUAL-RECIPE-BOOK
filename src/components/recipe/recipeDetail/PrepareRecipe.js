@@ -5,8 +5,6 @@ import Countdown from './countdown'
 
 const PrepareRecipe = ({ prepareRecipe, cookingMinutes, prepare }) => {
   return (
-
-
       <div style={{
         display: 'flex',
         flexDirection: 'column',

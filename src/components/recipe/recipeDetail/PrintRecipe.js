@@ -12,7 +12,6 @@ class PrintRecipe extends Component {
           content={() => this.componentRef}
         />
         <Recipe
-
           ref={el => (this.componentRef = el)} />
       </>
     )
