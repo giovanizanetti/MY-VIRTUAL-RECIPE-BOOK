@@ -1,20 +1,19 @@
 import React, { Component } from 'react'
 import ReactToPrint from 'react-to-print'
-import Recipe from './index'
+import RecipeDetail from '../RecipeDetail'
 
 
 class PrintRecipe extends Component {
   render() {
     return (
-      <>
+      <div>
         <ReactToPrint
           trigger={() => <a href="#">Print this out!</a>}
           content={() => this.componentRef}
         />
-        <Recipe
-          ref={el => (this.componentRef = el)} />
-      </>
-    )
+        <RecipeDetail ref={el => (this.componentRef = el)} />
+      </div>
+    );
   }
 }
 

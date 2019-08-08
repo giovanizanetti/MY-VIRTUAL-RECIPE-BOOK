@@ -6,6 +6,7 @@ import { createRecipe, selectRecipe } from '../../../actions/recipeActions'
 import { firestoreConnect } from 'react-redux-firebase'
 import { connect } from 'react-redux'
 import { compose } from 'redux'
+import PrintRecipe from '../../recipe/PrintRecipe'
 
 const RecipeFooter = props => {
   const { recipeId, history, recipe, selectRecipe, createRecipe, myRecipes } = props
@@ -112,6 +113,7 @@ const RecipeFooter = props => {
         >
           <i className="material-icons">share</i>
         </button>
+        {/* <PrintRecipe /> */}
       </div>
     </>
   )

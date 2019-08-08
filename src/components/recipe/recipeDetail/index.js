@@ -23,11 +23,13 @@ class Recipedetail extends Component {
   componentDidMount(){
     const ID = this.props.match.params.id
     const IS_SPOONACULAR_ID = isNumber(ID)
-    const { fetchRecipeById, selectedRecipe } = this.props
+    const {
+      fetchRecipeById, selectedRecipe, setSearchField } = this.props
 
     !selectedRecipe
     && IS_SPOONACULAR_ID
     && fetchRecipeById(ID)
+    && setSearchField('')
   }
 
   render() {
@@ -100,7 +102,8 @@ const mapStateToProps = (state, ownProps) => {
   }
 }
  // To have access to the firestore I must use firestore connect.
-export default compose(
+export default
+ compose(
   connect(
     mapStateToProps,
     { selectRecipe, fetchRecipeById }
