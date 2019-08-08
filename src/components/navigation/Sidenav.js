@@ -6,11 +6,13 @@ import SignedOutLinks from './SignedOutLinks'
 import Avatar from './Avatar'
 
 class Sidebar extends Component {
+
     componentDidMount() {
       const elem = document.querySelector(".sidenav")
       M.Sidenav.init(elem, {
           edge: "left",
-          inDuration: 250
+          inDuration: 250,
+          draggable: true
       });
     }
 
@@ -18,11 +20,12 @@ class Sidebar extends Component {
     const { uid, isDesktop } = this.props
     return (
       <div>
-        <ul id="slide-out" className="sidenav invisible__963">
-          { uid && <Avatar /> }
-          {!uid ?  <SignedOutLinks /> : <SignedInLinks isDesktop={isDesktop} />}
-
-        </ul>
+        {
+          <ul id="slide-out" className="sidenav invisible__963">
+            { uid && <Avatar /> }
+            {!uid ?  <SignedOutLinks /> : <SignedInLinks isDesktop={isDesktop} />}
+          </ul>
+        }
         <NavLink to='#' data-target="slide-out" className="sidenav-trigger">
           <i className="material-icons">menu</i>
         </NavLink>

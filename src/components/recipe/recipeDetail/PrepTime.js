@@ -37,8 +37,8 @@ const PrepTime = ({ cookingMinutes, readyInMinutes }) => {
 
   return (
       <ul
-        className='container'
-        id='icons-container'
+        // className='container'
+        // id='icons-container'
         style={ container_ul }
       >
         { cookingTime }

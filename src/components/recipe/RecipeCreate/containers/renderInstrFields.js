@@ -5,33 +5,33 @@ import {renderField} from './renderField'
 import style from '../style'
 import AddButton from '../AddButton'
 
-export const renderInstrFields = (props) => {
+export const renderInstrFields = ({ fields }) => {
   return (
     <div>
       <AddButton
         item='instructions'
-        fields={props.fields}
-        onClick={ () => props.fields.push({}) }/>
-      { props.fields.map((field, index) => {
+        fields={ fields }
+        onClick={ () => fields.push({}) }/>
+      { fields.map((field, index) => {
         return (
-          <li
+          <div
             key={ index }
             style={ style.arrayInputs }
           >
             <div className='container'>
               <Field
-                name={`${field}.step`}
-                component={renderField}
+                name={`${ field }.step`}
+                component={ renderField }
                 label="instruction"
-                textarea={true}
+                textarea={ true }
               />
             </div>
             <AddRemoveButton
-              field={field}
-              index={index}
-              fields={props.fields}
+              field={ field }
+              index={ index }
+              fields={ fields }
             />
-          </li>
+          </div>
         )
       })}
     </div>

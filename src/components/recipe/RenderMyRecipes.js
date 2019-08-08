@@ -1,46 +1,60 @@
-import React from 'react'
+import React, { Component } from 'react'
 import { compose } from 'redux'
 import { firestoreConnect } from 'react-redux-firebase'
 import { connect } from 'react-redux'
 import RecipeList from './RecipeList'
 import LoaderProgressBar from '../LoaderProgressBar'
+import NoRecipes from './NoRecipes'
+import { setSearchField } from '../../actions/searchActions'
+import MyRecipesSearchBar from '../MyRecipesSearchBar'
 
-const MyRecipes = (props) => {
-  const { recipes } = props
-  const renderRecipeList = recipes < 1
-    ? <div
-      className='container'
-        style={{ display: 'flex',
-                flexDirection: 'column',
-                alignItems: 'center',
-              }}
-      >
-        <span>You have no recipes!</span>
-        <div
-          className='container center'
-          style={{display: 'flex', justifyContent: 'space-around'}}>
-          <button className='btn'>Create a recipe</button>
-          <button className='btn'>Search for recipes</button>
-        </div>
-
-      </div>
-    : <RecipeList recipes={recipes} />
-  return (
-    !recipes
-    ? <LoaderProgressBar />
-    : renderRecipeList
-  )
+class MyRecipes extends Component {
+componentDidMount() {
+  const { setSearchField } = this.props
+  setSearchField('')
 }
+
+  render() {
+    const { recipes, searchField, setSearchField } = this.props
+    const filteredRecipes = recipes && recipes.filter(recipe => {
+      return recipe.title && recipe.title.toLowerCase().includes(searchField.toLowerCase())
+    })
+
+    const handleSearch = (e) => setSearchField(e.target.value)
+
+    const renderRecipeList =
+      recipes < 1
+      ? <NoRecipes />
+      : <>
+          <MyRecipesSearchBar handleSearch={ handleSearch } />
+          {
+            filteredRecipes
+            && searchField.length > 0
+            && filteredRecipes.length < 1
+            ? <span className='red-text'>Sorry! NO RECIPES FOUND!!</span>
+            : <RecipeList recipes={ filteredRecipes } />
+          }
+        </>
+
+    return (
+      !recipes
+      ? <LoaderProgressBar />
+      : renderRecipeList
+    )
+  }
+}
+
 
 const mapStateToProps = state => {
   return {
     recipes: state.firestore.ordered.recipes,
-    selectedRecipe: state.selectedRecipe
+    selectedRecipe: state.selectedRecipe,
+    searchField: state.search.searchField
   }
 }
 
 export default compose(
-  connect(mapStateToProps),
+  connect(mapStateToProps, { setSearchField }),
   firestoreConnect([{
     collection: 'recipes'
   }])

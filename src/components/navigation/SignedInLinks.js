@@ -31,7 +31,7 @@ class SignedInLinks extends Component{
   }
 
   render() {
-    const { signOut } = this.props
+    const { signOut, hideSideBar } = this.props
     const isDesktop = this.state.isDesktop
     return (
       <>

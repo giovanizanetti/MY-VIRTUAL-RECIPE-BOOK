@@ -1,11 +1,6 @@
 import React, { Component } from 'react'
-import M from "materialize-css/dist/js/materialize.min.js"
 
 export class renderField extends Component {
-  componentDidMount(){
-    M.textareaAutoResize(document.querySelector(".materialize-textarea"))
-  }
-
   render() {
     const { input, label, type, textarea, meta: { touched, error, } } = this.props
     const className = `input-field materialize-textarea ${error && touched ? 'wrong' : ''}`

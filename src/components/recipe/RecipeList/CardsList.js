@@ -2,7 +2,11 @@ import React from 'react'
 import RecipeCard from './RecipeCard/'
 
 const CardsList = ({ recipes }) => {
-  return recipes && recipes.map(recipe => {
+  return recipes && recipes.sort(function(a, b) {
+    const textA = a.title.toUpperCase()
+    const textB = b.title.toUpperCase()
+    return (textA < textB) ? -1 : (textA > textB) ? 1 : 0
+  }).map((recipe, i) => {
     const {
       id, image, title, glutenFree, lowFodmap,
       vegetarian, vegan, dairyFree, readyInMinutes,
@@ -10,7 +14,7 @@ const CardsList = ({ recipes }) => {
     } = recipe
     return(
       <RecipeCard
-        key={id}
+        key={i}
         recipes={recipes}
         id={id}
         image={image}

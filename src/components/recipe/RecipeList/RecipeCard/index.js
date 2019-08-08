@@ -4,44 +4,66 @@ import { trimString } from '../../../../myLibrary'
 import { selectRecipe } from '../../../../actions/recipeActions'
 import { connect } from 'react-redux'
 import style from '../style'
-import ChechBox from '../../../ChechBox.js'
+import CheckBox from '../../../CheckBox'
+import { selectMultipleRecipes, unselect } from '../../../../actions/recipeActions'
 
 class RecipeCard extends Component {
+  componentDidMount() {
+    const { selectedRecipes, unselect } = this.props
+    selectedRecipes.length > 0
+    && selectedRecipes.map(rec => unselect(rec))
+  }
+
+  handleCheckBox = e => {
+    const { checked, value } = e.target
+    const { selectMultipleRecipes, unselect } = this.props
+    checked && selectMultipleRecipes(value)
+    !checked && unselect(e.target.value)
+  }
+
   render() {
     const { card } = style.recipeCard
     const {
       id, image, title, glutenFree, lowFodmap,
       vegetarian, vegan, dairyFree, readyInMinutes,
-      selectRecipe, recipes, cookingMinutes,
+      selectRecipe, recipes, cookingMinutes, isActive,
+      isAllChecked, key
     } = this.props
-
-
     return (
       <div
         className="card small col s12 m6 l4"
         style={ card }
-        key={id}
+        key={ key}
         onClick={() => { selectRecipe(recipes.find(rec => rec.id === id)) }}
         >
-        {/*Later => Use Header component and pass style as prop.
-        Make use of default props in Header component if necessary */}
+          { isActive &&
+          <CheckBox
+            onChange={ this.handleCheckBox }
+            value={ id }
+            isAllChecked={ isAllChecked }
+            style={{
+              position: 'absolute',
+              zIndex: '12',
+              pointerEvents: 'inherit',
+              opacity: 'unset'}}
+          />
+        }
         <div className="card-image waves-effect waves-block waves-light">
-          {/* <ChechBox className={ this.state.active === false ? 'hide' : null }/> */}
-          <img className="activator" src={image} alt={title} />
+          <img className="activator" src={ image } alt={ title } />
         </div>
         <span className="card-title activator grey-text text-darken-4">
           { trimString(title, 40) }
         </span>
         <CardReveal
-          title={title}
-          id={id}
-          isGlutenFree={glutenFree}
-          isLowFodmap={lowFodmap}
-          isVegetarian={vegetarian}
-          isVegan={vegan}
-          isDairyFree={dairyFree}
-          readyInMinutes={readyInMinutes}
-          cookingMinutes={cookingMinutes}
+          title={ title }
+          id={ id }
+          isGlutenFree={ glutenFree }
+          isLowFodmap={ lowFodmap }
+          isVegetarian={ vegetarian }
+          isVegan={ vegan }
+          isDairyFree={ dairyFree }
+          readyInMinutes={ readyInMinutes }
+          cookingMinutes={ cookingMinutes }
         />
       </div>
     )
@@ -49,4 +71,16 @@ class RecipeCard extends Component {
 
 }
 
-export default connect(null, { selectRecipe })(RecipeCard)
+const mapStateToProps = state => {
+  return {
+    selectedRecipe: state.selectedRecipe,
+    selectedRecipes: state.selectedRecipes,
+    isActive: state.checkBoxes.active,
+    isAllChecked: state.checkBoxes.isAllChecked
+  }
+}
+
+export default connect(
+  mapStateToProps,
+  { selectRecipe, selectMultipleRecipes, unselect })
+  (RecipeCard)

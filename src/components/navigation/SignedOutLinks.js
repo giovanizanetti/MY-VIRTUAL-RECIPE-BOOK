@@ -6,9 +6,9 @@ class SignedOutLinks extends Component {
   render() {
     return (
       <>
-      <li><NavLink to='/signin'>Log in</NavLink></li>
-      <li><NavLink to='/signup'>Sign Up</NavLink></li>
-    </>
+        <li><NavLink to='/signin'>Log in</NavLink></li>
+        <li><NavLink to='/signup'>Sign Up</NavLink></li>
+      </>
     )
   }
 }

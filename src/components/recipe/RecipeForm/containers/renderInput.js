@@ -10,12 +10,14 @@ export const renderInput = ({ input, label, meta, type, placeholder }) => {
     ${ type === 'number'  ? 's6': 's12' }
     ${ error && touched ? 'wrong' : ''}`
     const { spanError } = style
+    const inputStyle = type === 'search' ? { width: '68vw'}: null
 
   return (
     <div className={className}>
       <label
         className={ active || dirty || initial? "active" : undefined }>
         {label}
+        { type === 'search' && <i className="material-icons">search</i>}
       </label>
         <input
           placeholder={ active ? placeholder: null }
@@ -23,6 +25,7 @@ export const renderInput = ({ input, label, meta, type, placeholder }) => {
           {...input}
           autoComplete='off'
           className={className}
+          style={ inputStyle }
         />
       <span style={ spanError }>
         {renderErrors(meta)}

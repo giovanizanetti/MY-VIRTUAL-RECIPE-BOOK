@@ -12,10 +12,16 @@ import {
   FETCH_RECIPES_BY_ID_PENDING,
   FETCH_RECIPES_BY_ID_FAILED,
   DELETE_RECIPE,
-  DELETE_RECIPE_ERROR
+  DELETE_RECIPE_ERROR,
+  PREPARE_RECIPE,
+  SELECT_MULTIPLE_RECIPES,
+  SELECT_ALL,
+  UNSELECT
 } from './types'
 
 export const createRecipe = recipe => {
+  //delete id from recipes copied from API because Firebase creates a new id for the recipe
+  recipe.id && delete recipe.id
   return (dispatch, getState, { getFirebase, getFirestore }) => {
     // make async call to database
     const firestore = getFirestore()
@@ -55,8 +61,16 @@ export const editRecipe = (id, recipe) => {
   }
 }
 
+export const unselect = (id) => {
+  return {
+    type: UNSELECT,
+    payload: id
+  }
+}
+
 export const deleteRecipe = (id) => {
-  return (dispatch, getState, { getFirebase, getFirestore }) => {
+   if(id !== '')
+   return (dispatch, getState, { getFirebase, getFirestore }) => {
     // make async call to database
     const firestore = getFirestore()
     firestore.collection('recipes').doc(id).delete().then(() => {
@@ -79,8 +93,23 @@ export const selectRecipe = recipe => {
   }
 }
 
+export const selectMultipleRecipes = recipesIds => {
+  return {
+    type: SELECT_MULTIPLE_RECIPES,
+    payload: recipesIds
+  }
+}
+
+export const selectAll = () => {
+  console.log('clicked')
+  return {
+    type: SELECT_ALL
+  }
+}
+
+
 //Later: Create babse URL to make the code cleaner
-export const fetchRecipes = () => dispatch => {
+export const fetchRecipes = (searchValues) => dispatch => {
   dispatch({
     type: FETCH_RECIPES_PENDING
   })
@@ -88,9 +117,11 @@ export const fetchRecipes = () => dispatch => {
     headers: {
       "X-RapidAPI-Host": "spoonacular-recipe-food-nutrition-v1.p.rapidapi.com",
       "X-RAPIDAPI-KEY": "0f1f47b39bmsh0e4d2a04bd035cdp1121bejsnf58a226a5005",
+
     },
     params: {
-      number: 25
+      number: 15,
+      tags: searchValues ? searchValues : 'main course'
     }
   })
   .then(data => dispatch({
@@ -114,7 +145,7 @@ export const fetchRecipeById = (id) => (dispatch) => {
       "X-RapidAPI-Host": "spoonacular-recipe-food-nutrition-v1.p.rapidapi.com",
       "X-RAPIDAPI-KEY": "0f1f47b39bmsh0e4d2a04bd035cdp1121bejsnf58a226a5005",
     },
-    params: { id }
+    params: id
   })
   .then(res => dispatch({
     type: FETCH_RECIPES_BY_ID_SUCCESS,
@@ -126,6 +157,13 @@ export const fetchRecipeById = (id) => (dispatch) => {
     payload: error
   }))
 }
+
+export const prepareRecipe = () => {
+  return {
+    type: PREPARE_RECIPE,
+  }
+}
+
 
 
 

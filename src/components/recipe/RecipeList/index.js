@@ -1,31 +1,39 @@
-import React from 'react'
+import React, { Component } from 'react'
 import CardsList from './CardsList.js'
+import Select from './Select'
+import { showCheckBoxes } from '../../../actions/checkBox'
+import { connect } from 'react-redux'
 
-const RecipeList = (props) => {
-  const { recipes }  = props
 
-  return (
-    <div className="row col">
-      {/* <button
-        className="btn blue"
-      >
-        Select
-      </button> */}
-      <CardsList
-        recipes={recipes}
-      />
-    </div>
-  )
-}
+class RecipeList extends Component {
+  componentDidMount(){
+    this.props.isActive && this.props.showCheckBoxes()
+  }
 
-const mapStateToProps = state => {
-  console.log(state)
-  return {
-
+  render() {
+    const { recipes, history } = this.props
+    return (
+      <div className="row col">
+        <Select
+          recipes={recipes}
+          history={ history }
+        />
+        <CardsList
+          recipes={ recipes }
+          history={ history }
+        />
+      </div>
+    )
   }
 }
 
-export default RecipeList
+const mapStateToProps = state => {
+  return {
+    isActive: state.checkBoxes.active
+  }
+}
+
+export default connect(mapStateToProps, { showCheckBoxes })(RecipeList)
 
 
 
