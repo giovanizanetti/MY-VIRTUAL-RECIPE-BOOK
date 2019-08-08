@@ -4,10 +4,10 @@ import Instagram from './images/instagram.png'
 import Whatsapp from './images/whatsapp.png'
 import Email from'./images/gmail.png'
 import { Link } from 'react-router-dom'
-import style from './style'
+import Style from './Style'
 
 const SharePlatforms = () => {
-  const { imgLink } = style.sharePlatforms
+  const { imgLink } = Style.sharePlatforms
   return (
     <>
       <h6>Choose de Platform</h6>

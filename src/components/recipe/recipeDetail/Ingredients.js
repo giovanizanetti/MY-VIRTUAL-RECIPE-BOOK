@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import CheckBox from '../../CheckBox'
-import style from './style'
+import Style from './Style'
 import { connect } from 'react-redux'
 
 class Ingredients extends Component {
@@ -14,7 +14,7 @@ class Ingredients extends Component {
 
   render() {
     const { ingredients, prepare } = this.props
-    const { container, ingredient_li } = style.ingredients
+    const { container, ingredient_li } = Style.ingredients
     const ingredientsList = ingredients && ingredients.map((ingredient, i) => {
       const { amount, unitShort } = ingredient.measures.metric
       const useOf = unitShort !== '' ? 'of' : ''

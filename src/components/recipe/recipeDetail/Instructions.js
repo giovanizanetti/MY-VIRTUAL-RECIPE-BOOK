@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import CheckBox from '../../CheckBox'
-import style from './style'
+import Style from './Style'
 import { connect } from 'react-redux'
 
 
@@ -15,7 +15,7 @@ class Instructions extends Component {
 
   render() {
     const { instructions, prepare } = this.props
-    const { instruction_li} = style.instructions
+    const { instruction_li} = Style.instructions
     const renderInstructions =
       instructions && instructions.map(object => {
         return (object.steps.map((step, i) => (

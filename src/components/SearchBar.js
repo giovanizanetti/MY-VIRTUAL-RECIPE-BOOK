@@ -1,6 +1,6 @@
 import React from 'react'
 import { Field, reduxForm } from 'redux-form'
-import renderInput from './recipe/RecipeForm/containers/renderInput'
+import RenderInput from './recipe/RecipeForm/containers/RenderInput'
 
 const SearchBar = (props) => {
   const onSubmit = formValues => {
@@ -13,7 +13,7 @@ const SearchBar = (props) => {
         <div className="input-field col">
           <Field
               name='searchField'
-              component={renderInput}
+              component={ RenderInput }
               type='search'
               placeholder='e.g. gluten free italian dessert'
             />

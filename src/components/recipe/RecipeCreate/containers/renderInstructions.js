@@ -1,9 +1,9 @@
 import React from 'react'
 import AddButton from '../AddButton'
 import { FieldArray } from 'redux-form'
-import { renderInstrFields } from './renderInstrFields';
+import RenderInstrFields from './RenderInstrFields';
 
-export const renderInstructions = ({ fields, meta: { touched, error, submitFailed } }) => {
+const RenderInstructions = ({ fields, meta: { touched, error, submitFailed } }) => {
   return (
     <ul>
       <li>
@@ -23,7 +23,7 @@ export const renderInstructions = ({ fields, meta: { touched, error, submitFaile
                 <FieldArray
                   name={`${field}.steps`}
                   type="text"
-                  component={renderInstrFields}
+                  component={ RenderInstrFields }
                   label="instruction"
                 />
               </li>
@@ -32,3 +32,5 @@ export const renderInstructions = ({ fields, meta: { touched, error, submitFaile
     </ul>
   )
 }
+
+export default RenderInstructions

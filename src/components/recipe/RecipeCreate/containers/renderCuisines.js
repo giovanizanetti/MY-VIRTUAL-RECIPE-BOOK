@@ -2,7 +2,7 @@ import React from 'react'
 import ArrayInputTemplate from '../ArrayInputTemplate.js'
 import AddButton from '../AddButton'
 
-export const renderCuisines = ({ fields, meta: { error } }) => (
+const RenderCuisines = ({ fields, meta: { error } }) => (
   <ul>
     <li>
       <AddButton
@@ -15,9 +15,9 @@ export const renderCuisines = ({ fields, meta: { error } }) => (
       fields.map((field, index) => (
         <div key={index}>
           <ArrayInputTemplate
-            fields={fields}
-            field={field}
-            index={index}
+            fields={ fields }
+            field={ field }
+            index={ index }
             label='cuisine'
           />
         </div>
@@ -27,5 +27,7 @@ export const renderCuisines = ({ fields, meta: { error } }) => (
     {error && <li className="error">{error}</li>}
   </ul>
 )
+
+export default RenderCuisines
 
 

@@ -1,11 +1,11 @@
  import React from 'react'
  import { FieldArray } from 'redux-form'
- import  { renderIngredients } from '../RecipeCreate/containers/renderIngredients'
+ import  RenderIngredients from '../RecipeCreate/containers/RenderIngredients'
 
  export default () => (
   <FieldArray
     name="extendedIngredients"
     type='text'
-    component={renderIngredients}
+    component={ RenderIngredients }
   />
  )

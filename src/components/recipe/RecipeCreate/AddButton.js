@@ -1,9 +1,9 @@
 import React from 'react'
-import style from './style'
+import Style from './Style'
 
 export default ({item, fields, onClick}) => (
   <button
-    style={style.addButton}
+    style={Style.addButton}
     type="button"
     className={fields.length ? 'hide' : 'btn'}
     onClick={ onClick }

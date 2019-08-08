@@ -2,7 +2,7 @@ import React from 'react'
 import ArrayInputTemplate from '../ArrayInputTemplate'
 import AddButton from '../AddButton'
 
-export const renderOccasions = ({ fields, meta: { error } }) => (
+const RenderOccasions = ({ fields, meta: { error } }) => (
   <ul>
     <li>
       <AddButton
@@ -27,4 +27,5 @@ export const renderOccasions = ({ fields, meta: { error } }) => (
   </ul>
 )
 
+export default RenderOccasions
 

@@ -1,15 +1,15 @@
 import React from 'react'
-import style from './style'
+import Style from './Style'
 
 const Header = ({title, image}) => {
   const recipeTitle = title
-  const { headerTitle, container } = style.header
+  const { headerTitle, container } = Style.header
   return (
     <div
       className='container' style={ container }>
       <div
         className="card-image"
-        style={{position: 'relative'}}
+        style={{ position: 'relative' }}
       >
       <h5 style={ headerTitle } >
         { recipeTitle }

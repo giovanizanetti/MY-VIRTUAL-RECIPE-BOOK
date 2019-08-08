@@ -1,10 +1,10 @@
 import React from 'react'
-import { renderCheckBoxItem } from './containers/renderCheckBoxItem'
+import RenderCheckBoxItem from './containers/RenderCheckBoxItem'
 import { Field } from 'redux-form'
-import style from './style'
+import Style from './Style'
 
 export default () => {
-  const { container } = style.allergensField
+  const { container } = Style.allergensField
   return (
     <div
       style={ container }
@@ -13,7 +13,7 @@ export default () => {
       <div>
         <Field
           name="glutenFree"
-          component={ renderCheckBoxItem }
+          component={ RenderCheckBoxItem }
           type="checkbox"
           label="is gluten free?"
         />
@@ -21,7 +21,7 @@ export default () => {
       <div>
         <Field
           name="dairyFree"
-          component={ renderCheckBoxItem }
+          component={ RenderCheckBoxItem }
           type="checkbox"
           label="is Dairy free?"
         />
@@ -29,7 +29,7 @@ export default () => {
       <div>
         <Field
           name="vegan"
-          component={ renderCheckBoxItem }
+          component={ RenderCheckBoxItem }
           type="checkbox"
           label="is Vegan?"
         />
@@ -37,7 +37,7 @@ export default () => {
       <div>
         <Field
           name="vegetarian"
-          component={ renderCheckBoxItem }
+          component={ RenderCheckBoxItem }
           type="checkbox"
           label="is Vegetarian?"
         />
@@ -45,7 +45,7 @@ export default () => {
       <div>
         <Field
           name="lowFodmap"
-          component={ renderCheckBoxItem }
+          component={ RenderCheckBoxItem }
           type="checkbox"
           label="is Low Fodmap?"
         />

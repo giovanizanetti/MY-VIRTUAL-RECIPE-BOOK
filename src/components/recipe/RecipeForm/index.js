@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 import { Field, reduxForm } from 'redux-form'
 import { Redirect } from 'react-router-dom'
-import { validate } from './containers/formErrors'
-import { renderInput } from './containers/renderInput'
+import { validate } from './containers/FormErrors'
+import RenderInput from './containers/RenderInput'
 import AllergensFields from './AllergensFields'
 import PrepTimeInputs from './PrepTimeInputs'
 import IngredientsInputs from './IngredientsInputs'
@@ -22,11 +22,11 @@ class RecipeForm extends Component {
   render() {
     return (
       <form
-        onSubmit={this.props.handleSubmit(this.onSubmit)}
+        onSubmit={ this.props.handleSubmit(this.onSubmit) }
         className='container wrong col s12'>
         <Field
           name='title'
-          component={renderInput}
+          component={ RenderInput }
           type='text'
           label='Title'
           placeholder='My recipe name'
@@ -34,7 +34,7 @@ class RecipeForm extends Component {
         <PrepTimeInputs />
         <Field
           name='servings'
-          component={renderInput}
+          component={ RenderInput }
           type='number'
           label='Servings'
           placeholder='2 (people)'
@@ -74,7 +74,7 @@ class RecipeForm extends Component {
         <button
           type='submit'
           className="btn pink waves-effect waves-light"
-          style={{maxWidth: '50%', margin: '8% auto', display: 'flex'}}
+          style={{ maxWidth: '50%', margin: '8% auto', display: 'flex' }}
           // disabled={this.props.pristine || this.props.submitting}
         >
           Submit

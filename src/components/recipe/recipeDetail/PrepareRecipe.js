@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { prepareRecipe } from '../../../actions/recipeActions'
-import Countdown from './countdown'
+import Countdown from './Countdown'
 
 const PrepareRecipe = ({ prepareRecipe, cookingMinutes, prepare }) => {
   return (

@@ -1,15 +1,14 @@
 import React from 'react'
-import { renderErrors } from './formErrors'
-import style from '../style'
+import FormErrors from './FormErrors'
+import Style from '../Style'
 
-
-export const renderInput = ({ input, label, meta, type, placeholder }) => {
+const RenderInput = ({ input, label, meta, type, placeholder }) => {
   const { touched, error, active, dirty, initial } = meta
   const className =
     `input-field col
     ${ type === 'number'  ? 's6': 's12' }
     ${ error && touched ? 'wrong' : ''}`
-    const { spanError } = style
+    const { spanError } = Style
     const inputStyle = type === 'search' ? { width: '68vw'}: null
 
   return (
@@ -28,10 +27,10 @@ export const renderInput = ({ input, label, meta, type, placeholder }) => {
           style={ inputStyle }
         />
       <span style={ spanError }>
-        {renderErrors(meta)}
+        { FormErrors(meta) }
       </span>
     </div>
   )
 }
 
-export default renderInput
+export default RenderInput

@@ -1,11 +1,11 @@
 import React from 'react'
 import { Field } from 'redux-form'
 import AddRemoveButton from '../AddRemoveButton'
-import {renderField} from './renderField'
-import style from '../style'
+import RenderField from './RenderField'
+import Style from '../Style'
 import AddButton from '../AddButton'
 
-export const renderInstrFields = ({ fields }) => {
+const RenderInstrFields = ({ fields }) => {
   return (
     <div>
       <AddButton
@@ -16,12 +16,12 @@ export const renderInstrFields = ({ fields }) => {
         return (
           <div
             key={ index }
-            style={ style.arrayInputs }
+            style={ Style.arrayInputs }
           >
             <div className='container'>
               <Field
                 name={`${ field }.step`}
-                component={ renderField }
+                component={ RenderField }
                 label="instruction"
                 textarea={ true }
               />
@@ -36,5 +36,6 @@ export const renderInstrFields = ({ fields }) => {
       })}
     </div>
   )
-
 }
+
+export default RenderInstrFields

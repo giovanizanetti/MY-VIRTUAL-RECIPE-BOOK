@@ -1,6 +1,6 @@
 import React from 'react'
 
-export const renderCheckBoxItem = ({ input, label }) => (
+const RenderCheckBoxItem = ({ input, label }) => (
   <label>
     <input
         className='filled-in'
@@ -10,3 +10,5 @@ export const renderCheckBoxItem = ({ input, label }) => (
     <span>{label}</span>
   </label>
 )
+
+export default RenderCheckBoxItem

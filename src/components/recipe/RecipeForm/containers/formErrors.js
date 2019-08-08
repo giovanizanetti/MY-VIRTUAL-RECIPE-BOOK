@@ -1,6 +1,6 @@
 import React from 'react'
 
-export const renderErrors = ({ error, touched }) => {
+const FormErrors = ({ error, touched }) => {
   if(touched && error) {
     return (
       <div data-error="wrong">
@@ -10,7 +10,7 @@ export const renderErrors = ({ error, touched }) => {
   }
 }
 
-export const validate = formValues => {
+const validate = formValues => {
   const errors = {}
   if(!formValues.title) {
     errors.title = 'You must enter a title'
@@ -22,4 +22,9 @@ export const validate = formValues => {
     errors.age = 'time formate must be numbers'
   }
   return errors
+}
+
+export {
+  validate,
+  FormErrors as default
 }

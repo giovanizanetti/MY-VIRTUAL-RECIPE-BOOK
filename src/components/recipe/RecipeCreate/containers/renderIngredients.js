@@ -1,11 +1,11 @@
 import React from 'react'
 import { Field } from 'redux-form'
-import { renderField } from './renderField'
+import RenderField from './RenderField'
 import AddRemoveButton from '../AddRemoveButton'
 import AddButton from '../AddButton'
-import style from '../style'
+import Style from '../Style'
 
-export const renderIngredients = ({ fields, meta: { touched, error, submitFailed } }) => (
+const RenderIngredients = ({ fields, meta: { touched, error, submitFailed } }) => (
   <ul>
     <li>
       <AddButton
@@ -18,26 +18,26 @@ export const renderIngredients = ({ fields, meta: { touched, error, submitFailed
     {fields.map((field, index) =>
       <li
         key={index}
-        style={style.arrayInputs}
+        style={Style.arrayInputs}
         >
         <div className='container'>
           <Field
             name={`${field}.name`}
             type="text"
-            component={renderField}
+            component={ RenderField }
             label="name"
           />
           <div style={{ display: 'flex' }}>
             <Field
               name={`${field}.measures.metric.amount`}
               type="number"
-              component={renderField}
+              component={ RenderField }
               label="Amount"
             />
             <Field
               name={`${field}.measures.metric.unitShort`}
               type="text"
-              component={renderField}
+              component={ RenderField }
               label="Unit"
             />
           </div>
@@ -51,3 +51,4 @@ export const renderIngredients = ({ fields, meta: { touched, error, submitFailed
     )}
   </ul>
 )
+ export default RenderIngredients

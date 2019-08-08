@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 
-export class renderField extends Component {
+class RenderField extends Component {
   render() {
     const { input, label, type, textarea, meta: { touched, error, } } = this.props
     const className = `input-field materialize-textarea ${error && touched ? 'wrong' : ''}`
@@ -24,3 +24,5 @@ export class renderField extends Component {
     )
   }
 }
+
+export default RenderField

@@ -15,7 +15,7 @@ import Instructions from './Instructions'
 import LoaderProgressBar from '../../LoaderProgressBar'
 import RecipeFooter from './RecipeFooter'
 import Cuisines from './Cuisines'
-import style from './style.js'
+import Style from './Style.js'
 import PrepareRecipe from './PrepareRecipe'
 
 class Recipedetail extends Component {
@@ -42,13 +42,13 @@ class Recipedetail extends Component {
       cookingMinutes, readyInMinutes, servings, glutenFree,
       vegetarian, lowFodmap, vegan, dairyFree, analyzedInstructions,
     } = recipe
-
+    const { card_inner_container } = Style
     return (
       <div className='card'>
         <Header title={title} image={image} />
         <div
           className="container center"
-          style={style.card_inner_container}
+          style={ card_inner_container }
         >
           <Cuisines cuisines={cuisines}/>
           <Occasions occasions={occasions} />

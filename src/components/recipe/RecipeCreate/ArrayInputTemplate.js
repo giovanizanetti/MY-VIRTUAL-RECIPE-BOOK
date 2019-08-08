@@ -1,29 +1,28 @@
 import React from 'react'
 import { Field } from 'redux-form'
-import { renderField } from './containers/renderField'
+import RenderField from './containers/RenderField'
 import AddRemoveButton from './AddRemoveButton'
-import style from './style'
+import Style from './Style'
 
-export default ({index, field, fields, label, textarea}) => {
-  console.log(field, fields, label)
+export default ({ index, field, fields, label, textarea }) => {
   return (
     <li
       key={index}
-      style={style.arrayInputs}
+      style={ Style.arrayInputs }
     >
       <div className="container">
         <Field
-          name={field}
+          name={ field }
           type="text"
-          component={renderField}
-          label={label}
-          textarea={textarea}
+          component={ RenderField }
+          label={ label }
+          textarea={ textarea }
         />
       </div>
       <AddRemoveButton
-        field={field}
-        index={index}
-        fields={fields}
+        field={ field }
+        index={ index }
+        fields={ fields }
       />
     </li>
   )

@@ -1,11 +1,11 @@
 import React from 'react'
 import { FieldArray } from 'redux-form'
-import  { renderOccasions } from '../RecipeCreate/containers/renderOccasions'
+import RenderOccasions from '../RecipeCreate/containers/RenderOccasions'
 
 export default () => (
  <FieldArray
    name="occasions"
    type='text'
-   component={renderOccasions}
+   component={ RenderOccasions }
  />
 )

@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { BrowserRouter } from 'react-router-dom'
 import './App.css'
-import Navigation from './components/navigation'
+import Navigation from './components/Navigation'
 import { connect } from 'react-redux'
 import Router from './Router'
 
