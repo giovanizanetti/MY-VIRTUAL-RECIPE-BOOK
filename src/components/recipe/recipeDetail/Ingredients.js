@@ -21,7 +21,7 @@ class Ingredients extends Component {
     return (
       <li
         className={ this.state[i] ? 'line-through' : ''}
-        key={ingredient.id}
+        key={i}
         style={ ingredient_li }>
         {
           prepare &&
