@@ -19,13 +19,13 @@ The main purpose of this project is to practize my skills **[Goals for this proj
 #### 👀👇 Click links to view some samples on this project 👇👀
 
 - **[react](./src/components/recipe/RecipeList/index.js)**  
-- **[React-Router](https://reacttraining.com/react-router/web/guides/quick-start)
+- **[React-Router](https://reacttraining.com/react-router/web/guides/quick-start)**
 - **[redux](./src/reducers/recipes.js)**  
 - **[redux-thunk](./src/actions/recipeActions.js)**  
 - **[redux-form](./src/components/recipe/RecipeForm/index.js)**
-- **[Firebase](https://firebase.google.com/)
-_ **[Materialize-CSS](https://materializecss.com/)
-- **[SPOONACULAR-API](https://rapidapi.com/spoonacular/api/recipe-food-nutrition/details)
+- **[Firebase](https://firebase.google.com/)**
+_ **[Materialize-CSS](https://materializecss.com/)**
+- **[SPOONACULAR-API](https://rapidapi.com/spoonacular/api/recipe-food-nutrition/details)**
 
 ## Goals for this project:
 
