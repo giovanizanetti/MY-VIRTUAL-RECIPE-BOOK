@@ -72,7 +72,7 @@ class ImgUpLoad extends Component {
         <img
           className='responsive-img'
           src={ url || selectedRecipeImage || Placeholder }
-          alt='recipe image'
+          alt='recipe'
           height='300'
           width='400'
         />

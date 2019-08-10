@@ -81,6 +81,8 @@ const mapStateToProps = state => {
 }
 
 export default connect(
-  mapStateToProps,
-  { selectRecipe, selectMultipleRecipes, unselect })
-  (RecipeCard)
+  mapStateToProps, {
+    selectRecipe,
+    selectMultipleRecipes,
+    unselect
+  })(RecipeCard)

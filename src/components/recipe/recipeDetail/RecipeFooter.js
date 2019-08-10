@@ -6,7 +6,7 @@ import { createRecipe, selectRecipe } from '../../../actions/recipeActions'
 import { firestoreConnect } from 'react-redux-firebase'
 import { connect } from 'react-redux'
 import { compose } from 'redux'
-import PrintRecipe from '../../recipe/PrintRecipe'
+// import PrintRecipe from '../../recipe/PrintRecipe'
 
 const RecipeFooter = props => {
   const { recipeId, history, recipe, selectRecipe, createRecipe, myRecipes } = props

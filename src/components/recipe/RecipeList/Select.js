@@ -17,7 +17,7 @@ const Select = ({ showCheckBoxes, isActive,
       alert(`${selectedRecipes.length} ${selectedRecipes.length === 1
         ? 'recipe': 'recipes'} was added to your recipes. Click Ok to go to 'My Recipes'`)
       return selectedRecipes.map(recipeId => {
-        const fullRecipe = apiRecipes.find(r => r.id == recipeId)
+        const fullRecipe = apiRecipes.find(r => r.id.toString() === recipeId.toString())
         return showCheckBoxes()
         && createRecipe(fullRecipe, history.replace('/myRecipes/'))
       })
@@ -32,7 +32,7 @@ const Select = ({ showCheckBoxes, isActive,
   return (
     <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
       {
-        selectedRecipes.length == 0
+        selectedRecipes.length === 0
         && <button
               className="btn-small blue"
               onClick={() => showCheckBoxes() }

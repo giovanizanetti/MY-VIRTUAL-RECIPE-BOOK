@@ -1,8 +1,7 @@
 import {
   SELECT_MULTIPLE_RECIPES,
-  DELETE_RECIPE, SELECT_ALL,
+  DELETE_RECIPE,
   UNSELECT,
-  CREATE_RECIPE
 } from '../actions/types'
 
 export default (state=[], action) => {
@@ -13,7 +12,7 @@ export default (state=[], action) => {
         action.payload
       ]
     case DELETE_RECIPE:
-      state=[]
+      return state=[]
     case UNSELECT:
       return state.filter(recipe => recipe !== action.payload)
     default:
