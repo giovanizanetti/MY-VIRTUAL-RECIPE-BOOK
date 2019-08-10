@@ -1,5 +1,8 @@
 # My Virtual Recipe Book
+
 ## [Check out the deployed version here!](https://virtualrecipebook.netlify.com)
+
+
 ## What this project is about
 
 The main purpose of this project is to practize my skills **[Goals for this project](#goals-for-this-project)**
