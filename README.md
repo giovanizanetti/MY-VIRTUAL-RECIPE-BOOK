@@ -44,11 +44,11 @@ To guide my self through this project, I have created user stories: **[User Stor
 
 #### 👀👇 Click links to view the pull requests 👇👀
 
-- **[Feature - Navigation](https://github.com/giovanizanetti/MY-VIRTUAL-RECIPE-BOOK/pull/1)
-- **[Feature - SignIn/SIgnOut](https://github.com/giovanizanetti/MY-VIRTUAL-RECIPE-BOOK/pull/2)
-- **[Feature - Register](https://github.com/giovanizanetti/MY-VIRTUAL-RECIPE-BOOK/pull/3)
-- **[Bugfix - fetch](https://github.com/giovanizanetti/MY-VIRTUAL-RECIPE-BOOK/pull/4)
-- **[Feature - Fetch api](https://github.com/giovanizanetti/MY-VIRTUAL-RECIPE-BOOK/pull/5)
+- **[Feature - Navigation](https://github.com/giovanizanetti/MY-VIRTUAL-RECIPE-BOOK/pull/1)**
+- **[Feature - SignIn/SIgnOut](https://github.com/giovanizanetti/MY-VIRTUAL-RECIPE-BOOK/pull/2)**
+- **[Feature - Register](https://github.com/giovanizanetti/MY-VIRTUAL-RECIPE-BOOK/pull/3)**
+- **[Bugfix - fetch](https://github.com/giovanizanetti/MY-VIRTUAL-RECIPE-BOOK/pull/4)**
+- **[Feature - Fetch api](https://github.com/giovanizanetti/MY-VIRTUAL-RECIPE-BOOK/pull/5)**
 - **[Feature - Sign Out](https://github.com/giovanizanetti/MY-VIRTUAL-RECIPE-BOOK/pull/8)**
 - **[Bug fix - routing](https://github.com/giovanizanetti/MY-VIRTUAL-RECIPE-BOOK/pull/11)**
 - **[Improvement - navigation](https://github.com/giovanizanetti/MY-VIRTUAL-RECIPE-BOOK/pull/12)**
