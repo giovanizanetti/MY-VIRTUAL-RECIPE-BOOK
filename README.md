@@ -24,7 +24,7 @@ The main purpose of this project is to practize my skills **[Goals for this proj
 - **[redux-thunk](./src/actions/recipeActions.js)**  
 - **[redux-form](./src/components/recipe/RecipeForm/index.js)**
 - **[Firebase](https://firebase.google.com/)**
-_ **[Materialize-CSS](https://materializecss.com/)**
+- **[Materialize-CSS](https://materializecss.com/)**
 - **[SPOONACULAR-API](https://rapidapi.com/spoonacular/api/recipe-food-nutrition/details)**
 
 ## Goals for this project:
