@@ -17,7 +17,7 @@ const Select = ({ showCheckBoxes, isActive,
       alert(`${selectedRecipes.length} ${selectedRecipes.length === 1
         ? 'recipe': 'recipes'} was added to your recipes. Click Ok to go to 'My Recipes'`)
       return selectedRecipes.map(recipeId => {
-        const fullRecipe = apiRecipes.find(r => r.id.toString() === recipeId.toString())
+        const fullRecipe = apiRecipes && apiRecipes.find(r => r.id.toString() === recipeId.toString())
         return showCheckBoxes()
         && createRecipe(fullRecipe, history.replace('/myRecipes/'))
       })
