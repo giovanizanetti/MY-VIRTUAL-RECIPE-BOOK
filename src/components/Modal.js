@@ -34,7 +34,6 @@ class Modal extends Component {
   }
 
   handleClick = () => {
-    console.log(this.props)
     const { history, recipeId, id } = this.props
     switch (id) {
       case 'delete':
@@ -42,7 +41,7 @@ class Modal extends Component {
       case 'edit':
         return history.push(`/recipes/edit/${ recipeId }`)
       default:
-        return console.log(history)
+        return
     }
   }
 

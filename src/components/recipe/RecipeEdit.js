@@ -34,7 +34,6 @@ class RecipeEdit extends Component {
   }
 
   render() {
-    console.log(this.props)
     const { recipe } = this.props
     return (
       !recipe

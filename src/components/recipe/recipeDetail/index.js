@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import { compose } from 'redux'
 import { firestoreConnect } from 'react-redux-firebase'
 import { fetchRecipeById, selectRecipe } from '../../../actions/recipeActions'
+import { setSearchField } from '../../../actions/searchActions'
 import { isNumber } from '../../../myLibrary'
 import { Redirect } from 'react-router-dom'
 import Occasions from './Occasions'
@@ -106,7 +107,7 @@ export default
  compose(
   connect(
     mapStateToProps,
-    { selectRecipe, fetchRecipeById }
+    { selectRecipe, fetchRecipeById, setSearchField }
   ),
   firestoreConnect([{
     collection: 'recipes'

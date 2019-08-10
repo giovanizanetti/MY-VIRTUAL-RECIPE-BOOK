@@ -13,7 +13,7 @@ import 'firebase/storage'
   messagingSenderId: "846387924991"
 }
 firebase.initializeApp(config)
-firebase.firestore().settings({ timestampsInSnapshots: true })
+firebase.firestore()
 
 const storage = firebase.storage()
 

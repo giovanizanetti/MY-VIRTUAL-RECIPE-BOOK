@@ -14,15 +14,16 @@ import ImgInput from './ImgInput'
 //This is a template form that can be imported by RecipeCreate and RecipeEdit
 class RecipeForm extends Component {
   onSubmit = formValues => {
-    console.log(formValues)
-    this.props.onSubmit(formValues)
+    const { onSubmit } = this.props
+    onSubmit(formValues)
     return <Redirect to={`/myRecipes/`} />
   }
 
   render() {
+    const { handleSubmit } = this.props
     return (
       <form
-        onSubmit={ this.props.handleSubmit(this.onSubmit) }
+        onSubmit={ handleSubmit(this.onSubmit) }
         className='container wrong col s12'>
         <Field
           name='title'
