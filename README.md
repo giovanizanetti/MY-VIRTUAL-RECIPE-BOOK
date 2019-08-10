@@ -32,7 +32,7 @@ The main purpose of this project is to practize my skills **[Goals for this proj
 
 ## Goals for this project:
 
-- Bild a useful project using React and Redux,
+- Bild an useful and meaninfull project using React and Redux,
 - Practice CRUD operations,
 - Have a signIn/out on my project,
 - Make use of an external API,
@@ -67,7 +67,7 @@ In this project I try to practice:
 - Well named branches,
 - Pull requests with summaries
 
-If you have feedback to improve my git usage: **[please drop me a line!](https://www.linkedin.com/in/giovani-zanetti-ab664a24/)** 
+If you have feedback to improve my git usage: **[please drop me a line!](https://www.linkedin.com/in/giovani-zanetti-ab664a24/)** or giovanizanetti@icloud.com
 
 ## My workflow
 
