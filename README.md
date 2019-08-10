@@ -5,7 +5,8 @@
 
 ## What this project is about
 
-The main purpose of this project is to practize my skills **[Goals for this project](#goals-for-this-project)**
+The main purpose of this project is to practize my skills using ReactJS 
+**[Goals for this project](#goals-for-this-project)**
 
 ## Table of contents:
 
