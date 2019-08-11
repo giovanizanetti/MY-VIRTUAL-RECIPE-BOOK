@@ -23,13 +23,14 @@ The main purpose of this project is to practize my skills using ReactJS
 #### 👀👇 Click links to view some samples on this project 👇👀
 
 - **[React](./src/components/recipe/RecipeList/index.js)**  
-- **[React-Router](.src/Router.js)**
+- **[React-Router](./src/Router.js)**
 - **[Redux](./src/reducers/recipes.js)**  
 - **[Redux-thunk](./src/actions/recipeActions.js)**  
 - **[Redux-form](./src/components/recipe/RecipeForm/index.js)**
 - **[Firebase](https://firebase.google.com/)**
 - **[Materialize-CSS](https://materializecss.com/)**
 - **[SPOONACULAR-API](https://rapidapi.com/spoonacular/api/recipe-food-nutrition/details)**
+- **[Axios](https://github.com/axios/axios)
 
 ## Goals for this project:
 
@@ -52,7 +53,7 @@ To guide my self through this project, I have created user stories: **[User Stor
 #### 👇 Click links to view the pull requests 👇
 
 - **[Feature - Navigation](https://github.com/giovanizanetti/MY-VIRTUAL-RECIPE-BOOK/pull/1)**
-- **[Feature - SignIn/SIgnOut](https://github.com/giovanizanetti/MY-VIRTUAL-RECIPE-BOOK/pull/2)**
+- **[Feature - SignIn/SignUp](https://github.com/giovanizanetti/MY-VIRTUAL-RECIPE-BOOK/pull/2)**
 - **[Feature - Register](https://github.com/giovanizanetti/MY-VIRTUAL-RECIPE-BOOK/pull/3)**
 - **[Bugfix - fetch](https://github.com/giovanizanetti/MY-VIRTUAL-RECIPE-BOOK/pull/4)**
 - **[Feature - Fetch api](https://github.com/giovanizanetti/MY-VIRTUAL-RECIPE-BOOK/pull/5)**
