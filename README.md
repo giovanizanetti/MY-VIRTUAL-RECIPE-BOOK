@@ -22,11 +22,11 @@ The main purpose of this project is to practize my skills using ReactJS
 
 #### 👀👇 Click links to view some samples on this project 👇👀
 
-- **[react](./src/components/recipe/RecipeList/index.js)**  
-- **[React-Router](https://reacttraining.com/react-router/web/guides/quick-start)**
-- **[redux](./src/reducers/recipes.js)**  
-- **[redux-thunk](./src/actions/recipeActions.js)**  
-- **[redux-form](./src/components/recipe/RecipeForm/index.js)**
+- **[React](./src/components/recipe/RecipeList/index.js)**  
+- **[React-Router](.src/Router)**
+- **[Redux](./src/reducers/recipes.js)**  
+- **[Redux-thunk](./src/actions/recipeActions.js)**  
+- **[Redux-form](./src/components/recipe/RecipeForm/index.js)**
 - **[Firebase](https://firebase.google.com/)**
 - **[Materialize-CSS](https://materializecss.com/)**
 - **[SPOONACULAR-API](https://rapidapi.com/spoonacular/api/recipe-food-nutrition/details)**
