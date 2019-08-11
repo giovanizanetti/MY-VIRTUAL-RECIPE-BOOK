@@ -188,7 +188,7 @@ export default class Countdown extends Component {
                         <span style={{
                             color,
                             backgroundColor,
-                            display: !isVisible  || !setTimerButton && 'none'
+                            display: !isVisible || !setTimerButton && 'none'
 
                         }}>
                   {seconds}

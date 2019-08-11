@@ -6,7 +6,6 @@ import SignedOutLinks from './SignedOutLinks'
 import Avatar from './Avatar'
 
 class Sidebar extends Component {
-
     componentDidMount() {
       const elem = document.querySelector(".sidenav")
       M.Sidenav.init(elem, {

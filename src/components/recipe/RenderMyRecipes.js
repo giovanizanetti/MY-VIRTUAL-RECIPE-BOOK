@@ -2,17 +2,17 @@ import React, { Component } from 'react'
 import { compose } from 'redux'
 import { firestoreConnect } from 'react-redux-firebase'
 import { connect } from 'react-redux'
+import { setSearchField } from '../../actions/searchActions'
 import RecipeList from './RecipeList'
 import LoaderProgressBar from '../LoaderProgressBar'
 import NoRecipes from './NoRecipes'
-import { setSearchField } from '../../actions/searchActions'
 import MyRecipesSearchBar from '../MyRecipesSearchBar'
 
 class MyRecipes extends Component {
-componentDidMount() {
-  const { setSearchField } = this.props
-  setSearchField('')
-}
+  componentDidMount() {
+    const { setSearchField } = this.props
+    setSearchField('')
+  }
 
   render() {
     const { recipes, searchField, setSearchField } = this.props

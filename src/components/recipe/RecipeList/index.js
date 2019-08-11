@@ -11,13 +11,17 @@ class RecipeList extends Component {
   }
 
   render() {
-    const { recipes, history } = this.props
+    const { recipes, history, auth } = this.props
+    console.log(auth.uid)
     return (
       <div className="row col">
-        <Select
-          recipes={recipes}
-          history={ history }
-        />
+        {
+          auth.uid &&
+          <Select
+            recipes={recipes}
+            history={ history }
+          />
+        }
         <CardsList
           recipes={ recipes }
           history={ history }
@@ -29,7 +33,8 @@ class RecipeList extends Component {
 
 const mapStateToProps = state => {
   return {
-    isActive: state.checkBoxes.active
+    isActive: state.checkBoxes.active,
+    auth: state.firebase.auth,
   }
 }
 
