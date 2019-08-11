@@ -22,14 +22,22 @@ The main purpose of this project is to practize my skills using ReactJS
 
 #### 👇 Click links to view some samples on this project 👇
 
+<<<<<<< HEAD
 - **[React](./src/components/recipe/RecipeList/index.js)**
 - **[React-Router](.src/Router.js)**
 - **[Redux](./src/reducers/recipes.js)**
 - **[Redux-thunk](./src/actions/recipeActions.js)**
+=======
+- **[React](./src/components/recipe/RecipeList/index.js)**  
+- **[React-Router](./src/Router.js)**
+- **[Redux](./src/reducers/recipes.js)**  
+- **[Redux-thunk](./src/actions/recipeActions.js)**  
+>>>>>>> a4da42444ba1c3ae9b8cad1e6e8ba4090be074cf
 - **[Redux-form](./src/components/recipe/RecipeForm/index.js)**
 - **[Firebase](https://firebase.google.com/)**
 - **[Materialize-CSS](https://materializecss.com/)**
 - **[SPOONACULAR-API](https://rapidapi.com/spoonacular/api/recipe-food-nutrition/details)**
+- **[Axios](https://github.com/axios/axios)**
 
 ## Goals for this project:
 
@@ -52,7 +60,7 @@ To guide my self through this project, I have created user stories: **[User Stor
 #### 👇 Click links to view the pull requests 👇
 
 - **[Feature - Navigation](https://github.com/giovanizanetti/MY-VIRTUAL-RECIPE-BOOK/pull/1)**
-- **[Feature - SignIn/SIgnOut](https://github.com/giovanizanetti/MY-VIRTUAL-RECIPE-BOOK/pull/2)**
+- **[Feature - SignIn/SignUp](https://github.com/giovanizanetti/MY-VIRTUAL-RECIPE-BOOK/pull/2)**
 - **[Feature - Register](https://github.com/giovanizanetti/MY-VIRTUAL-RECIPE-BOOK/pull/3)**
 - **[Bugfix - fetch](https://github.com/giovanizanetti/MY-VIRTUAL-RECIPE-BOOK/pull/4)**
 - **[Feature - Fetch api](https://github.com/giovanizanetti/MY-VIRTUAL-RECIPE-BOOK/pull/5)**
@@ -72,14 +80,14 @@ In this project I try to practice:
 - Well named branches,
 - Pull requests with summaries
 
-If you have feedback to improve my git usage: **[please drop me a line here!](https://www.linkedin.com/in/giovani-zanetti-ab664a24/)** or email-me at giovanizanetti@icloud.com
+If you have feedback to improve my git usage: **[please drop me a line here!](https://www.linkedin.com/in/giovani-zanetti-ab664a24/)** or e-mail me at giovanizanetti@icloud.com.
 
 
 ## My workflow
 
-I try to maintain a backlog eventhough I'm working on a project by myself. So that if ia i am work in a team the collaboration will be facilitate.
-Here are some other tools tha help me out though my process of develop 'My Recipe Book App':
-  - Trello Bord,
+I try to maintain a backlog eventhough I'm working on a project by myself. So that if ia i am work in a team, the collaboration will be facilitated.
+Here are some other tools tha help me out though my process of develop My Virtual Recipe Book App:
+  - Trello Board,
   - Google,
   - Grammarly
 
