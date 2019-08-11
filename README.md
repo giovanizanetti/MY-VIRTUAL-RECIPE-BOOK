@@ -80,7 +80,7 @@ If you have feedback to improve my git usage: **[please drop me a line here!](ht
 
 I try to maintain a backlog eventhough I'm working on a project by myself. So that if ia i am work in a team the collaboration will be facilitate.
 Here are some other tools tha help me out though my process of develop 'My Recipe Book App':
-  - Trello Bord,
+  - Trello Board,
   - Google,
   - Grammarly
   
