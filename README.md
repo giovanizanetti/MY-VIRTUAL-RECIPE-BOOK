@@ -23,7 +23,7 @@ The main purpose of this project is to practize my skills using ReactJS
 #### 👀👇 Click links to view some samples on this project 👇👀
 
 - **[React](./src/components/recipe/RecipeList/index.js)**  
-- **[React-Router](.src/Router)**
+- **[React-Router](.src/Router.js)**
 - **[Redux](./src/reducers/recipes.js)**  
 - **[Redux-thunk](./src/actions/recipeActions.js)**  
 - **[Redux-form](./src/components/recipe/RecipeForm/index.js)**
@@ -38,15 +38,18 @@ The main purpose of this project is to practize my skills using ReactJS
 - Have a signIn/out on my project,
 - Make use of an external API,
 - Practice git usage:
+
   - **[To showcase disciplined git usage](#my-git-workflow)**
+  
 
 ## Requirements
 
 To guide my self through this project, I have created user stories: **[User Stories.md](./userStories.md)**
 
+
 ## Features built so far overview with pull requests
 
-#### 👀👇 Click links to view the pull requests 👇👀
+#### 👇 Click links to view the pull requests 👇
 
 - **[Feature - Navigation](https://github.com/giovanizanetti/MY-VIRTUAL-RECIPE-BOOK/pull/1)**
 - **[Feature - SignIn/SIgnOut](https://github.com/giovanizanetti/MY-VIRTUAL-RECIPE-BOOK/pull/2)**
@@ -60,6 +63,7 @@ To guide my self through this project, I have created user stories: **[User Stor
 - **[Improvement - Expand create recipe](https://github.com/giovanizanetti/MY-VIRTUAL-RECIPE-BOOK/pull/16)**
 - **[Feature/ search, select, prepare](https://github.com/giovanizanetti/MY-VIRTUAL-RECIPE-BOOK/pull/18)**
 
+
 ## My git workflow
 
 In this project I try to practice:
@@ -70,6 +74,7 @@ In this project I try to practice:
 
 If you have feedback to improve my git usage: **[please drop me a line here!](https://www.linkedin.com/in/giovani-zanetti-ab664a24/)** or email-me at giovanizanetti@icloud.com
 
+
 ## My workflow
 
 I try to maintain a backlog eventhough I'm working on a project by myself. So that if ia i am work in a team the collaboration will be facilitate.
@@ -77,6 +82,7 @@ Here are some other tools tha help me out though my process of develop 'My Recip
   - Trello Bord,
   - Google,
   - Grammarly
+  
 
 ## Create React App
 
