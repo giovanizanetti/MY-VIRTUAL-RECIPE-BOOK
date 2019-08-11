@@ -79,7 +79,7 @@ If you have feedback to improve my git usage: **[please drop me a line here!](ht
 ## My workflow
 
 I try to maintain a backlog eventhough I'm working on a project by myself. So that if ia i am work in a team, the collaboration will be facilitated.
-Here are some other tools tha help me out though my process of develop ## MyRecipe Book App:
+Here are some other tools tha help me out though my process of develop MyRecipe Book App:
   - Trello Board,
   - Google,
   - Grammarly
