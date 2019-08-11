@@ -1,3 +1,5 @@
+# My Virtual Recipe Book User Stories
+
 * As a user, I should be able to sign up and login using email and password so that I can access my recipes.
 * As a user, when I am logged in I want to see an avatar with my initials so that I know if I am logged in
 * As a user, when I am logged in I want to be able to see a logout option on the navigation bar, o that I can log out.
