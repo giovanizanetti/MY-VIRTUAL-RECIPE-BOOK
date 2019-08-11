@@ -1,68 +1,94 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# My Virtual Recipe Book
 
-## Available Scripts
+## [Check out the deployed version here!](https://virtualrecipebook.netlify.com)
 
-In the project directory, you can run:
 
-### `npm start`
+## What this project is about
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+The main purpose of this project is to practize my skills using ReactJS 
+**[Goals for this project](#goals-for-this-project)**
 
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
+## Table of contents:
 
-### `npm test`
+- **[Technologies used](#technologies-used)**
+- **[Goals for this project](#goals-for-this-project)**
+- **[Requirements briefing](#requirements)**
+- **[Features built so far overview with pull requests](#features-built-so-far-overview-with-pull-requests)**
+- **[My git workflow](#my-git-workflow)**
+- **[My workflow](#my-workflow)**
+- **[create-react-app-docs](#create-react-app)**
 
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Technologies used
 
-### `npm run build`
+#### 👀👇 Click links to view some samples on this project 👇👀
 
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- **[React](./src/components/recipe/RecipeList/index.js)**  
+- **[React-Router](.src/Router.js)**
+- **[Redux](./src/reducers/recipes.js)**  
+- **[Redux-thunk](./src/actions/recipeActions.js)**  
+- **[Redux-form](./src/components/recipe/RecipeForm/index.js)**
+- **[Firebase](https://firebase.google.com/)**
+- **[Materialize-CSS](https://materializecss.com/)**
+- **[SPOONACULAR-API](https://rapidapi.com/spoonacular/api/recipe-food-nutrition/details)**
 
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
+## Goals for this project:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- Bild an useful and meaninfull project using React and Redux,
+- Practice CRUD operations,
+- Have a signIn/out on my project,
+- Make use of an external API,
+- Practice git usage:
 
-### `npm run eject`
+  - **[To showcase disciplined git usage](#my-git-workflow)**
+  
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+## Requirements
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+To guide my self through this project, I have created user stories: **[User Stories.md](./userStories.md)**
 
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+## Features built so far overview with pull requests
 
-## Learn More
+#### 👇 Click links to view the pull requests 👇
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+- **[Feature - Navigation](https://github.com/giovanizanetti/MY-VIRTUAL-RECIPE-BOOK/pull/1)**
+- **[Feature - SignIn/SIgnOut](https://github.com/giovanizanetti/MY-VIRTUAL-RECIPE-BOOK/pull/2)**
+- **[Feature - Register](https://github.com/giovanizanetti/MY-VIRTUAL-RECIPE-BOOK/pull/3)**
+- **[Bugfix - fetch](https://github.com/giovanizanetti/MY-VIRTUAL-RECIPE-BOOK/pull/4)**
+- **[Feature - Fetch api](https://github.com/giovanizanetti/MY-VIRTUAL-RECIPE-BOOK/pull/5)**
+- **[Feature - Sign Out](https://github.com/giovanizanetti/MY-VIRTUAL-RECIPE-BOOK/pull/8)**
+- **[Bug fix - routing](https://github.com/giovanizanetti/MY-VIRTUAL-RECIPE-BOOK/pull/11)**
+- **[Improvement - navigation](https://github.com/giovanizanetti/MY-VIRTUAL-RECIPE-BOOK/pull/12)**
+- **[Improvement - recipe card](https://github.com/giovanizanetti/MY-VIRTUAL-RECIPE-BOOK/pull/14)**
+- **[Improvement - Expand create recipe](https://github.com/giovanizanetti/MY-VIRTUAL-RECIPE-BOOK/pull/16)**
+- **[Feature/ search, select, prepare](https://github.com/giovanizanetti/MY-VIRTUAL-RECIPE-BOOK/pull/18)**
 
-To learn React, check out the [React documentation](https://reactjs.org/).
 
-### Code Splitting
+## My git workflow
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
+In this project I try to practice:
 
-### Analyzing the Bundle Size
+- Good commit messages,
+- Well named branches,
+- Pull requests with summaries
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
+If you have feedback to improve my git usage: **[please drop me a line here!](https://www.linkedin.com/in/giovani-zanetti-ab664a24/)** or email-me at giovanizanetti@icloud.com
 
-### Making a Progressive Web App
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
+## My workflow
 
-### Advanced Configuration
+I try to maintain a backlog eventhough I'm working on a project by myself. So that if ia i am work in a team the collaboration will be facilitate.
+Here are some other tools tha help me out though my process of develop 'My Recipe Book App':
+  - Trello Bord,
+  - Google,
+  - Grammarly
+  
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
+## Create React App
 
-### Deployment
+This project was scaffolded using the create-react-app cli. 
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
+**[The standard create-react-app docs can be found in here](./create-react-app-docs.md)**
 
-### `npm run build` fails to minify
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+
