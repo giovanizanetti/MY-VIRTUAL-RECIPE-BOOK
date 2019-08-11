@@ -30,7 +30,7 @@ The main purpose of this project is to practize my skills using ReactJS
 - **[Firebase](https://firebase.google.com/)**
 - **[Materialize-CSS](https://materializecss.com/)**
 - **[SPOONACULAR-API](https://rapidapi.com/spoonacular/api/recipe-food-nutrition/details)**
-- **[Axios](https://github.com/axios/axios)
+- **[Axios](https://github.com/axios/axios)**
 
 ## Goals for this project:
 
