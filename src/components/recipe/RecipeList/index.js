@@ -12,7 +12,6 @@ class RecipeList extends Component {
 
   render() {
     const { recipes, history, auth } = this.props
-    console.log(auth.uid)
     return (
       <div className="row col">
         {
