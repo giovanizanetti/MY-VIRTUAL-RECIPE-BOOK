@@ -73,7 +73,7 @@ In this project I try to practice:
 - Well named branches,
 - Pull requests with summaries
 
-If you have feedback to improve my git usage: **[please drop me a line here!](https://www.linkedin.com/in/giovani-zanetti-ab664a24/)** or email-me at giovanizanetti@icloud.com
+If you have feedback to improve my git usage: **[please drop me a line here!](https://www.linkedin.com/in/giovani-zanetti-ab664a24/)** or e-mail me at giovanizanetti@icloud.com.
 
 
 ## My workflow
