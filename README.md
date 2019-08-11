@@ -22,17 +22,14 @@ The main purpose of this project is to practize my skills using ReactJS
 
 #### 👇 Click links to view some samples on this project 👇
 
-<<<<<<< HEAD
 - **[React](./src/components/recipe/RecipeList/index.js)**
 - **[React-Router](.src/Router.js)**
 - **[Redux](./src/reducers/recipes.js)**
 - **[Redux-thunk](./src/actions/recipeActions.js)**
-=======
-- **[React](./src/components/recipe/RecipeList/index.js)**  
+- **[React](./src/components/recipe/RecipeList/index.js)**
 - **[React-Router](./src/Router.js)**
-- **[Redux](./src/reducers/recipes.js)**  
-- **[Redux-thunk](./src/actions/recipeActions.js)**  
->>>>>>> a4da42444ba1c3ae9b8cad1e6e8ba4090be074cf
+- **[Redux](./src/reducers/recipes.js)**
+- **[Redux-thunk](./src/actions/recipeActions.js)**
 - **[Redux-form](./src/components/recipe/RecipeForm/index.js)**
 - **[Firebase](https://firebase.google.com/)**
 - **[Materialize-CSS](https://materializecss.com/)**
