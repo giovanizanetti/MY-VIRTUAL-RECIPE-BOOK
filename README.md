@@ -5,7 +5,7 @@
 
 ## What this project is about
 
-The main purpose of this project is to practize my skills using ReactJS 
+The main purpose of this project is to practize my skills using ReactJS
 **[Goals for this project](#goals-for-this-project)**
 
 ## Table of contents:
@@ -20,12 +20,12 @@ The main purpose of this project is to practize my skills using ReactJS
 
 ## Technologies used
 
-#### 👀👇 Click links to view some samples on this project 👇👀
+#### 👇 Click links to view some samples on this project 👇
 
-- **[React](./src/components/recipe/RecipeList/index.js)**  
+- **[React](./src/components/recipe/RecipeList/index.js)**
 - **[React-Router](.src/Router.js)**
-- **[Redux](./src/reducers/recipes.js)**  
-- **[Redux-thunk](./src/actions/recipeActions.js)**  
+- **[Redux](./src/reducers/recipes.js)**
+- **[Redux-thunk](./src/actions/recipeActions.js)**
 - **[Redux-form](./src/components/recipe/RecipeForm/index.js)**
 - **[Firebase](https://firebase.google.com/)**
 - **[Materialize-CSS](https://materializecss.com/)**
@@ -40,7 +40,7 @@ The main purpose of this project is to practize my skills using ReactJS
 - Practice git usage:
 
   - **[To showcase disciplined git usage](#my-git-workflow)**
-  
+
 
 ## Requirements
 
@@ -82,11 +82,11 @@ Here are some other tools tha help me out though my process of develop 'My Recip
   - Trello Bord,
   - Google,
   - Grammarly
-  
+
 
 ## Create React App
 
-This project was scaffolded using the create-react-app cli. 
+This project was scaffolded using the create-react-app cli.
 
 **[The standard create-react-app docs can be found in here](./create-react-app-docs.md)**
 
