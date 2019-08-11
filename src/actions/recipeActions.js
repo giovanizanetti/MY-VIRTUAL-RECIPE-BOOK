@@ -1,4 +1,4 @@
-import axios from 'axios'
+import spoonacular from '../config/spooncular'
 import {
   SELECT_RECIPE,
   CREATE_RECIPE,
@@ -20,7 +20,7 @@ import {
 } from './types'
 
 export const createRecipe = recipe => {
-  //delete id from recipes copied from API because Firebase creates a new id for the recipe
+  //delete id from recipes copied from Spoonacular because Firebase creates a new id for the recipe
   recipe.id && delete recipe.id
   return (dispatch, getState, { getFirebase, getFirestore }) => {
     // make async call to database
@@ -107,32 +107,25 @@ export const selectAll = () => {
   }
 }
 
-
-//Later: Create babse URL to make the code cleaner
 export const fetchRecipes = (searchValues) => dispatch => {
   dispatch({
     type: FETCH_RECIPES_PENDING
   })
-  return axios.get('https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/random?', {
-    headers: {
-      "X-RapidAPI-Host": "spoonacular-recipe-food-nutrition-v1.p.rapidapi.com",
-      "X-RAPIDAPI-KEY": "0f1f47b39bmsh0e4d2a04bd035cdp1121bejsnf58a226a5005",
-
-    },
+  return spoonacular.get('./random?', {
     params: {
       number: 15,
       tags: searchValues ? searchValues : 'main course'
     }
   })
-  .then(data => dispatch({
-    type: FETCH_RECIPES_SUCCESS,
-    payload: data
-  }))
-  .then(data => console.log(data))
-  .catch(error => dispatch({
-    type: FETCH_RECIPES_FAILED,
-    payload: error
-  }))
+    .then(data => dispatch({
+      type: FETCH_RECIPES_SUCCESS,
+      payload: data
+    }))
+    .then(data => console.log(data))
+    .catch(error => dispatch({
+      type: FETCH_RECIPES_FAILED,
+      payload: error
+    }))
 }
 
 export const fetchRecipeById = (id) => (dispatch) => {
@@ -140,22 +133,16 @@ export const fetchRecipeById = (id) => (dispatch) => {
     type: FETCH_RECIPES_BY_ID_PENDING
   })
 
-  return axios.get(`https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/${id}/information`, {
-    headers: {
-      "X-RapidAPI-Host": "spoonacular-recipe-food-nutrition-v1.p.rapidapi.com",
-      "X-RAPIDAPI-KEY": "0f1f47b39bmsh0e4d2a04bd035cdp1121bejsnf58a226a5005",
-    },
-    params: id
-  })
-  .then(res => dispatch({
-    type: FETCH_RECIPES_BY_ID_SUCCESS,
-    payload: res.data
-  }))
-  .then(data => console.log(data))
-  .catch(error => dispatch({
-    type: FETCH_RECIPES_BY_ID_FAILED,
-    payload: error
-  }))
+  return spoonacular.get(`./${id}/information`)
+    .then(res => dispatch({
+      type: FETCH_RECIPES_BY_ID_SUCCESS,
+      payload: res.data
+    }))
+    .then(data => console.log(data))
+    .catch(error => dispatch({
+      type: FETCH_RECIPES_BY_ID_FAILED,
+      payload: error
+    }))
 }
 
 export const prepareRecipe = () => {

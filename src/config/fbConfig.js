@@ -15,9 +15,11 @@ import 'firebase/storage'
 firebase.initializeApp(config)
 firebase.firestore()
 
+const db = firebase.firestore()
 const storage = firebase.storage()
 
 export {
   storage,
+  db,
   firebase as default
 }

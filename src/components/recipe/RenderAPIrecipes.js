@@ -13,7 +13,7 @@ class RenderAPIrecipes extends Component {
   }
 
   onSubmit = formValues => {
-    const { fetchRecipes } =this.props
+    const { fetchRecipes } = this.props
     fetchRecipes(formValues)
   }
 
