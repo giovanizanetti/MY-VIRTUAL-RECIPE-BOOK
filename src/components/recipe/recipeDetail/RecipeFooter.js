@@ -6,7 +6,6 @@ import { createRecipe, selectRecipe } from '../../../actions/recipeActions'
 import { firestoreConnect } from 'react-redux-firebase'
 import { connect } from 'react-redux'
 import { compose } from 'redux'
-// import PrintRecipe from '../../recipe/PrintRecipe'
 
 const RecipeFooter = props => {
   const { recipeId, history, recipe, selectRecipe, createRecipe, myRecipes } = props
@@ -31,7 +30,7 @@ const RecipeFooter = props => {
     return isMyRecipeExists > 0
     ? alert(existMessage)
     : selectRecipe(recipe)
-    && createRecipe(recipe)
+    // && createRecipe(recipe)
   }
 
   return (
@@ -71,7 +70,7 @@ const RecipeFooter = props => {
               style={ button }
               className={`${ buttonSaveClasses } blue`}
               recipe={ recipe }
-              onClick={ handleSave }
+              // onClick={ handleSave }
             >
               Save
             </button>
@@ -94,7 +93,7 @@ const RecipeFooter = props => {
         >Edit
         </button>
 
-       <Modal id={ 'print' } />
+       {/* <Modal id={ 'print' } />
         <button
           data-target="print"
           style={ button }
@@ -112,8 +111,7 @@ const RecipeFooter = props => {
           className={`${ buttonClasses } black`}
         >
           <i className="material-icons">share</i>
-        </button>
-        {/* <PrintRecipe /> */}
+        </button> */}
       </div>
     </>
   )

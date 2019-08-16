@@ -4,6 +4,7 @@ import { compose } from 'redux'
 import { firestoreConnect } from 'react-redux-firebase'
 import { fetchRecipeById, selectRecipe } from '../../../actions/recipeActions'
 import { setSearchField } from '../../../actions/searchActions'
+import { setImgUrl } from '../../../actions/image'
 import { isNumber } from '../../../myLibrary'
 import { Redirect } from 'react-router-dom'
 import Occasions from './Occasions'
@@ -19,6 +20,7 @@ import Cuisines from './Cuisines'
 import Style from './Style.js'
 import PrepareRecipe from './PrepareRecipe'
 
+
 class Recipedetail extends Component {
   // Fetching Recipe by ID from the API
   componentDidMount(){
@@ -31,6 +33,7 @@ class Recipedetail extends Component {
     && IS_SPOONACULAR_ID
     && fetchRecipeById(ID)
     && setSearchField('')
+    && setImgUrl()
   }
 
   render() {
@@ -107,7 +110,7 @@ export default
  compose(
   connect(
     mapStateToProps,
-    { selectRecipe, fetchRecipeById, setSearchField }
+    { selectRecipe, fetchRecipeById, setSearchField, setImgUrl }
   ),
   firestoreConnect([{
     collection: 'recipes'

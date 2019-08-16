@@ -19,7 +19,7 @@ class Instructions extends Component {
     const renderInstructions =
       instructions && instructions.map(object => {
         return (object.steps.map((step, i) => (
-          <div key={step.number}>
+          <div key={i}>
             <li
               className={ this.state[i] ? 'line-through' : ''}
               style={ instruction_li }>

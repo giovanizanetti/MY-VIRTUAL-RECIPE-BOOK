@@ -27,6 +27,10 @@ class MyRecipes extends Component {
       ? <NoRecipes />
       : <>
           <MyRecipesSearchBar handleSearch={ handleSearch } />
+          <h1
+            style={{ textAlign: 'center', fontFamily: 'roboto' }}
+            >My Recipes
+          </h1>
           {
             filteredRecipes
             && searchField.length > 0

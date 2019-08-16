@@ -8,7 +8,7 @@ import SearchBar from '../SearchBar'
 
 class RenderAPIrecipes extends Component {
   componentDidMount = () => {
-    const { fetchRecipes } =this.props
+    const { fetchRecipes } = this.props
     fetchRecipes()
   }
 
@@ -24,6 +24,10 @@ class RenderAPIrecipes extends Component {
       ? <LoaderProgressBar />
       : <>
           <SearchBar id='API' onSubmit={ this.onSubmit } />
+          <h1
+            style={{ textAlign: 'center', fontFamily: 'roboto', margin: 0 }}
+            >Recipes of the day
+          </h1>
           <RecipeList
             recipes={ recipes.recipes }
             history={ history }

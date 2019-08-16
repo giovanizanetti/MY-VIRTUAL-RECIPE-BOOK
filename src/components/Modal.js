@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import M from "materialize-css/dist/js/materialize.min.js"
 import SharePlatforms from '../components/recipe/RecipeDetail/SharePlatforms'
 import PrintPreferences from '../components/recipe/RecipeDetail/PrintPreferences'
-import { fetchRecipeById, deleteRecipe } from '../actions/recipeActions'
+import { fetchRecipeById, deleteRecipe, createRecipe } from '../actions/recipeActions'
 import { connect } from 'react-redux'
 import { firestoreConnect } from 'react-redux-firebase'
 import { compose } from 'redux'
@@ -46,7 +46,7 @@ class Modal extends Component {
   }
 
   render() {
-    const { id, popUp } = this.props
+    const { id, popUp, createRecipe, recipe } = this.props
     const renderContent = () => {
       switch (id) {
         case 'share':
@@ -63,7 +63,6 @@ class Modal extends Component {
         id={ id }
         className="modal"
       >
-        {/* If I want Bottom Sheet Modal then addbottom-sheet class */}
         <div className="modal-content">
           { renderContent() }
         </div>
@@ -86,6 +85,7 @@ class Modal extends Component {
             <Link
               to='/myRecipes/'
               className="modal-close waves-effect waves-green btn-flat"
+              onClick={() => createRecipe(recipe)}
               >Go to My Recipes
             </Link>
           }
@@ -120,7 +120,7 @@ const mapStateToProps = (state, ownProps) => {
 export default compose(
   connect(
     mapStateToProps,
-    { fetchRecipeById, deleteRecipe  }
+    { fetchRecipeById, deleteRecipe, createRecipe  }
   ),
   firestoreConnect([{
     collection: 'recipes'

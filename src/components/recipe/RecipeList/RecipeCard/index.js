@@ -49,7 +49,7 @@ class RecipeCard extends Component {
           />
         }
         <div className="card-image waves-effect waves-block waves-light">
-          <img className="activator" src={ image } alt={ title } />
+          <img className="activator" src={ image ? image : undefined } alt={ title } />
         </div>
         <span className="card-title activator grey-text text-darken-4">
           { trimString(title, 40) }

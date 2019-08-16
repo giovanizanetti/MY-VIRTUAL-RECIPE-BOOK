@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import { Field, reduxForm } from 'redux-form'
-import { Redirect } from 'react-router-dom'
 import { validate } from './containers/FormErrors'
 import RenderInput from './containers/RenderInput'
 import AllergensFields from './AllergensFields'
@@ -10,6 +9,7 @@ import OccasionsInputs from './OccasionsInputs.js'
 import CuisinesInput from './CuisinesInput'
 import InstructionsInputs from './InstructionsInputs'
 import ImgInput from './ImgInput'
+import { Redirect } from 'react-router-dom'
 
 //This is a template form that can be imported by RecipeCreate and RecipeEdit
 class RecipeForm extends Component {

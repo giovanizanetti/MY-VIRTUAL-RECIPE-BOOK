@@ -17,7 +17,7 @@ class RecipeList extends Component {
         {
           auth.uid &&
           <Select
-            recipes={recipes}
+            recipes={ recipes }
             history={ history }
           />
         }

@@ -1,16 +1,14 @@
 import React from 'react'
-import { NavLink } from 'react-router-dom'
 import { connect } from 'react-redux'
 
 const Avatar = props => {
   return (
     <li>
-      <NavLink
-        to='/showAllRecipes'
+      <button
         className='btn btn-floating pink lighten-1'
       >
         { props.initials }
-      </NavLink></li>
+      </button></li>
   )
 }
 

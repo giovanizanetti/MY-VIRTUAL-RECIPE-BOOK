@@ -14,7 +14,8 @@ class App extends Component {
           className="container"
           style={{
             paddingTop: "5em",
-            marginBottom: '10%'}}>
+            marginBottom: '10%',
+            }}>
           <Router />
         </div>
       </BrowserRouter>

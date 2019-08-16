@@ -17,20 +17,17 @@ class RecipeEdit extends Component {
   }
 
   onSubmit = (formValues) => {
-    const checkImg = this.props.image
-    formValues.image = checkImg
-    && this.props.image
+    const { editRecipe, createRecipe, history, match, image, imageInput } = this.props
 
-    const isNewImg = this.props.imageInput
-    && this.props.imageInput !== '/static/media/placeholder.7eade072.jpg'
-    formValues.image = isNewImg && this.props.imageInput
-    const ID = this.props.match.params.id
+    const isNewImg = imageInput
+    && imageInput !== '/static/media/placeholder.7eade072.jpg'
+    formValues.image = isNewImg ? imageInput : formValues.image
+    const ID = match.params.id
     const IS_SPOONACULAR_ID = isNumber(ID)
 
     IS_SPOONACULAR_ID
-    ? this.props.createRecipe(formValues)
-    : this.props.editRecipe(ID, formValues)
-    return this.props.history.replace(`/recipes/${ID}`)
+    ? createRecipe(formValues, history.replace('/myRecipes/'))
+    : editRecipe(ID, formValues, history.replace('/myRecipes/'))
   }
 
   render() {
@@ -57,6 +54,7 @@ class RecipeEdit extends Component {
               'vegetarian',
               'dairyFree',
               'lowFodmap',
+              'image'
               )}
           />
         </div>

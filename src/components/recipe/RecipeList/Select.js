@@ -15,7 +15,9 @@ const Select = ({ showCheckBoxes, isActive,
 
     const handleSave = () => {
       alert(`${selectedRecipes.length} ${selectedRecipes.length === 1
-        ? 'recipe': 'recipes'} was added to your recipes. Click Ok to go to 'My Recipes'`)
+        ? 'recipe'
+        : 'recipes'
+      } was added to your recipes. Click Ok to go to 'My Recipes'`)
       return selectedRecipes.map(recipeId => {
         const fullRecipe = apiRecipes && apiRecipes.find(r => r.id.toString() === recipeId.toString())
         return showCheckBoxes()

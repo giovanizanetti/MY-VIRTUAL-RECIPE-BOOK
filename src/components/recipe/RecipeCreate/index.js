@@ -23,9 +23,10 @@ class RecipeCreate extends Component {
     formValues.image = checkImg && image
     if(myRecipes.find(recipe => recipe.title.toLowerCase() === formValues.title.toLowerCase()))
       return alert(`The recipe ${formValues.title} already exists, please choose a different name`)
-     else {
+    else {
       createRecipe(formValues)
-      return history.replace(`/myRecipes`)
+      return window.confirm(`The recipe ${formValues.title} was just added to your recipes. Do you wnat to go to your recipes?`)
+      && history.replace('/myRecipes/')
     }
   }
 
