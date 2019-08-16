@@ -17,7 +17,7 @@ class RecipeEdit extends Component {
   }
 
   onSubmit = (formValues) => {
-    const { editRecipe, createRecipe, history, match, image, imageInput } = this.props
+    const { editRecipe, createRecipe, history, match, imageInput } = this.props
 
     const isNewImg = imageInput
     && imageInput !== '/static/media/placeholder.7eade072.jpg'

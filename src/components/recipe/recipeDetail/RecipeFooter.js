@@ -2,13 +2,13 @@ import React from 'react'
 import Modal from '../../Modal'
 import style from './Style'
 import { isNumber } from '../../../myLibrary'
-import { createRecipe, selectRecipe } from '../../../actions/recipeActions'
+import { selectRecipe } from '../../../actions/recipeActions'
 import { firestoreConnect } from 'react-redux-firebase'
 import { connect } from 'react-redux'
 import { compose } from 'redux'
 
 const RecipeFooter = props => {
-  const { recipeId, history, recipe, selectRecipe, createRecipe, myRecipes } = props
+  const { recipeId, history, recipe, myRecipes } = props
   const { container, button } = style.recipeFooter
   const buttonClasses ='waves-effect waves-light btn center-align modal-trigger'
   const deleteMessage = 'Are you sure you want to delete this recipe?'
@@ -17,7 +17,6 @@ const RecipeFooter = props => {
   const isMyRecipeExists = myRecipes && myRecipes.filter(myRecipe => {
     return myRecipe.title === recipe.title
   }).length
-  const existMessage = `A recipe ${recipe.title} is already on your recipes, please choose a diferent name`
   const buttonSaveClasses =
     isMyRecipeExists
     ? 'waves-effect waves-light btn center-align blue'
@@ -25,13 +24,6 @@ const RecipeFooter = props => {
   const saveMessage = `The recipe ${recipe.title.toUpperCase()} was just saved in 'My Recipes'`
 
   const handleEdit = () => history.push(`/recipes/edit/${ recipeId }`)
-
-  const handleSave = () => {
-    return isMyRecipeExists > 0
-    ? alert(existMessage)
-    : selectRecipe(recipe)
-    // && createRecipe(recipe)
-  }
 
   return (
     <>
@@ -125,7 +117,7 @@ const mapStateToProps = state => {
 
 
 export default compose(
-  connect(mapStateToProps, { createRecipe, selectRecipe } ),
+  connect(mapStateToProps, { selectRecipe } ),
   firestoreConnect([{
     collection: 'recipes'
   }])

@@ -101,7 +101,6 @@ export const selectMultipleRecipes = recipesIds => {
 }
 
 export const selectAll = () => {
-  console.log('clicked')
   return {
     type: SELECT_ALL
   }
@@ -121,7 +120,6 @@ export const fetchRecipes = (searchValues) => dispatch => {
       type: FETCH_RECIPES_SUCCESS,
       payload: data
     }))
-    .then(data => console.log(data))
     .catch(error => dispatch({
       type: FETCH_RECIPES_FAILED,
       payload: error
@@ -138,7 +136,6 @@ export const fetchRecipeById = (id) => (dispatch) => {
       type: FETCH_RECIPES_BY_ID_SUCCESS,
       payload: res.data
     }))
-    .then(data => console.log(data))
     .catch(error => dispatch({
       type: FETCH_RECIPES_BY_ID_FAILED,
       payload: error
