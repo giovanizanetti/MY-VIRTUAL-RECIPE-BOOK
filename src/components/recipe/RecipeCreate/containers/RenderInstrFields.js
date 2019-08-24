@@ -2,7 +2,7 @@ import React from 'react'
 import { Field } from 'redux-form'
 import AddRemoveButton from '../AddRemoveButton'
 import RenderField from './RenderField'
-import Style from '../Style'
+import Style from '../style'
 import AddButton from '../AddButton'
 
 const RenderInstrFields = ({ fields }) => {

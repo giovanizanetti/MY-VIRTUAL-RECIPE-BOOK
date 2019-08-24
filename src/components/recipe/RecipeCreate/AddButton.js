@@ -1,5 +1,5 @@
 import React from 'react'
-import Style from './Style'
+import Style from './style'
 
 export default ({item, fields, onClick}) => (
   <button

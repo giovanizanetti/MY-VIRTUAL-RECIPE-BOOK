@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import CheckBox from '../../CheckBox'
-import Style from './Style'
+import Style from './style'
 import { connect } from 'react-redux'
 
 class Ingredients extends Component {

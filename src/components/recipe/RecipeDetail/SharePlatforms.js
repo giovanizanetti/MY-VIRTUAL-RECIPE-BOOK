@@ -4,7 +4,7 @@ import Instagram from './images/instagram.png'
 import Whatsapp from './images/whatsapp.png'
 import Email from'./images/gmail.png'
 import { Link } from 'react-router-dom'
-import Style from './Style'
+import Style from './style'
 
 const SharePlatforms = () => {
   const { imgLink } = Style.sharePlatforms

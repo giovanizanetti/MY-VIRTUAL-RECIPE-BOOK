@@ -1,5 +1,5 @@
 import React from 'react'
-import Style from './Style'
+import Style from './style'
 
 export default({index, fields, field}) => {
   const { container, removeButton, addIcon, addBtn } = Style.addRemoveButton

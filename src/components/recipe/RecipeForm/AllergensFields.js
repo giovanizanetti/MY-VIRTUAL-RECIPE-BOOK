@@ -1,7 +1,7 @@
 import React from 'react'
 import RenderCheckBoxItem from './containers/RenderCheckBoxItem'
 import { Field } from 'redux-form'
-import Style from './Style'
+import Style from './style'
 
 export default () => {
   const { container } = Style.allergensField

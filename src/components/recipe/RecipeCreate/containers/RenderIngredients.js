@@ -3,7 +3,7 @@ import { Field } from 'redux-form'
 import RenderField from './RenderField'
 import AddRemoveButton from '../AddRemoveButton'
 import AddButton from '../AddButton'
-import Style from '../Style'
+import Style from '../style'
 
 const RenderIngredients = ({ fields, meta: { touched, error, submitFailed } }) => (
   <ul>

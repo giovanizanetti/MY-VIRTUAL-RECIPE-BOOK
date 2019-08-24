@@ -17,7 +17,7 @@ import Instructions from './Instructions'
 import LoaderProgressBar from '../../LoaderProgressBar'
 import RecipeFooter from './RecipeFooter'
 import Cuisines from './Cuisines'
-import Style from './Style.js'
+import Style from './style.js'
 import PrepareRecipe from './PrepareRecipe'
 
 

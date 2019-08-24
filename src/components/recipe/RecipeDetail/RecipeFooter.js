@@ -1,6 +1,6 @@
 import React from 'react'
 import Modal from '../../Modal'
-import style from './Style'
+import style from './style'
 import { isNumber } from '../../../myLibrary'
 import { selectRecipe } from '../../../actions/recipeActions'
 import { firestoreConnect } from 'react-redux-firebase'

@@ -1,6 +1,6 @@
 import React from 'react'
 import FormErrors from './FormErrors'
-import Style from '../Style'
+import Style from '../style'
 
 const RenderInput = ({ input, label, meta, type, placeholder }) => {
   const { touched, error, active, dirty, initial } = meta

@@ -2,7 +2,7 @@ import React from 'react'
 import CookingImg from './images/cooking.png'
 import ClockImg from './images/clock.png'
 import { timeFormat } from '../../../myLibrary'
-import Style from './Style'
+import Style from './style'
 
 const PrepTime = ({ cookingMinutes, readyInMinutes }) => {
   const { container_ul } = Style.prepTime

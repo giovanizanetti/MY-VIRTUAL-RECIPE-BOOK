@@ -2,7 +2,7 @@ import React from 'react'
 import { Field } from 'redux-form'
 import RenderField from './containers/RenderField'
 import AddRemoveButton from './AddRemoveButton'
-import Style from './Style'
+import Style from './style'
 
 export default ({ index, field, fields, label, textarea }) => {
   return (
