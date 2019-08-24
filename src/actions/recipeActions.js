@@ -36,9 +36,9 @@ export const createRecipe = recipe => {
 // }
 
   recipe.id && delete recipe.id
+
   return (dispatch, getState, { getFirebase, getFirestore }) => {
-  recipe.uid = getState().firebase.auth.userUid
-    // make async call to database
+    recipe.userId = getState().firebase.auth.uid
     const firestore = getFirestore()
     firestore.collection('recipes').add({
       ...recipe
@@ -57,6 +57,7 @@ export const createRecipe = recipe => {
 }
 
 export const editRecipe = (id, recipe) => {
+  
   return (dispatch, getState, { getFirebase, getFirestore }) => {
     // make async call to database
     const firestore = getFirestore()
