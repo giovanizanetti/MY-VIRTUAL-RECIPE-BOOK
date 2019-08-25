@@ -16,6 +16,7 @@ class MyRecipes extends Component {
 
   render() {
     const { recipes, searchField, setSearchField } = this.props
+    console.log(recipes)
     const filteredRecipes = recipes && recipes.filter(recipe => {
       return recipe.title && recipe.title.toLowerCase().includes(searchField.toLowerCase())
     })
@@ -50,10 +51,13 @@ class MyRecipes extends Component {
 
 
 const mapStateToProps = state => {
+  const { firebase, firestore, selectedRecipe, search } = state
+  const currentUser = firebase.auth.uid
   return {
-    recipes: state.firestore.ordered.recipes,
-    selectedRecipe: state.selectedRecipe,
-    searchField: state.search.searchField
+    recipes: firestore.ordered.recipes 
+      && firestore.ordered.recipes.filter(rec => rec.userId === currentUser),
+    selectedRecipe: selectedRecipe,
+    searchField: search.searchField,
   }
 }
 
