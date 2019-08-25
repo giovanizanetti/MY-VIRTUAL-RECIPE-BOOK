@@ -16,7 +16,6 @@ class MyRecipes extends Component {
 
   render() {
     const { recipes, searchField, setSearchField } = this.props
-    console.log(recipes)
     const filteredRecipes = recipes && recipes.filter(recipe => {
       return recipe.title && recipe.title.toLowerCase().includes(searchField.toLowerCase())
     })
