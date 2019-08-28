@@ -38,7 +38,7 @@ const Select = ({ showCheckBoxes, isActive,
         && <button
               className="btn-small blue"
               onClick={() => showCheckBoxes() }
-              >Select
+              >Select multiple Recipes
             </button>
       }
       { isActive

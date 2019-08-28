@@ -27,10 +27,15 @@ class MyRecipes extends Component {
       ? <NoRecipes />
       : <>
           <MyRecipesSearchBar handleSearch={ handleSearch } />
-          <h1
-            style={{ textAlign: 'center', fontFamily: 'roboto' }}
+          <h4
+            style={{
+              textAlign: 'center', 
+              fontFamily: 'roboto', 
+              margin: '1rem', 
+              textDecoration: 'underline'
+            }}
             >My Recipes
-          </h1>
+          </h4>
           {
             filteredRecipes
             && searchField.length > 0
@@ -50,10 +55,13 @@ class MyRecipes extends Component {
 
 
 const mapStateToProps = state => {
+  const { firebase, firestore, selectedRecipe, search } = state
+  const currentUser = firebase.auth.uid
   return {
-    recipes: state.firestore.ordered.recipes,
-    selectedRecipe: state.selectedRecipe,
-    searchField: state.search.searchField
+    recipes: firestore.ordered.recipes 
+      && firestore.ordered.recipes.filter(rec => rec.userId === currentUser),
+    selectedRecipe: selectedRecipe,
+    searchField: search.searchField,
   }
 }
 

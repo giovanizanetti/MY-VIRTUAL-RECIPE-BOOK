@@ -34,11 +34,10 @@ The main purpose of this project is to practize my skills using ReactJS
 
 ## Goals for this project:
 
-- Bild an useful and meaninfull project using React and Redux,
-- Practice CRUD operations,
-- Have a signIn/out on my project,
-- Make use of an external API,
-- Practice git usage:
+I am creating a cookbook with is fetching some recipes from the Spoonacular API.
+The user can save, modify and, write their recipes with an upload image feature.  
+In this project, I am practising: React/Redux, CRUD app with firebase, authentication & using an external API, GIT and PR's.
+
 
   - **[To showcase disciplined git usage](#my-git-workflow)**
 

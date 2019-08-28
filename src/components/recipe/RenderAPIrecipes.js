@@ -24,10 +24,15 @@ class RenderAPIrecipes extends Component {
       ? <LoaderProgressBar />
       : <>
           <SearchBar id='API' onSubmit={ this.onSubmit } />
-          <h1
-            style={{ textAlign: 'center', fontFamily: 'roboto', margin: 0 }}
+          <h4
+            style={{
+              textAlign: 'center', 
+              fontFamily: 'roboto', 
+              margin: '1rem', 
+              textDecoration: 'underline'
+            }}
             >Recipes of the day
-          </h1>
+          </h4>
           <RecipeList
             recipes={ recipes.recipes }
             history={ history }

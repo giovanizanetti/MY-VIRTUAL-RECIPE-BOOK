@@ -19,26 +19,14 @@ import {
   UNSELECT
 } from './types'
 
-export const createRecipe = recipe => {
-  //delete id from recipes copied from Spoonacular because Firebase creates a new id for the recipe
-// func getChatsFromUser() {
-//     let db = Firestore.firestore()
-//     db.collection("chats").whereField("senderID", isEqualTo: String(describing: Auth.auth().currentUser!.uid))
-//         .getDocuments() { (querySnapshot, err) in
-//             if let err = err {
-//                 print("Error getting documents: \(err)")
-//             } else {
-//                 for document in querySnapshot!.documents {
-//                     print("\(document.documentID) => \(document.data())")
-//                 }
-//             }
-//     }
-// }
 
+
+export const createRecipe = recipe => {
   recipe.id && delete recipe.id
+
   return (dispatch, getState, { getFirebase, getFirestore }) => {
-  recipe.uid = getState().firebase.auth.userUid
-    // make async call to database
+    recipe.userId = getState().firebase.auth.uid
+    
     const firestore = getFirestore()
     firestore.collection('recipes').add({
       ...recipe
