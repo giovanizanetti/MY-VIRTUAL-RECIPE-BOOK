@@ -34,8 +34,8 @@ The main purpose of this project is to practize my skills using ReactJS
 
 ## Goals for this project:
 
-I am creating a cookbook with is fetching some recipes from the Spoonacular API.
-The user can save, modify and, write their recipes with an upload image feature.  
+I am creating a cookbook which is fetching some recipes from the Spoonacular API.
+The user can save, modify and, write their recipes with upload image feature.  
 In this project, I am practising: React/Redux, CRUD app with firebase, authentication & using an external API, GIT and PR's.
 
 
