@@ -18,26 +18,52 @@ class RenderAPIrecipes extends Component {
   }
 
   render() {
-    const { recipes, history }  = this.props
+    const NoRecipesStyle = { 
+      display: 'flex', 
+      justifyContent: 'center', 
+      alignItems: 'center', 
+      height: '80vh', 
+      fontSize: '1.5rem',
+      fontWeight: '600'
+    }
+    const { recipes, history, error }  = this.props
+    const seen = new Set()
+    const filteredRecipes = recipes.recipes.filter(recipes => {
+      const duplicate = seen.has(recipes.id)
+      seen.add(recipes.id)
+      return !duplicate
+    })
+
+    
+
+    const Recipes = recipes && recipes.isPending
+    ? <LoaderProgressBar />
+    : <>
+        <SearchBar id='API' onSubmit={ this.onSubmit } />
+        <h4
+          style={{
+            textAlign: 'center', 
+            fontFamily: 'roboto', 
+            margin: '1rem', 
+            textDecoration: 'underline'
+          }}
+          >Recipes of the day
+        </h4>
+        <RecipeList
+          recipes={ filteredRecipes }
+          history={ history }
+        />
+      </> 
+
     return (
-      recipes && recipes.isPending
-      ? <LoaderProgressBar />
-      : <>
-          <SearchBar id='API' onSubmit={ this.onSubmit } />
-          <h4
-            style={{
-              textAlign: 'center', 
-              fontFamily: 'roboto', 
-              margin: '1rem', 
-              textDecoration: 'underline'
-            }}
-            >Recipes of the day
-          </h4>
-          <RecipeList
-            recipes={ recipes.recipes }
-            history={ history }
-          />
-        </>
+      error 
+      ? <div 
+          className='center red-text'
+          style={ NoRecipesStyle }
+          >
+            Sorry, No recipes founds! Try searching for a different term.
+        </div>
+      : Recipes
     )
   }
 }
@@ -46,6 +72,7 @@ const mapStateToProps = state => {
   return {
     recipes: state.recipes,
     selectedRecipe: state.selectedRecipe,
+    error: state.recipes.error && state.recipes.error.response.data.message
   }
 }
 
