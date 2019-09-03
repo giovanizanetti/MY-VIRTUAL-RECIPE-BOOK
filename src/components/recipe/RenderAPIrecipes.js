@@ -11,7 +11,7 @@ class RenderAPIrecipes extends Component {
     const { fetchRecipes } = this.props
     fetchRecipes()
   }
-
+  
   onSubmit = formValues => {
     const { fetchRecipes } = this.props
     fetchRecipes(formValues)
@@ -57,12 +57,15 @@ class RenderAPIrecipes extends Component {
 
     return (
       error 
-      ? <div 
-          className='center red-text'
-          style={ NoRecipesStyle }
-          >
-            Sorry, No recipes founds! Try searching for a different term.
-        </div>
+      ? <>
+          <SearchBar id='API' onSubmit={ this.onSubmit } />
+          <div 
+              className='center red-text'
+              style={ NoRecipesStyle }
+              >
+                Sorry, No recipes founds! Try searching for a different term.
+            </div>
+          </>
       : Recipes
     )
   }

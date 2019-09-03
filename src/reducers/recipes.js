@@ -30,7 +30,8 @@ export default (state=initialState, action) => {
       return {
         ...state,
         recipes: action.payload.data.recipes,
-        isPending: false
+        isPending: false,
+        error: ''
       }
     case FETCH_RECIPES_FAILED:
       return {
