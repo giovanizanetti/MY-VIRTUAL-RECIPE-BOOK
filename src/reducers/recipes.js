@@ -24,7 +24,8 @@ export default (state=initialState, action) => {
     case FETCH_RECIPES_PENDING:
       return {
         ...state,
-        isPending: true
+        isPending: true,
+        error: ''
       }
     case FETCH_RECIPES_SUCCESS:
       return {
