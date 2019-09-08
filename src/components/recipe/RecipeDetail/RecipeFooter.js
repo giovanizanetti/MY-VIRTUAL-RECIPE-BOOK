@@ -80,7 +80,7 @@ const RecipeFooter = props => {
         <button
           data-target={"edit"}
           style={ button }
-          className={`${ buttonClasses } grey`}
+          className={`${ buttonClasses } green`}
           onClick={ IS_SPOONACULAR_ID ? () => {} : handleEdit }
         >Edit
         </button>

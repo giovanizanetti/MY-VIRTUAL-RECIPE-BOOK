@@ -17,6 +17,7 @@ const initialState = {
   isPending : false,
   recipes: [],
   error: '',
+  date: new Date(new Date().getFullYear(),new Date().getMonth() , new Date().getDate())
 }
 
 export default (state=initialState, action) => {

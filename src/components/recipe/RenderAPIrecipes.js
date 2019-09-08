@@ -26,7 +26,7 @@ class RenderAPIrecipes extends Component {
       fontSize: '1.5rem',
       fontWeight: '600'
     }
-    const { recipes, history, error }  = this.props
+    const { recipes, history, error, searchField }  = this.props
     const seen = new Set()
     const filteredRecipes = recipes.recipes.filter(recipes => {
       const duplicate = seen.has(recipes.id)
@@ -47,14 +47,13 @@ class RenderAPIrecipes extends Component {
             margin: '1rem', 
             textDecoration: 'underline'
           }}
-          >Recipes of the day
+          >Picked Recipes
         </h4>
         <RecipeList
           recipes={ filteredRecipes }
           history={ history }
         />
       </> 
-
     return (
       error 
       ? <>
@@ -72,10 +71,12 @@ class RenderAPIrecipes extends Component {
 }
 
 const mapStateToProps = state => {
+  const { recipes, selectedRecipe, search } = state 
   return {
-    recipes: state.recipes,
-    selectedRecipe: state.selectedRecipe,
-    error: state.recipes.error && state.recipes.error.response.data.message
+    recipes: recipes,
+    selectedRecipe: selectedRecipe,
+    error: recipes.error && recipes.error.response.data.message,
+    searchField: search.searchField
   }
 }
 
