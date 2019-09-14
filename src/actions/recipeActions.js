@@ -16,7 +16,7 @@ import {
   PREPARE_RECIPE,
   SELECT_MULTIPLE_RECIPES,
   SELECT_ALL,
-  UNSELECT
+  UNSELECT,
 } from './types'
 
 
@@ -147,7 +147,7 @@ export const fetchRecipeById = (id) => (dispatch) => {
 
 export const prepareRecipe = () => {
   return {
-    type: PREPARE_RECIPE,
+    type: PREPARE_RECIPE
   }
 }
 

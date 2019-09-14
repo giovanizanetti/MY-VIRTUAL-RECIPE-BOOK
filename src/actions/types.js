@@ -24,6 +24,8 @@ export const CHECK_ALL = 'CHECK_ALL'
 export const SELECT_ALL = 'SELECT_ALL'
 export const SET_IMG_URL = 'SET_IMG_URL'
 export const UNSELECT = 'UNSELECT'
+export const SET_CURRENT_PAGE = 'SET_CURRENT_PAGE'
+export const SET_RECIPES_PER_PAGE = 'SET_RECIPES_PER_PAGE'
 
 
 

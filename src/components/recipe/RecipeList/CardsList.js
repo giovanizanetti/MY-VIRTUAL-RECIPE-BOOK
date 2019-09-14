@@ -12,7 +12,7 @@ const CardsList = ({ recipes }) => {
       vegetarian, vegan, dairyFree, readyInMinutes,
       cookingMinutes
     } = recipe
-    return(
+    return (
       <RecipeCard
         key={i}
         recipes={recipes}
