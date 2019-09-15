@@ -9,7 +9,9 @@ import Pagination from '../../Pagination'
 
 class RecipeList extends Component {
   componentDidMount(){
-    this.props.isActive && this.props.showCheckBoxes()
+    const { isActive, setRecipesPerPage, setCurrentPage } = this.props
+    isActive && showCheckBoxes()
+    setCurrentPage(1)
   }
 
   render() {
@@ -23,7 +25,6 @@ class RecipeList extends Component {
     const currentRecipes = recipes.slice(indexOfFirstRecipe, indexOfLastRecipe)
 
     const paginate = pageNumber => {
-      console.log(pageNumber)
       return setCurrentPage(pageNumber)
     }
 
