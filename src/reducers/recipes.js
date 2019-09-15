@@ -11,13 +11,15 @@ import {
   EDIT_RECIPE_ERROR,
   DELETE_RECIPE,
   DELETE_RECIPE_ERROR,
+  SET_CURRENT_PAGE,
 } from '../actions/types'
 
 const initialState = {
   isPending : false,
   recipes: [],
   error: '',
-  date: new Date(new Date().getFullYear(),new Date().getMonth() , new Date().getDate())
+  currentPage: 1,
+  recipesPerPage: 3
 }
 
 export default (state=initialState, action) => {
@@ -25,15 +27,13 @@ export default (state=initialState, action) => {
     case FETCH_RECIPES_PENDING:
       return {
         ...state,
-        isPending: true,
-        error: ''
+        isPending: true
       }
     case FETCH_RECIPES_SUCCESS:
       return {
         ...state,
         recipes: action.payload.data.recipes,
-        isPending: false,
-        error: ''
+        isPending: false
       }
     case FETCH_RECIPES_FAILED:
       return {
@@ -57,6 +57,11 @@ export default (state=initialState, action) => {
         ...state,
         error: action.payload,
         isPending: false
+      }
+      case SET_CURRENT_PAGE:
+      return {
+        ...state,
+        currentPage: action.payload
       }
     case CREATE_RECIPE:
       return state
