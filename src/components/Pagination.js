@@ -13,7 +13,7 @@ const Pagination = (props) => {
     console.log(totalRecipes, recipesPerPage)
     return (
         <ul className="pagination">
-            <li className="disabled"><a href="!#"><i className="material-icons">chevron_left</i></a></li>
+            <li className="disabled"><a href="#"><i className="material-icons">chevron_left</i></a></li>
             { pageNumbers.map(number => {
                 const className = number === currentPage ?`active` : `waves-effect`
                 return (
@@ -27,7 +27,7 @@ const Pagination = (props) => {
             <li className="waves-effect"><a href="#!">3</a></li>
             <li className="waves-effect"><a href="#!">4</a></li>
             <li className="waves-effect"><a href="#!">5</a></li> */}
-            <li className="waves-effect"><a href="!#"><i className="material-icons">chevron_right</i></a></li>
+            <li className="waves-effect"><a href="#"><i className="material-icons">chevron_right</i></a></li>
         </ul>
     )
 }

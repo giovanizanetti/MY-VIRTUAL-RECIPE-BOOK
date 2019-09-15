@@ -11,12 +11,15 @@ import {
   EDIT_RECIPE_ERROR,
   DELETE_RECIPE,
   DELETE_RECIPE_ERROR,
+  SET_CURRENT_PAGE,
 } from '../actions/types'
 
 const initialState = {
   isPending : false,
   recipes: [],
   error: '',
+  currentPage: 1,
+  recipesPerPage: 3
 }
 
 export default (state=initialState, action) => {
@@ -54,6 +57,11 @@ export default (state=initialState, action) => {
         ...state,
         error: action.payload,
         isPending: false
+      }
+      case SET_CURRENT_PAGE:
+      return {
+        ...state,
+        currentPage: action.payload
       }
     case CREATE_RECIPE:
       return state
