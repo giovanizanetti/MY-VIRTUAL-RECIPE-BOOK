@@ -10,7 +10,6 @@ const Pagination = (props) => {
         pageNumbers.push(i)
     }
 
-    console.log(totalRecipes, recipesPerPage)
     return (
         //show pagination only if is nessessary
         totalRecipes > recipesPerPage &&
