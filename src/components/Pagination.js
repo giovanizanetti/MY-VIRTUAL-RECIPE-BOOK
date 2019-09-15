@@ -19,7 +19,7 @@ const Pagination = (props) => {
                 const className = number === currentPage ?`active` : `waves-effect`
                 return (
                     <li key={number} className={ className }>
-                        <a href="#" onClick={() => paginate(number)}>{ number }</a>
+                        <a href="#!" onClick={() => paginate(number)}>{ number }</a>
                     </li>
                     )
                 })

@@ -3,13 +3,13 @@ import CardsList from './CardsList.js'
 import Select from './Select'
 import { showCheckBoxes } from '../../../actions/checkBox'
 import { connect } from 'react-redux'
-import {  setCurrentPage, setRecipesPerPage } from '../../../actions/pagination'
+import {  setCurrentPage } from '../../../actions/pagination'
 import Pagination from '../../Pagination'
 
 
 class RecipeList extends Component {
   componentDidMount(){
-    const { isActive, setRecipesPerPage, setCurrentPage } = this.props
+    const { isActive, setCurrentPage } = this.props
     isActive && showCheckBoxes()
     setCurrentPage(1)
   }
@@ -17,7 +17,7 @@ class RecipeList extends Component {
   render() {
     const { recipes, history, auth, 
       recipesPerPage, currentPage, 
-      setCurrentPage, setRecipesPerPage, id 
+      setCurrentPage, id 
     } = this.props
 
     const indexOfLastRecipe = currentPage * recipesPerPage
@@ -68,7 +68,6 @@ const mapStateToProps = state => {
 
 export default connect(mapStateToProps, { 
   showCheckBoxes, 
-  setRecipesPerPage, 
   setCurrentPage 
 })(RecipeList)
 
