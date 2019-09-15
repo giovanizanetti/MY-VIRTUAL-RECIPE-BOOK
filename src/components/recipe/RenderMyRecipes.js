@@ -41,7 +41,9 @@ class MyRecipes extends Component {
             && searchField.length > 0
             && filteredRecipes.length < 1
             ? <span className='red-text'>Sorry! NO RECIPES FOUND!!</span>
-            : <RecipeList recipes={ filteredRecipes } />
+            : <RecipeList   
+                recipes={ filteredRecipes }
+                id={'myRecipes'} />
           }
         </>
 

@@ -15,7 +15,7 @@ class RecipeList extends Component {
   render() {
     const { recipes, history, auth, 
       recipesPerPage, currentPage, 
-      setCurrentPage, setRecipesPerPage 
+      setCurrentPage, setRecipesPerPage, id 
     } = this.props
 
     const indexOfLastRecipe = currentPage * recipesPerPage
@@ -31,7 +31,7 @@ class RecipeList extends Component {
       <>
         <div className="row col">
           {
-            auth.uid &&
+            auth.uid && id === 'myRecipes' &&
             <Select
               recipes={ recipes }
               history={ history }
