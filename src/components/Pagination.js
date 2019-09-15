@@ -4,6 +4,8 @@ const Pagination = (props) => {
     const { totalRecipes, recipesPerPage, paginate, currentPage} = props
     const pageNumbers = []
     const calculatePages = Math.ceil(totalRecipes / recipesPerPage)
+    const nextPage = currentPage + 1
+    const previousPage = currentPage - 1
 
     //Add nessessary pages to the paginator
     for(let i = 1; i <= calculatePages; i++) {
@@ -18,7 +20,7 @@ const Pagination = (props) => {
         //show pagination only if is nessessary
         totalRecipes > recipesPerPage &&
         <ul className="pagination">
-            <li className={ rightChevronClassName }><a href="#!"><i className="material-icons">chevron_left</i></a></li>
+            <li onClick={() => paginate(previousPage)} className={ rightChevronClassName }><a href="#!"><i className="material-icons">chevron_left</i></a></li>
             { 
                 pageNumbers.map(number => {
                 const className = number === currentPage ?`active` : `waves-effect`
@@ -29,7 +31,7 @@ const Pagination = (props) => {
                     )
                 })
             }
-            <li className={ LeftChevronClassName }><a href="#!"><i className="material-icons">chevron_right</i></a></li>
+            <li onClick={() => paginate(nextPage)}className={ LeftChevronClassName }><a href="#!"><i className="material-icons">chevron_right</i></a></li>
         </ul>
     )
 }
