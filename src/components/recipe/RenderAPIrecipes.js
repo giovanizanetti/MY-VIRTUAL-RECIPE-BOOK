@@ -31,7 +31,7 @@ class RenderAPIrecipes extends Component {
               margin: '1rem', 
               textDecoration: 'underline'
             }}
-            >Recipes of the day
+            >Picked Recipes
           </h4>
           <RecipeList
             recipes={ recipes.recipes }
