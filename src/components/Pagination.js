@@ -10,10 +10,15 @@ const Pagination = (props) => {
         pageNumbers.push(i)
     }
 
+    const rightChevronClassName = currentPage !== 1 ? "waves-effect" : "disabled"
+    const LeftChevronClassName = currentPage !== pageNumbers[pageNumbers.length - 1] ? "waves-effect" : "disabled"
+    console.log(pageNumbers[pageNumbers.length - 1], currentPage)
+
     return (
         //show pagination only if is nessessary
         totalRecipes > recipesPerPage &&
         <ul className="pagination">
+            <li className={ rightChevronClassName }><a href="#!"><i className="material-icons">chevron_left</i></a></li>
             { 
                 pageNumbers.map(number => {
                 const className = number === currentPage ?`active` : `waves-effect`
@@ -24,6 +29,7 @@ const Pagination = (props) => {
                     )
                 })
             }
+            <li className={ LeftChevronClassName }><a href="#!"><i className="material-icons">chevron_right</i></a></li>
         </ul>
     )
 }
