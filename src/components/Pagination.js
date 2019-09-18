@@ -12,7 +12,6 @@ const Pagination = (props) => {
 
     const rightChevronClassName = currentPage !== 1 ? "waves-effect" : "disabled"
     const LeftChevronClassName = currentPage !== pageNumbers[pageNumbers.length - 1] ? "waves-effect" : "disabled"
-    console.log(pageNumbers.slice(-1).pop(), currentPage)
 
     const handleNextPage = () => {
         const nextPage = currentPage + 1
