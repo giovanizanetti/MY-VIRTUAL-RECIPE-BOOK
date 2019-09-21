@@ -17,12 +17,24 @@ class RenderAPIrecipes extends Component {
     fetchRecipes(formValues)
   }
 
+  
+
   render() {
     const { recipes, history }  = this.props
+
+    const uniqueRecipes = Array.from(new Set(recipes.recipes.map(r => r.id)))
+      .map(id => recipes.recipes.find(a =>a.id ===id))
+
     return (
       recipes && recipes.isPending
       ? <LoaderProgressBar />
       : <>
+      { recipes.error 
+        && <>
+            <span style={{fontSize: '2rem', fontWeight: '500'}} className='red-text'>{recipes.error.response.data.message} !!</span>
+            <p className='red-text'>Please try a different search term</p>
+          </>
+      }
           <SearchBar id='API' onSubmit={ this.onSubmit } />
           <h4
             style={{
@@ -34,7 +46,7 @@ class RenderAPIrecipes extends Component {
             >Picked Recipes
           </h4>
           <RecipeList
-            recipes={ recipes.recipes }
+            recipes={ uniqueRecipes }
             history={ history }
           />
         </>
