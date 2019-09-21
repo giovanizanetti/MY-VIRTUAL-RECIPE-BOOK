@@ -10,6 +10,7 @@ class RenderAPIrecipes extends Component {
   componentDidMount = () => {
     const { fetchRecipes } = this.props
     fetchRecipes()
+    console.log(localStorage)
   }
 
   onSubmit = formValues => {
