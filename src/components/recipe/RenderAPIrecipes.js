@@ -29,6 +29,12 @@ class RenderAPIrecipes extends Component {
       recipes && recipes.isPending
       ? <LoaderProgressBar />
       : <>
+      { recipes.error 
+        && <>
+            <span style={{fontSize: '2rem', fontWeight: '500'}} className='red-text'>{recipes.error.response.data.message} !!</span>
+            <p className='red-text'>Please try a different search term</p>
+          </>
+      }
           <SearchBar id='API' onSubmit={ this.onSubmit } />
           <h4
             style={{
