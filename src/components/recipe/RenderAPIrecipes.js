@@ -17,8 +17,14 @@ class RenderAPIrecipes extends Component {
     fetchRecipes(formValues)
   }
 
+  
+
   render() {
     const { recipes, history }  = this.props
+
+    const uniqueRecipes = Array.from(new Set(recipes.recipes.map(r => r.id)))
+      .map(id => recipes.recipes.find(a =>a.id ===id))
+
     return (
       recipes && recipes.isPending
       ? <LoaderProgressBar />
@@ -34,7 +40,7 @@ class RenderAPIrecipes extends Component {
             >Picked Recipes
           </h4>
           <RecipeList
-            recipes={ recipes.recipes }
+            recipes={ uniqueRecipes }
             history={ history }
           />
         </>
