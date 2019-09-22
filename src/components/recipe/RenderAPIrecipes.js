@@ -8,8 +8,9 @@ import SearchBar from '../SearchBar'
 
 class RenderAPIrecipes extends Component {
   componentDidMount = () => {
-    const { fetchRecipes } = this.props
-    fetchRecipes()
+    const { fetchRecipes, recipes } = this.props
+    !recipes.recipes.length && fetchRecipes()
+    console.log(localStorage)
   }
 
   onSubmit = formValues => {

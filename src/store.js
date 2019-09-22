@@ -4,11 +4,21 @@ import thunk from 'redux-thunk'
 import { reduxFirestore, getFirestore } from 'redux-firestore'
 import { reactReduxFirebase, getFirebase } from 'react-redux-firebase'
 import fbConfig from './config/fbConfig'
+import storage from 'redux-persist/lib/storage'
+import { persistReducer, persistStore } from 'redux-persist'
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
 
+const persistConfig = {
+  key: 'recipes',
+  storage: storage,
+  whitelist: ['recipes'],
+}
+
+const persistedReducer = persistReducer(persistConfig, rootReducer)
+
 export const store = createStore(
-  rootReducer,
+  persistedReducer,
   composeEnhancers(
     applyMiddleware(
       thunk.withExtraArgument({
@@ -24,6 +34,9 @@ export const store = createStore(
     })
   )
 )
+
+export const persistor = persistStore(store)
+
 
 export const rrfConfig = {
   fbConfig,
