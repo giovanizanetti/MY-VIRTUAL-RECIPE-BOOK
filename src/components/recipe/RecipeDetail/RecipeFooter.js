@@ -6,6 +6,7 @@ import { selectRecipe } from '../../../actions/recipeActions'
 import { firestoreConnect } from 'react-redux-firebase'
 import { connect } from 'react-redux'
 import { compose } from 'redux'
+import Favorite from './Favorite'
 
 const RecipeFooter = props => {
   const { recipeId, history, recipe, myRecipes } = props
@@ -84,7 +85,14 @@ const RecipeFooter = props => {
           onClick={ IS_SPOONACULAR_ID ? () => {} : handleEdit }
         >Edit
         </button>
-
+        <Favorite 
+          style={{
+            fontSize: '3rem',
+            margin: '1rem 1rem 2rem 1rem',
+            color: 'darkred'
+        }}
+          favorite={ recipe.favorite && recipe.favorite }
+        />
        {/* <Modal id={ 'print' } />
         <button
           data-target="print"

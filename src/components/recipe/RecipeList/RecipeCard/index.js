@@ -6,6 +6,7 @@ import { connect } from 'react-redux'
 import style from '../style'
 import CheckBox from '../../../CheckBox'
 import { selectMultipleRecipes, unselect } from '../../../../actions/recipeActions'
+import Favorite from '../../RecipeDetail/Favorite'
 
 class RecipeCard extends Component {
   componentDidMount() {
@@ -27,7 +28,7 @@ class RecipeCard extends Component {
       id, image, title, glutenFree, lowFodmap,
       vegetarian, vegan, dairyFree, readyInMinutes,
       selectRecipe, recipes, cookingMinutes, isActive,
-      isAllChecked, key
+      isAllChecked, key, favorite
     } = this.props
     return (
       <div
@@ -54,6 +55,17 @@ class RecipeCard extends Component {
         <span className="card-title activator grey-text text-darken-4">
           { trimString(title, 40) }
         </span>
+        <Favorite 
+          style={{
+            position:'absolute',
+            bottom: '1rem',
+            right: '1rem',
+            fontSize: '2rem',
+            color: 'darkred',
+          }}
+          favorite={ favorite && favorite }
+        />
+
         <CardReveal
           title={ title }
           id={ id }

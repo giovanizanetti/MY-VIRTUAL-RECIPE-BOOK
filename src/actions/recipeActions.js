@@ -23,6 +23,7 @@ import {
 
 export const createRecipe = recipe => {
   recipe.id && delete recipe.id
+  recipe.favorite = false
 
   return (dispatch, getState, { getFirebase, getFirestore }) => {
     recipe.userId = getState().firebase.auth.uid
