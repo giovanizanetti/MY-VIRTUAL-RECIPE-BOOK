@@ -16,7 +16,9 @@ import {
   PREPARE_RECIPE,
   SELECT_MULTIPLE_RECIPES,
   SELECT_ALL,
-  UNSELECT
+  UNSELECT,
+  ADD_TO_FAVORITES, 
+  ADD_TO_FAVORITES_ERROR
 } from './types'
 
 
@@ -61,6 +63,27 @@ export const editRecipe = (id, recipe) => {
         type: EDIT_RECIPE_ERROR,
         payload: err
       })
+    })
+  }
+}
+
+export const addToFavorites = recipe => {
+  return (dispatch, getState, { getFirebase, getFirestore }) => {
+    const firestore = getFirestore()
+    const { id }= recipe
+    firestore.collection('recipes'.doc(id)).update({
+      ...recipe, 
+      favorite: true
+    }).then(() => {
+      dispatch({
+        type: ADD_TO_FAVORITES,
+        payload: recipe
+      })
+    }).catch(err => {
+        dispatch({
+          type: ADD_TO_FAVORITES_ERROR,
+          payload: err
+        })
     })
   }
 }
