@@ -85,14 +85,17 @@ const RecipeFooter = props => {
           onClick={ IS_SPOONACULAR_ID ? () => {} : handleEdit }
         >Edit
         </button>
-        <Favorite 
-          style={{
-            fontSize: '3rem',
-            margin: '1rem 1rem 2rem 1rem',
-            color: 'darkred'
-        }}
-          favorite={ recipe.favorite && recipe.favorite }
+        {
+          !IS_SPOONACULAR_ID &&
+          <Favorite 
+            style={{
+              fontSize: '3rem',
+              margin: '1rem 1rem 2rem 1rem',
+              color: 'darkred'
+          }}
+            favorite={ recipe.favorite && recipe.favorite }
         />
+        }
        {/* <Modal id={ 'print' } />
         <button
           data-target="print"

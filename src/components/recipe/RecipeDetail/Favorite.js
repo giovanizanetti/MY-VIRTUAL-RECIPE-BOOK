@@ -1,16 +1,16 @@
 import React from 'react';
 
-const Favorite = ({ style, favorite })  => {
+const Favorite = ({ style, favorite, handleFavoriteClick })  => {
     return (
-        <a href="#!">
+        <a onClick={ handleFavoriteClick} href="#!">
             {
                 favorite 
                 ? <i 
                     style={ style }
-                    class="material-icons">favorite</i> 
+                    className="material-icons">favorite</i> 
                 : <i 
                     style={ style }
-                    class="material-icons">favorite_border</i> 
+                    className="material-icons">favorite_border</i> 
             }
         </a>
 
