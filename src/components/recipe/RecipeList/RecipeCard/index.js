@@ -5,8 +5,10 @@ import { selectRecipe } from '../../../../actions/recipeActions'
 import { connect } from 'react-redux'
 import style from '../style'
 import CheckBox from '../../../CheckBox'
-import { selectMultipleRecipes, unselect } from '../../../../actions/recipeActions'
+import { selectMultipleRecipes, unselect, addToFavorites } from '../../../../actions/recipeActions'
 import Favorite from '../../RecipeDetail/Favorite'
+import { compose } from 'redux'
+import { firestoreConnect } from 'react-redux-firebase'
 
 class RecipeCard extends Component {
   componentDidMount() {
@@ -23,9 +25,12 @@ class RecipeCard extends Component {
   }
 
   handleFavoriteClick = () => {
-    const { selectedRecipes } = this.props
-    selectRecipe()
     //take selected recipe and assign favorite to truthy
+    const { recipes, id, addToFavorites } = this.props
+    const favoriteRecipe =  recipes && recipes.find(rec => rec.id === id)
+    favoriteRecipe.favorite 
+    ? addToFavorites({...favoriteRecipe, favorite: false})
+    : addToFavorites({...favoriteRecipe, favorite: true})
   }
 
   render() {
@@ -103,9 +108,16 @@ const mapStateToProps = state => {
   }
 }
 
-export default connect(
-  mapStateToProps, {
-    selectRecipe,
-    selectMultipleRecipes,
-    unselect
-  })(RecipeCard)
+export default compose(
+  connect(
+    mapStateToProps, {
+      selectRecipe,
+      selectMultipleRecipes,
+      unselect,
+      addToFavorites
+    }),
+    firestoreConnect([{
+      collection: 'recipes'
+    }])
+)
+(RecipeCard)

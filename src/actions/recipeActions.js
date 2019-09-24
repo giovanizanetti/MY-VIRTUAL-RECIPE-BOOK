@@ -24,19 +24,18 @@ import {
 
 
 export const createRecipe = recipe => {
-  recipe.id && delete recipe.id
-  recipe.favorite = false
-
+  const Recipe = { ...recipe }
+  delete Recipe.id
   return (dispatch, getState, { getFirebase, getFirestore }) => {
-    recipe.userId = getState().firebase.auth.uid
+    Recipe.userId = getState().firebase.auth.uid
     
     const firestore = getFirestore()
     firestore.collection('recipes').add({
-      ...recipe
+      ...Recipe
     }).then(() => {
       dispatch({
         type: CREATE_RECIPE,
-        payload: recipe
+        payload: Recipe
       })
     }).catch(err => {
       dispatch({
@@ -67,23 +66,23 @@ export const editRecipe = (id, recipe) => {
   }
 }
 
-export const addToFavorites = recipe => {
+export const addToFavorites = (recipe) => {
+  const { id } = recipe
   return (dispatch, getState, { getFirebase, getFirestore }) => {
+    // make async call to database
     const firestore = getFirestore()
-    const { id }= recipe
-    firestore.collection('recipes'.doc(id)).update({
-      ...recipe, 
-      favorite: true
+    firestore.collection('recipes').doc(id).update({
+      ...recipe,
     }).then(() => {
       dispatch({
         type: ADD_TO_FAVORITES,
         payload: recipe
       })
-    }).catch(err => {
-        dispatch({
-          type: ADD_TO_FAVORITES_ERROR,
-          payload: err
-        })
+    }).then(() => console.log(recipe)).catch(err => {
+      dispatch({
+        type: ADD_TO_FAVORITES_ERROR,
+          payload: recipe
+      })
     })
   }
 }
