@@ -1,8 +1,10 @@
 import React from 'react'
 import RecipeCard from './RecipeCard/'
 
-const CardsList = ({ recipes }) => {
-  return recipes && recipes.sort((a, b) => {
+const CardsList = ({ recipes, isFavorites }) => {
+  return isFavorites && recipes.length < 1 
+  ? <span className='red-text'>You haven't added any recipes as favorite just yet</span> :
+   recipes && recipes.sort((a, b) => {
     const textA = a.title.toUpperCase()
     const textB = b.title.toUpperCase()
     return (textA < textB) ? -1 : (textA > textB) ? 1 : 0

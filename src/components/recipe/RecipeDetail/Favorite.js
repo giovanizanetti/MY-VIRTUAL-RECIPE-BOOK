@@ -6,7 +6,6 @@ const Favorite = ({ style, favorite, handleFavoriteClick })  => {
     return (
         <>
             <a data-tip={ tooltipMessage } onClick={ handleFavoriteClick } href="#!">
-            {/* <p >Tooltip</p> */}
             {
                 favorite 
                 ? <i 

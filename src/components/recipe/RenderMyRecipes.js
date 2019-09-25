@@ -20,8 +20,8 @@ class MyRecipes extends Component {
       return recipe.title && recipe.title.toLowerCase().includes(searchField.toLowerCase())
     })
     const isFavorites = match.path === "/myRecipes/favorites"
-    const favorites = filteredRecipes && filteredRecipes.filter(recipe => recipe.favorite)
     
+    const favorites = filteredRecipes && filteredRecipes.filter(recipe => recipe.favorite)
     const handleSearch = (e) => setSearchField(e.target.value)
 
     const renderRecipeList =
@@ -45,7 +45,9 @@ class MyRecipes extends Component {
             ? <span className='red-text'>Sorry! NO RECIPES FOUND!!</span>
             : <RecipeList   
                 recipes={ !isFavorites ? filteredRecipes : favorites }
-                id={'myRecipes'} />
+                id={'myRecipes'} 
+                isFavorites={ isFavorites }
+                />
           }
         </>
 
