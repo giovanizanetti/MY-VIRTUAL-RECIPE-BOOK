@@ -30,7 +30,6 @@ class RecipeList extends Component {
 
     return (
       <>
-        <div className="row col">
           {
             auth.uid 
             && recipes.length 
@@ -40,6 +39,7 @@ class RecipeList extends Component {
                 history={ history }
               />
           }
+        <div className="row">
           <CardsList
             recipes={ currentRecipes }
             history={ history }

@@ -42,55 +42,57 @@ class RecipeCard extends Component {
     const isSpoonacular = isNumber(id)
 
     return (
-      <div
-        className="card small col s12 m6 l4"
-        style={ card }
-        key={ key}
-        onClick={() => { selectRecipe(recipes.find(rec => rec.id === id)) }}
-        >
-          { isActive &&
-          <CheckBox
-            onChange={ this.handleCheckBox }
-            value={ id }
-            isAllChecked={ isAllChecked }
-            style={{
-              position: 'absolute',
-              zIndex: '12',
-              pointerEvents: 'inherit',
-              opacity: 'unset'}}
-          />
-        }
-        <div className="card-image waves-effect waves-block waves-light">
-          <img className="activator" src={ image ? image : undefined } alt={ title } />
-        </div>
-        <span className="card-title activator grey-text text-darken-4">
-          { trimString(title, 40) }
-        </span>
-        { !isSpoonacular &&
-          <Favorite 
-            style={{
-              position:'absolute',
-              bottom: '1rem',
-              right: '1rem',
-              fontSize: '2rem',
-              color: 'darkred',
-            }}
-            favorite={ favorite && favorite }
-            handleFavoriteClick={ this.handleFavoriteClick }
-          />
+      <div className='col s12 m4'>
+        <div
+          className="card small"
+          style={ card }
+          key={ key}
+          onClick={() => { selectRecipe(recipes.find(rec => rec.id === id)) }}
+          >
+            { isActive &&
+            <CheckBox
+              onChange={ this.handleCheckBox }
+              value={ id }
+              isAllChecked={ isAllChecked }
+              style={{
+                position: 'absolute',
+                zIndex: '12',
+                pointerEvents: 'inherit',
+                opacity: 'unset'}}
+            />
+          }
+          <div className="card-image waves-effect waves-block waves-light">
+            <img className="activator" src={ image ? image : undefined } alt={ title } />
+          </div>
+          <span className="card-title activator grey-text text-darken-4">
+            { trimString(title, 40) }
+          </span>
+          { !isSpoonacular &&
+            <Favorite 
+              style={{
+                position:'absolute',
+                bottom: '1rem',
+                right: '1rem',
+                fontSize: '2rem',
+                color: 'darkred',
+              }}
+              favorite={ favorite && favorite }
+              handleFavoriteClick={ this.handleFavoriteClick }
+            />
 
-        }
-        <CardReveal
-          title={ title }
-          id={ id }
-          isGlutenFree={ glutenFree }
-          isLowFodmap={ lowFodmap }
-          isVegetarian={ vegetarian }
-          isVegan={ vegan }
-          isDairyFree={ dairyFree }
-          readyInMinutes={ readyInMinutes }
-          cookingMinutes={ cookingMinutes }
-        />
+          }
+          <CardReveal
+            title={ title }
+            id={ id }
+            isGlutenFree={ glutenFree }
+            isLowFodmap={ lowFodmap }
+            isVegetarian={ vegetarian }
+            isVegan={ vegan }
+            isDairyFree={ dairyFree }
+            readyInMinutes={ readyInMinutes }
+            cookingMinutes={ cookingMinutes }
+          />
+        </div>
       </div>
     )
   }
