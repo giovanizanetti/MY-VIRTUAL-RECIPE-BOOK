@@ -1,8 +1,12 @@
-import React from 'react';
+import React from 'react'
+import ReactTooltip from 'react-tooltip'
 
 const Favorite = ({ style, favorite, handleFavoriteClick })  => {
+    const tooltipMessage = !favorite ? 'Add to Favotites' : 'Remove from Favorites'
     return (
-        <a onClick={ handleFavoriteClick } href="#!">
+        <>
+            <a data-tip={ tooltipMessage } onClick={ handleFavoriteClick } href="#!">
+            {/* <p >Tooltip</p> */}
             {
                 favorite 
                 ? <i 
@@ -12,8 +16,9 @@ const Favorite = ({ style, favorite, handleFavoriteClick })  => {
                     style={ style }
                     className="material-icons">favorite_border</i> 
             }
-        </a>
-
+            </a>
+            <ReactTooltip />
+        </>
     )
 }
 
