@@ -7,8 +7,6 @@ import style from '../style'
 import CheckBox from '../../../CheckBox'
 import { selectMultipleRecipes, unselect, addToFavorites } from '../../../../actions/recipeActions'
 import Favorite from '../../RecipeDetail/Favorite'
-import { compose } from 'redux'
-import { firestoreConnect } from 'react-redux-firebase'
 
 class RecipeCard extends Component {
   componentDidMount() {
@@ -100,24 +98,20 @@ class RecipeCard extends Component {
 }
 
 const mapStateToProps = state => {
+  const { selectedRecipe, selectedRecipes, checkBoxes } = state
   return {
-    selectedRecipe: state.selectedRecipe,
-    selectedRecipes: state.selectedRecipes,
-    isActive: state.checkBoxes.active,
-    isAllChecked: state.checkBoxes.isAllChecked
+    selectedRecipe: selectedRecipe,
+    selectedRecipes: selectedRecipes,
+    isActive: checkBoxes.active,
+    isAllChecked: checkBoxes.isAllChecked
   }
 }
 
-export default compose(
-  connect(
-    mapStateToProps, {
-      selectRecipe,
-      selectMultipleRecipes,
-      unselect,
-      addToFavorites
-    }),
-    firestoreConnect([{
-      collection: 'recipes'
-    }])
-)
-(RecipeCard)
+
+export default connect(
+  mapStateToProps, {
+    selectRecipe,
+    selectMultipleRecipes,
+    unselect,
+    addToFavorites
+  })(RecipeCard)

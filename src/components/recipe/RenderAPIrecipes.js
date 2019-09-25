@@ -24,7 +24,7 @@ class RenderAPIrecipes extends Component {
     const { recipes, history }  = this.props
 
     const uniqueRecipes = Array.from(new Set(recipes && recipes.recipes.map(r => r.id)))
-      .map(id => recipes && recipes.recipes.find(a =>a.id ===id))
+      .map(id => recipes && recipes.recipes.find(a => a.id === id))
 
     return (
       recipes && recipes.isPending

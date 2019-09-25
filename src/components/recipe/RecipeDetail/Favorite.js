@@ -2,7 +2,7 @@ import React from 'react';
 
 const Favorite = ({ style, favorite, handleFavoriteClick })  => {
     return (
-        <a onClick={ handleFavoriteClick} href="#!">
+        <a onClick={ handleFavoriteClick } href="#!">
             {
                 favorite 
                 ? <i 
