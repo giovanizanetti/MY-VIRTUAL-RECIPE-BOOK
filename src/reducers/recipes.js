@@ -82,7 +82,6 @@ export default (state=initialState, action) => {
         error: action.payload
       }
     case ADD_TO_FAVORITES:
-      console.log(action.payload)
       return {
         ...state,
         [action.payload.id]: action.payload

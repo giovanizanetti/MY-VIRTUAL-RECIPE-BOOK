@@ -78,10 +78,10 @@ export const addToFavorites = (recipe) => {
         type: ADD_TO_FAVORITES,
         payload: recipe
       })
-    }).then(() => console.log(recipe)).catch(err => {
+    }).catch(err => {
       dispatch({
         type: ADD_TO_FAVORITES_ERROR,
-          payload: recipe
+          payload: err
       })
     })
   }
