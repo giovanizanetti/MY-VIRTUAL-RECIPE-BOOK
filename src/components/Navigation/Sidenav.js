@@ -21,7 +21,12 @@ class Sidebar extends Component {
       <div>
         {
           <ul id="slide-out" className="sidenav invisible__963">
-            { uid && <Avatar /> }
+            { 
+              uid && 
+              <div className='center' style={{margin: '1rem'}}>
+                <Avatar />
+              </div>
+            }
             {!uid ?  <SignedOutLinks /> : <SignedInLinks isDesktop={isDesktop} />}
           </ul>
         }

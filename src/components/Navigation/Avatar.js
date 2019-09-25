@@ -3,12 +3,11 @@ import { connect } from 'react-redux'
 
 const Avatar = props => {
   return (
-    <li>
       <button
         className='btn btn-floating pink lighten-1'
       >
         { props.initials }
-      </button></li>
+      </button>
   )
 }
 

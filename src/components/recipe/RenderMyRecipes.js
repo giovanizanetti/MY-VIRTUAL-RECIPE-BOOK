@@ -20,11 +20,8 @@ class MyRecipes extends Component {
       return recipe.title && recipe.title.toLowerCase().includes(searchField.toLowerCase())
     })
     const isFavorites = match.path === "/myRecipes/favorites"
-    console.log(isFavorites, match.path)
     const favorites = filteredRecipes && filteredRecipes.filter(recipe => recipe.favorite)
-    console.log(favorites)
     
-
     const handleSearch = (e) => setSearchField(e.target.value)
 
     const renderRecipeList =
@@ -39,7 +36,7 @@ class MyRecipes extends Component {
               margin: '1rem', 
               textDecoration: 'underline'
             }}
-            >My Recipes
+            >{!isFavorites ? 'My Recipes' : 'Favorites'}
           </h4>
           {
             filteredRecipes
