@@ -19,6 +19,7 @@ const Router = () => {
     <Route path='/recipes/' exact component={RenderAPIrecipes} />
     <Route path='/recipes/:id' exact component={RecipeDetail} />
     <Route path='/myRecipes/' exact component={RenderMyRecipes} />
+    <Route path='/myRecipes/favorites' exact component={RenderMyRecipes} />
   </Switch>
   )
 }
