@@ -15,11 +15,13 @@ class MyRecipes extends Component {
   }
 
   render() {
-    const { recipes, searchField, setSearchField } = this.props
+    const { recipes, searchField, setSearchField, match } = this.props
     const filteredRecipes = recipes && recipes.filter(recipe => {
       return recipe.title && recipe.title.toLowerCase().includes(searchField.toLowerCase())
     })
-
+    const isFavorites = match.path === "/myRecipes/favorites"
+    
+    const favorites = filteredRecipes && filteredRecipes.filter(recipe => recipe.favorite)
     const handleSearch = (e) => setSearchField(e.target.value)
 
     const renderRecipeList =
@@ -34,7 +36,7 @@ class MyRecipes extends Component {
               margin: '1rem', 
               textDecoration: 'underline'
             }}
-            >My Recipes
+            >{!isFavorites ? 'My Recipes' : 'Favorites'}
           </h4>
           {
             filteredRecipes
@@ -42,8 +44,10 @@ class MyRecipes extends Component {
             && filteredRecipes.length < 1
             ? <span className='red-text'>Sorry! NO RECIPES FOUND!!</span>
             : <RecipeList   
-                recipes={ filteredRecipes }
-                id={'myRecipes'} />
+                recipes={ !isFavorites ? filteredRecipes : favorites }
+                id={'myRecipes'} 
+                isFavorites={ isFavorites }
+                />
           }
         </>
 

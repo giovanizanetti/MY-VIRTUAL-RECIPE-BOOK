@@ -17,7 +17,7 @@ class RecipeList extends Component {
   render() {
     const { recipes, history, auth, 
       recipesPerPage, currentPage, 
-      setCurrentPage, id 
+      setCurrentPage, id, isFavorites 
     } = this.props
 
     const indexOfLastRecipe = currentPage * recipesPerPage
@@ -32,15 +32,18 @@ class RecipeList extends Component {
       <>
         <div className="row col">
           {
-            auth.uid && id === 'myRecipes' &&
-            <Select
-              recipes={ recipes }
-              history={ history }
-            />
+            auth.uid 
+            && recipes.length 
+            && id === 'myRecipes'
+            && <Select
+                recipes={ recipes }
+                history={ history }
+              />
           }
           <CardsList
             recipes={ currentRecipes }
             history={ history }
+            isFavorites={ isFavorites }
           />
         </div>
         <div>

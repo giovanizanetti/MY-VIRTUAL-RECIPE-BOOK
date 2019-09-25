@@ -1,11 +1,12 @@
 import React, { Component } from 'react'
 import CardReveal from './CardReveal'
-import { trimString } from '../../../../myLibrary'
+import { trimString, isNumber } from '../../../../myLibrary'
 import { selectRecipe } from '../../../../actions/recipeActions'
 import { connect } from 'react-redux'
 import style from '../style'
 import CheckBox from '../../../CheckBox'
-import { selectMultipleRecipes, unselect } from '../../../../actions/recipeActions'
+import { selectMultipleRecipes, unselect, addToFavorites } from '../../../../actions/recipeActions'
+import Favorite from '../../RecipeDetail/Favorite'
 
 class RecipeCard extends Component {
   componentDidMount() {
@@ -21,14 +22,25 @@ class RecipeCard extends Component {
     !checked && unselect(e.target.value)
   }
 
+  handleFavoriteClick = () => {
+    //take selected recipe and assign favorite to truthy
+    const { recipes, id, addToFavorites } = this.props
+    const favoriteRecipe =  recipes && recipes.find(rec => rec.id === id)
+    favoriteRecipe.favorite 
+    ? addToFavorites({...favoriteRecipe, favorite: false})
+    : addToFavorites({...favoriteRecipe, favorite: true})
+  }
+
   render() {
     const { card } = style.recipeCard
     const {
       id, image, title, glutenFree, lowFodmap,
       vegetarian, vegan, dairyFree, readyInMinutes,
       selectRecipe, recipes, cookingMinutes, isActive,
-      isAllChecked, key
+      isAllChecked, key, favorite
     } = this.props
+    const isSpoonacular = isNumber(id)
+
     return (
       <div
         className="card small col s12 m6 l4"
@@ -54,6 +66,20 @@ class RecipeCard extends Component {
         <span className="card-title activator grey-text text-darken-4">
           { trimString(title, 40) }
         </span>
+        { !isSpoonacular &&
+          <Favorite 
+            style={{
+              position:'absolute',
+              bottom: '1rem',
+              right: '1rem',
+              fontSize: '2rem',
+              color: 'darkred',
+            }}
+            favorite={ favorite && favorite }
+            handleFavoriteClick={ this.handleFavoriteClick }
+          />
+
+        }
         <CardReveal
           title={ title }
           id={ id }
@@ -72,17 +98,20 @@ class RecipeCard extends Component {
 }
 
 const mapStateToProps = state => {
+  const { selectedRecipe, selectedRecipes, checkBoxes } = state
   return {
-    selectedRecipe: state.selectedRecipe,
-    selectedRecipes: state.selectedRecipes,
-    isActive: state.checkBoxes.active,
-    isAllChecked: state.checkBoxes.isAllChecked
+    selectedRecipe: selectedRecipe,
+    selectedRecipes: selectedRecipes,
+    isActive: checkBoxes.active,
+    isAllChecked: checkBoxes.isAllChecked
   }
 }
+
 
 export default connect(
   mapStateToProps, {
     selectRecipe,
     selectMultipleRecipes,
-    unselect
+    unselect,
+    addToFavorites
   })(RecipeCard)

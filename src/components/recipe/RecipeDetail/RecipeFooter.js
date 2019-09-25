@@ -2,13 +2,14 @@ import React from 'react'
 import Modal from '../../Modal'
 import style from './style'
 import { isNumber } from '../../../myLibrary'
-import { selectRecipe } from '../../../actions/recipeActions'
+import { selectRecipe, addToFavorites } from '../../../actions/recipeActions'
 import { firestoreConnect } from 'react-redux-firebase'
 import { connect } from 'react-redux'
 import { compose } from 'redux'
+import Favorite from './Favorite'
 
 const RecipeFooter = props => {
-  const { recipeId, history, recipe, myRecipes } = props
+  const { recipeId, history, recipe, myRecipes, addToFavorites } = props
   const { container, button } = style.recipeFooter
   const buttonClasses ='waves-effect waves-light btn center-align modal-trigger'
   const deleteMessage = 'Are you sure you want to delete this recipe?'
@@ -24,6 +25,13 @@ const RecipeFooter = props => {
   const saveMessage = `The recipe ${recipe.title.toUpperCase()} was just saved in 'My Recipes'`
 
   const handleEdit = () => history.push(`/recipes/edit/${ recipeId }`)
+
+  const handleFavoriteClick = () => {
+    //assign favorite to truthy
+    recipe.favorite 
+    ? addToFavorites({...recipe, favorite: false})
+    : addToFavorites({...recipe, favorite: true})
+  }
 
   return (
     <>
@@ -84,26 +92,18 @@ const RecipeFooter = props => {
           onClick={ IS_SPOONACULAR_ID ? () => {} : handleEdit }
         >Edit
         </button>
-
-       {/* <Modal id={ 'print' } />
-        <button
-          data-target="print"
-          style={ button }
-          className={`${ buttonClasses } green`}
-          history={ history }
-          onClick={() => console.log(history)}
-        >
-          Print
-        </button>
-
-        <Modal id={ 'share' } />
-        <button
-          data-target="share"
-          style={ button }
-          className={`${ buttonClasses } black`}
-        >
-          <i className="material-icons">share</i>
-        </button> */}
+        {
+          !IS_SPOONACULAR_ID &&
+          <Favorite 
+            style={{
+              fontSize: '3rem',
+              margin: '1rem 1rem 2rem 1rem',
+              color: 'darkred'
+            }}
+            favorite={  recipe.favorite && recipe.favorite }
+            handleFavoriteClick={ handleFavoriteClick }
+        />
+        }
       </div>
     </>
   )
@@ -117,7 +117,7 @@ const mapStateToProps = state => {
 
 
 export default compose(
-  connect(mapStateToProps, { selectRecipe } ),
+  connect(mapStateToProps, { selectRecipe, addToFavorites }),
   firestoreConnect([{
     collection: 'recipes'
   }])

@@ -16,24 +16,26 @@ import {
   PREPARE_RECIPE,
   SELECT_MULTIPLE_RECIPES,
   SELECT_ALL,
-  UNSELECT
+  UNSELECT,
+  ADD_TO_FAVORITES, 
+  ADD_TO_FAVORITES_ERROR
 } from './types'
 
 
 
 export const createRecipe = recipe => {
-  recipe.id && delete recipe.id
-
+  const Recipe = { ...recipe }
+  delete Recipe.id
   return (dispatch, getState, { getFirebase, getFirestore }) => {
-    recipe.userId = getState().firebase.auth.uid
+    Recipe.userId = getState().firebase.auth.uid
     
     const firestore = getFirestore()
     firestore.collection('recipes').add({
-      ...recipe
+      ...Recipe
     }).then(() => {
       dispatch({
         type: CREATE_RECIPE,
-        payload: recipe
+        payload: Recipe
       })
     }).catch(err => {
       dispatch({
@@ -59,6 +61,27 @@ export const editRecipe = (id, recipe) => {
       dispatch({
         type: EDIT_RECIPE_ERROR,
         payload: err
+      })
+    })
+  }
+}
+
+export const addToFavorites = (recipe) => {
+  const { id } = recipe
+  return (dispatch, getState, { getFirebase, getFirestore }) => {
+    // make async call to database
+    const firestore = getFirestore()
+    firestore.collection('recipes').doc(id).update({
+      ...recipe,
+    }).then(() => {
+      dispatch({
+        type: ADD_TO_FAVORITES,
+        payload: recipe
+      })
+    }).catch(err => {
+      dispatch({
+        type: ADD_TO_FAVORITES_ERROR,
+          payload: err
       })
     })
   }

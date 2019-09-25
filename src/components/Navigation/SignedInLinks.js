@@ -34,11 +34,14 @@ class SignedInLinks extends Component{
     const { signOut } = this.props
     const isDesktop = this.state.isDesktop
     return (
-      <>
+        <>
         <li><NavLink to='/recipe/new'>Create Recipe</NavLink></li>
         <li><NavLink to='/myRecipes'>My Recipes</NavLink></li>
+        <li><NavLink to='/myRecipes/favorites'>Favorites</NavLink></li>
         <li><NavLink onClick={ signOut } to='/recipes'>Log Out</NavLink></li>
-        { isDesktop? <Avatar isDesktop={ isDesktop } /> : null }
+        { isDesktop
+          ? <Avatar isDesktop={ isDesktop } />
+          : null }
       </>
     )
   }

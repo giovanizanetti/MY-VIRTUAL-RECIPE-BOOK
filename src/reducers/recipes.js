@@ -12,6 +12,8 @@ import {
   DELETE_RECIPE,
   DELETE_RECIPE_ERROR,
   SET_CURRENT_PAGE,
+  ADD_TO_FAVORITES,
+  ADD_TO_FAVORITES_ERROR
 } from '../actions/types'
 
 const initialState = {
@@ -75,7 +77,20 @@ export default (state=initialState, action) => {
         [action.payload.id]: action.payload
       }
     case EDIT_RECIPE_ERROR:
-      return state
+      return {
+        ...state,
+        error: action.payload
+      }
+    case ADD_TO_FAVORITES:
+      return {
+        ...state,
+        [action.payload.id]: action.payload
+      }
+    case ADD_TO_FAVORITES_ERROR: 
+      return {
+      ...state,
+      error: action.payload
+    }
     case DELETE_RECIPE:
       return state
     case DELETE_RECIPE_ERROR:
