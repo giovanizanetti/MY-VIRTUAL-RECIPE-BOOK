@@ -18,7 +18,8 @@ import {
   SELECT_ALL,
   UNSELECT,
   ADD_TO_FAVORITES, 
-  ADD_TO_FAVORITES_ERROR
+  ADD_TO_FAVORITES_ERROR,
+  SET_DATE
 } from './types'
 
 
@@ -171,6 +172,12 @@ export const fetchRecipeById = (id) => (dispatch) => {
 export const prepareRecipe = () => {
   return {
     type: PREPARE_RECIPE,
+  }
+}
+
+export const setDate = () => {
+  return {
+    type: SET_DATE
   }
 }
 

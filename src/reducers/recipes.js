@@ -13,7 +13,8 @@ import {
   DELETE_RECIPE_ERROR,
   SET_CURRENT_PAGE,
   ADD_TO_FAVORITES,
-  ADD_TO_FAVORITES_ERROR
+  ADD_TO_FAVORITES_ERROR,
+  SET_DATE
 } from '../actions/types'
 import { getDate } from '../myLibrary'
 
@@ -64,10 +65,15 @@ export default (state=initialState, action) => {
         error: action.payload,
         isPending: false
       }
-      case SET_CURRENT_PAGE:
+    case SET_CURRENT_PAGE:
       return {
         ...state,
         currentPage: action.payload
+      }
+    case SET_DATE:
+      return {
+        ...state,
+        date: getDate()
       }
     case CREATE_RECIPE:
       return state

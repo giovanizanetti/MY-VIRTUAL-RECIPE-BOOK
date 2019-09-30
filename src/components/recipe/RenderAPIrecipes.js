@@ -1,26 +1,22 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { fetchRecipes } from '../../actions/recipeActions'
-import { setSearchField } from '../../actions/searchActions'
+import { fetchRecipes, setDate } from '../../actions/recipeActions'
 import RecipeList from './RecipeList'
 import LoaderProgressBar from '../LoaderProgressBar'
-import SearchBar from '../SearchBar'
 import { getDate } from '../../myLibrary'
 
 class RenderAPIrecipes extends Component {
   componentDidMount = () => {
-    const { fetchRecipes, recipes, date } = this.props
-    !recipes.recipes.length 
-    || getDate() !== date 
-    && fetchRecipes()
+    const { fetchRecipes, recipes, recipesDate, setDate } = this.props
+    const recipesList = recipes.recipes
+    if(!recipesList.length) return fetchRecipes()
+    if (getDate() !== recipesDate) return fetchRecipes() && setDate()
   }
 
   onSubmit = formValues => {
     const { fetchRecipes } = this.props
     fetchRecipes(formValues)
   }
-
-  
 
   render() {
     const { recipes, history }  = this.props
@@ -37,7 +33,6 @@ class RenderAPIrecipes extends Component {
             <span style={{fontSize: '2rem', fontWeight: '500'}} className='red-text'>{recipes.error.response.data.message} !!</span>
           </>
       }
-          {/* <SearchBar id='API' onSubmit={ this.onSubmit } /> */}
           <h4
             style={{
               textAlign: 'center', 
@@ -63,12 +58,12 @@ const mapStateToProps = state => {
   return {
     recipes,
     selectedRecipe,
-    date: recipes.date
+    recipesDate: recipes.date
   }
 }
 
 export default connect(
-  mapStateToProps, { fetchRecipes, setSearchField }
+  mapStateToProps, { fetchRecipes, setDate }
   )(RenderAPIrecipes)
 
 
