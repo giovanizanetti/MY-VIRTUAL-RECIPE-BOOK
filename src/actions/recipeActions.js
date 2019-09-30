@@ -139,8 +139,8 @@ export const fetchRecipes = (searchValues) => dispatch => {
   })
   return spoonacular.get('./random?', {
     params: {
-      number: 15,
-      tags: searchValues ? searchValues : 'main course'
+      number: 30,
+      // tags: searchValues ? searchValues : 'main course'
     }
   })
     .then(data => dispatch({

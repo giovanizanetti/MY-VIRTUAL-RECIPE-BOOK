@@ -6,7 +6,6 @@ import { connect } from 'react-redux'
 import {  setCurrentPage } from '../../../actions/pagination'
 import Pagination from '../../Pagination'
 
-
 class RecipeList extends Component {
   componentDidMount(){
     const { isActive, setCurrentPage } = this.props

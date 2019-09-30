@@ -7,6 +7,8 @@ import style from '../style'
 import CheckBox from '../../../CheckBox'
 import { selectMultipleRecipes, unselect, addToFavorites } from '../../../../actions/recipeActions'
 import Favorite from '../../RecipeDetail/Favorite'
+import Placeholder from '../../../../images/placeholder.jpg'
+
 
 class RecipeCard extends Component {
   componentDidMount() {
@@ -62,7 +64,7 @@ class RecipeCard extends Component {
             />
           }
           <div className="card-image waves-effect waves-block waves-light">
-            <img className="activator" src={ image ? image : undefined } alt={ title } />
+            <img className="activator" src={ image ? image : Placeholder } alt={ title } />
           </div>
           <span className="card-title activator grey-text text-darken-4">
             { trimString(title, 40) }
