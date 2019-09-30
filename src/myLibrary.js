@@ -42,3 +42,9 @@ export const timeFormat = (minutes) => {
   }
   return minutes + 'min'
 }
+
+export const getDate = () => {
+  let fullDate = new Date()
+  return fullDate.setHours(0,0,0,0);
+}
+    

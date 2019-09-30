@@ -15,13 +15,15 @@ import {
   ADD_TO_FAVORITES,
   ADD_TO_FAVORITES_ERROR
 } from '../actions/types'
+import { getDate } from '../myLibrary'
 
 const initialState = {
   isPending : false,
   recipes: [],
   error: '',
   currentPage: 1,
-  recipesPerPage: 3
+  recipesPerPage: 3,
+  date: getDate()
 }
 
 export default (state=initialState, action) => {

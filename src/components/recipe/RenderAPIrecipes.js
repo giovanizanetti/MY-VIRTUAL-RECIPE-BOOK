@@ -5,12 +5,14 @@ import { setSearchField } from '../../actions/searchActions'
 import RecipeList from './RecipeList'
 import LoaderProgressBar from '../LoaderProgressBar'
 import SearchBar from '../SearchBar'
+import { getDate } from '../../myLibrary'
 
 class RenderAPIrecipes extends Component {
   componentDidMount = () => {
-    const { fetchRecipes, recipes } = this.props
-    !recipes.recipes.length && fetchRecipes()
-    console.log(localStorage)
+    const { fetchRecipes, recipes, date } = this.props
+    !recipes.recipes.length 
+    || getDate() !== date 
+    && fetchRecipes()
   }
 
   onSubmit = formValues => {
@@ -29,36 +31,39 @@ class RenderAPIrecipes extends Component {
     return (
       recipes && recipes.isPending
       ? <LoaderProgressBar />
-      : <>
-      { recipes.error 
+      : <div>
+      { recipes.error && !recipes.recipes
         && <>
             <span style={{fontSize: '2rem', fontWeight: '500'}} className='red-text'>{recipes.error.response.data.message} !!</span>
-            <p className='red-text'>Please try a different search term</p>
           </>
       }
-          <SearchBar id='API' onSubmit={ this.onSubmit } />
+          {/* <SearchBar id='API' onSubmit={ this.onSubmit } /> */}
           <h4
             style={{
               textAlign: 'center', 
               fontFamily: 'roboto', 
-              margin: '1rem', 
+              margin: '2rem', 
               textDecoration: 'underline'
             }}
-            >Picked Recipes
+            >Picked Daily Recipes
           </h4>
-          <RecipeList
-            recipes={ uniqueRecipes }
-            history={ history }
-          />
-        </>
+          <div>
+            <RecipeList
+              recipes={ uniqueRecipes }
+              history={ history }
+            />
+          </div>
+        </div>
     )
   }
 }
 
 const mapStateToProps = state => {
+  const { recipes, selectedRecipe } = state
   return {
-    recipes: state.recipes,
-    selectedRecipe: state.selectedRecipe,
+    recipes,
+    selectedRecipe,
+    date: recipes.date
   }
 }
 
