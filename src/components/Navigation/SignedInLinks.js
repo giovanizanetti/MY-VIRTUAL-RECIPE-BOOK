@@ -35,7 +35,8 @@ class SignedInLinks extends Component{
     const isDesktop = this.state.isDesktop
     return (
         <>
-          <li className="sidenav-close"><NavLink to='/recipe/new'>Create Recipe</NavLink></li>
+          <li><NavLink to='/recipes'>Home</NavLink></li>
+          <li><NavLink to='/recipe/new'>Create Recipe</NavLink></li>
           <li><NavLink to='/myRecipes'>My Recipes</NavLink></li>
           <li><NavLink to='/myRecipes/favorites'>Favorites</NavLink></li>
           <li><NavLink onClick={ signOut } to='/recipes'>Log Out</NavLink></li>

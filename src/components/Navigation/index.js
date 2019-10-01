@@ -1,5 +1,5 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 import SignedInLinks from './SignedInLinks'
 import SignedOutLinks from './SignedOutLinks'
 import { connect } from "react-redux"
@@ -14,7 +14,7 @@ const NavBar = (props) => {
         uid={uid}
       />
       <div className='container'>
-        <Link to='/recipes' className='flow-text'>Recipe Book App</Link>
+        <NavLink to='/recipes' className='flow-text'>Recipe Book App</NavLink>
         <ul className='right hide-on-med-and-down'>
           { !uid
             ? <SignedOutLinks />
