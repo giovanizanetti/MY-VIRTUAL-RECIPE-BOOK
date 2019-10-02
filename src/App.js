@@ -4,7 +4,8 @@ import './App.css'
 import Navigation from './components/Navigation'
 import { connect } from 'react-redux'
 import Router from './Router'
-
+//#f7e59c
+//#f0ab0c
 class App extends Component {
   render() {
     return (

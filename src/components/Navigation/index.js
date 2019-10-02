@@ -11,12 +11,7 @@ class NavBar extends React.Component {
     isDesktop: false
   }
   /*
-    I had to check for the window size otherwise
-    the Avatar component would be shown twice on the sidebar.
-    The other possibility would be to have it as a last icon on
-    the Sidebar component, and that is not what I want.
-    I want Avatar to be shown as the very top of the sidebar
-    or on very right on the navbar on Large screens.
+    Check for the window size
   */
   componentDidMount() {
     this.updateScreenSize();
@@ -33,17 +28,14 @@ class NavBar extends React.Component {
 
 
   render() {
-    const {
-      props,
-    } = this
-
-    const { uid } = props.auth
+    const { uid } = this.props.auth
     const { isDesktop } = this.state
     return (
       <nav className='nav-wrapper grey darken-3' id='nav'>
-        <Sidenav
-          uid={uid}
-        />
+        { 
+          !isDesktop 
+          && <Sidenav uid={uid}/>
+        }
         <div className='container'>
           <NavLink to='/recipes' style={{fontSize: '1.5rem'}}className='flow-text'>Recipe Book App</NavLink>
           <ul className='right hide-on-med-and-down'>

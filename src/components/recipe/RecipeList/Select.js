@@ -37,7 +37,7 @@ const Select = ({ showCheckBoxes, isActive,
       {
         selectedRecipes.length === 0
         && <button
-              className="btn-small blue lighten-2"
+              className="btn-small blue lighten-1"
               onClick={() => showCheckBoxes() }
               >Select
             </button>
@@ -46,7 +46,7 @@ const Select = ({ showCheckBoxes, isActive,
         && selectedRecipes.length > 0
         && !isSpoonacular
         && <button
-              className="btn-small red"
+              className="btn-small red lighten-1"
               onClick={handleDelete}
               >Delete
             </button>
