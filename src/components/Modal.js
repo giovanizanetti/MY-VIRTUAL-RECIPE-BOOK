@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import M from "materialize-css/dist/js/materialize.min.js"
-import SharePlatforms from '../components/recipe/RecipeDetail/SharePlatforms'
 import PrintPreferences from '../components/recipe/RecipeDetail/PrintPreferences'
 import { fetchRecipeById, deleteRecipe, createRecipe } from '../actions/recipeActions'
 import { connect } from 'react-redux'
@@ -49,8 +48,6 @@ class Modal extends Component {
     const { id, popUp, createRecipe, recipe } = this.props
     const renderContent = () => {
       switch (id) {
-        case 'share':
-          return <SharePlatforms />
         case 'print':
           return <PrintPreferences />
         default:

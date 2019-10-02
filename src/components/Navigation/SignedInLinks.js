@@ -1,6 +1,8 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
 import { connect } from 'react-redux'
+import { compose } from 'redux'
+import { firestoreConnect } from 'react-redux-firebase'
 import { signOut } from '../../actions/authActions'
 import Avatar from './Avatar'
 
@@ -9,6 +11,7 @@ const SignedInLinks = props => {
   const { signOut, myRecipes, isDesktop } = props
   const favoritesLength = myRecipes && myRecipes.filter(rec => rec.favorite).length
   const myRecipesLength = myRecipes && myRecipes.length 
+  console.log(myRecipesLength, favoritesLength)
   return (
       <>
         { !isDesktop && <li><NavLink to='/recipes'>Home</NavLink></li> }
@@ -41,4 +44,9 @@ const mapStateToProps = state => {
   }
 }
 
-export default connect(mapStateToProps, { signOut })(SignedInLinks)
+export default compose(
+  connect(mapStateToProps, { signOut }),
+  firestoreConnect([{
+    collection: 'recipes'
+  }])
+)(SignedInLinks)
