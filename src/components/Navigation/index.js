@@ -14,7 +14,7 @@ const NavBar = (props) => {
         uid={uid}
       />
       <div className='container'>
-        <NavLink to='/recipes' className='flow-text'>Recipe Book App</NavLink>
+        <NavLink to='/recipes' style={{fontSize: '1.5rem'}}className='flow-text'>Recipe Book App</NavLink>
         <ul className='right hide-on-med-and-down'>
           { !uid
             ? <SignedOutLinks />

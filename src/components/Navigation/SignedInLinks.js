@@ -31,15 +31,25 @@ class SignedInLinks extends Component{
   }
 
   render() {
-    const { signOut } = this.props
+    const { signOut, myRecipes } = this.props
+    const favoritesLength = myRecipes && myRecipes.filter(rec => rec.favorite).length
+    const myRecipesLength = myRecipes && myRecipes.length 
     const isDesktop = this.state.isDesktop
     return (
         <>
-          <li><NavLink to='/recipes'>Home</NavLink></li>
-          <li><NavLink to='/recipe/new'>Create Recipe</NavLink></li>
-          <li><NavLink to='/myRecipes'>My Recipes</NavLink></li>
-          <li><NavLink to='/myRecipes/favorites'>Favorites</NavLink></li>
-          <li><NavLink onClick={ signOut } to='/recipes'>Log Out</NavLink></li>
+         { !isDesktop && <li><NavLink to='/recipes'>Home</NavLink></li> }
+          <li>
+            <NavLink to='/recipe/new'>Create Recipe</NavLink>
+          </li>
+          <li>
+            <NavLink to='/myRecipes'>My Recipes <span className='red-text red-darken-2'>({ myRecipesLength })</span></NavLink>
+          </li>
+          <li>
+            <NavLink to='/myRecipes'>Favorites <span className='red-text red-darken-2'>({ favoritesLength })</span></NavLink>
+          </li>
+          <li>
+            <NavLink onClick={ signOut } to='/recipes'>Log Out</NavLink>
+          </li>
           { isDesktop
             ? <Avatar isDesktop={ isDesktop } />
             : null }
@@ -49,8 +59,12 @@ class SignedInLinks extends Component{
 }
 
 const mapStateToProps = state => {
+  const { firebase, firestore } = state
+  const currentUser = firebase.auth.uid
   return {
-    initials: state.firebase.profile.initials
+    initials: firebase.profile.initials,
+    myRecipes: firestore.ordered.recipes 
+      && firestore.ordered.recipes.filter(rec => rec.userId === currentUser)
   }
 }
 
