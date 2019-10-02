@@ -16,6 +16,7 @@ class App extends Component {
           style={{
             paddingTop: "5em",
             marginBottom: '10%',
+            height: '100vh'
             }}>
           <Router />
         </div>

@@ -18,7 +18,7 @@ class RecipeList extends Component {
       recipesPerPage, currentPage, 
       setCurrentPage, id, isFavorites 
     } = this.props
-
+    console.log(recipesPerPage)
     const indexOfLastRecipe = currentPage * recipesPerPage
     const indexOfFirstRecipe = indexOfLastRecipe - recipesPerPage
     const currentRecipes = recipes.slice(indexOfFirstRecipe, indexOfLastRecipe)
@@ -29,15 +29,15 @@ class RecipeList extends Component {
 
     return (
       <>
-          {
-            auth.uid 
-            && recipes.length 
-            && id === 'myRecipes'
-            && <Select
-                recipes={ recipes }
-                history={ history }
-              />
-          }
+        {
+          auth.uid 
+          && recipes.length 
+          && id === 'myRecipes'
+          && <Select
+              recipes={ recipes }
+              history={ history }
+            />
+        }
         <div className="row">
           <CardsList
             recipes={ currentRecipes }
@@ -47,11 +47,11 @@ class RecipeList extends Component {
         </div>
         <div>
           <Pagination 
-              totalRecipes={ recipes.length }
-              currentPage={ currentPage }
-              recipesPerPage={ recipesPerPage }
-              paginate={ paginate }
-            /> 
+            totalRecipes={ recipes.length }
+            currentPage={ currentPage }
+            recipesPerPage={ recipesPerPage }
+            paginate={ paginate }
+          /> 
         </div>
       </>
     )
@@ -59,6 +59,7 @@ class RecipeList extends Component {
 }
 
 const mapStateToProps = state => {
+  console.log(state)
   const { checkBoxes, firebase, recipes } = state
   return {
     isActive: checkBoxes.active,

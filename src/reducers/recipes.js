@@ -23,7 +23,7 @@ const initialState = {
   recipes: [],
   error: '',
   currentPage: 1,
-  recipesPerPage: 3,
+  recipesPerPage: 6,
   date: getDate()
 }
 
