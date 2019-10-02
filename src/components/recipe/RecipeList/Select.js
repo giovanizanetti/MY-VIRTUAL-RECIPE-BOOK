@@ -32,13 +32,14 @@ const Select = ({ showCheckBoxes, isActive,
     }
 
   return (
-    <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
+    <div style={{ display: 'flex', justifyContent: 'flex-end', margin: '1rem' }}>
+    {/* <div> */}
       {
         selectedRecipes.length === 0
         && <button
-              className="btn-small blue"
+              className="btn-small blue lighten-2"
               onClick={() => showCheckBoxes() }
-              >Select multiple Recipes
+              >Select
             </button>
       }
       { isActive
