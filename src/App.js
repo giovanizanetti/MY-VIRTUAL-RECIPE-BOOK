@@ -4,7 +4,8 @@ import './App.css'
 import Navigation from './components/Navigation'
 import { connect } from 'react-redux'
 import Router from './Router'
-
+//#f7e59c
+//#f0ab0c
 class App extends Component {
   render() {
     return (
@@ -15,6 +16,7 @@ class App extends Component {
           style={{
             paddingTop: "5em",
             marginBottom: '10%',
+            height: '100vh'
             }}>
           <Router />
         </div>

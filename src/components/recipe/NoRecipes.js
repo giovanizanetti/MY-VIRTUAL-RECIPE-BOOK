@@ -18,7 +18,7 @@ const NoRecipes = () => {
             marginTop: '5rem'
           }}>
           <Link className='btn' to='/recipe/new'>Create a recipe</Link>
-          <Link className='btn' to='/'>Search for recipes</Link>
+          <Link className='btn' to='/'>Recipes of the day</Link>
         </div>
 
       </div>

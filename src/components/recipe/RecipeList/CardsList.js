@@ -15,23 +15,21 @@ const CardsList = ({ recipes, isFavorites }) => {
       cookingMinutes, favorite
     } = recipe
     return(
-      // <div key={ i }>
-        <RecipeCard
+      <RecipeCard
         key={ i }
-          recipes={ recipes }
-          id={ id} 
-          image={ image }
-          title={ title }
-          glutenFree={ glutenFree }
-          lowFodmap={ lowFodmap }
-          vegetarian={ vegetarian }
-          vegan={ vegan}
-          dairyFree={ dairyFree }
-          readyInMinutes={ readyInMinutes }
-          cookingMinutes={ cookingMinutes }
-          favorite={ favorite }
-        />
-      // </div>
+        recipes={ recipes }
+        id={ id} 
+        image={ image }
+        title={ title }
+        glutenFree={ glutenFree }
+        lowFodmap={ lowFodmap }
+        vegetarian={ vegetarian }
+        vegan={ vegan}
+        dairyFree={ dairyFree }
+        readyInMinutes={ readyInMinutes }
+        cookingMinutes={ cookingMinutes }
+        favorite={ favorite }
+      />
     )
   })
 }

@@ -42,12 +42,10 @@ class RenderAPIrecipes extends Component {
             }}
             >Picked Daily Recipes
           </h4>
-          <div>
-            <RecipeList
-              recipes={ uniqueRecipes }
-              history={ history }
-            />
-          </div>
+          <RecipeList
+            recipes={ uniqueRecipes }
+            history={ history }
+          />
         </div>
     )
   }

@@ -44,7 +44,7 @@ class RecipeCard extends Component {
     const isSpoonacular = isNumber(id)
 
     return (
-      <div className='col s12 m4'>
+      <div className='col s12 m6 l4'>
         <div
           className="card small"
           style={ card }
