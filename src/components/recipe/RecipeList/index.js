@@ -18,7 +18,6 @@ class RecipeList extends Component {
       recipesPerPage, currentPage, 
       setCurrentPage, id, isFavorites 
     } = this.props
-    console.log(recipesPerPage)
     const indexOfLastRecipe = currentPage * recipesPerPage
     const indexOfFirstRecipe = indexOfLastRecipe - recipesPerPage
     const currentRecipes = recipes.slice(indexOfFirstRecipe, indexOfLastRecipe)
@@ -59,7 +58,6 @@ class RecipeList extends Component {
 }
 
 const mapStateToProps = state => {
-  console.log(state)
   const { checkBoxes, firebase, recipes } = state
   return {
     isActive: checkBoxes.active,

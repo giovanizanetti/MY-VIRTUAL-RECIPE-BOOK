@@ -19,7 +19,7 @@ const SignedInLinks = props => {
           <NavLink to='/myRecipes'>My Recipes <span className='red-text red-darken-2'>{ myRecipesLength && `(${ myRecipesLength })`}</span></NavLink>
         </li>
         <li>
-          <NavLink to='/myRecipes'>Favorites <span className='red-text red-darken-2'>{ favoritesLength && `(${ favoritesLength })` }</span></NavLink>
+          <NavLink to='/myRecipes/favorites'>Favorites <span className='red-text red-darken-2'>{ favoritesLength && `(${ favoritesLength })` }</span></NavLink>
         </li>
         <li>
           <NavLink onClick={ signOut } to='/recipes'>Log Out</NavLink>
