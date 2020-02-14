@@ -23,7 +23,7 @@
     "redux-form": "^8.1.0",
     "redux-persist": "^6.0.0",
     "redux-thunk": "^2.3.0",
-    "yarn": "^1.16.0"
+    "yarn": "^1.22.0"
   },
   "scripts": {
     "start": "react-scripts start",
