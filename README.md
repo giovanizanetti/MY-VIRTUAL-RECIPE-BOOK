@@ -77,7 +77,7 @@ If you have feedback to improve my git usage: **[please drop me a line here!](ht
 ## My workflow
 
 I break the main problem into smaller problems, then I go one at the time.
-I maintain a backlog using Trello. 
+I maintain a backlog using [Trello](https://trello.com/b/Ybwv9R6h). 
 
 Here are some tools and platforms which I rely upon through the development process:
   - Trello,
