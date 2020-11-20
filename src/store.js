@@ -1,11 +1,12 @@
 import { createStore, applyMiddleware, compose } from 'redux'
-import rootReducer from '../src/reducers'
-import thunk from 'redux-thunk'
+import { persistReducer, persistStore } from 'redux-persist'
 import { reduxFirestore, getFirestore } from 'redux-firestore'
 import { reactReduxFirebase, getFirebase } from 'react-redux-firebase'
+
+import rootReducer from '../src/reducers'
+import thunk from 'redux-thunk'
 import fbConfig from './config/fbConfig'
 import storage from 'redux-persist/lib/storage'
-import { persistReducer, persistStore } from 'redux-persist'
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
 
@@ -23,22 +24,21 @@ export const store = createStore(
     applyMiddleware(
       thunk.withExtraArgument({
         getFirebase,
-        getFirestore
+        getFirestore,
       })
     ),
     reduxFirestore(fbConfig),
     reactReduxFirebase(fbConfig, {
       useFirestoreForProfile: true,
       userProfile: 'users',
-      attachAuthIsReady: true
+      attachAuthIsReady: true,
     })
   )
 )
 
 export const persistor = persistStore(store)
 
-
 export const rrfConfig = {
   fbConfig,
-  dispatch: store.dispatch
+  dispatch: store.dispatch,
 }
