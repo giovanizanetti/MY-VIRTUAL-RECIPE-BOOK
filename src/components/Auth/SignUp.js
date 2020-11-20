@@ -65,7 +65,7 @@ const SignUp = (props) => {
             className='btn pink lighten-1 z-depth-0'
             disabled={pristine || submitting}
           >
-            Login
+            Signup
           </button>
           <div className='red-text center'>
             {authError ? <p>{authError}</p> : null}

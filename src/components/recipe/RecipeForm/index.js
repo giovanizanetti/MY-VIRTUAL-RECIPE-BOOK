@@ -29,7 +29,6 @@ class RecipeForm extends Component {
         <Field
           name='title'
           component={RenderInput}
-          autoFocus
           type='text'
           label='Title'
           placeholder='My recipe name'
