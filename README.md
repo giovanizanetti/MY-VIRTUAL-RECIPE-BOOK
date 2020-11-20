@@ -34,8 +34,9 @@ The user can save, modify, write their recipes with an image uploaded.
 
 ## Goals for this project:
 
-Practise: React/Redux, CRUD app with firebase, authentication & using an external API, GIT and PR's.
-Make a working application, showcase some of what I can do and get a job as a junior developer.
+- Practise: React/Redux, CRUD app with firebase, authentication, fetch API, GIT and PR's.
+- Make a working application. 
+- Showcase some of what I can do and get a job as a junior developer.
 
   - **[My git usage](#my-git-workflow)**
 
