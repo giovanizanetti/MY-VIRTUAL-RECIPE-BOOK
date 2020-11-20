@@ -5,8 +5,8 @@
 
 ## What this project is about
 
-The main purpose of this project is to practize my skills using ReactJS
-**[Goals for this project](#goals-for-this-project)**
+I am creating a cookbook using ReactJS with Redux which fetches some recipes from the Spoonacular API.
+The user can save, modify, write their recipes with an image uploaded.  
 
 ## Table of contents:
 
@@ -20,7 +20,7 @@ The main purpose of this project is to practize my skills using ReactJS
 
 ## Technologies used
 
-#### 👇 Click links to view some samples on this project 👇
+#### Click links to view some samples on this project 👇👇👇
 
 - **[React](./src/components/recipe/RecipeList/index.js)**
 - **[React-Router](.src/Router.js)**
@@ -34,22 +34,20 @@ The main purpose of this project is to practize my skills using ReactJS
 
 ## Goals for this project:
 
-I am creating a cookbook with is fetching some recipes from the Spoonacular API.
-The user can save, modify and, write their recipes with an upload image feature.  
-In this project, I am practising: React/Redux, CRUD app with firebase, authentication & using an external API, GIT and PR's.
+Practise: React/Redux, CRUD app with firebase, authentication & using an external API, GIT and PR's.
+Make a working application, showcase some of what I can do and get a job as a junior developer.
 
-
-  - **[To showcase disciplined git usage](#my-git-workflow)**
+  - **[My git usage](#my-git-workflow)**
 
 
 ## Requirements
 
-To guide my self through this project, I have created user stories: **[User Stories.md](./userStories.md)**
+To guide my self through this project, I have created some user stories: **[User Stories.md](./userStories.md)**
 
 
 ## Features built so far overview with pull requests
 
-#### 👇 Click links to view the pull requests 👇
+#### Click links to view the pull requests 👇👇👇
 
 - **[Feature - Navigation](https://github.com/giovanizanetti/MY-VIRTUAL-RECIPE-BOOK/pull/1)**
 - **[Feature - SignIn/SignUp](https://github.com/giovanizanetti/MY-VIRTUAL-RECIPE-BOOK/pull/2)**
@@ -66,7 +64,7 @@ To guide my self through this project, I have created user stories: **[User Stor
 
 ## My git workflow
 
-In this project I try to practice:
+In this project I practice:
 
 - Good commit messages,
 - Well named branches,
@@ -77,12 +75,15 @@ If you have feedback to improve my git usage: **[please drop me a line here!](ht
 
 ## My workflow
 
-I try to maintain a backlog eventhough I'm working on a project by myself. So that if ia i am work in a team, the collaboration will be facilitated.
-Here are some other tools tha help me out though my process of develop My Virtual Recipe Book App:
-  - Trello Board,
-  - Google,
-  - Grammarly
+I break the main problem into smaller problems, then I go one at the time.
+I maintain a backlog using Trello. 
 
+Here are some tools and platforms which I rely upon through the development process:
+  - Trello,
+  - VS Code,
+  - Google,
+  - Docs,
+  - Youtube / Udemy tutorials
 
 ## Create React App
 
