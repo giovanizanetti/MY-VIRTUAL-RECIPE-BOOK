@@ -24,8 +24,9 @@ class RenderAPIrecipes extends Component {
       history,
     } = this.props
 
-    // const uniqueRecipes = Array.from(new Set(recipes && recipes.recipes.map(r => r.id)))
-    //   .map(id => recipes && recipes.recipes.find(a => a.id === id))
+    const uniqueRecipes = Array.from(
+      new Set(recipes && recipes.map((r) => r.id))
+    ).map((id) => recipes && recipes.find((a) => a.id === id))
 
     return recipes && recipes.isPending ? (
       <LoaderProgressBar />
@@ -51,7 +52,7 @@ class RenderAPIrecipes extends Component {
         >
           Picked Daily Recipes
         </h4>
-        <RecipeList recipes={recipes} history={history} />
+        <RecipeList recipes={uniqueRecipes} history={history} />
       </div>
     )
   }
