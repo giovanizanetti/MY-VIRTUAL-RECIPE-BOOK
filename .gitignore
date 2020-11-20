@@ -5,8 +5,13 @@
 /.pnp
 .pnp.js
 
+
 # testing
 /coverage
+
+#API keys
+src/config
+
 
 # production
 /build
