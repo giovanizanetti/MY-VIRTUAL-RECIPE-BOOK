@@ -1,6 +1,10 @@
 import React from 'react'
 import { showCheckBoxes } from '../../../actions/checkBox'
-import { selectAll, createRecipe } from '../../../actions/recipeActions'
+import {
+  selectAll,
+  createRecipe,
+  selectRecipe,
+} from '../../../actions/recipeActions'
 import { connect } from 'react-redux'
 import { deleteRecipe } from '../../../actions/recipeActions'
 import { firestoreConnect } from 'react-redux-firebase'
@@ -47,6 +51,8 @@ const Select = ({
         selectedRecipes.map((recipe) => deleteRecipe(recipe.toString()))
       )
     }
+    selectRecipe(null)
+    console.log(selectedRecipes)
     showCheckBoxes()
   }
 
@@ -92,6 +98,7 @@ export default compose(
     deleteRecipe,
     selectAll,
     createRecipe,
+    selectRecipe,
   }),
   firestoreConnect([
     {
