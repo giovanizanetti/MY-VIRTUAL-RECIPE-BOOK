@@ -51,7 +51,7 @@ const Select = ({
         selectedRecipes.map((recipe) => deleteRecipe(recipe.toString()))
       )
     }
-    selectRecipe(null)
+    // selectRecipe(null)
     console.log(selectedRecipes)
     showCheckBoxes()
   }
@@ -60,8 +60,7 @@ const Select = ({
     <div
       style={{ display: 'flex', justifyContent: 'flex-end', margin: '1rem' }}
     >
-      {/* <div> */}
-      {selectedRecipes.length === 0 && (
+      {!isActive && (
         <button
           className='btn-small blue lighten-1'
           onClick={() => showCheckBoxes()}
