@@ -156,15 +156,14 @@ export const selectAll = () => {
   }
 }
 
-export const fetchRecipes = (searchValues) => (dispatch) => {
+export const fetchRecipes = () => (dispatch) => {
   dispatch({
     type: FETCH_RECIPES_PENDING,
   })
   return spoonacular
-    .get('./random?', {
+    .get('', {
       params: {
         number: 30,
-        // tags: searchValues ? searchValues : 'main course'
       },
     })
     .then((data) =>
