@@ -23,11 +23,6 @@ class RenderAPIrecipes extends Component {
       recipes: { recipes },
       history,
     } = this.props
-    console.log(recipes.map((r) => r.id))
-
-    // const uniqueRecipes = Array.from(
-    //   new Set(recipes && recipes.map((r) => r.id))
-    // ).map((id) => recipes && recipes.find((a) => a.id === id))
 
     return recipes && recipes.isPending ? (
       <LoaderProgressBar />

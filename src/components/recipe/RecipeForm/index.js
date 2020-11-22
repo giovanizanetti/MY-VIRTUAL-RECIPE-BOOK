@@ -27,6 +27,7 @@ class RecipeForm extends Component {
         className='container wrong col s12'
       >
         <Field
+          autoFocus
           name='title'
           component={RenderInput}
           type='text'

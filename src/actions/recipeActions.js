@@ -161,7 +161,7 @@ export const fetchRecipes = () => (dispatch) => {
     type: FETCH_RECIPES_PENDING,
   })
   return spoonacular
-    .get('', {
+    .get('/random', {
       params: {
         number: 30,
       },
@@ -186,7 +186,7 @@ export const fetchRecipeById = (id) => (dispatch) => {
   })
 
   return spoonacular
-    .get(`./${id}/information`)
+    .get(`/${id}/information`)
     .then((res) =>
       dispatch({
         type: FETCH_RECIPES_BY_ID_SUCCESS,
