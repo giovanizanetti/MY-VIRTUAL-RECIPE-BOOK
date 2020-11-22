@@ -13,7 +13,7 @@ import { Redirect } from 'react-router-dom'
 
 //This is a template form that can be imported by RecipeCreate and RecipeEdit
 class RecipeForm extends Component {
-  onSubmit = formValues => {
+  onSubmit = (formValues) => {
     const { onSubmit } = this.props
     onSubmit(formValues)
     return <Redirect to={`/myRecipes/`} />
@@ -23,11 +23,13 @@ class RecipeForm extends Component {
     const { handleSubmit } = this.props
     return (
       <form
-        onSubmit={ handleSubmit(this.onSubmit) }
-        className='container wrong col s12'>
+        onSubmit={handleSubmit(this.onSubmit)}
+        className='container wrong col s12'
+      >
         <Field
+          autoFocus
           name='title'
-          component={ RenderInput }
+          component={RenderInput}
           type='text'
           label='Title'
           placeholder='My recipe name'
@@ -35,32 +37,32 @@ class RecipeForm extends Component {
         <PrepTimeInputs />
         <Field
           name='servings'
-          component={ RenderInput }
+          component={RenderInput}
           type='number'
           label='Servings'
           placeholder='2 (people)'
         />
         <div>
           <h5>Ingredients</h5>
-          <hr/>
+          <hr />
           <IngredientsInputs />
         </div>
 
         <div>
           <h5>Occasions</h5>
-          <hr/>
+          <hr />
           <OccasionsInputs />
         </div>
 
         <div>
           <h5>Cuisines</h5>
-          <hr/>
+          <hr />
           <CuisinesInput />
         </div>
 
         <div>
           <h5>Instructions</h5>
-          <hr/>
+          <hr />
           <InstructionsInputs />
         </div>
 
@@ -68,24 +70,24 @@ class RecipeForm extends Component {
 
         <div>
           <h5>Image</h5>
-          <hr/>
+          <hr />
           <br />
           <ImgInput />
         </div>
         <button
           type='submit'
-          className="btn pink waves-effect waves-light"
+          className='btn pink waves-effect waves-light'
           style={{ maxWidth: '50%', margin: '8% auto', display: 'flex' }}
           // disabled={this.props.pristine || this.props.submitting}
         >
           Submit
         </button>
       </form>
-    );
+    )
   }
 }
 
 export default reduxForm({
   form: 'recipe Form',
-  validate
+  validate,
 })(RecipeForm)
