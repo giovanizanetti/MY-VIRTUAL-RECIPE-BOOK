@@ -2,6 +2,7 @@
 
 ## [Check out the deployed version here!](https://virtualrecipebook.netlify.com)
 
+[![Netlify Status](https://api.netlify.com/api/v1/badges/9b1c6223-6c8d-4f1f-b084-cab2ee05a111/deploy-status)](https://app.netlify.com/sites/virtualrecipebook/deploys)
 
 ## What this project is about
 
@@ -92,5 +93,8 @@ This project was scaffolded using the create-react-app cli.
 
 **[The standard create-react-app docs can be found in here](./create-react-app-docs.md)**
 
+## [Check out the deployed version here!](https://virtualrecipebook.netlify.com)
+
+[![Netlify Status](https://api.netlify.com/api/v1/badges/9b1c6223-6c8d-4f1f-b084-cab2ee05a111/deploy-status)](https://app.netlify.com/sites/virtualrecipebook/deploys)
 
 
