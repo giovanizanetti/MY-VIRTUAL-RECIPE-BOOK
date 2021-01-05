@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "axios": "^0.18.0",
+    "axios": "^0.21.1",
     "core-util-is": "^1.0.2",
     "firebase": "^5.10.0",
     "install": "^0.13.0",
